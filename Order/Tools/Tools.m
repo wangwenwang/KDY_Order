@@ -528,6 +528,7 @@ typedef void (^Animation)(void);
     return [str doubleValue];
 }
 
+
 + (NSString *)DateTransFrom:(NSString *)time {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
@@ -638,6 +639,20 @@ typedef void (^Animation)(void);
     if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         nav.interactivePopGestureRecognizer.enabled = enable;
     }
+}
+
+
++ (nullable NSString *)OneDecimal:(nullable NSString *)str {
+    CGFloat flo = [str floatValue];
+    NSString *result = [NSString stringWithFormat:@"%.1f", flo];
+    return result;
+}
+
+
++ (nullable NSString *)TwoDecimal:(nullable NSString *)str {
+    CGFloat flo = [str floatValue];
+    NSString *result = [NSString stringWithFormat:@"%.2f", flo];
+    return result;
 }
 
 @end

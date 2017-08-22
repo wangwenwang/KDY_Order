@@ -210,4 +210,26 @@
  */
 + (void)interactivePopGestureRecognizer:(nullable UINavigationController *)nav andEnable:(BOOL)enable;
 
+
+
+/**
+ 保留字符串后面1位小数
+ 
+ @param str 字符串
+ 
+ @return 带1位小数的字符串
+ */
++ (nullable NSString *)OneDecimal:(nullable NSString *)str;
+
+
+
+/**
+ 保留字符串后面2位小数
+
+ @param str 字符串
+
+ @return 带2位小数的字符串
+ */
++ (nullable NSString *)TwoDecimal:(nullable NSString *)str;
+
 @end

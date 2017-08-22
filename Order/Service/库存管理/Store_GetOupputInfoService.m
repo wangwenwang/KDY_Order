@@ -32,15 +32,9 @@
         
         if(_type == 1) {
             
-//            GetOupputListModel *getOupputListM = [[GetOupputListModel alloc] initWithDictionary:responseObject[@"result"]];
-//            
-//            if(getOupputListM.getOupputModel.count > 0) {
-//                
-//                [self successOfGetOupputList:getOupputListM];
-//            } else {
-//                
-//                [self successOfGetOupputList_NoData];
-//            }
+            GetOupputDetailModel *getOupputDetailM = [[GetOupputDetailModel alloc] initWithDictionary:responseObject[@"result"]];
+                
+                [self successOfGetOupputInfo:getOupputDetailM];
         } else {
             
             [self failureOfGetOupputInfo:msg];
@@ -54,11 +48,11 @@
 
 
 // 成功
-- (void)successOfGetOupputInfo:(NSString *)getOupputListM {
+- (void)successOfGetOupputInfo:(GetOupputDetailModel *)getOupputDetailM {
     
     if([_delegate respondsToSelector:@selector(successOfGetOupputInfo:)]) {
         
-        [_delegate successOfGetOupputInfo:getOupputListM];
+        [_delegate successOfGetOupputInfo:getOupputDetailM];
     }
 }
 

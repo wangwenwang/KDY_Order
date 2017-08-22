@@ -438,6 +438,7 @@ typedef enum _CloseDatePicker {
         if([Tools getDouble:price] >= [Tools getDouble:m.LOTTABLE13]) {
             
             [self setNewPrice:m andPrice:price];
+            [self refreshCollectDada];
         } else {
             
             [Tools showAlert:self.view andTitle:@"价格超出下限"];

@@ -28,7 +28,7 @@
 @end
 
 
-#define kCellHeight 62
+#define kCellHeight 68
 
 #define kCellName @"GetToAddressListTableViewCell"
 

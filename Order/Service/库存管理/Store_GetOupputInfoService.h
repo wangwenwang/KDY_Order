@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GetOupputDetailModel.h"
 
 @protocol Store_GetOupputInfoServiceDelegate <NSObject>
 
 /// 出库列表 成功
 @optional
-- (void)successOfGetOupputInfo:(NSString *)getOupputListM;
+- (void)successOfGetOupputInfo:(GetOupputDetailModel *)getOupputDetailM;
 
 /// 出库列表 失败
 @optional
