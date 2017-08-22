@@ -488,8 +488,6 @@ typedef enum : NSInteger {
     
     //先让payTypeTableView出来加载Cell,避免第一次加载Cell时会从(0, 0, 0, 0)到正常Frame的动画
     _payTypeTableViewHeight.constant = 0;
-    
-    //    _payTypeViewY.constant = (ScreenHeight - _payTypeViewHeight.constant) / 2 - 50;
 }
 
 
@@ -1330,7 +1328,6 @@ typedef enum : NSInteger {
             [self.view layoutIfNeeded];
             
             _coverView.alpha = _isShowBrandView ? 0 : 0.3;
-            
         } completion:^(BOOL finished) {
             
             _isShowBrandView = _isShowBrandView ? NO : YES;

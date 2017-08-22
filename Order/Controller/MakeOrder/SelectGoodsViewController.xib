@@ -15,11 +15,10 @@
                 <outlet property="brandLabel" destination="NCY-1A-M7F" id="YkL-4b-U50"/>
                 <outlet property="brandTableView" destination="Ran-iz-jYf" id="mq0-Cu-zLa"/>
                 <outlet property="brandViewWidth" destination="7uR-K1-HcM" id="n4g-8o-9fQ"/>
-                <outlet property="coverMainView" destination="ctv-HH-wmP" id="y3V-Nc-jg7"/>
-                <outlet property="coverView" destination="CA2-wm-ckG" id="uju-0X-OoP"/>
                 <outlet property="leftView" destination="i4q-sl-Ilb" id="bYo-D4-ok5"/>
                 <outlet property="leftViewWidth" destination="tBN-dW-ZdE" id="6zr-Na-PCv"/>
                 <outlet property="leftViewX" destination="inb-pk-vdY" id="TrU-gz-zkh"/>
+                <outlet property="mainView" destination="Ovm-1y-ita" id="JTa-a6-gYm"/>
                 <outlet property="makeOrderTotalNumber" destination="Qhf-c9-IHD" id="fSl-jg-Hj3"/>
                 <outlet property="makeOrderTotalPriceLabel" destination="idz-7O-IHi" id="hmw-Ir-3pi"/>
                 <outlet property="myTableView" destination="I2Z-lX-7jF" id="xpy-vr-6il"/>
@@ -38,6 +37,7 @@
                 <outlet property="shoppingCarHeight" destination="jh9-L6-7h4" id="kAO-6x-VNW"/>
                 <outlet property="shoppingCarTableView" destination="Igj-he-Vtb" id="dDt-I3-o0f"/>
                 <outlet property="shoppingCarView" destination="hDH-Wu-xma" id="fY1-2v-aJS"/>
+                <outlet property="topView" destination="AgL-j6-tV2" id="z6G-qX-bGT"/>
                 <outlet property="typeLabel" destination="4it-dA-080" id="Cma-26-fN7"/>
                 <outlet property="typeViewWidth" destination="4Go-d9-zLo" id="3nv-xk-OcX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -152,12 +152,6 @@
                                 <outlet property="delegate" destination="-1" id="P9K-bl-tmu"/>
                             </connections>
                         </tableView>
-                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CA2-wm-ckG" userLabel="Cover View">
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="kio-bq-n2H" appends="YES" id="w0b-O5-OV7"/>
-                            </connections>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4q-sl-Ilb" userLabel="Left View">
                             <subviews>
                                 <tableView clipsSubviews="YES" tag="1003" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cNJ-MY-TOC" userLabel="ProductType Table View">
@@ -304,12 +298,6 @@
                                 <constraint firstItem="8PB-Fu-98F" firstAttribute="top" secondItem="JiC-51-46r" secondAttribute="top" id="pUo-Ry-ITg"/>
                                 <constraint firstItem="DtB-VR-VN9" firstAttribute="leading" secondItem="8PB-Fu-98F" secondAttribute="trailing" id="tbt-ae-bZJ"/>
                             </constraints>
-                        </view>
-                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctv-HH-wmP" userLabel="Cover Main View">
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="8dH-yk-lsC" appends="YES" id="Ks1-Uc-XL6"/>
-                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBS-Ga-Xd8" userLabel="OtherMsg View">
                             <subviews>
@@ -470,21 +458,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="CA2-wm-ckG" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="2Lc-cv-qar"/>
                         <constraint firstAttribute="trailing" secondItem="I2Z-lX-7jF" secondAttribute="trailing" id="4Ei-Bd-4uX"/>
-                        <constraint firstAttribute="bottom" secondItem="ctv-HH-wmP" secondAttribute="bottom" id="E8A-QI-hDM"/>
                         <constraint firstItem="cBS-Ga-Xd8" firstAttribute="top" secondItem="Ovm-1y-ita" secondAttribute="top" constant="100" id="ECL-Rc-U5C"/>
                         <constraint firstAttribute="trailing" secondItem="Ikf-Ta-6b5" secondAttribute="trailing" id="HIa-J8-GCs"/>
                         <constraint firstItem="cBS-Ga-Xd8" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" constant="20" id="NKS-u9-MuJ"/>
-                        <constraint firstItem="yo0-Gc-Arj" firstAttribute="top" secondItem="CA2-wm-ckG" secondAttribute="bottom" id="NSR-ix-K67"/>
-                        <constraint firstAttribute="trailing" secondItem="ctv-HH-wmP" secondAttribute="trailing" id="PKj-cx-pdr"/>
                         <constraint firstAttribute="bottom" secondItem="yo0-Gc-Arj" secondAttribute="bottom" id="PwP-DK-vJY"/>
                         <constraint firstAttribute="trailing" secondItem="cBS-Ga-Xd8" secondAttribute="trailing" constant="20" id="Tcx-Wi-jBO"/>
-                        <constraint firstItem="CA2-wm-ckG" firstAttribute="top" secondItem="AgL-j6-tV2" secondAttribute="bottom" id="WON-wc-P4v"/>
                         <constraint firstItem="AgL-j6-tV2" firstAttribute="top" secondItem="Ovm-1y-ita" secondAttribute="top" id="WoI-sj-i70"/>
                         <constraint firstItem="yo0-Gc-Arj" firstAttribute="top" secondItem="Ikf-Ta-6b5" secondAttribute="bottom" id="XIA-7C-EED"/>
                         <constraint firstAttribute="trailing" secondItem="AgL-j6-tV2" secondAttribute="trailing" id="XYC-QL-chj"/>
-                        <constraint firstAttribute="trailing" secondItem="CA2-wm-ckG" secondAttribute="trailing" id="Y9V-q2-gEM"/>
                         <constraint firstItem="Ikf-Ta-6b5" firstAttribute="top" secondItem="AgL-j6-tV2" secondAttribute="bottom" id="cEz-lZ-8AM"/>
                         <constraint firstItem="yo0-Gc-Arj" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="cZR-9x-gg7"/>
                         <constraint firstItem="AgL-j6-tV2" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="em1-qZ-EvV"/>
@@ -492,8 +474,6 @@
                         <constraint firstItem="I2Z-lX-7jF" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="gun-zC-1NF"/>
                         <constraint firstItem="i4q-sl-Ilb" firstAttribute="top" secondItem="AgL-j6-tV2" secondAttribute="bottom" id="hXv-wz-uNx"/>
                         <constraint firstItem="i4q-sl-Ilb" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="inb-pk-vdY"/>
-                        <constraint firstItem="ctv-HH-wmP" firstAttribute="leading" secondItem="Ovm-1y-ita" secondAttribute="leading" id="r2r-EM-sSP"/>
-                        <constraint firstItem="ctv-HH-wmP" firstAttribute="top" secondItem="Ovm-1y-ita" secondAttribute="top" id="rZ1-Dq-C3x"/>
                         <constraint firstItem="I2Z-lX-7jF" firstAttribute="top" secondItem="AgL-j6-tV2" secondAttribute="bottom" id="vnY-hW-GIU"/>
                         <constraint firstAttribute="trailing" secondItem="yo0-Gc-Arj" secondAttribute="trailing" id="wuv-yH-kGT"/>
                         <constraint firstItem="yo0-Gc-Arj" firstAttribute="top" secondItem="I2Z-lX-7jF" secondAttribute="bottom" id="yMN-zI-3Tf"/>
@@ -586,16 +566,6 @@
                 <action selector="typeLeftViewPan:" destination="-1" id="E7h-UX-G0a"/>
             </connections>
         </panGestureRecognizer>
-        <tapGestureRecognizer id="kio-bq-n2H" userLabel="CoverView">
-            <connections>
-                <action selector="coverViewOnclick:" destination="-1" id="HAU-vm-ecP"/>
-            </connections>
-        </tapGestureRecognizer>
-        <tapGestureRecognizer id="8dH-yk-lsC" userLabel="Cover Main View">
-            <connections>
-                <action selector="coverMainOnclick:" destination="-1" id="Jpf-Nj-IP8"/>
-            </connections>
-        </tapGestureRecognizer>
         <tapGestureRecognizer id="BJn-FZ-TqL" userLabel="PayTypeView">
             <connections>
                 <action selector="payTypeView:" destination="-1" id="Lim-M0-c3T"/>

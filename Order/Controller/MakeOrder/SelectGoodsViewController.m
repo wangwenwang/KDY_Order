@@ -152,10 +152,7 @@ typedef enum : NSInteger {
 @property (weak, nonatomic) IBOutlet UITableView *productTypeTableView;
 
 // 遮罩View
-@property (weak, nonatomic) IBOutlet UIView *coverView;
-
-// 遮罩单击手势
-- (IBAction)coverViewOnclick:(UITapGestureRecognizer *)sender;
+@property (strong, nonatomic) UIView *coverView;
 
 // 品牌TableView
 @property (weak, nonatomic) IBOutlet UITableView *brandTableView;
@@ -184,12 +181,6 @@ typedef enum : NSInteger {
 // 支付方式TableView高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *payTypeTableViewHeight;
 
-// 支付方式视图Y轴的起点坐标
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *payTypeViewY;
-
-// 支付方式视图的高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *payTypeViewHeight;
-
 // 选择支付方式按钮
 @property (weak, nonatomic) IBOutlet UIButton *payTypeSelectButton;
 
@@ -206,10 +197,7 @@ typedef enum : NSInteger {
 @property (assign, nonatomic)BOOL isShowOtherMsgView;
 
 // Main视图遮罩
-@property (weak, nonatomic) IBOutlet UIView *coverMainView;
-
-// Main视图遮罩单击手势
-- (IBAction)coverMainOnclick:(UITapGestureRecognizer *)sender;
+@property (strong, nonatomic) UIView *coverMainView;
 
 // 支付类型 --> 目标客户
 @property (weak, nonatomic) IBOutlet UILabel *payTypeCustomerLabel;
@@ -295,6 +283,10 @@ typedef enum : NSInteger {
 
 @property (weak, nonatomic) IBOutlet UIView *shoppingCarView;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+
 @end
 
 @implementation SelectGoodsViewController
@@ -343,6 +335,12 @@ typedef enum : NSInteger {
     //注册Cell
     [self registerCell];
     
+    [self.view layoutIfNeeded];
+    
+    [self addCoverMainView];
+    
+    [self addCoverView];
+    
     //初始化UI参数
     [self initUI];
     
@@ -351,8 +349,6 @@ typedef enum : NSInteger {
     
     //填充数据
     [self fullData];
-    
-    [self coverViewOnclick:nil];
     
     [self.view layoutIfNeeded];
     
@@ -432,19 +428,17 @@ typedef enum : NSInteger {
     
     //先让payTypeTableView出来加载Cell,避免第一次加载Cell时会从(0, 0, 0, 0)到正常Frame的动画
     _payTypeTableViewHeight.constant = 0;
-    
-    _payTypeViewY.constant = (ScreenHeight - _payTypeViewHeight.constant) / 2 - 50;
 }
 
 
 #pragma mark - 功能函数
 
 // 初始化其它信息视图
-- (void)initOtherMsgView:(BOOL)hidden {
+- (void)initOtherMsgView:(BOOL)first {
     
     _payTypeTableViewHeight.constant = 0;
-    _otherMsgView.hidden = hidden;
-    _coverMainView.hidden = hidden;
+    _otherMsgView.alpha = first ? 0 : 1;
+    _coverMainView.alpha = first ? 0 : 0.3;
 }
 
 
@@ -460,9 +454,9 @@ typedef enum : NSInteger {
     [_payTypeSelectButton setImage:[UIImage imageNamed:@"button_drop_down"] forState:UIControlStateSelected];
     [_payTypeSelectButton setImage:[UIImage imageNamed:@"button_drop_left"] forState:UIControlStateNormal];
     
-    _coverView.hidden = YES;
-    _coverMainView.hidden = YES;
-    _otherMsgView.hidden = YES;
+    _coverView.alpha = 0;
+    _coverMainView.alpha = 0;
+    _otherMsgView.alpha = 0;
 }
 
 
@@ -1189,7 +1183,7 @@ typedef enum : NSInteger {
                 _rightViewTrailing.constant = _isShowBrandView ? -_rightViewWidth.constant : 0;
                 [self.view layoutIfNeeded];
                 
-                _coverView.hidden = _isShowBrandView;
+                _coverView.alpha = _isShowBrandView ? 0 : 0.3;
             } completion:^(BOOL finished) {
                 
                 _isShowBrandView = _isShowBrandView ? NO : YES;
@@ -1204,7 +1198,7 @@ typedef enum : NSInteger {
             _leftViewX.constant = _isShowProductType ? -_leftViewWidth.constant : 0;
             [self.view layoutIfNeeded];
             
-            _coverView.hidden = _isShowProductType;
+            _coverView.alpha = _isShowProductType ? 0 : 0.3;
         } completion:^(BOOL finished) {
             
             _isShowProductType = _isShowProductType ? NO : YES;
@@ -1214,7 +1208,7 @@ typedef enum : NSInteger {
 }
 
 
-- (IBAction)coverViewOnclick:(UITapGestureRecognizer *)sender {
+- (void)coverViewOnclick {
     
     if(_isShowProductType) {
         
@@ -1243,7 +1237,7 @@ typedef enum : NSInteger {
                 _leftViewX.constant = _isShowProductType ? -_leftViewWidth.constant : 0;
                 [self.view layoutIfNeeded];
                 
-                _coverView.hidden = _isShowProductType;
+                _coverView.alpha = _isShowProductType ? 0 : 0.3;
             } completion:^(BOOL finished) {
                 
                 _isShowProductType = _isShowProductType ? NO : YES;
@@ -1257,7 +1251,7 @@ typedef enum : NSInteger {
             _rightViewTrailing.constant = _isShowBrandView ? -_rightViewWidth.constant : 0;
             [self.view layoutIfNeeded];
             
-            _coverView.hidden = _isShowBrandView;
+            _coverView.alpha = _isShowBrandView ? 0 : 0.3;
         } completion:^(BOOL finished) {
             
             _isShowBrandView = _isShowBrandView ? NO : YES;
@@ -1287,17 +1281,14 @@ typedef enum : NSInteger {
 
 - (IBAction)otherMsgOnclick:(UITapGestureRecognizer *)sender {
     
-    //先让payTypeTableView出来加载Cell,避免第一次加载Cell时会从(0, 0, 0, 0)到正常Frame的动画
+    // 先让payTypeTableView出来加载Cell,避免第一次加载Cell时会从(0, 0, 0, 0)到正常Frame的动画
     _payTypeTableViewHeight.constant = 0;
-    _otherMsgView.hidden = _otherMsgView.hidden ? NO : YES;
-    _coverMainView.hidden = _otherMsgView.hidden;
-}
-
-
-- (IBAction)coverMainOnclick:(UITapGestureRecognizer *)sender {
     
-    //    _coverMainView.hidden = _coverMainView.hidden ? NO : YES;
-    //    _otherMsgView.hidden = _coverMainView.hidden;
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        _otherMsgView.alpha = 1.0;
+        _coverMainView.alpha = 0.3;
+    }];
 }
 
 
@@ -1309,9 +1300,11 @@ typedef enum : NSInteger {
 
 - (IBAction)otherMsgConfirmOnclick:(UIButton *)sender {
     
-    _coverMainView.hidden = _coverMainView.hidden ? NO : YES;
-    _otherMsgView.hidden = _coverMainView.hidden;
-    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        _coverMainView.alpha = 0;
+        _otherMsgView.alpha = 0;
+    }];
 }
 
 
@@ -1615,6 +1608,36 @@ typedef enum : NSInteger {
 
 
 #pragma mark - Masny
+
+- (void)addCoverMainView {
+    
+    _coverMainView = [[UIView alloc] init];
+    _coverMainView.backgroundColor = [UIColor blackColor];
+    [_mainView insertSubview:_coverMainView belowSubview:_otherMsgView];
+    [_coverMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+}
+
+
+- (void)addCoverView {
+    
+    _coverView = [[UIView alloc] init];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverViewOnclick)];
+    tap.numberOfTouchesRequired = 1;
+    [_coverView addGestureRecognizer:tap];
+    _coverView.backgroundColor = [UIColor blackColor];
+    [_mainView insertSubview:_coverView belowSubview:_leftView];
+    [_coverView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_topView.mas_bottom);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
+}
 
 - (void)addEnterNumView {
     
