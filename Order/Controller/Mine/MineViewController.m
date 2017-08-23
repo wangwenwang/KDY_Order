@@ -154,7 +154,7 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.titleLabel.text = @"";
-    } else if([prompt isEqualToString:@"版本号："]) {
+    } else if([prompt isEqualToString:@"版本号：     "]) {
         
         NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         cell.titleLabel.text = [NSString stringWithFormat:@"V %@", version];

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -34,7 +34,7 @@
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="width" secondItem="oLt-FO-o0m" secondAttribute="width" id="4DF-AC-qDK"/>
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="leading" secondItem="oLt-FO-o0m" secondAttribute="leading" id="DO1-AC-fAe"/>
                 <constraint firstItem="H1r-TO-r7R" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="H81-ps-DUz"/>
-                <constraint firstItem="H1r-TO-r7R" firstAttribute="top" secondItem="oLt-FO-o0m" secondAttribute="bottom" constant="13" id="HLe-g5-Gmy"/>
+                <constraint firstItem="H1r-TO-r7R" firstAttribute="top" secondItem="oLt-FO-o0m" secondAttribute="bottom" constant="9" id="HLe-g5-Gmy"/>
                 <constraint firstItem="oLt-FO-o0m" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KCI-bi-ltO"/>
                 <constraint firstItem="oLt-FO-o0m" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="U80-O7-b4Y"/>
                 <constraint firstAttribute="bottom" secondItem="H1r-TO-r7R" secondAttribute="bottom" constant="15" id="XdP-Up-frJ"/>
@@ -42,9 +42,9 @@
             <size key="customSize" width="102" height="105"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="DO1-AC-fAe"/>
                     <exclude reference="2qJ-TB-dwA"/>
                     <exclude reference="KCI-bi-ltO"/>
-                    <exclude reference="DO1-AC-fAe"/>
                 </mask>
             </variation>
             <connections>

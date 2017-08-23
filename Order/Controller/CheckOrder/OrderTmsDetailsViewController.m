@@ -21,9 +21,6 @@
 //头部View的高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headViewHeight;
 
-//tableView的高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeiht;
-
 //订单号
 @property (weak, nonatomic) IBOutlet UILabel *orderNoLabel;
 
@@ -68,6 +65,8 @@
 
 @end
 
+#define kCellHeight 80
+
 @implementation OrderTmsDetailsViewController
 
 - (void)viewDidLoad {
@@ -78,6 +77,8 @@
     
     [self registerCell];
     
+    [self dealWithData];
+    
     [self fullData];
 }
 
@@ -85,16 +86,6 @@
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
-}
-
-
-- (void)updateViewConstraints {
-    
-    [super updateViewConstraints];
-    
-    _tableViewHeiht.constant = _order.OrderDetails.count * 80;
-    
-    _scrollContentViewHeight.constant = _headViewHeight.constant + 55 + _tableViewHeiht.constant;
 }
 
 
@@ -135,7 +126,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 80;
+    OrderDetailModel *m = _order.OrderDetails[indexPath.row];
+    
+    return m.cellHeight;
 }
 
 
@@ -150,6 +143,32 @@
     cell.productWeightLabel.text = [NSString stringWithFormat:@"%@吨", m.ISSUE_WEIGHT];
     cell.productVolLabel.text = [NSString stringWithFormat:@"%@m³", m.ISSUE_VOLUME];
     return cell;
+}
+
+
+- (void)dealWithData {
+    
+    CGFloat tableViewHeight = 0;
+    for (OrderDetailModel *m in _order.OrderDetails) {
+        
+        // Label 容器宽度
+        CGFloat contentWidth = ScreenWidth - 2 - 15 - 71.5 + 3 - 3;
+        // Label 单行高度
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+        
+        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:14 andWidth:contentWidth] - oneLineHeight;
+        
+        if(overflowHeight > 0) {
+            
+            m.cellHeight = kCellHeight + overflowHeight;
+        } else {
+            
+            m.cellHeight = kCellHeight;
+        }
+        tableViewHeight += m.cellHeight;
+    }
+    
+    _scrollContentViewHeight.constant = _headViewHeight.constant + 15 + 19.5 + 15 + tableViewHeight;
 }
 
 @end

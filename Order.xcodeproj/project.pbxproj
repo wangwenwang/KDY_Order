@@ -218,6 +218,10 @@
 		30BBF1431F17695B00496518 /* GetPartyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BBF1411F17695B00496518 /* GetPartyListViewController.xib */; };
 		30BE65031EE6BE5B00BD6978 /* ProductManListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BE65011EE6BE5B00BD6978 /* ProductManListTableViewCell.m */; };
 		30BE65041EE6BE5B00BD6978 /* ProductManListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BE65021EE6BE5B00BD6978 /* ProductManListTableViewCell.xib */; };
+		30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C476271F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m */; };
+		30C4762F1F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C476291F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m */; };
+		30C476301F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4762B1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m */; };
+		30C476311F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4762D1F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		30CD6D871EE7AA13004F904C /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CD6D841EE7AA13004F904C /* NSDictionary+Extension.m */; };
 		30CD6D881EE7AA13004F904C /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CD6D861EE7AA13004F904C /* NSArray+Extension.m */; };
 		30CDC6371D9907CD0035602F /* UIView+PBExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC5B91D9907CD0035602F /* UIView+PBExtend.m */; };
@@ -265,10 +269,6 @@
 		30CDC6611D9907CD0035602F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6271D9907CD0035602F /* SVProgressHUD.m */; };
 		30CDC6621D9907CD0035602F /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC62A1D9907CD0035602F /* LFRoundProgressView.m */; };
 		30CDC6631D9907CD0035602F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC62D1D9907CD0035602F /* Reachability.m */; };
-		30CDC6641D9907CD0035602F /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6301D9907CD0035602F /* TPKeyboardAvoidingCollectionView.m */; };
-		30CDC6651D9907CD0035602F /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6321D9907CD0035602F /* TPKeyboardAvoidingScrollView.m */; };
-		30CDC6661D9907CD0035602F /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6341D9907CD0035602F /* TPKeyboardAvoidingTableView.m */; };
-		30CDC6671D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6361D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		30CDC6771D990B420035602F /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC66D1D990B420035602F /* NSString+Trim.m */; };
 		30CDC6781D990B420035602F /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC66F1D990B420035602F /* UIImage+Compress.m */; };
 		30CDC67B1D990B430035602F /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CDC6751D990B420035602F /* Tools.m */; };
@@ -694,6 +694,14 @@
 		30BE65001EE6BE5B00BD6978 /* ProductManListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductManListTableViewCell.h; sourceTree = "<group>"; };
 		30BE65011EE6BE5B00BD6978 /* ProductManListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductManListTableViewCell.m; sourceTree = "<group>"; };
 		30BE65021EE6BE5B00BD6978 /* ProductManListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductManListTableViewCell.xib; sourceTree = "<group>"; };
+		30C476261F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		30C476271F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		30C476281F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		30C476291F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		30C4762A1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		30C4762B1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		30C4762C1F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		30C4762D1F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		30CD6D831EE7AA13004F904C /* NSDictionary+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		30CD6D841EE7AA13004F904C /* NSDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		30CD6D851EE7AA13004F904C /* NSArray+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extension.h"; sourceTree = "<group>"; };
@@ -785,14 +793,6 @@
 		30CDC62A1D9907CD0035602F /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
 		30CDC62C1D9907CD0035602F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		30CDC62D1D9907CD0035602F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		30CDC62F1D9907CD0035602F /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
-		30CDC6301D9907CD0035602F /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
-		30CDC6311D9907CD0035602F /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
-		30CDC6321D9907CD0035602F /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-		30CDC6331D9907CD0035602F /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
-		30CDC6341D9907CD0035602F /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
-		30CDC6351D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
-		30CDC6361D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		30CDC66C1D990B420035602F /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
 		30CDC66D1D990B420035602F /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
 		30CDC66E1D990B420035602F /* UIImage+Compress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
@@ -1743,9 +1743,25 @@
 			path = "地址管理";
 			sourceTree = "<group>";
 		};
+		30C476251F4D2EFA00A5FB93 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				30C476261F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.h */,
+				30C476271F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m */,
+				30C476281F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.h */,
+				30C476291F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m */,
+				30C4762A1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.h */,
+				30C4762B1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m */,
+				30C4762C1F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				30C4762D1F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+			);
+			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
 		30CDC5B31D9907CD0035602F /* Thire */ = {
 			isa = PBXGroup;
 			children = (
+				30C476251F4D2EFA00A5FB93 /* TPKeyboardAvoiding */,
 				3009143C1F41A8700022E150 /* BackButtonHandler */,
 				30F93E0C1F31B3FF001904F1 /* LMBlurredView */,
 				30F93E0F1F31B3FF001904F1 /* LMPickerView */,
@@ -1755,7 +1771,6 @@
 				3026007B1EE5726F001F6C38 /* LLNavigationBar */,
 				30CDC5B41D9907CD0035602F /* CorePhotoBroswerVC */,
 				30CDC62B1D9907CD0035602F /* Reachability */,
-				30CDC62E1D9907CD0035602F /* TPKeyboardAvoiding */,
 			);
 			path = Thire;
 			sourceTree = "<group>";
@@ -2125,21 +2140,6 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		30CDC62E1D9907CD0035602F /* TPKeyboardAvoiding */ = {
-			isa = PBXGroup;
-			children = (
-				30CDC62F1D9907CD0035602F /* TPKeyboardAvoidingCollectionView.h */,
-				30CDC6301D9907CD0035602F /* TPKeyboardAvoidingCollectionView.m */,
-				30CDC6311D9907CD0035602F /* TPKeyboardAvoidingScrollView.h */,
-				30CDC6321D9907CD0035602F /* TPKeyboardAvoidingScrollView.m */,
-				30CDC6331D9907CD0035602F /* TPKeyboardAvoidingTableView.h */,
-				30CDC6341D9907CD0035602F /* TPKeyboardAvoidingTableView.m */,
-				30CDC6351D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
-				30CDC6361D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
-			);
-			path = TPKeyboardAvoiding;
-			sourceTree = "<group>";
-		};
 		30CDC6681D990B420035602F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -2429,6 +2429,7 @@
 				30CDC6391D9907CD0035602F /* PhotoBroswerLayout.m in Sources */,
 				30CDC64B1D9907CD0035602F /* NSObject+Extend.m in Sources */,
 				30201E831F1080160055BA6A /* GetAppBillFeeListTableViewCell.m in Sources */,
+				30C4762F1F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				30BB2DF11F459485002E51E7 /* StockManViewController.m in Sources */,
 				301AFA831F4ADCBC00E4FDFF /* GetToAddressModel.m in Sources */,
 				30E616EA1F28771B0039D73D /* UIImage+BoxBlur.m in Sources */,
@@ -2441,7 +2442,6 @@
 				30BB2E0B1F46BD63002E51E7 /* Store_GetOupputListService.m in Sources */,
 				30BB2DCE1F459375002E51E7 /* GetStockListTableViewCell.m in Sources */,
 				304A34161F0E071B0055D50C /* AreaProvinceViewController.m in Sources */,
-				30CDC6651D9907CD0035602F /* TPKeyboardAvoidingScrollView.m in Sources */,
 				304A7AC91DB868080039B0B2 /* CheckSignatureService.m in Sources */,
 				30A3C2F41D991E4C00BBE0DA /* LoginService.m in Sources */,
 				301AFA7C1F4AD70F00E4FDFF /* Store_GetToAddressListService.m in Sources */,
@@ -2529,7 +2529,6 @@
 				30201F261F1083AB0055BA6A /* FeeListModel.m in Sources */,
 				30BB2E021F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.m in Sources */,
 				30201ECD1F1081370055BA6A /* GetAppBillFeeListService.m in Sources */,
-				30CDC6641D9907CD0035602F /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				308783891D98CD45002EED76 /* AppDelegate.m in Sources */,
 				30B439D11F1D91F60092A015 /* DeleteAddressService.m in Sources */,
 				30BB2DFD1F468281002E51E7 /* StoreProductModel.m in Sources */,
@@ -2539,6 +2538,7 @@
 				3026007F1EE5726F001F6C38 /* UIViewController+LLAdd.m in Sources */,
 				30BBF1361F17612400496518 /* Add_AddressViewController.m in Sources */,
 				3088D31C1F4C1A2D006031D9 /* GetOupputListTableViewCell.m in Sources */,
+				30C476301F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m in Sources */,
 				30BB2DEB1F4593AD002E51E7 /* StockListModel.m in Sources */,
 				304A7AE31DB91F1A0039B0B2 /* ProductChartModel.m in Sources */,
 				30201F071F1082220055BA6A /* AppBusinessFeeModel.m in Sources */,
@@ -2572,7 +2572,6 @@
 				302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */,
 				30EF59CE1DAF5C6D003F5729 /* CustomerAddressTableViewCell.m in Sources */,
 				3051DB7B1F1895740034629B /* NormalAdressListViewController.m in Sources */,
-				30CDC6671D9907CD0035602F /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				3088D3071F4BDC49006031D9 /* GetOupputModel.m in Sources */,
 				304A7AC51DB867A90039B0B2 /* CheckOrderPathViewController.m in Sources */,
 				30BB2DEC1F4593AD002E51E7 /* StockModel.m in Sources */,
@@ -2625,12 +2624,14 @@
 				30A3C3001D9A0E0F00BBE0DA /* MainViewController.m in Sources */,
 				30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */,
 				30F7B8E11DBFAE80004CD128 /* SelectedGiftsTableViewCell.m in Sources */,
+				30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				30CDC6491D9907CD0035602F /* NSArray+Extend.m in Sources */,
 				30078D281DBB148C00429813 /* PromotionDetailModel.m in Sources */,
 				30E5A0471D9B654F00D94F77 /* OrderFinishViewController.m in Sources */,
 				30E5A05D1D9BC16800D94F77 /* CheckOrderTableViewCell.m in Sources */,
 				302600901EE69F8B001F6C38 /* README.md in Sources */,
 				300AF7091EE8FD630037C660 /* HooDatePicker.m in Sources */,
+				30C476311F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				30F93E121F31B3FF001904F1 /* LMBlurredView.m in Sources */,
 				300AF6FD1EE8DEC60037C660 /* TimeLabel.m in Sources */,
 				3009143F1F41A8700022E150 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -2652,7 +2653,6 @@
 				30201F061F1082220055BA6A /* AppBusinessFeeListModel.m in Sources */,
 				3047D4521DAB889A00B48525 /* TransportInformationService.m in Sources */,
 				30EF59C71DAE2F79003F5729 /* PartyModel.m in Sources */,
-				30CDC6661D9907CD0035602F /* TPKeyboardAvoidingTableView.m in Sources */,
 				30EF59A61DACCA7E003F5729 /* OrderTmsDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
