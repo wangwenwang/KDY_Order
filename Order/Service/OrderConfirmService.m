@@ -126,23 +126,23 @@
 
 - (void)setConfirmData:(NSMutableArray *)returnGiftData andProducts:(NSMutableArray *)choicedProducts andTempTotalQTY:(long long)tempTotalQTY andDate:(NSDate *)date andRemark:(NSString *)remark andPromotionOrder:(PromotionOrderModel *)order andSelectPronotionDetails:(NSMutableArray *)selectPronotionDetails {
     
-    //总现价
+    // 总现价
     double mActPrice = 0;
     for (int i = 0; i < choicedProducts.count; i++) {
         PromotionDetailModel *m = selectPronotionDetails[i];
         mActPrice += m.ACT_PRICE * m.PO_QTY;
     }
     
-    //添加赠品
+    // 添加赠品
     for (int i = 0; i < returnGiftData.count; i++) {
         PromotionDetailModel *m = returnGiftData[i];
-        //如果赠品不存在则添加，防止提交失败，再次提交时重复添加赠品
+        // 如果赠品不存在则添加，防止提交失败，再次提交时重复添加赠品
         if([order.OrderDetails indexOfObject:m] == NSNotFound) {
             [order.OrderDetails addObject:m];
         }
     }
     
-    //依据手动配置赠品情况，修改订单中的总原价、总体积、总重量和总数目
+    // 依据手动配置赠品情况，修改订单中的总原价、总体积、总重量和总数目
     if(returnGiftData.count > 0) {
         double mOrgPrice = 0;
         double mVolume = 0;

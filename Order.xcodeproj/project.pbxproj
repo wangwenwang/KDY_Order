@@ -107,8 +107,6 @@
 		304A7AE01DB91C2B0039B0B2 /* CustomerChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A7ADF1DB91C2B0039B0B2 /* CustomerChartModel.m */; };
 		304A7AE31DB91F1A0039B0B2 /* ProductChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A7AE21DB91F1A0039B0B2 /* ProductChartModel.m */; };
 		304A7AEA1DB925990039B0B2 /* MyPNPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A7AE81DB925990039B0B2 /* MyPNPieChart.m */; };
-		304A7AEE1DBA50AB0039B0B2 /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A7AEC1DBA50AB0039B0B2 /* ConfirmOrderViewController.m */; };
-		304A7AEF1DBA50AB0039B0B2 /* ConfirmOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 304A7AED1DBA50AB0039B0B2 /* ConfirmOrderViewController.xib */; };
 		304A7AF31DBA62710039B0B2 /* ConfirmOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A7AF11DBA62710039B0B2 /* ConfirmOrderTableViewCell.m */; };
 		304A7AF41DBA62710039B0B2 /* ConfirmOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 304A7AF21DBA62710039B0B2 /* ConfirmOrderTableViewCell.xib */; };
 		304FBAB91EF2635700FC3EFC /* OrderCancelService.m in Sources */ = {isa = PBXBuildFile; fileRef = 304FBAB81EF2635700FC3EFC /* OrderCancelService.m */; };
@@ -142,6 +140,10 @@
 		3088D31B1F4C1A2D006031D9 /* GetOupputInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3088D3161F4C1A2D006031D9 /* GetOupputInfoTableViewCell.xib */; };
 		3088D31C1F4C1A2D006031D9 /* GetOupputListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3088D3181F4C1A2D006031D9 /* GetOupputListTableViewCell.m */; };
 		3088D31D1F4C1A2D006031D9 /* GetOupputListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3088D3191F4C1A2D006031D9 /* GetOupputListTableViewCell.xib */; };
+		30942A781F5005A9000095F3 /* StockOutConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */; };
+		30942A791F5005A9000095F3 /* StockOutConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */; };
+		30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */; };
+		30942A7E1F5006A4000095F3 /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */; };
 		309877B91DDC3A9B0047135A /* NSDictionary+MyLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 309877B81DDC3A9B0047135A /* NSDictionary+MyLog.m */; };
 		30A3C2ED1D991E1000BBE0DA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A3C2E71D991E1000BBE0DA /* LoginViewController.m */; };
 		30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A3C2E81D991E1000BBE0DA /* LoginViewController.xib */; };
@@ -508,9 +510,6 @@
 		304A7AE21DB91F1A0039B0B2 /* ProductChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductChartModel.m; sourceTree = "<group>"; };
 		304A7AE71DB925990039B0B2 /* MyPNPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPNPieChart.h; sourceTree = "<group>"; };
 		304A7AE81DB925990039B0B2 /* MyPNPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPNPieChart.m; sourceTree = "<group>"; };
-		304A7AEB1DBA50AB0039B0B2 /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
-		304A7AEC1DBA50AB0039B0B2 /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
-		304A7AED1DBA50AB0039B0B2 /* ConfirmOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderViewController.xib; sourceTree = "<group>"; };
 		304A7AF01DBA62710039B0B2 /* ConfirmOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderTableViewCell.h; sourceTree = "<group>"; };
 		304A7AF11DBA62710039B0B2 /* ConfirmOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderTableViewCell.m; sourceTree = "<group>"; };
 		304A7AF21DBA62710039B0B2 /* ConfirmOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -569,6 +568,12 @@
 		3088D3171F4C1A2D006031D9 /* GetOupputListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputListTableViewCell.h; sourceTree = "<group>"; };
 		3088D3181F4C1A2D006031D9 /* GetOupputListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputListTableViewCell.m; sourceTree = "<group>"; };
 		3088D3191F4C1A2D006031D9 /* GetOupputListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputListTableViewCell.xib; sourceTree = "<group>"; };
+		30942A751F5005A9000095F3 /* StockOutConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockOutConfirmViewController.h; sourceTree = "<group>"; };
+		30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockOutConfirmViewController.m; sourceTree = "<group>"; };
+		30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockOutConfirmViewController.xib; sourceTree = "<group>"; };
+		30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderViewController.xib; sourceTree = "<group>"; };
+		30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
+		30942A7C1F5006A4000095F3 /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
 		309877B71DDC3A9B0047135A /* NSDictionary+MyLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MyLog.h"; sourceTree = "<group>"; };
 		309877B81DDC3A9B0047135A /* NSDictionary+MyLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MyLog.m"; sourceTree = "<group>"; };
 		30A3C2E61D991E1000BBE0DA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -1436,15 +1441,15 @@
 				30126A701DB0715E00BABACF /* SelectGoodsViewController.h */,
 				30126A711DB0715E00BABACF /* SelectGoodsViewController.m */,
 				30126A721DB0715E00BABACF /* SelectGoodsViewController.xib */,
-				304A7AEB1DBA50AB0039B0B2 /* ConfirmOrderViewController.h */,
-				304A7AEC1DBA50AB0039B0B2 /* ConfirmOrderViewController.m */,
-				304A7AED1DBA50AB0039B0B2 /* ConfirmOrderViewController.xib */,
 				30078D1E1DBA73EA00429813 /* AddGiftsViewController.h */,
 				30078D1F1DBA73EA00429813 /* AddGiftsViewController.m */,
 				30078D201DBA73EA00429813 /* AddGiftsViewController.xib */,
 				30F7B8D91DBFAD36004CD128 /* SelectedGiftsViewController.h */,
 				30F7B8DA1DBFAD36004CD128 /* SelectedGiftsViewController.m */,
 				30F7B8DB1DBFAD36004CD128 /* SelectedGiftsViewController.xib */,
+				30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */,
+				30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */,
+				30942A7C1F5006A4000095F3 /* ConfirmOrderViewController.h */,
 			);
 			path = MakeOrder;
 			sourceTree = "<group>";
@@ -1709,6 +1714,9 @@
 				301AFA741F4AD6BC00E4FDFF /* GetToAddressListViewController.h */,
 				301AFA751F4AD6BC00E4FDFF /* GetToAddressListViewController.m */,
 				301AFA761F4AD6BC00E4FDFF /* GetToAddressListViewController.xib */,
+				30942A751F5005A9000095F3 /* StockOutConfirmViewController.h */,
+				30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */,
+				30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */,
 			);
 			path = "出库";
 			sourceTree = "<group>";
@@ -2348,7 +2356,6 @@
 				30BB2DB51F459359002E51E7 /* GetStockListViewController.xib in Resources */,
 				30201EB41F1080A30055BA6A /* GetAppBillFeeListViewController.xib in Resources */,
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
-				304A7AEF1DBA50AB0039B0B2 /* ConfirmOrderViewController.xib in Resources */,
 				30F7B8E71DC036FB004CD128 /* ConfirmOrderGiftsTableViewCell.xib in Resources */,
 				30CDC65A1D9907CD0035602F /* CoreSDWebImage.bundle in Resources */,
 				3072AE8E1DA8CDA400359147 /* OrderDetailTableViewCell.xib in Resources */,
@@ -2361,6 +2368,8 @@
 				30A3C31D1D9A501300BBE0DA /* MainCollectionViewCell.xib in Resources */,
 				30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */,
 				30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */,
+				30942A791F5005A9000095F3 /* StockOutConfirmViewController.xib in Resources */,
+				30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */,
 				30E9C0A11DA8E10300A09182 /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2509,7 +2518,6 @@
 				30078D211DBA73EA00429813 /* AddGiftsViewController.m in Sources */,
 				30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */,
 				30BB2DFA1F46821B002E51E7 /* StoreProductListModel.m in Sources */,
-				304A7AEE1DBA50AB0039B0B2 /* ConfirmOrderViewController.m in Sources */,
 				30201EB51F1080A40055BA6A /* GetAppBusinessFeeListViewController.m in Sources */,
 				30BB2DCC1F459375002E51E7 /* GetAppStockListTableViewCell.m in Sources */,
 				30CDC6611D9907CD0035602F /* SVProgressHUD.m in Sources */,
@@ -2575,6 +2583,8 @@
 				3088D3071F4BDC49006031D9 /* GetOupputModel.m in Sources */,
 				304A7AC51DB867A90039B0B2 /* CheckOrderPathViewController.m in Sources */,
 				30BB2DEC1F4593AD002E51E7 /* StockModel.m in Sources */,
+				30942A781F5005A9000095F3 /* StockOutConfirmViewController.m in Sources */,
+				30942A7E1F5006A4000095F3 /* ConfirmOrderViewController.m in Sources */,
 				3021609C1F15BF650049374F /* LoginTextFieId.m in Sources */,
 				302160991F15BF3A0049374F /* LoginButton.m in Sources */,
 				30201F0B1F1082220055BA6A /* GetAppBusinessFeeListModel.m in Sources */,

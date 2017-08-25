@@ -20,7 +20,7 @@
 #import "payTypeTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
-#import "ConfirmOrderViewController.h"
+#import "StockOutConfirmViewController.h"
 #import "OrderConfirmService.h"
 #import "PromotionOrderModel.h"
 #import "AppDelegate.h"
@@ -374,9 +374,9 @@ typedef enum : NSInteger {
     sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     // Label
     UILabel *sendLabel = [[UILabel alloc] init];
-    [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 40, CGRectGetHeight(sendView.frame))];
+    [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [sendLabel setFont:[UIFont systemFontOfSize:15]];
-    sendLabel.text = @"发货信息:";
+    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
     [sendView addSubview:sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -390,7 +390,7 @@ typedef enum : NSInteger {
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     // Label
     _receiveLabel = [[UILabel alloc] init];
-    [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 40, CGRectGetHeight(receiveView.frame))];
+    [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [_receiveLabel setFont:[UIFont systemFontOfSize:15]];
     _receiveLabel.text = @"收货信息:";
     [receiveView addSubview:_receiveLabel];
@@ -1650,16 +1650,13 @@ typedef enum : NSInteger {
         }
     }
     
-    ConfirmOrderViewController *vc = [[ConfirmOrderViewController alloc] init];
+    StockOutConfirmViewController *vc = [[StockOutConfirmViewController alloc] init];
     vc.productsOfLocal = _selectedProducts;
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;
-    //    vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
-    vc.orderAddressCode = _address.ADDRESS_CODE;
-    vc.orderAddressIdx = _address.IDX;
+    vc.addressM = _address;
     vc.orderPayType = _currentPayType.Key;
-    vc.orderAddressIdx = _address.IDX;
-    vc.partyId = _party.IDX;
+    vc.partyM = _party;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
