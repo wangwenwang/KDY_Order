@@ -8,7 +8,6 @@
 
 #import "OrderDetailService.h"
 #import <AFNetworking.h>
-#import "NSDictionary+MyLog.h"
 
 @implementation OrderDetailService
 

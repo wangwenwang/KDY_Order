@@ -8,7 +8,7 @@
 
 #import "StockOutViewController.h"
 #import "SelectGoodsTableViewCell.h"
-#import "SelectGoodsService.h"
+#import "Store_GetOutProductListService.h"
 #import "PayTypeModel.h"
 #import "ProductModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -21,13 +21,14 @@
 #import <MBProgressHUD.h>
 #import "Tools.h"
 #import "StockOutConfirmViewController.h"
-#import "OrderConfirmService.h"
+#import "Store_StockOutConfirmService.h"
 #import "PromotionOrderModel.h"
 #import "AppDelegate.h"
 #import "PromotionDetailModel.h"
 #import <Masonry.h>
 #import "LMBlurredView.h"
 #import "GetToAddressListViewController.h"
+#import "GetToAddressModel.h"
 
 /*
  *
@@ -65,7 +66,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface StockOutViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, SelectGoodsServiceDelegate, OrderConfirmServiceDelegate, LMBlurredViewDelegate> {
+@interface StockOutViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
     
     CameraMoveDirection direction;
 }
@@ -219,10 +220,12 @@ typedef enum : NSInteger {
 // 当前选择的品类
 @property (copy, nonatomic) NSString *selectedProductType;
 
-@property (strong, nonatomic) SelectGoodsService *selectGoodsService;
+@property (strong, nonatomic) Store_GetOutProductListService *selectGoodsService;
 
 // 提交订单
 - (IBAction)confirmOrderOnclick:(UITapGestureRecognizer *)sender;
+
+@property (strong, nonatomic) GetToAddressModel *getToAddressM;
 
 
 /*************      自定义下单产品数量专区      *************/
@@ -240,7 +243,7 @@ typedef enum : NSInteger {
 @property (assign, nonatomic) long long selectedProductNumber;
 
 // 订单确认服务
-@property (strong, nonatomic) OrderConfirmService *orderConfirmService;
+@property (strong, nonatomic) Store_StockOutConfirmService *service;
 
 @property (strong, nonatomic) AppDelegate *app;
 
@@ -301,7 +304,7 @@ typedef enum : NSInteger {
     
     if(self = [super init]) {
         
-        _selectGoodsService = [[SelectGoodsService alloc] init];
+        _selectGoodsService = [[Store_GetOutProductListService alloc] init];
         _selectGoodsService.delegate = self;
         _selectedProducts = [[NSMutableArray alloc] init];
         _isShowSoppingCar = NO;
@@ -317,8 +320,8 @@ typedef enum : NSInteger {
         _selectedBrand = @"";
         _selectedProductType = @"";
         
-        _orderConfirmService = [[OrderConfirmService alloc] init];
-        _orderConfirmService.delegate = self;
+        _service = [[Store_StockOutConfirmService alloc] init];
+        _service.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _isFirstViewWillAppear = YES;
@@ -358,47 +361,6 @@ typedef enum : NSInteger {
     [self addTableHeaderView];
     
     [self addNotification];
-}
-
-
-- (void)addTableHeaderView {
-    
-    // table头部
-    UIView *tableHeadView = [[UIView alloc] init];
-    [tableHeadView setFrame:CGRectMake(0, 0, ScreenWidth, 97)];
-    _myTableView.tableHeaderView = tableHeadView;
-    
-    // 发货信息
-    UIView *sendView = [[UIView alloc] init];
-    [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
-    sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    // Label
-    UILabel *sendLabel = [[UILabel alloc] init];
-    [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
-    [sendLabel setFont:[UIFont systemFontOfSize:15]];
-    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
-    [sendView addSubview:sendLabel];
-    // 手势
-    UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
-    tap_send.numberOfTouchesRequired = 1;
-    [sendView addGestureRecognizer:tap_send];
-    [tableHeadView addSubview:sendView];
-    
-    // 收货信息
-    UIView *receiveView = [[UIView alloc] init];
-    [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
-    receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    // Label
-    _receiveLabel = [[UILabel alloc] init];
-    [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
-    [_receiveLabel setFont:[UIFont systemFontOfSize:15]];
-    _receiveLabel.text = @"收货信息:";
-    [receiveView addSubview:_receiveLabel];
-    // 手势
-    UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
-    tap_receive.numberOfTouchesRequired = 1;
-    [receiveView addGestureRecognizer:tap_receive];
-    [tableHeadView addSubview:receiveView];
 }
 
 
@@ -513,9 +475,9 @@ typedef enum : NSInteger {
 
 - (void)receiveMsg:(NSNotification *)aNotify {
     
-    NSString *msg = aNotify.userInfo[@"msg"];
+    _getToAddressM = aNotify.userInfo[@"msg"];
     
-    _receiveLabel.text = [NSString stringWithFormat:@"收货地址: %@", msg];
+    _receiveLabel.text = [NSString stringWithFormat:@"收货地址: %@", _getToAddressM.aDDRESSINFO];
 }
 
 
@@ -704,6 +666,47 @@ typedef enum : NSInteger {
 }
 
 
+- (void)addTableHeaderView {
+    
+    // table头部
+    UIView *tableHeadView = [[UIView alloc] init];
+    [tableHeadView setFrame:CGRectMake(0, 0, ScreenWidth, 97)];
+    _myTableView.tableHeaderView = tableHeadView;
+    
+    // 发货信息
+    UIView *sendView = [[UIView alloc] init];
+    [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
+    sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    // Label
+    UILabel *sendLabel = [[UILabel alloc] init];
+    [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
+    [sendLabel setFont:[UIFont systemFontOfSize:14]];
+    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
+    [sendView addSubview:sendLabel];
+    // 手势
+    UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
+    tap_send.numberOfTouchesRequired = 1;
+    [sendView addGestureRecognizer:tap_send];
+    [tableHeadView addSubview:sendView];
+    
+    // 收货信息
+    UIView *receiveView = [[UIView alloc] init];
+    [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
+    receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    // Label
+    _receiveLabel = [[UILabel alloc] init];
+    [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
+    [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
+    _receiveLabel.text = @"收货信息:";
+    [receiveView addSubview:_receiveLabel];
+    // 手势
+    UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
+    tap_receive.numberOfTouchesRequired = 1;
+    [receiveView addGestureRecognizer:tap_receive];
+    [tableHeadView addSubview:receiveView];
+}
+
+
 #pragma mark - 点击事件
 
 // 提交
@@ -711,9 +714,15 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self setProductCurrentPrice];
-        [_orderConfirmService getPromotionData:[self getSubitString:_selectedProducts]];
+        if(_getToAddressM != nil) {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self setProductCurrentPrice];
+            [_service getPromotionData:[self getSubitString:_selectedProducts]];
+        } else {
+            
+            [Tools showAlert:self.view andTitle:@"请填写收货信息"];
+        }
         
     } else {
         
@@ -998,7 +1007,10 @@ typedef enum : NSInteger {
     } else {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:brand];
+        [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:brand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
+        
+        
+        //         getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:brand;
     }
     
     // 操作UI
@@ -1032,7 +1044,8 @@ typedef enum : NSInteger {
         ProductTbModel *m = _brands[indexPath.row];
         _selectedBrand = [m.PRODUCT_CLASS isEqualToString:@"全部"] ? @"" : m.PRODUCT_CLASS;
         
-        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
+        //        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
+        [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:_selectedBrand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
         
         //操作UI
         _brandLabel.text = [NSString stringWithFormat:@"分类:%@", [_selectedBrand isEqualToString:@""] ? @"全部" : _selectedBrand];
@@ -1404,11 +1417,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 50 - 6 - 40 - 105;
+        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
         // Label 单行高度
-        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:999.9];
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:14 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             
@@ -1657,6 +1670,7 @@ typedef enum : NSInteger {
     vc.addressM = _address;
     vc.orderPayType = _currentPayType.Key;
     vc.partyM = _party;
+    vc.getToAddressM = _getToAddressM;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

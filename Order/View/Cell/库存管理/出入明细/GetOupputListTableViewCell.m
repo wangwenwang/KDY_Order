@@ -16,6 +16,12 @@
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
 
+// 出库类型
+@property (weak, nonatomic) IBOutlet UIImageView *OUTPUT_STATE;
+
+// 取消提示
+@property (weak, nonatomic) IBOutlet UILabel *promptLabel;
+
 @end
 
 @implementation GetOupputListTableViewCell
@@ -37,6 +43,16 @@
     
     _OUTPUT_NO.text = getOupputM.oUTPUTNO;
     _ADD_DATE.text = getOupputM.aDDDATE;
+    
+    if([getOupputM.oUTPUTSTATE isEqualToString:@"OPEN"]) {
+        
+        _OUTPUT_STATE.image = [UIImage imageNamed:@"LM_store_out_state_open"];
+        _promptLabel.hidden = YES;
+    } else if([getOupputM.oUTPUTSTATE isEqualToString:@"CANCEL"]) {
+        
+        _OUTPUT_STATE.image = [UIImage imageNamed:@"LM_store_out_state_cancel"];
+        _promptLabel.hidden = NO;
+    }
 }
 
 @end

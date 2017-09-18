@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StoreProductModel.h"
+#import "StockProductModel.h"
 
 @interface Store_GetOutProductListTableViewCell : UITableViewCell
 
 
-@property (strong, nonatomic) StoreProductModel *storeProductM;
+@property (strong, nonatomic) StockProductModel *stockProductM;
 
 @end

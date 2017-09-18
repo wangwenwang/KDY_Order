@@ -107,11 +107,10 @@
         if(type == 0) {
                     
             [_delegate successOfOrderConfirmWithCommit];
-            
         } else {
+            
             [self failureOfOrderConfirmWithCommit:msg];
         }
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败---%@", error);
         [self failureOfOrderConfirmWithCommit:nil];

@@ -1,0 +1,37 @@
+//
+//  StockProductModel.h
+//  Order
+//
+//  Created by 凯东源 on 2017/8/18.
+//  Copyright © 2017年 凯东源. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "StockProductModel.h"
+
+@interface StockProductModel : NSObject
+
+@property (nonatomic, strong) NSString * aDDRESSCODE;
+@property (nonatomic, strong) NSString * aDDRESSIDX;
+@property (nonatomic, strong) NSString * aDDRESSNAME;
+@property (nonatomic, strong) NSString * aDDDATE;
+@property (nonatomic, strong) NSString * bUSINESSIDX;
+@property (nonatomic, strong) NSString * eDITDATE;
+@property (nonatomic, strong) NSString * eNTIDX;
+@property (nonatomic, strong) NSString * iDX;
+@property (nonatomic, strong) NSString * oPERATORIDX;
+@property (nonatomic, strong) NSString * pRICE;
+@property (nonatomic, strong) NSString * pRODUCTIDX;
+@property (nonatomic, strong) NSString * pRODUCTNAME;
+@property (nonatomic, strong) NSString * pRODUCTNO;
+@property (nonatomic, strong) NSString * sTOCKQTY;
+@property (nonatomic, strong) NSString * sTOCKUOM;
+@property (nonatomic, strong) NSString * sUM;
+
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+-(NSDictionary *)toDictionary;
+
+@property (assign, nonatomic) CGFloat cellHeight;
+
+@end

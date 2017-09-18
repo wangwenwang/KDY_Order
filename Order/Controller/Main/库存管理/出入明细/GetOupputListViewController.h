@@ -10,4 +10,6 @@
 
 @interface GetOupputListViewController : UIViewController
 
+@property (assign, nonatomic) BOOL refreshList;
+
 @end

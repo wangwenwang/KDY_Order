@@ -353,6 +353,32 @@ typedef enum : NSInteger {
     [self.view layoutIfNeeded];
     
     _otherMsg_top.constant = ScreenHeight / 2 - CGRectGetHeight(_otherMsgView.frame) / 2 - 64 - 20;
+    
+    // 缓存机制
+    // 保存已选的产品
+    NSDictionary *dict_brand = _dictProducts[@(_brandRow)];
+    for(int i = 0; i < dict_brand.count; i++) {
+        
+        NSArray *dict_section = dict_brand[@(i)];
+        for(int j = 0; j < dict_section.count; j++) {
+            
+            ProductModel *m = dict_section[j];
+            
+            // 已选
+            if([_selectedProducts indexOfObject:m] == NSNotFound && m.CHOICED_SIZE > 0) {
+                [_selectedProducts addObject:m];
+                
+                // 总价
+                _currentMakeOrderTotalPrice += m.CHOICED_SIZE * m.PRODUCT_PRICE;
+                _makeOrderTotalPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _currentMakeOrderTotalPrice];
+                
+                // 总量
+                _currentMakeOrderTotalCount += m.CHOICED_SIZE;
+                _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
+            }
+        }
+    }
+    [_shoppingCarTableView reloadData];
 }
 
 
@@ -387,6 +413,7 @@ typedef enum : NSInteger {
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
 }
 
 
@@ -1328,11 +1355,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 50 - 6 - 40 - 105;
+        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
         // Label 单行高度
-        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:999.9];
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:14 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             

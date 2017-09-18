@@ -252,6 +252,21 @@
 /// 获取出库详情
 #define API_GetOupputInfo @"http://oms.kaidongyuan.com:8088/api/GetOupputInfo"
 
+/// 获取库存列表数据
+#define API_GetPartyStockList @"http://oms.kaidongyuan.com:8088/api/GetPartyStockList"
+
+/// 获取库存批次
+#define API_GetStockNoList @"http://oms.kaidongyuan.com:8088/api/GetStockNoList"
+
+/// 入库确认
+#define API_InPutWorkflow @"http://oms.kaidongyuan.com:8088/api/InPutWorkflow"
+
+/// 入库列表
+#define API_GetInputList @"http://oms.kaidongyuan.com:8088/api/GetInputList"
+
+/// 入库详情
+#define API_GetInputInfo @"http://oms.kaidongyuan.com:8088/api/GetInputInfo"
+
 
 
 /*--------- 判断iOS版本 ---------*/

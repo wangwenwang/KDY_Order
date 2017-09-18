@@ -34,6 +34,7 @@
         _isClickCell = NO;
 //        _selectedProductCount = 0;
         _PRODUCTION_DATE = @"";
+        _PRODUCT_UOM = @"";
     }
     return self;
 }
@@ -70,6 +71,9 @@
         _PRODUCT_INVENTORY = dict[@"PRODUCT_INVENTORY"] ? [dict[@"PRODUCT_INVENTORY"] longLongValue] : _PRODUCT_INVENTORY;
         _PRODUCT_CURRENT_PRICE = dict[@"PRODUCT_CURRENT_PRICE"] ? [dict[@"PRODUCT_CURRENT_PRICE"] doubleValue] : _PRODUCT_CURRENT_PRICE;
         _CHOICED_SIZE = dict[@"CHOICED_SIZE"] ? [dict[@"CHOICED_SIZE"] longLongValue] : _CHOICED_SIZE;
+        
+        
+        _PRODUCT_UOM = dict[@"PRODUCT_UOM"] ? dict[@"PRODUCT_UOM"] : _PRODUCT_UOM;
         
     } @catch (NSException *exception) {
         

@@ -72,4 +72,7 @@
 /// Cell 高度
 @property (assign, nonatomic) NSUInteger cellHeight;
 
+///
+@property (copy, nonatomic) NSString *PRODUCT_UOM;
+
 @end

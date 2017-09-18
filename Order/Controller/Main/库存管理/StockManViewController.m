@@ -15,12 +15,22 @@
 #import "Tools.h"
 #import "GetOupputInfoViewController.h"
 #import "StockOutViewController.h"
+#import "Store_GetPartyStockListService.h"
+#import "StockNoListViewController.h"
 
 // 出库
 #import "AppDelegate.h"
 #import "SelectGoodsService.h"
+#import "Store_GetOutProductListService.h"
 
-@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, SelectGoodsServiceDelegate>
+
+// 入库
+#import "GetInputListViewController.h"
+
+@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, SelectGoodsServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate>
+
+// 网络层，库存列表
+@property (strong, nonatomic) Store_GetPartyStockListService *service;
 
 // 客户类型
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_TYPE;
@@ -46,14 +56,20 @@
 // 产品列表
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-// 网络层
-@property (strong, nonatomic) Store_GetOutProductListService *service;
-
 // 产品
-@property (strong, nonatomic) StoreProductListModel *storeProductListM;
+@property (strong, nonatomic) StockProductListModel *stockProductListM;
 
 // 内容总高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
+
+// 客户信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *partyViewHeight;
+
+// 客户地址高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressViewHeight;
+
+// 功能视图高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *funtionViewHeight;
 
 
 // 出库
@@ -64,6 +80,8 @@
 @property (strong, nonatomic) AppDelegate *app;
 
 @property (strong, nonatomic) SelectGoodsService *selectGoodsService;
+
+@property (strong, nonatomic) Store_GetOutProductListService *store_GetOutProductListService;
 
 // 暂存请求产品类型的回调结果
 @property (strong, nonatomic) NSMutableArray *productTypes;
@@ -81,13 +99,16 @@
     
     if(self = [super init]) {
         
-        _service = [[Store_GetOutProductListService alloc] init];
+        _service = [[Store_GetPartyStockListService alloc] init];
         _service.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         _selectGoodsService = [[SelectGoodsService alloc] init];
         _selectGoodsService.delegate = self;
+        
+        _store_GetOutProductListService = [[Store_GetOutProductListService alloc] init];
+        _store_GetOutProductListService.delegate = self;
     }
     return self;
 }
@@ -106,7 +127,7 @@
     
     [MBProgressHUD showHUDAddedTo:_tableView animated:YES];
     
-    [_service GetOutProductList:[_partyM.IDX integerValue] andstrOutputIdx:0 andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:20];
+    [_service GetPartyStockList:_addressM.IDX andBUSINESS_IDX:_app.business.BUSINESS_IDX andstrPage:1 andstrPageCount:999];
 }
 
 
@@ -126,10 +147,18 @@
         
         GetOupputListViewController *vc = [[GetOupputListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+    } else if(tag == 1002) {
+        
+        [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+        [_selectGoodsService getPayTypeData];
     } else if(tag == 1004) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
+    } else if(tag == 1005) {
+        
+        GetInputListViewController *vc = [[GetInputListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -161,13 +190,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _storeProductListM.storeProductModel.count;
+    return _stockProductListM.stockProductModel.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    StoreProductModel *storeProductM = _storeProductListM.storeProductModel[indexPath.row];
+    StockProductModel *storeProductM = _stockProductListM.stockProductModel[indexPath.row];
 
     return storeProductM.cellHeight;
 }
@@ -179,9 +208,9 @@
     static NSString *cellId = kCellName;
     Store_GetOutProductListTableViewCell *cell = (Store_GetOutProductListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
-    StoreProductModel *storeProductM = _storeProductListM.storeProductModel[indexPath.row];
+    StockProductModel *storeProductM = _stockProductListM.stockProductModel[indexPath.row];
     
-    cell.storeProductM = storeProductM;
+    cell.stockProductM = storeProductM;
     
     return cell;
 }
@@ -190,31 +219,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    StockProductModel *m = _stockProductListM.stockProductModel[indexPath.row];
+    
+    StockNoListViewController *vc = [[StockNoListViewController alloc] init];
+    vc.stock_idx = m.iDX;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 #pragma mark - Store_GetOutProductListServiceDelegate
 
-- (void)successOfGetOutProductList:(StoreProductListModel *)storeProductListM {
+- (void)successOfGetOutProductList:(NSMutableArray *)products {
     
-    [MBProgressHUD hideHUDForView:_tableView animated:YES];
+        [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    _storeProductListM = storeProductListM;
+        StockOutViewController *vc = [[StockOutViewController alloc] init];
+        vc.payTypes = _payTypes;
+        vc.productTypes = _productTypes;
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+        vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+        vc.address = _addressM;
+        vc.party = _partyM;
     
-    for (StoreProductModel *m in _storeProductListM.storeProductModel) {
-        
-        m.cellHeight = kCellHeight;
-    }
-    
-    _scrollContentViewHeight.constant = 600 + _storeProductListM.storeProductModel.count * kCellHeight;
-    
-    [_tableView reloadData];
+        [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (void)successOfGetOutProductList_NoData {
     
-    [MBProgressHUD hideHUDForView:_tableView animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
     [_tableView noData:@"没有产品数据" andImageName:LM_NoResult_noOrder];
 }
@@ -222,7 +256,7 @@
 
 - (void)failureOfGetOutProductList:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:_tableView animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
     [Tools showAlert:self.view andTitle:msg];
 }
@@ -264,7 +298,9 @@
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     
-    [_selectGoodsService getProductsData:_partyM.IDX andOrderAddressIdx:_addressM.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
+//    [_selectGoodsService getProductsData:_partyM.IDX andOrderAddressIdx:_addressM.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
+    
+    [_store_GetOutProductListService GetOutProductList:@"" andstrProductClass:@"" andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:999];
 }
 
 
@@ -276,42 +312,45 @@
 }
 
 
-// 获取产品数据回调
-- (void)successOfGetProductData:(NSMutableArray *)products {
+#pragma mark - Store_GetPartyStockListServiceDelegate
+
+- (void)successOfGetPartyStockList:(StockProductListModel *)stockProductListM {
     
+    [MBProgressHUD hideHUDForView:_tableView animated:YES];
     
-    //测试，寻找要考虑库存的产品
-    //    for (int i = 0; i < products.count; i++) {
-    //        ProductModel *m = products[i];
-    //        if([m.ISINVENTORY isEqualToString:@"Y"]) {
-    //            NSLog(@"%d, %@, %lld", i, m.PRODUCT_NAME, m.PRODUCT_INVENTORY);
-    //        }
-    //    }
+    [_tableView removeNoOrderPrompt];
     
-    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    _stockProductListM = stockProductListM;
     
+    // tableView高度
+    CGFloat tableHeight = 0;
+    for (int i = 0; i < _stockProductListM.stockProductModel.count; i++) {
+        
+        StockProductModel *stockProductM = _stockProductListM.stockProductModel[i];
+        stockProductM.cellHeight = kCellHeight;
+        
+        tableHeight += stockProductM.cellHeight;
+    }
     
+    _scrollContentViewHeight.constant = 10 + _partyViewHeight.constant + 10 + _addressViewHeight.constant + 15 + _funtionViewHeight.constant + 15 + tableHeight;
     
-//    GetOupputInfoViewController *vc = [[GetOupputInfoViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    StockOutViewController *vc = [[StockOutViewController alloc] init];
-    vc.payTypes = _payTypes;
-    vc.productTypes = _productTypes;
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
-    vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
-    vc.address = _addressM;
-    vc.party = _partyM;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [_tableView reloadData];
 }
 
 
-- (void)failureOfGetProductData:(NSString *)msg {
+- (void)successOfGetPartyStockList_NoData {
     
-    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    [MBProgressHUD hideHUDForView:_tableView animated:YES];
     
-    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取产品列表失败"];
+    [_tableView noData:@"没有数据" andImageName:LM_NoResult_noOrder];
+}
+
+
+- (void)failureOfGetPartyStockList:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:_tableView animated:YES];
+    
+    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取库存列表失败"];
 }
 
 @end

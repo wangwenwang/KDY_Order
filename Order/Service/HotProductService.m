@@ -33,6 +33,8 @@
                                 @"", @"strLicense",
                                 nil];
     
+    NSLog(@"热销产品参数:%@", parameters);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:API_GET_HOT_SELL_PRODUCT parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

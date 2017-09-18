@@ -139,9 +139,11 @@
     [self.view addSubview:_cycleScrollView1];
 }
 
+
 - (void)registerCell {
     [self.myCollectionView registerNib:[UINib nibWithNibName:@"MainCollectionViewCell"bundle:nil]forCellWithReuseIdentifier:_cellID];
 }
+
 
 - (void)getPlistData {
     

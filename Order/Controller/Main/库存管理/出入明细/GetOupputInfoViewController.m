@@ -11,6 +11,8 @@
 #import "GetOupputInfoTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
+#import "AppDelegate.h"
+#import "GetOupputListViewController.h"
 
 @interface GetOupputInfoViewController ()<Store_GetOupputInfoServiceDelegate>
 
@@ -50,6 +52,18 @@
 // 顶部高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
 
+// 全局变量
+@property (strong, nonatomic) AppDelegate *app;
+
+// 底部视图
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+// 取消入库按钮
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+
+// 确认入库按钮
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+
 @end
 
 #define kCellHeight 99
@@ -65,6 +79,8 @@
         
         _service = [[Store_GetOupputInfoService alloc] init];
         _service.delegate = self;
+        
+        _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -90,6 +106,24 @@
 }
 
 
+#pragma mark - 事件
+
+- (IBAction)confirmOnclick {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [_service confirm:_storeIdx andADUT_USER:_app.user.USER_NAME];
+}
+
+
+- (IBAction)cancelOnclick {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [_service cancel:_storeIdx andOPER_USER:_app.user.IDX];
+}
+
+
 #pragma mark - 功能函数
 
 // 注册Cell
@@ -97,6 +131,36 @@
     
     [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+
+- (void)pop {
+    
+    // 告诉列表需要刷新
+    NSArray *array = self.navigationController.viewControllers;
+    for(int i = 0; i < array.count; i++) {
+        
+        UIViewController *vc = array[i];
+        if([vc isKindOfClass:[GetOupputListViewController class]]) {
+            
+            GetOupputListViewController *LMVC = (GetOupputListViewController *)vc;
+            LMVC.refreshList = YES;
+        }
+    }
+    
+    // 按钮不可点击
+    _cancelBtn.enabled = NO;
+    _confirmBtn.enabled = NO;
+    
+    // 延迟pop
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        sleep(2);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    });
 }
 
 
@@ -178,6 +242,11 @@
     [_tableView reloadData];
     
     _scrollContentViewHeight.constant = _headerViewHeight.constant + 46 + tableViewHeight;
+    
+    if([_getOupputDetailM.getOupputInfoModel.oUTPUTSTATE isEqualToString:@"CANCEL"]) {
+        
+        _bottomView.hidden = YES;
+    }
 }
 
 
@@ -186,6 +255,42 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [Tools showAlert:self.view andTitle:msg];
+}
+
+
+- (void)successOfOutPutWorkflow:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [Tools showAlert:self.view andTitle:msg];
+}
+
+
+- (void)failureOfOutPutWorkflow:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [Tools showAlert:self.view andTitle:msg];
+}
+
+
+- (void)successOfOutPutCancel:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [self pop];
+    
+    [Tools showAlert:self.view andTitle:msg andTime:2.5];
+}
+
+
+- (void)failureOfOutPutCancel:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [self pop];
+    
+    [Tools showAlert:self.view andTitle:msg andTime:2.5];
 }
 
 @end

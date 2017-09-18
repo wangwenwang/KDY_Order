@@ -11,9 +11,12 @@
 @interface GetToAddressModel : NSObject
 
 @property (nonatomic, strong) NSString * aDDRESSINFO;
+@property (nonatomic, strong) NSString * cONTACTPERSON;
+@property (nonatomic, strong) NSString * cONTACTTEL;
 @property (nonatomic, strong) NSString * iDX;
 @property (nonatomic, strong) NSString * iTEMCODE;
 @property (nonatomic, strong) NSString * pARTYNAME;
+@property (nonatomic, strong) NSString * pARTYTYPE;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

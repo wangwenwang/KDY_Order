@@ -75,9 +75,11 @@
 
 //选择的party
 @property (strong, nonatomic) PartyModel *currentParty;
+@property (assign, nonatomic) NSInteger currentParty_Index;
 
 //选择的address
 @property (strong, nonatomic) AddressModel *currentAddress;
+@property (assign, nonatomic) NSInteger currentAddress_Index;
 
 @property (strong, nonatomic) AppDelegate *app;
 
@@ -91,6 +93,9 @@
 //@property (strong, nonatomic) UISearchBar *searchBar;
 
 @property (strong, nonatomic) LMBlurredView *blurredView;
+
+// 缓存机制 temp_Party[0][0] -> dict
+@property (strong, nonatomic) NSMutableDictionary *temp_Party;
 
 @end
 
@@ -116,6 +121,8 @@
         _selectGoodsService.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        _temp_Party = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -358,15 +365,16 @@
     
     if(tableView.tag == 1001) {
         
-        PartyModel *m = _partysFilter[indexPath.row];
-        _currentParty = m;
+        _currentParty = _partysFilter[indexPath.row];
+        _currentParty_Index = indexPath.row;
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_service getPartygetAddressInfo:m.IDX];
+        [_service getPartygetAddressInfo:_currentParty.IDX];
         
     } else if(tableView.tag == 1002) {
         
         _currentAddress = _address[indexPath.row];
+        _currentAddress_Index = indexPath.row;
         
         [_blurredView clear];
         [self LMBlurredViewClear];
@@ -641,10 +649,27 @@
     SelectGoodsViewController *vc = [[SelectGoodsViewController alloc] init];
     vc.payTypes = _payTypes;
     vc.productTypes = _productTypes;
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
-    vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
     vc.address = _currentAddress;
     vc.party = _currentParty;
+    
+    // 缓存机制
+    if([_temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)] isKindOfClass:[NSMutableDictionary class]]) {
+        
+        vc.dictProducts = _temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)];
+    } else {
+        
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+        NSMutableDictionary *dictP = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+        vc.dictProducts = dictP;
+        
+        NSMutableDictionary *dictAddress = _temp_Party[@(_currentParty_Index)];
+        if(!dictAddress) {
+           dictAddress = [[NSMutableDictionary alloc] init];
+        }
+        
+        [dictAddress addEntriesFromDictionary:@{@(_currentAddress_Index) : dictP}];
+        [_temp_Party addEntriesFromDictionary:@{@(_currentParty_Index) : dictAddress}];
+    }
     
     [self.navigationController pushViewController:vc animated:YES];
 }

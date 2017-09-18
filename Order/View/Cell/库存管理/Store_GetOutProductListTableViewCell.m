@@ -18,20 +18,19 @@
 @implementation Store_GetOutProductListTableViewCell
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 
-- (void)setStoreProductM:(StoreProductModel *)storeProductM {
+- (void)setStockProductM:(StockProductModel *)stockProductM {
     
-    _PRODUCT_NAME.text = storeProductM.pRODUCTNAME;
+    _PRODUCT_NAME.text = stockProductM.pRODUCTNAME;
 }
 
 @end

@@ -11,26 +11,26 @@
 
 
 //{
-//    "GetToAddressModel": [
-//                          {
-//                              "IDX": "1",
-//                              "ITEM_CODE": "AA",
-//                              "PARTY_NAME": "水电费",
-//                              "ADDRESS_INFO": "深圳市凯东源1号"
-//                          },
-//                          {
-//                              "IDX": "2",
-//                              "ITEM_CODE": "BB",
-//                              "PARTY_NAME": "水电费1",
-//                              "ADDRESS_INFO": "深圳市凯东源2号"
-//                          },
-//                          {
-//                              "IDX": "3",
-//                              "ITEM_CODE": "CC",
-//                              "PARTY_NAME": "水电费2",
-//                              "ADDRESS_INFO": "深圳市凯东源3号"
-//                          }
-//                          ]
+//    "To": [
+//           {
+//               "ADDRESS_INFO": "天津天津市河东区二号桥街道11",
+//               "CONTACT_PERSON": "11",
+//               "PARTY_NAME": "11",
+//               "PARTY_TYPE": "",
+//               "IDX": "68656",
+//               "CONTACT_TEL": "11",
+//               "ITEM_CODE": "DK17080103462527"
+//           },
+//           {
+//               "ADDRESS_INFO": "天津天津市河东区二号桥街道1号",
+//               "CONTACT_PERSON": "1",
+//               "PARTY_NAME": "1",
+//               "PARTY_TYPE": "",
+//               "IDX": "69090",
+//               "CONTACT_TEL": "18888888888",
+//               "ITEM_CODE": "DK17080905311690"
+//           }
+//           ]
 //}
 
 

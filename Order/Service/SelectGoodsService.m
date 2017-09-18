@@ -11,8 +11,8 @@
 #import <AFNetworking.h>
 #import "PayTypeModel.h"
 #import "ProductTbModel.h"
-#import "ProductModel.h"
 #import "NSString+Trim.h"
+#import "ProductModel.h"
 
 @interface SelectGoodsService ()
 

@@ -50,16 +50,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark -- BMKMapViewDelegate 前台显示
-/// 百度地图初始化完成
+
+
+#pragma mark - BMKMapViewDelegate 前台显示
+
+// 百度地图初始化完成
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
-    //先关闭显示的定位图层
+    
+    // 关闭显示的定位图层
     _baiduMapView.showsUserLocation = NO;
-    //设置定位的状态
+    // 设置定位的状态
     _baiduMapView.userTrackingMode = BMKUserTrackingModeNone;
-    //显示定位图层
+    // 显示定位图层
     _baiduMapView.showsUserLocation = YES;
-    //设置定位精度
+    // 设置定位精度
 }
 
 

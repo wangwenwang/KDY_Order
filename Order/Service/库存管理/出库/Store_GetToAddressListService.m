@@ -52,7 +52,13 @@
         
         if(_type == 1) {
             
-            GetToAddressListModel *getToAddressListM = [[GetToAddressListModel alloc] initWithDictionary:responseObject[@"result"]];
+            GetToAddressListModel *getToAddressListM = nil;
+            @try {
+                getToAddressListM = [[GetToAddressListModel alloc] initWithDictionary:responseObject[@"result"]];
+            } @catch (NSException *exception) {
+                
+                [self failureOfGetToAddressList:@"服务器数据出错"];
+            }
             
             if(getToAddressListM.getToAddressModel.count > 0) {
                 

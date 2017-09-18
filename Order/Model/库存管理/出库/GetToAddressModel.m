@@ -10,9 +10,12 @@
 
 
 NSString *const kGetToAddressModelADDRESSINFO = @"ADDRESS_INFO";
+NSString *const kGetToAddressModelCONTACTPERSON = @"CONTACT_PERSON";
+NSString *const kGetToAddressModelCONTACTTEL = @"CONTACT_TEL";
 NSString *const kGetToAddressModelIDX = @"IDX";
 NSString *const kGetToAddressModelITEMCODE = @"ITEM_CODE";
 NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
+NSString *const kGetToAddressModelPARTYTYPE = @"PARTY_TYPE";
 
 
 @implementation GetToAddressModel
@@ -23,6 +26,12 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     if(![dictionary[kGetToAddressModelADDRESSINFO] isKindOfClass:[NSNull class]]){
         self.aDDRESSINFO = dictionary[kGetToAddressModelADDRESSINFO];
     }
+    if(![dictionary[kGetToAddressModelCONTACTPERSON] isKindOfClass:[NSNull class]]){
+        self.cONTACTPERSON = dictionary[kGetToAddressModelCONTACTPERSON];
+    }
+    if(![dictionary[kGetToAddressModelCONTACTTEL] isKindOfClass:[NSNull class]]){
+        self.cONTACTTEL = dictionary[kGetToAddressModelCONTACTTEL];
+    }
     if(![dictionary[kGetToAddressModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kGetToAddressModelIDX];
     }
@@ -31,6 +40,9 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     }
     if(![dictionary[kGetToAddressModelPARTYNAME] isKindOfClass:[NSNull class]]){
         self.pARTYNAME = dictionary[kGetToAddressModelPARTYNAME];
+    }
+    if(![dictionary[kGetToAddressModelPARTYTYPE] isKindOfClass:[NSNull class]]){
+        self.pARTYTYPE = dictionary[kGetToAddressModelPARTYTYPE];
     }
     return self;
 }
@@ -45,6 +57,12 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     if(self.aDDRESSINFO != nil){
         dictionary[kGetToAddressModelADDRESSINFO] = self.aDDRESSINFO;
     }
+    if(self.cONTACTPERSON != nil){
+        dictionary[kGetToAddressModelCONTACTPERSON] = self.cONTACTPERSON;
+    }
+    if(self.cONTACTTEL != nil){
+        dictionary[kGetToAddressModelCONTACTTEL] = self.cONTACTTEL;
+    }
     if(self.iDX != nil){
         dictionary[kGetToAddressModelIDX] = self.iDX;
     }
@@ -53,6 +71,9 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     }
     if(self.pARTYNAME != nil){
         dictionary[kGetToAddressModelPARTYNAME] = self.pARTYNAME;
+    }
+    if(self.pARTYTYPE != nil){
+        dictionary[kGetToAddressModelPARTYTYPE] = self.pARTYTYPE;
     }
     return dictionary;
     
@@ -69,6 +90,12 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     if(self.aDDRESSINFO != nil){
         [aCoder encodeObject:self.aDDRESSINFO forKey:kGetToAddressModelADDRESSINFO];
     }
+    if(self.cONTACTPERSON != nil){
+        [aCoder encodeObject:self.cONTACTPERSON forKey:kGetToAddressModelCONTACTPERSON];
+    }
+    if(self.cONTACTTEL != nil){
+        [aCoder encodeObject:self.cONTACTTEL forKey:kGetToAddressModelCONTACTTEL];
+    }
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kGetToAddressModelIDX];
     }
@@ -77,6 +104,9 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     }
     if(self.pARTYNAME != nil){
         [aCoder encodeObject:self.pARTYNAME forKey:kGetToAddressModelPARTYNAME];
+    }
+    if(self.pARTYTYPE != nil){
+        [aCoder encodeObject:self.pARTYTYPE forKey:kGetToAddressModelPARTYTYPE];
     }
     
 }
@@ -88,9 +118,12 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
 {
     self = [super init];
     self.aDDRESSINFO = [aDecoder decodeObjectForKey:kGetToAddressModelADDRESSINFO];
+    self.cONTACTPERSON = [aDecoder decodeObjectForKey:kGetToAddressModelCONTACTPERSON];
+    self.cONTACTTEL = [aDecoder decodeObjectForKey:kGetToAddressModelCONTACTTEL];
     self.iDX = [aDecoder decodeObjectForKey:kGetToAddressModelIDX];
     self.iTEMCODE = [aDecoder decodeObjectForKey:kGetToAddressModelITEMCODE];
     self.pARTYNAME = [aDecoder decodeObjectForKey:kGetToAddressModelPARTYNAME];
+    self.pARTYTYPE = [aDecoder decodeObjectForKey:kGetToAddressModelPARTYTYPE];
     return self;
     
 }
@@ -103,9 +136,12 @@ NSString *const kGetToAddressModelPARTYNAME = @"PARTY_NAME";
     GetToAddressModel *copy = [GetToAddressModel new];
     
     copy.aDDRESSINFO = [self.aDDRESSINFO copy];
+    copy.cONTACTPERSON = [self.cONTACTPERSON copy];
+    copy.cONTACTTEL = [self.cONTACTTEL copy];
     copy.iDX = [self.iDX copy];
     copy.iTEMCODE = [self.iTEMCODE copy];
     copy.pARTYNAME = [self.pARTYNAME copy];
+    copy.pARTYTYPE = [self.pARTYTYPE copy];
     
     return copy;
 }

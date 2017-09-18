@@ -478,10 +478,16 @@
 /// 获取订单线路位置集合成功
 - (void)success {
     NSMutableArray *points = _service.orderLocations;
-    if(points.count > 0) {
-        [self addStartAndEndPointMark:points[0] andEnd:points[points.count - 1]];
+    
+    if(points.count > 2) {
+        if(points.count > 0) {
+            [self addStartAndEndPointMark:points[0] andEnd:points[points.count - 1]];
+        }
+        [self searchDrivingPath];
+    } else {
+        
+        [Tools showAlert:self.view andTitle:[NSString stringWithFormat:@"定位点个数为%ld,小于3个点不能规划线路",(long)points.count] andTime:2.5];
     }
-    [self searchDrivingPath];
 }
 
 - (void)failure:(NSString *)msg {

@@ -113,7 +113,7 @@
     
     GetToAddressModel *getToAddressListM = _getToAddressListM.getToAddressModel[indexPath.row];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kStockOutViewController_receiveMsg object:nil userInfo:@{@"msg" : getToAddressListM.aDDRESSINFO}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStockOutViewController_receiveMsg object:nil userInfo:@{@"msg" : getToAddressListM}];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

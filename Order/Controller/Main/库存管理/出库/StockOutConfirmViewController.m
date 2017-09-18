@@ -18,11 +18,11 @@
 #import "OrderGiftModel.h"
 #import "ConfirmOrderGiftsTableViewCell.h"
 #import "NSString+Trim.h"
-#import "OrderConfirmService.h"
+#import "Store_StockOutConfirmService.h"
 #import <Masonry.h>
 #import "LMPickerView.h"
 
-@interface StockOutConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, OrderConfirmServiceDelegate, LMPickerViewDelegate>
+@interface StockOutConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, Store_StockOutConfirmServiceDelegate, LMPickerViewDelegate>
 
 #define ProductTableViewCellHeight 69
 #define GiftTableViewCellHeight 69
@@ -34,90 +34,142 @@
 #define kDatePickerContainerView_alpha_Duration 0.47f
 
 
-//订单TableView
-@property (weak, nonatomic) IBOutlet UITableView *orderTableView;
 
-//订单TableView的高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTableViewHeight;
+#pragma mark - 通用
 
-//提示无赠品
-@property (weak, nonatomic) IBOutlet UILabel *noGiftPromptLabel;
-
-//赠品TableView
-@property (weak, nonatomic) IBOutlet UITableView *giftTableView;
-
-//添加赠品
-@property (weak, nonatomic) IBOutlet UIButton *addGiftButton;
-
-//已选择的赠品
-@property (strong, nonatomic) NSMutableArray *selectedGifts;
-
-//自定义价格视图
-@property (weak, nonatomic) IBOutlet UIView *customizePriceView;
-
-//价格上限
-@property (weak, nonatomic) IBOutlet UILabel *upperLimi;
-
-//价格下限
-@property (weak, nonatomic) IBOutlet UILabel *lowerLimi;
-
-//自定义价格输入框
-@property (weak, nonatomic) IBOutlet UITextField *customizePriceF;
-
-//取消自定义价格
-- (IBAction)cancelCustomizePriceOnclick:(UIButton *)sender;
-
-//确定自定义价格
-- (IBAction)confirmCustomizePriceOnclick:(UIButton *)sender;
-
-//当前弹出自定义价格框的indexRow
-@property (assign, nonatomic) NSInteger customizePriceIndexRow;
-
-//遮罩视图
-@property (weak, nonatomic) IBOutlet UIView *coverView;
-
-//产品总数
-@property (weak, nonatomic) IBOutlet UILabel *totalCountLabel;
-
-//产品原价
-@property (weak, nonatomic) IBOutlet UILabel *orgPriceLabel;
-
-//付款方式
-@property (weak, nonatomic) IBOutlet UILabel *payTypeLabel;
-
-//促销策略提示
-@property (weak, nonatomic) IBOutlet UILabel *promotionPromptLabel;
-
-//促销策略
-@property (weak, nonatomic) IBOutlet UILabel *promotionLabel;
-
-//满减总计提示
-@property (weak, nonatomic) IBOutlet UILabel *mjTotalPromptLabel;
-
-//满减总计
-@property (weak, nonatomic) IBOutlet UILabel *mjTotalLabel;
-
-//实际付款
-@property (weak, nonatomic) IBOutlet UILabel *actPriceLabel;
-
-@property (strong, nonatomic) AppDelegate *app;
-
-//备注
-@property (weak, nonatomic) IBOutlet UITextView *remarkTextV;
-
-@property (strong, nonatomic) AddGiftsService *addGiftsService;
-
-//scrollView里的视图高度
+// scrollView里的视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
 
-//赠品TableView高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftsTableViewHeight;
+// 全局变量
+@property (strong, nonatomic) AppDelegate *app;
 
-/// 赠品(PromotionDetailModel)，从下个界面获取
-//@property (strong, nonatomic) NSMutableArray *gifts;
 
-//textView的placeholder
-@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
+
+#pragma mark - 发货信息
+
+// 发货信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendViewHeight;
+
+// 客户名称
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
+
+// 联系人名
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_PERSON;
+
+// 联系方式
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_TEL;
+
+// 地址详情
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
+
+
+
+#pragma mark - 收货信息
+
+// 收货信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *receiveViewHeight;
+
+// 联系人名
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_PERSON_receive;
+
+// 联系方式
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_TEL_receive;
+
+// 地址详情
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO_receive;
+
+#pragma mark - 订单信息
+
+// 订单TableView
+@property (weak, nonatomic) IBOutlet UITableView *orderTableView;
+
+// 订单TableView父视图的高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTableSuperViewHeight;
+
+
+
+#pragma mark - 赠品信息
+
+// 赠品网络层
+@property (strong, nonatomic) AddGiftsService *addGiftsService;
+
+// 赠品TableView父视图高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftsTableSuperViewHeight;
+
+// 提示无赠品
+@property (weak, nonatomic) IBOutlet UILabel *noGiftPromptLabel;
+
+// 赠品TableView
+@property (weak, nonatomic) IBOutlet UITableView *giftTableView;
+
+// 添加赠品
+@property (weak, nonatomic) IBOutlet UIButton *addGiftButton;
+
+// 已选择的赠品
+@property (strong, nonatomic) NSMutableArray *selectedGifts;
+
+
+
+#pragma mark - 汇总信息
+
+// 总计高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sumInfoSuperViewHeight;
+
+// 产品总数
+@property (weak, nonatomic) IBOutlet UILabel *totalCountLabel;
+
+// 产品原价
+@property (weak, nonatomic) IBOutlet UILabel *orgPriceLabel;
+
+// 付款方式
+@property (weak, nonatomic) IBOutlet UILabel *payTypeLabel;
+
+// 促销策略提示
+@property (weak, nonatomic) IBOutlet UILabel *promotionPromptLabel;
+
+// 促销策略
+@property (weak, nonatomic) IBOutlet UILabel *promotionLabel;
+
+// 满减总计提示
+@property (weak, nonatomic) IBOutlet UILabel *mjTotalPromptLabel;
+
+// 满减总计
+@property (weak, nonatomic) IBOutlet UILabel *mjTotalLabel;
+
+// 实际付款
+@property (weak, nonatomic) IBOutlet UILabel *actPriceLabel;
+
+
+
+#pragma mark - 调整价格
+
+// 自定义价格视图
+@property (weak, nonatomic) IBOutlet UIView *customizePriceView;
+
+// 价格上限
+@property (weak, nonatomic) IBOutlet UILabel *upperLimi;
+
+// 价格下限
+@property (weak, nonatomic) IBOutlet UILabel *lowerLimi;
+
+// 自定义价格输入框
+@property (weak, nonatomic) IBOutlet UITextField *customizePriceF;
+
+// 取消自定义价格
+- (IBAction)cancelCustomizePriceOnclick:(UIButton *)sender;
+
+// 确定自定义价格
+- (IBAction)confirmCustomizePriceOnclick:(UIButton *)sender;
+
+// 当前弹出自定义价格框的indexRow
+@property (assign, nonatomic) NSInteger customizePriceIndexRow;
+
+// 遮罩视图
+@property (weak, nonatomic) IBOutlet UIView *coverView;
+
+
+
+#pragma mark - 时间模块
 
 // 显示时间选择器控件
 @property (strong, nonatomic) UIView *datePickerContainerView;
@@ -137,19 +189,40 @@
 // 选择时间事件
 - (IBAction)timeOnclick:(UITapGestureRecognizer *)sender;
 
-// 订单确认服务
-@property (strong, nonatomic) OrderConfirmService *orderConfirmService;
-
-- (IBAction)confirmOnclick:(UIButton *)sender;
-
 // 时间选择
 @property (strong, nonatomic)LMPickerView *LM;
+
+
+
+
+#pragma mark - 备注
+
+// 备注
+@property (weak, nonatomic) IBOutlet UITextView *remarkTextV;
+
+// textView的placeholder
+@property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
+
+
+
+#pragma mark - 确认
+
+// 时间、备注、确认高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *time_remark_commit_Height;
+
+// 订单确认服务
+@property (strong, nonatomic) Store_StockOutConfirmService *service;
+
+- (IBAction)confirmOnclick:(UIButton *)sender;
 
 // 确认
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end
 
+
+
+#pragma mark - 枚举
 
 // 关闭时间选择器类型
 typedef enum _CloseDatePicker {
@@ -173,8 +246,8 @@ typedef enum _CloseDatePicker {
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"yyyy-MM-dd"];
         _selectedDate = [NSDate date];
-        _orderConfirmService = [[OrderConfirmService alloc] init];
-        _orderConfirmService.delegate = self;
+        _service = [[Store_StockOutConfirmService alloc] init];
+        _service.delegate = self;
         _isOnclickDateSure = NO;
         
         _LM = [[LMPickerView alloc] init];
@@ -214,13 +287,16 @@ typedef enum _CloseDatePicker {
 
 
 - (void)updateViewConstraints {
+    
     [super updateViewConstraints];
     
-    //设置赠品TableView高度
-    _giftsTableViewHeight.constant = GiftTableViewCellHeight * _selectedGifts.count;
+    // 赠品模块高度
+    _giftsTableSuperViewHeight.constant = 30 + GiftTableViewCellHeight * _selectedGifts.count + 60;
     
-    _scrollContentViewHeight.constant = 450 + _orderTableViewHeight.constant + (_giftTableView.hidden ? 0 : _giftsTableViewHeight.constant);
+    // 总高度
+    _scrollContentViewHeight.constant = _sendViewHeight.constant + _receiveViewHeight.constant + _orderTableSuperViewHeight.constant + _giftsTableSuperViewHeight.constant + _sumInfoSuperViewHeight.constant + _time_remark_commit_Height.constant;
 }
+
 
 - (void)dealloc {
     
@@ -233,6 +309,19 @@ typedef enum _CloseDatePicker {
 
 - (void)dealWithData {
     
+    // 发货地址换行
+    CGFloat contentWidth = ScreenWidth - 12 - 61 - 8;
+    
+    CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:12 andWidth:999.9];
+    
+    CGFloat overflowHeight = [Tools getHeightOfString:_addressM.ADDRESS_INFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
+    
+    if(overflowHeight > 0) {
+        
+        _sendViewHeight.constant += overflowHeight;
+    }
+    
+    // 产品名称换行
     CGFloat tableViewHeight = 0;
     for (int i = 0; i < _promotionDetailsOfServer.count; i++) {
         
@@ -266,7 +355,7 @@ typedef enum _CloseDatePicker {
     }
     
     //设置产品TableView高度
-    _orderTableViewHeight.constant = tableViewHeight;
+    _orderTableSuperViewHeight.constant = 30 + tableViewHeight;
 }
 
 
@@ -288,7 +377,19 @@ typedef enum _CloseDatePicker {
 
 - (void)initUI {
     
-    //没有赠品
+    // 发货信息
+    _PARTY_NAME.text = _partyM.PARTY_NAME;
+    _CONTACT_PERSON.text = _addressM.CONTACT_PERSON;
+    _CONTACT_TEL.text = _addressM.CONTACT_TEL;
+    _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
+    
+    // 收货信息
+    _CONTACT_PERSON_receive.text = _getToAddressM.cONTACTPERSON;
+    _CONTACT_TEL_receive.text = _getToAddressM.cONTACTTEL;
+    _ADDRESS_INFO_receive.text = _getToAddressM.aDDRESSINFO;
+    
+    
+    // 没有赠品
     _noGiftPromptLabel.hidden = _selectedGifts.count;
     
     _giftTableView.hidden = !_selectedGifts.count;
@@ -296,7 +397,7 @@ typedef enum _CloseDatePicker {
     _customizePriceView.hidden = YES;
     _coverView.hidden = YES;
     
-    //设置添加赠品按钮是否可见
+    // 设置添加赠品按钮是否可见
     NSString *bussinessCode = _app.business.BUSINESS_CODE;
     if([bussinessCode rangeOfString:@"QH"].length > 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
         //  if([bussinessName isEqualToString:@"凯东源前海项目"] && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
@@ -351,6 +452,7 @@ typedef enum _CloseDatePicker {
         _promotionLabel.text = nil;
         _mjTotalLabel.text = nil;
         _actPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _promotionOrder.ACT_PRICE];
+        _sumInfoSuperViewHeight.constant -= 30;
     } else {
         _promotionPromptLabel.text = @"促销策略：";
         _mjTotalPromptLabel.text = @"满减总计：";
@@ -393,7 +495,7 @@ typedef enum _CloseDatePicker {
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             
             OrderGiftModel *m = _promotionOrder.GiftClasses[0];
-            [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyId andPartyAddressIdx:_orderAddressIdx andProductName:m.TYPE_NAME];
+            [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyM.IDX andPartyAddressIdx:_addressM.IDX andProductName:m.TYPE_NAME];
         } else {
             
             [Tools showAlert:self.view andTitle:@"没有可用产品类别"];
@@ -468,76 +570,63 @@ typedef enum _CloseDatePicker {
     NSString *remark = [_remarkTextV.text trim];
     NSDate *date = _isOnclickDateSure ? _selectedDate : nil;
     
-    [_orderConfirmService setConfirmData:_selectedGifts andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:date andRemark:remark andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
+    [_service setConfirmData:_selectedGifts andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:date andRemark:remark andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
     
-    NSString *promotionOrderStr = [self promotionOrderModelTransfromNSString:_promotionOrder];
+    NSDictionary *dict = [self promotionOrderModelTransfromNSString:_promotionOrder];
     
-    if([promotionOrderStr isEqualToString:@""]) {
+    NSString *dictStr = [Tools JsonStringWithDictonary:dict];
+    
+    if(dict == nil) {
         [Tools showAlert:self.view andTitle:@"订单处理异常"];
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_orderConfirmService confirm:promotionOrderStr];
+        [_service confirm:dictStr];
     }
 }
 
-- (NSString *)promotionOrderModelTransfromNSString:(PromotionOrderModel *)p {
+- (NSDictionary *)promotionOrderModelTransfromNSString:(PromotionOrderModel *)p {
     
     NSMutableArray *OrderDetails = [self promotionDetailModelTransfromNSString:p.OrderDetails];
-    NSMutableArray *GiftClasses = [self GiftClassesModelTransfromNSString:p.GiftClasses];
+    
+    NSDictionary *Result = @{@"Result" : OrderDetails};
+    
+    // 总原价
+    NSString *orgPrice = [_orgPriceLabel.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    
+    // 总付款价
+    NSString *actPrice = [_actPriceLabel.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
     
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
                               @"销售出库", @"OUTPUT_TYPE",
                               _addressM.IDX, @"ADDRESS_IDX",
+                              _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
                               _partyM.PARTY_NAME, @"ADDRESS_NAME",
                               _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
                               @"", @"OUTPUT_NO",      // 出库单号未知
                               @"", @"INPUT_NO",       // 原采购单号未知
                               _partyM.PARTY_CODE, @"PARTY_CODE",
                               _partyM.PARTY_NAME, @"PARTY_NAME",
-                              _addressM.ADDRESS_INFO, @"PARTY_INFO",
-                              p.ADD_DATE, @"OUTPUT_QTY",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              OrderDetails, @"OrderDetails"
+                              _getToAddressM.aDDRESSINFO, @"PARTY_INFO",
+                              @(p.TOTAL_QTY), @"OUTPUT_QTY",
+                              actPrice, @"OUTPUT_SUM",
+                              orgPrice, @"PRICE",
+                              @"", @"OUTPUT_DATE",    // 出库时间未知
+                              @(p.TOTAL_WEIGHT), @"OUTPUT_WEIGHT",
+                              @(p.TOTAL_VOLUME), @"OUTPUT_VOLUME",
+                              _remarkTextV.text, @"PARTY_MARK",
+                              @"", @"ADUT_MARK",      // 审核备注未知
+                              _app.user.IDX, @"ADD_USER",
+                              [Tools getCurrentDate], @"ADD_DATE",
+                              _app.user.USER_NAME, @"OPER_USER",
+                              Result, @"Info",
                               nil];
+        return dict;
+    } @catch (NSException *exception) {
         
-        NSString *s = [Tools JsonStringWithDictonary:dict];
-        return s;
-    } @catch (NSException *exception) {
-        return @"";
+        return [[NSDictionary alloc] init];
     }
-}
-
-- (NSMutableArray *)GiftClassesModelTransfromNSString:(NSMutableArray *)ms {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    @try {
-        for(int i = 0; i < ms.count; i++) {
-            OrderGiftModel *m = ms[i];
-            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  @(m.isChecked), @"isChecked",
-                                  @(m.choiceCount), @"choiceCount",
-                                  @(m.PRICE), @"PRICE",
-                                  @(m.QTY), @"QTY",
-                                  m.TYPE_NAME, @"TYPE_NAME",
-                                  nil];
-            NSString *s = [Tools JsonStringWithDictonary:dict];
-            [array addObject:s];
-        }
-    } @catch (NSException *exception) {
-        return [[NSMutableArray alloc] init];
-    }
-    
-    return array;
 }
 
 - (NSMutableArray *)promotionDetailModelTransfromNSString:(NSMutableArray *)ps {
@@ -546,19 +635,18 @@ typedef enum _CloseDatePicker {
         
         for(int i = 0; i < ps.count; i++) {
             PromotionDetailModel *p = ps[i];
-            NSDictionary *dict = nil;
-            if([p.PRODUCT_TYPE isEqualToString:@"NR"]) {
-                dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @(p.PRODUCT_TYPE), @"PRODUCT_TYPE",
-                        p.PRODUCT_IDX, @"PRODUCT_IDX",
+            ProductModel *pro = _productsOfLocal[i];
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                        p.PRODUCT_TYPE, @"PRODUCT_TYPE",
+                        @(p.PRODUCT_IDX), @"PRODUCT_IDX",
                         p.PRODUCT_NO, @"PRODUCT_NO",
-                        @(p.PRODUCT_NAME), @"PRODUCT_NAME",
-                        @(@"", @"PRODUCT_DESC"),
-                        p.ACT_PRICE, @"SUM",
+                        p.PRODUCT_NAME, @"PRODUCT_NAME",
+                        @"", @"PRODUCT_DESC",
+                        @(p.ACT_PRICE), @"SUM",
                         @(p.PO_WEIGHT), @"PRODUCT_WEIGHT",
-                        @(p.PO_QTY), @"PRODUCT_VOLUME",
-                        p.OUTPUT_QTY, @"OUTPUT_QTY",
-                        p.PO_UOM, @"OUTPUT_UOM",
+                        @(p.PO_VOLUME), @"PRODUCT_VOLUME",
+                        @(p.PO_QTY), @"OUTPUT_QTY",
+                        pro.PRODUCT_UOM, @"OUTPUT_UOM",
                         @(p.PO_WEIGHT), @"OUTPUT_WEIGHT",
                         @(p.PO_VOLUME), @"OUTPUT_VOLUME",
                         @(p.ORG_PRICE), @"ORG_PRICE",
@@ -569,43 +657,15 @@ typedef enum _CloseDatePicker {
                         @"", @"PRODUCTION_DATE",     // 生产日期未知
                         @"", @"BATCH_NUMBER",        // 批次未知
                         @"", @"PRODUCT_STATE",       // 货物状态未知
-                        _app.user.IDX, @"OPER_USER",
+                        _app.user.USER_NAME, @"OPER_USER",
                         nil];
-            } else if([p.PRODUCT_TYPE isEqualToString:@"GF"]) {
-                dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @(p.PRODUCT_TYPE), @"PRODUCT_TYPE",
-                        p.PRODUCT_IDX, @"PRODUCT_IDX",
-                        p.PRODUCT_NO, @"PRODUCT_NO",
-                        @(p.PRODUCT_NAME), @"PRODUCT_NAME",
-                        @(@"", @"PRODUCT_DESC"),
-                        p.ACT_PRICE, @"SUM",
-                        @(p.PO_WEIGHT), @"PRODUCT_WEIGHT",
-                        @(p.PO_QTY), @"PRODUCT_VOLUME",
-                        p.OUTPUT_QTY, @"OUTPUT_QTY",
-                        p.PO_UOM, @"OUTPUT_UOM",
-                        @(p.PO_WEIGHT), @"OUTPUT_WEIGHT",
-                        @(p.PO_VOLUME), @"OUTPUT_VOLUME",
-                        @(p.ORG_PRICE), @"ORG_PRICE",
-                        @(p.ACT_PRICE), @"ACT_PRICE",
-                        p.SALE_REMARK, @"SALE_REMARK",
-                        @(p.MJ_PRICE), @"MJ_PRICE",
-                        p.MJ_REMARK, @"MJ_REMARK",
-                        @"", @"PRODUCTION_DATE",     // 生产日期未知
-                        @"", @"BATCH_NUMBER",        // 批次未知
-                        @"", @"PRODUCT_STATE",       // 货物状态未知
-                        _app.user.IDX, @"OPER_USER",
-                        nil];
-            } else {
-                
-                dict = [[NSDictionary alloc] init];
-            }
             
             NSString *s = [Tools JsonStringWithDictonary:dict];
             [array addObject:s];
         }
     } @catch (NSException *exception) {
         
-        return [[NSMutableArray alloc] init];
+        return nil;
     }
     
     return array;
@@ -813,7 +873,7 @@ typedef enum _CloseDatePicker {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    //防止变量被下个控制器修改
+    // 防止变量被下个控制器修改
     NSMutableArray *giftsType = [[NSMutableArray alloc] init];
     
     for(int i = 0; i < _promotionOrder.GiftClasses.count; i++) {
@@ -828,8 +888,8 @@ typedef enum _CloseDatePicker {
         [dict setObject:promotionDetails forKey:@(0)];
         
         AddGiftsViewController *vc = [[AddGiftsViewController alloc] init];
-        vc.partyId = _partyId;
-        vc.addressIdx = _orderAddressIdx;
+        vc.partyId = _partyM.IDX;
+        vc.addressIdx = _addressM.IDX;
         vc.beginLine = [self getPromotionNumber];
         vc.giftTypes = giftsType;
         //    vc.orderDetails = _promotionOrder.OrderDetails;

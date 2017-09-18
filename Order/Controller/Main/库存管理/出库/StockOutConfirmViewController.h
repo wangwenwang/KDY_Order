@@ -10,6 +10,7 @@
 #import "PromotionOrderModel.h"
 #import "PartyModel.h"
 #import "AddressModel.h"
+#import "GetToAddressModel.h"
 
 @interface StockOutConfirmViewController : UIViewController
 
@@ -21,19 +22,19 @@
 /// 已下单的产品(PromotionDetailModel)，服务器获取
 @property (strong, nonatomic) NSMutableArray *promotionDetailsOfServer;
 
-/// 用户地址代码
-@property (copy, nonatomic) NSString *orderAddressCode;
-
 /// 客户地址
 @property (strong, nonatomic) AddressModel *addressM;
-
-/// 支付方式
-@property (copy, nonatomic) NSString *orderPayType;
 
 /// 客户信息
 @property (strong, nonatomic) PartyModel *partyM;
 
+/// 支付方式
+@property (copy, nonatomic) NSString *orderPayType;
+
 /// 生产日期
 @property (copy, nonatomic) NSString *PRODUCTION_DATE;
+
+// 收货地址
+@property (strong, nonatomic) GetToAddressModel *getToAddressM;
 
 @end

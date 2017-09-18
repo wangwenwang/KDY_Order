@@ -31,27 +31,22 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="HNT-fB-ZsN" firstAttribute="centerY" secondItem="pOe-dU-GuC" secondAttribute="centerY" id="2tg-uU-HFz"/>
-                                            <constraint firstAttribute="width" constant="50" id="Pak-c4-tGI"/>
+                                            <constraint firstAttribute="width" constant="62" id="Pak-c4-tGI"/>
                                             <constraint firstItem="HNT-fB-ZsN" firstAttribute="centerX" secondItem="pOe-dU-GuC" secondAttribute="centerX" id="TL4-q6-q7k"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjn-mb-tQ4" userLabel="我是辅助图片居中的View">
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="6" id="HsN-o3-7D2"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZG-3b-JFT" userLabel="Content View">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwx-C8-7GS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwx-C8-7GS">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="swd-Hy-1My"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="咖啡fjsdkljfklsdjf;ldksjfkds;fjsdkfsdfsdfdsfsdafasdfsadl;jfsdfsdfsdffkdsjfkdsl;fjjsdkljfsdl;kfjsdlk;fjsdlkfjds;lfjs;ldfjsdk;lf" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-Vt-gto">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-Vt-gto">
+                                                <string key="text">咖啡fjsdkljfklsdjf;ldksjfkds;fjsdkfsdfsdfdsfsdafasdfsadl;jfsdfsdfsdffkdsjfkdsl;fjjsdkljfsdl;kfjsdlk;fjsdlkfjds;lfjs;ldfjsdk;lffjdkfjsdlk;fjkfjskldjfds;f</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -61,7 +56,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥54" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="D36-Yg-zLL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="wS7-Lz-NfD">
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -71,7 +66,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="wS7-Lz-NfD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥54" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="D36-Yg-zLL">
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -140,17 +135,14 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="1na-tF-S3W"/>
                                     <constraint firstAttribute="bottom" secondItem="FZG-3b-JFT" secondAttribute="bottom" id="4a6-lZ-X7T"/>
+                                    <constraint firstItem="FZG-3b-JFT" firstAttribute="leading" secondItem="pOe-dU-GuC" secondAttribute="trailing" id="7eG-n6-1cY"/>
                                     <constraint firstItem="FZG-3b-JFT" firstAttribute="top" secondItem="i1b-10-Ctl" secondAttribute="top" id="Gig-eC-A1s"/>
                                     <constraint firstAttribute="trailing" secondItem="COC-ih-C0b" secondAttribute="trailing" id="KYJ-A2-JO8"/>
-                                    <constraint firstItem="pOe-dU-GuC" firstAttribute="leading" secondItem="i1b-10-Ctl" secondAttribute="leading" constant="6" id="MX0-qV-bud"/>
-                                    <constraint firstItem="pjn-mb-tQ4" firstAttribute="top" secondItem="i1b-10-Ctl" secondAttribute="top" id="TTs-U1-fku"/>
+                                    <constraint firstItem="pOe-dU-GuC" firstAttribute="leading" secondItem="i1b-10-Ctl" secondAttribute="leading" id="MX0-qV-bud"/>
                                     <constraint firstItem="COC-ih-C0b" firstAttribute="top" secondItem="i1b-10-Ctl" secondAttribute="top" id="dKY-rA-TM7"/>
-                                    <constraint firstAttribute="bottom" secondItem="pjn-mb-tQ4" secondAttribute="bottom" id="ex7-8s-s8F"/>
-                                    <constraint firstItem="FZG-3b-JFT" firstAttribute="leading" secondItem="pjn-mb-tQ4" secondAttribute="trailing" id="gwj-AW-Gu9"/>
                                     <constraint firstAttribute="bottom" secondItem="COC-ih-C0b" secondAttribute="bottom" id="i9y-OF-8aM"/>
                                     <constraint firstItem="pOe-dU-GuC" firstAttribute="top" secondItem="i1b-10-Ctl" secondAttribute="top" id="mfR-ay-U5Q"/>
                                     <constraint firstItem="COC-ih-C0b" firstAttribute="leading" secondItem="FZG-3b-JFT" secondAttribute="trailing" id="oDp-gd-udR"/>
-                                    <constraint firstItem="pjn-mb-tQ4" firstAttribute="leading" secondItem="pOe-dU-GuC" secondAttribute="trailing" id="qcd-3z-baV"/>
                                     <constraint firstAttribute="bottom" secondItem="pOe-dU-GuC" secondAttribute="bottom" id="wN9-NU-Oh2"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

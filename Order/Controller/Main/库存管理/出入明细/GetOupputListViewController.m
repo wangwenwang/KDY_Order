@@ -14,6 +14,7 @@
 #import "UITableView+NoDataPrompt.h"
 #import "Tools.h"
 #import "GetOupputInfoViewController.h"
+#import <MJRefresh.h>
 
 @interface GetOupputListViewController ()<Store_GetOupputListServiceDelegate>
 
@@ -58,6 +59,34 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_service GetOupputList:1 andstrPageCount:20];
+    
+    // 下拉刷新
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _tableView.mj_header = header;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    if(_refreshList) {
+        
+        [_tableView.mj_header beginRefreshingWithCompletionBlock:nil];
+    }
+}
+
+
+- (void)loadMoreDataDown {
+    
+    if([Tools isConnectionAvailable]) {
+        
+        [_service GetOupputList:1 andstrPageCount:20];
+    } else {
+        
+        [Tools showAlert:self.view andTitle:@"网络连接不可用"];
+    }
 }
 
 
@@ -124,6 +153,7 @@
 - (void)successOfGetOupputList:(GetOupputListModel *)getOupputListM {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
     
     _getOupputListM = getOupputListM;
     
