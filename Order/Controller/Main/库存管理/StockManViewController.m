@@ -88,6 +88,8 @@
 
 @end
 
+//
+
 #define kCellHeight 80
 
 #define kCellName @"Store_GetOutProductListTableViewCell"
