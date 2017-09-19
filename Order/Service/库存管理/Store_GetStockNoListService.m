@@ -18,7 +18,7 @@
                                  @"strLicense" : @"",
                                  };
     
-    NSLog(@"请求产品参数：%@", parameters);
+    NSLog(@"获取库存批次：%@", parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

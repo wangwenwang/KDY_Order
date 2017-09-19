@@ -46,10 +46,22 @@
     
     if([getOupputM.oUTPUTSTATE isEqualToString:@"OPEN"]) {
         
-        _promptLabel.hidden = YES;
+        if([getOupputM.oUTPUTWORKFLOW isEqualToString:@"新建"]) {
+            
+            _promptLabel.text = @"未确认";
+            _promptLabel.textColor = [UIColor redColor];
+        } else {
+            
+            _promptLabel.text = @"已确认";
+            _promptLabel.textColor = RGB(64, 147, 45);
+        }
     } else if([getOupputM.oUTPUTSTATE isEqualToString:@"CANCEL"]) {
         
-        _promptLabel.hidden = NO;
+        _promptLabel.textColor = RGB(121, 121, 124);
+        _promptLabel.text = @"此出库单已取消";
+    } else {
+        
+        _promptLabel.text = getOupputM.oUTPUTSTATE;
     }
 }
 

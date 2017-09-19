@@ -21,14 +21,14 @@
                                  @"strLicense" : @"",
                                  };
     
-    NSLog(@"请求产品参数：%@", parameters);
+    NSLog(@"获取库存列表：%@", parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:API_GetPartyStockList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求库存产品列表数据成功---%@", responseObject);
+        NSLog(@"请求库存列表数据成功---%@", responseObject);
         int _type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
         
@@ -53,7 +53,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"请求产品类型失败:%@", error);
+        NSLog(@"请求库存列表失败:%@", error);
         [self failureOfGetPartyStockList:nil];
     }];
 }

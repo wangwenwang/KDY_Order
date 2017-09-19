@@ -47,10 +47,21 @@
     
     if([inputM.iNPUTSTATE isEqualToString:@"OPEN"]) {
         
-        _promptLabel.hidden = YES;
+        if([inputM.iNPUTWORKFLOW isEqualToString:@"已审核"]) {
+            
+            _promptLabel.textColor = RGB(64, 147, 45);
+        } else {
+            
+            _promptLabel.textColor = [UIColor redColor];
+        }
+        _promptLabel.text = inputM.iNPUTWORKFLOW;
     } else if([inputM.iNPUTSTATE isEqualToString:@"CANCEL"]) {
         
-        _promptLabel.hidden = NO;
+        _promptLabel.textColor = RGB(121, 121, 124);
+        _promptLabel.text = @"此入库单已取消";
+    } else {
+        
+        _promptLabel.text = inputM.iNPUTSTATE;
     }
 }
 

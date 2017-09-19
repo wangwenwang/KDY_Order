@@ -11,13 +11,10 @@
 @protocol InPutWorkflowServiceDelegate <NSObject>
 
 @optional
-- (void)successOfGetInputInfo:(NSString *)inputInfoListM;
+- (void)successOfInPutWorkflow:(NSString *)msg;
 
 @optional
-- (void)successOfGetInputInfo_NoData;
-
-@optional
-- (void)failureOfGetInputInfo:(NSString *)msg;
+- (void)failureOfInPutWorkflow:(NSString *)msg;
 
 @end
 

@@ -246,7 +246,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    if(_didselectItemIndex == 1006) {
+    if(_didselectItemIndex == 1005) {
         
         StockOutViewController *vc = [[StockOutViewController alloc] init];
         vc.payTypes = _payTypes;
@@ -324,8 +324,6 @@
     
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
-    
-//    [_selectGoodsService getProductsData:_partyM.IDX andOrderAddressIdx:_addressM.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
     
     [_store_GetOutProductListService GetOutProductList:@"" andstrProductClass:@"" andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:999];
 }

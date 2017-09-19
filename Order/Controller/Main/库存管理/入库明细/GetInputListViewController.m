@@ -14,6 +14,7 @@
 #import "Tools.h"
 #import "GetInputListTableViewCell.h"
 #import "GetInputInfoViewController.h"
+#import <MJRefresh.h>
 
 @interface GetInputListViewController ()<GetInputListServiceDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -47,14 +48,48 @@
     return self;
 }
 
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
+    self.title = @"入库明细";
+    
     [self registerCell];
     
-    [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:999];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+    
+    // 下拉刷新
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _tableView.mj_header = header;
 }
+
+
+- (void)loadMoreDataDown {
+    
+    if([Tools isConnectionAvailable]) {
+        
+        [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+    } else {
+        
+        [Tools showAlert:self.view andTitle:@"网络连接不可用"];
+    }
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    if(_refreshList) {
+        
+        [_tableView.mj_header beginRefreshingWithCompletionBlock:nil];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     
@@ -101,6 +136,8 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     InputModel *m = _inputListM.inputModel[indexPath.row];
     

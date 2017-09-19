@@ -9,6 +9,8 @@
 #import "Stock_GetInputListService.h"
 #import <AFNetworking.h>
 
+#define kAPI_NAME @"入库列表"
+
 @implementation Stock_GetInputListService
 
 - (void)GetInputList:(nullable NSString *)ADD_USER andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount {
@@ -20,14 +22,14 @@
                                  @"strLicense" : @"",
                                  };
     
-    NSLog(@"请求产品参数：%@", parameters);
+    NSLog(@"请求%@参数：%@", kAPI_NAME, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:API_GetInputList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"请求入库列表成功---%@", responseObject);
+        NSLog(@"请求%@成功---%@", kAPI_NAME, responseObject);
         int _type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
         
@@ -51,7 +53,7 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"请求入库列表失败:%@", error);
+        NSLog(@"请求%@失败:%@", kAPI_NAME, error);
         [self failureOfGetInputList:nil];
     }];
 }

@@ -30,23 +30,40 @@
         int _type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
         
-//        if(_type == 1) {
-//            
-//            InputInfoListModel *inputInfoListM = [[InputInfoListModel alloc] initWithDictionary:responseObject[@"result"]];
-//            
-//            [self successOfGetInputInfo:inputInfoListM];
-//        } else if(_type == -2) {
-//            
-//            [self successOfGetInputInfo_NoData];
-//        } else {
-//            
-//            [self failureOfGetInputInfo:msg];
-//        }
+        if(_type == 1) {
+            
+            [self successOfInPutWorkflow:msg];
+        } else {
+            
+            [self failureOfInPutWorkflow:msg];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"请求入库确认失败:%@", error);
-//        [self failureOfGetInputInfo:nil];
+        [self failureOfInPutWorkflow:@"请求失败"];
     }];
+}
+
+
+
+
+// 成功
+- (void)successOfInPutWorkflow:(NSString *)msg {
+    
+    if([_delegate respondsToSelector:@selector(successOfInPutWorkflow:)]) {
+        
+        [_delegate successOfInPutWorkflow:msg];
+    }
+}
+
+
+// 失败
+- (void)failureOfInPutWorkflow:(NSString *)msg {
+    
+    if([_delegate respondsToSelector:@selector(failureOfInPutWorkflow:)]) {
+        
+        [_delegate failureOfInPutWorkflow:msg];
+    }
 }
 
 @end

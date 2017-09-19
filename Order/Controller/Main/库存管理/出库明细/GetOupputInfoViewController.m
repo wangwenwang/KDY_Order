@@ -52,6 +52,9 @@
 // 顶部高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
 
+// 底部高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+
 // 全局变量
 @property (strong, nonatomic) AppDelegate *app;
 
@@ -234,19 +237,35 @@
     CGFloat tableViewHeight = 0;
     for (GetOupputItemModel *m in _getOupputDetailM.getOupputItemModel) {
         
-        m.cellHeight = kCellHeight;
+        // 单行高度
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:ScreenWidth];
+        
+        CGFloat PRODUCT_NAME_height = [Tools getHeightOfString:m.pRODUCTNAME fontSize:13 andWidth:(ScreenWidth - 4 - 4 - 6 - 60 - 2 - 60 - 1)];
+        
+        CGFloat oneCellHeight = 0;
+        if(PRODUCT_NAME_height > oneLine) {
+            
+            oneCellHeight = kCellHeight + PRODUCT_NAME_height - oneLine;
+        } else {
+            
+            oneCellHeight = kCellHeight;
+        }
+        
+        m.cellHeight = oneCellHeight;
         
         tableViewHeight += m.cellHeight;
     }
     
     [_tableView reloadData];
     
-    _scrollContentViewHeight.constant = _headerViewHeight.constant + 46 + tableViewHeight;
-    
-    if([_getOupputDetailM.getOupputInfoModel.oUTPUTSTATE isEqualToString:@"CANCEL"]) {
+    // 已取消 或 不是新建，不显示"确认出库"、"取消出库" 按钮
+    if([_getOupputDetailM.getOupputInfoModel.oUTPUTSTATE isEqualToString:@"CANCEL"] || ![_getOupputDetailM.getOupputInfoModel.oUTPUTWORKFLOW isEqualToString:@"新建"]) {
         
         _bottomView.hidden = YES;
+        _bottomViewHeight.constant = 0;
     }
+    
+    _scrollContentViewHeight.constant = _headerViewHeight.constant + 30 + tableViewHeight + _bottomViewHeight.constant;
 }
 
 

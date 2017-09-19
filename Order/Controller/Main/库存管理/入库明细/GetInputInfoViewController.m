@@ -13,8 +13,9 @@
 #import "Tools.h"
 #import "AppDelegate.h"
 #import "GetInputListViewController.h"
+#import "Stock_InPutWorkflowService.h"
 
-@interface GetInputInfoViewController ()<GetInputInfoServiceDelegate>
+@interface GetInputInfoViewController ()<GetInputInfoServiceDelegate, InPutWorkflowServiceDelegate>
 
 // 入库单号
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
@@ -43,6 +44,9 @@
 // 网络层
 @property (strong, nonatomic) Stock_GetInputInfoService *service;
 
+// 确认入库
+@property (strong, nonatomic) Stock_InPutWorkflowService *confirm_service;
+
 // 出库信息
 @property (strong, nonatomic) InputInfoListModel *inputInfoListM;
 
@@ -51,6 +55,9 @@
 
 // 顶部高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerViewHeight;
+
+// 底部高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 
 // 全局变量
 @property (strong, nonatomic) AppDelegate *app;
@@ -81,6 +88,9 @@
         _service.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        _confirm_service = [[Stock_InPutWorkflowService alloc] init];
+        _confirm_service.delegate = self;
     }
     return self;
 }
@@ -112,7 +122,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-//    [_service confirm:_intputIdx andADUT_USER:_app.user.USER_NAME];
+    [_confirm_service InPutWorkflow:_intputIdx andADUT_USER:_app.user.USER_NAME];
 }
 
 
@@ -120,7 +130,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-//    [_service cancel:_intputIdx andOPER_USER:_app.user.IDX];
+    //    [_service cancel:_intputIdx andOPER_USER:_app.user.IDX];
 }
 
 
@@ -221,7 +231,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     _inputInfoListM = inputInfoListM;
-
+    
     _OUTPUT_NO.text = _inputInfoListM.inputInfoModel.iNPUTNO;
     _ADD_DATE.text = _inputInfoListM.inputInfoModel.aDDDATE;
     _ADDRESS_INFO.text = _inputInfoListM.inputInfoModel.aDDRESSINFO;
@@ -233,64 +243,54 @@
     CGFloat tableViewHeight = 0;
     for (InputItemModel *m in _inputInfoListM.inputItemModel) {
         
-        m.cellHeight = kCellHeight;
+        // 单行高度
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:ScreenWidth];
+        
+        CGFloat PRODUCT_NAME_height = [Tools getHeightOfString:m.pRODUCTNAME fontSize:13 andWidth:(ScreenWidth - 4 - 4 - 6 - 60 - 2 - 60 - 1)];
+        
+        CGFloat oneCellHeight = 0;
+        if(PRODUCT_NAME_height > oneLine) {
+            
+            oneCellHeight = kCellHeight + PRODUCT_NAME_height - oneLine;
+        } else {
+            
+            oneCellHeight = kCellHeight;
+        }
+        
+        m.cellHeight = oneCellHeight;
         
         tableViewHeight += m.cellHeight;
     }
-
+    
     [_tableView reloadData];
-
-    _scrollContentViewHeight.constant = _headerViewHeight.constant + 46 + tableViewHeight;
-
-    if([_inputInfoListM.inputInfoModel.iNPUTSTATE isEqualToString:@"CANCEL"]) {
+    
+    // 已取消 或 已审核，不显示"确认入库"、"取消入库" 按钮
+    if([_inputInfoListM.inputInfoModel.iNPUTSTATE isEqualToString:@"CANCEL"] || [_inputInfoListM.inputInfoModel.iNPUTWORKFLOW isEqualToString:@"已审核"]) {
         
         _bottomView.hidden = YES;
+        _bottomViewHeight.constant = 0;
     }
+    
+    _scrollContentViewHeight.constant = _headerViewHeight.constant + 30 + tableViewHeight + _bottomViewHeight.constant;
 }
 
-//
-//
-//- (void)failureOfGetOupputInfo:(NSString *)msg {
-//    
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    
-//    [Tools showAlert:self.view andTitle:msg];
-//}
-//
-//
-//- (void)successOfOutPutWorkflow:(NSString *)msg {
-//    
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    
-//    [Tools showAlert:self.view andTitle:msg];
-//}
-//
-//
-//- (void)failureOfOutPutWorkflow:(NSString *)msg {
-//    
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    
-//    [Tools showAlert:self.view andTitle:msg];
-//}
-//
-//
-//- (void)successOfOutPutCancel:(NSString *)msg {
-//    
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    
-//    [self pop];
-//    
-//    [Tools showAlert:self.view andTitle:msg andTime:2.5];
-//}
-//
-//
-//- (void)failureOfOutPutCancel:(NSString *)msg {
-//    
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    
-//    [self pop];
-//    
-//    [Tools showAlert:self.view andTitle:msg andTime:2.5];
-//}
+
+#pragma mark - InPutWorkflowServiceDelegate
+
+- (void)successOfInPutWorkflow:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [self pop];
+    
+    [Tools showAlert:self.view andTitle:msg andTime:2.5];
+}
+
+
+- (void)failureOfInPutWorkflow:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:msg];
+}
 
 @end
