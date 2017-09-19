@@ -296,13 +296,13 @@
     _app.business.BUSINESS_CODE = dict[@"BUSINESS_CODE"];
     _app.business.BUSINESS_NAME = dict[@"BUSINESS_NAME"];
     
-    if([_app.business.BUSINESS_IDX intValue] == 48 || [_app.business.BUSINESS_CODE rangeOfString:@"QH"].length > 0 || [_app.business.BUSINESS_NAME rangeOfString:@"前海"].length > 0) {
+    if([_app.business.BUSINESS_CODE rangeOfString:@"QH"].length > 0) {
         
         [[NSUserDefaults standardUserDefaults] setValue:@"QH" forKey:kWelcomeImageName];
-    } else if([_app.business.BUSINESS_IDX intValue] == 7 || [_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0 || [_app.business.BUSINESS_NAME rangeOfString:@"怡宝"].length > 0) {
+    } else if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0 ) {
         
         [[NSUserDefaults standardUserDefaults] setValue:@"YIB" forKey:kWelcomeImageName];
-    } else if([_app.business.BUSINESS_IDX intValue] == 40 || [_app.business.BUSINESS_CODE rangeOfString:@"DK"].length > 0 || [_app.business.BUSINESS_NAME rangeOfString:@"鼎葵"].length > 0) {
+    } else if([_app.business.BUSINESS_CODE rangeOfString:@"DK"].length > 0) {
         
         [[NSUserDefaults standardUserDefaults] setValue:@"DK" forKey:kWelcomeImageName];
     }

@@ -29,10 +29,10 @@
 }
 
 
-- (void)GetOupputList:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount {
+- (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount {
     
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                _app.user.IDX, @"ADD_USER",
+                                addressIDX, @"ADD_USER",
                                 @(strPage), @"strPage",
                                 @(strPageCount), @"strPageCount",
                                 @"", @"strLicense",

@@ -113,10 +113,14 @@
             
             NSArray *arrResult = responseObject[@"result"];
             if([arrResult isKindOfClass:[NSArray class]]) {
+                
                 if(arrResult.count < 1) {
+                    
                     [self failureOfGetProductTypeData:@"获取产品类型失败，数据为空！"];
                 } else {
+                    
                     for(int i = 0; i < arrResult.count; i++) {
+                        
                         ProductTbModel *m = [[ProductTbModel alloc] init];
                         [m setDict:arrResult[i]];
                         
@@ -125,18 +129,19 @@
                         int k = 0;
                         int j;
                         for(j = 0; j < productTypes.count; j++) {
+                            
                             ProductTbModel *mOfArr = productTypes[j];
-                            if([[m.PRODUCT_TYPE trim] isEqualToString:@""] || [m.PRODUCT_TYPE isEqualToString:mOfArr.PRODUCT_TYPE]) {
+                            if(([[m.PRODUCT_TYPE trim] isEqualToString:@""] && [[m.PRODUCT_CLASS trim] isEqualToString:@""]) || ([m.PRODUCT_TYPE isEqualToString:mOfArr.PRODUCT_TYPE] && [m.PRODUCT_CLASS isEqualToString:mOfArr.PRODUCT_CLASS])) {
+                                
                                 break;
-                            }else {
+                            } else {
+                                
                                 k++;
                             }
                         }
                         if(k == productTypes.count) {
                             [productTypes addObject:m];
                         }
-                        
-                        
                     }
                     
                     if([_delegate respondsToSelector:@selector(successOfGetProductTypeData:)]) {

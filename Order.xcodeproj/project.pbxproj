@@ -37,8 +37,6 @@
 		301AD3B71F6A292600CD13D0 /* StockNoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AD3B41F6A292600CD13D0 /* StockNoListModel.m */; };
 		301AD3BB1F6A2D1500CD13D0 /* StockNoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AD3B91F6A2D1500CD13D0 /* StockNoListTableViewCell.m */; };
 		301AD3BC1F6A2D1500CD13D0 /* StockNoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 301AD3BA1F6A2D1500CD13D0 /* StockNoListTableViewCell.xib */; };
-		301AFA771F4AD6BC00E4FDFF /* GetToAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AFA751F4AD6BC00E4FDFF /* GetToAddressListViewController.m */; };
-		301AFA781F4AD6BC00E4FDFF /* GetToAddressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 301AFA761F4AD6BC00E4FDFF /* GetToAddressListViewController.xib */; };
 		301AFA7C1F4AD70F00E4FDFF /* Store_GetToAddressListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AFA7B1F4AD70F00E4FDFF /* Store_GetToAddressListService.m */; };
 		301AFA801F4ADC4500E4FDFF /* GetToAddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AFA7F1F4ADC4500E4FDFF /* GetToAddressListModel.m */; };
 		301AFA831F4ADCBC00E4FDFF /* GetToAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AFA821F4ADCBC00E4FDFF /* GetToAddressModel.m */; };
@@ -97,6 +95,16 @@
 		302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05821DB0C9E700972490 /* ProductPolicyModel.m */; };
 		302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05851DB0CC7200972490 /* PolicyItemModel.m */; };
 		302A94251F4579450020E1C1 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302A94241F4579450020E1C1 /* MainCollection.plist */; };
+		3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */; };
+		3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */; };
+		3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566951F70CD2B009E6EFB /* StockOutConfirmViewController.m */; };
+		3035669D1F70CD2B009E6EFB /* StockOutConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566961F70CD2B009E6EFB /* StockOutConfirmViewController.xib */; };
+		3035669E1F70CD2B009E6EFB /* StockOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566981F70CD2B009E6EFB /* StockOutViewController.m */; };
+		3035669F1F70CD2B009E6EFB /* StockOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566991F70CD2B009E6EFB /* StockOutViewController.xib */; };
+		303566A71F70CD44009E6EFB /* GetOupputInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566A21F70CD44009E6EFB /* GetOupputInfoViewController.m */; };
+		303566A81F70CD44009E6EFB /* GetOupputInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566A31F70CD44009E6EFB /* GetOupputInfoViewController.xib */; };
+		303566A91F70CD44009E6EFB /* GetOupputListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566A51F70CD44009E6EFB /* GetOupputListViewController.m */; };
+		303566AA1F70CD44009E6EFB /* GetOupputListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566A61F70CD44009E6EFB /* GetOupputListViewController.xib */; };
 		3047D4521DAB889A00B48525 /* TransportInformationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3047D4511DAB889A00B48525 /* TransportInformationService.m */; };
 		3047D4551DAB964200B48525 /* OrderTmsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3047D4541DAB964200B48525 /* OrderTmsModel.m */; };
 		3047D4591DAC763900B48525 /* TransportInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3047D4571DAC763900B48525 /* TransportInformationTableViewCell.m */; };
@@ -161,8 +169,6 @@
 		3088D31B1F4C1A2D006031D9 /* GetOupputInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3088D3161F4C1A2D006031D9 /* GetOupputInfoTableViewCell.xib */; };
 		3088D31C1F4C1A2D006031D9 /* GetOupputListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3088D3181F4C1A2D006031D9 /* GetOupputListTableViewCell.m */; };
 		3088D31D1F4C1A2D006031D9 /* GetOupputListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3088D3191F4C1A2D006031D9 /* GetOupputListTableViewCell.xib */; };
-		30942A781F5005A9000095F3 /* StockOutConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */; };
-		30942A791F5005A9000095F3 /* StockOutConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */; };
 		30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */; };
 		30942A7E1F5006A4000095F3 /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */; };
 		309E10D11F6D1510008E1F49 /* GetInputListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 309E10CF1F6D1510008E1F49 /* GetInputListTableViewCell.m */; };
@@ -234,12 +240,6 @@
 		30BB2DFD1F468281002E51E7 /* StockProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2DFC1F468281002E51E7 /* StockProductModel.m */; };
 		30BB2E021F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2E001F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.m */; };
 		30BB2E031F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BB2E011F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.xib */; };
-		30BB2E261F46DF02002E51E7 /* GetOupputInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2E211F46DF02002E51E7 /* GetOupputInfoViewController.m */; };
-		30BB2E271F46DF02002E51E7 /* GetOupputInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BB2E221F46DF02002E51E7 /* GetOupputInfoViewController.xib */; };
-		30BB2E281F46DF02002E51E7 /* GetOupputListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2E241F46DF02002E51E7 /* GetOupputListViewController.m */; };
-		30BB2E291F46DF02002E51E7 /* GetOupputListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BB2E251F46DF02002E51E7 /* GetOupputListViewController.xib */; };
-		30BB2E2E1F46DFDF002E51E7 /* StockOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2E2C1F46DFDF002E51E7 /* StockOutViewController.m */; };
-		30BB2E2F1F46DFDF002E51E7 /* StockOutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BB2E2D1F46DFDF002E51E7 /* StockOutViewController.xib */; };
 		30BBF1361F17612400496518 /* Add_AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BBF1311F17612400496518 /* Add_AddressViewController.m */; };
 		30BBF1371F17612400496518 /* Add_AddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BBF1321F17612400496518 /* Add_AddressViewController.xib */; };
 		30BBF1381F17612400496518 /* AddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BBF1341F17612400496518 /* AddressListViewController.m */; };
@@ -417,9 +417,6 @@
 		301AD3B81F6A2D1500CD13D0 /* StockNoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockNoListTableViewCell.h; sourceTree = "<group>"; };
 		301AD3B91F6A2D1500CD13D0 /* StockNoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockNoListTableViewCell.m; sourceTree = "<group>"; };
 		301AD3BA1F6A2D1500CD13D0 /* StockNoListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockNoListTableViewCell.xib; sourceTree = "<group>"; };
-		301AFA741F4AD6BC00E4FDFF /* GetToAddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListViewController.h; sourceTree = "<group>"; };
-		301AFA751F4AD6BC00E4FDFF /* GetToAddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetToAddressListViewController.m; sourceTree = "<group>"; };
-		301AFA761F4AD6BC00E4FDFF /* GetToAddressListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetToAddressListViewController.xib; sourceTree = "<group>"; };
 		301AFA7A1F4AD70F00E4FDFF /* Store_GetToAddressListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetToAddressListService.h; sourceTree = "<group>"; };
 		301AFA7B1F4AD70F00E4FDFF /* Store_GetToAddressListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store_GetToAddressListService.m; sourceTree = "<group>"; };
 		301AFA7E1F4ADC4500E4FDFF /* GetToAddressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListModel.h; sourceTree = "<group>"; };
@@ -526,6 +523,21 @@
 		302A05841DB0CC7200972490 /* PolicyItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyItemModel.h; sourceTree = "<group>"; };
 		302A05851DB0CC7200972490 /* PolicyItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyItemModel.m; sourceTree = "<group>"; };
 		302A94241F4579450020E1C1 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
+		303566911F70CD2B009E6EFB /* GetToAddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListViewController.h; sourceTree = "<group>"; };
+		303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetToAddressListViewController.m; sourceTree = "<group>"; };
+		303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetToAddressListViewController.xib; sourceTree = "<group>"; };
+		303566941F70CD2B009E6EFB /* StockOutConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockOutConfirmViewController.h; sourceTree = "<group>"; };
+		303566951F70CD2B009E6EFB /* StockOutConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockOutConfirmViewController.m; sourceTree = "<group>"; };
+		303566961F70CD2B009E6EFB /* StockOutConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockOutConfirmViewController.xib; sourceTree = "<group>"; };
+		303566971F70CD2B009E6EFB /* StockOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockOutViewController.h; sourceTree = "<group>"; };
+		303566981F70CD2B009E6EFB /* StockOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockOutViewController.m; sourceTree = "<group>"; };
+		303566991F70CD2B009E6EFB /* StockOutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockOutViewController.xib; sourceTree = "<group>"; };
+		303566A11F70CD44009E6EFB /* GetOupputInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputInfoViewController.h; sourceTree = "<group>"; };
+		303566A21F70CD44009E6EFB /* GetOupputInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputInfoViewController.m; sourceTree = "<group>"; };
+		303566A31F70CD44009E6EFB /* GetOupputInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputInfoViewController.xib; sourceTree = "<group>"; };
+		303566A41F70CD44009E6EFB /* GetOupputListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputListViewController.h; sourceTree = "<group>"; };
+		303566A51F70CD44009E6EFB /* GetOupputListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputListViewController.m; sourceTree = "<group>"; };
+		303566A61F70CD44009E6EFB /* GetOupputListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputListViewController.xib; sourceTree = "<group>"; };
 		3047D4501DAB889A00B48525 /* TransportInformationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportInformationService.h; sourceTree = "<group>"; };
 		3047D4511DAB889A00B48525 /* TransportInformationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportInformationService.m; sourceTree = "<group>"; };
 		3047D4531DAB964200B48525 /* OrderTmsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTmsModel.h; sourceTree = "<group>"; };
@@ -635,9 +647,6 @@
 		3088D3171F4C1A2D006031D9 /* GetOupputListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputListTableViewCell.h; sourceTree = "<group>"; };
 		3088D3181F4C1A2D006031D9 /* GetOupputListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputListTableViewCell.m; sourceTree = "<group>"; };
 		3088D3191F4C1A2D006031D9 /* GetOupputListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputListTableViewCell.xib; sourceTree = "<group>"; };
-		30942A751F5005A9000095F3 /* StockOutConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockOutConfirmViewController.h; sourceTree = "<group>"; };
-		30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockOutConfirmViewController.m; sourceTree = "<group>"; };
-		30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockOutConfirmViewController.xib; sourceTree = "<group>"; };
 		30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmOrderViewController.xib; sourceTree = "<group>"; };
 		30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
 		30942A7C1F5006A4000095F3 /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
@@ -756,15 +765,6 @@
 		30BB2DFF1F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetOutProductListTableViewCell.h; sourceTree = "<group>"; };
 		30BB2E001F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store_GetOutProductListTableViewCell.m; sourceTree = "<group>"; };
 		30BB2E011F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Store_GetOutProductListTableViewCell.xib; sourceTree = "<group>"; };
-		30BB2E201F46DF02002E51E7 /* GetOupputInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputInfoViewController.h; sourceTree = "<group>"; };
-		30BB2E211F46DF02002E51E7 /* GetOupputInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputInfoViewController.m; sourceTree = "<group>"; };
-		30BB2E221F46DF02002E51E7 /* GetOupputInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputInfoViewController.xib; sourceTree = "<group>"; };
-		30BB2E231F46DF02002E51E7 /* GetOupputListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOupputListViewController.h; sourceTree = "<group>"; };
-		30BB2E241F46DF02002E51E7 /* GetOupputListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOupputListViewController.m; sourceTree = "<group>"; };
-		30BB2E251F46DF02002E51E7 /* GetOupputListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetOupputListViewController.xib; sourceTree = "<group>"; };
-		30BB2E2B1F46DFDF002E51E7 /* StockOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockOutViewController.h; sourceTree = "<group>"; };
-		30BB2E2C1F46DFDF002E51E7 /* StockOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockOutViewController.m; sourceTree = "<group>"; };
-		30BB2E2D1F46DFDF002E51E7 /* StockOutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockOutViewController.xib; sourceTree = "<group>"; };
 		30BBF1301F17612400496518 /* Add_AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Add_AddressViewController.h; sourceTree = "<group>"; };
 		30BBF1311F17612400496518 /* Add_AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Add_AddressViewController.m; sourceTree = "<group>"; };
 		30BBF1321F17612400496518 /* Add_AddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Add_AddressViewController.xib; sourceTree = "<group>"; };
@@ -1233,6 +1233,42 @@
 			path = "SCAutoMove-master";
 			sourceTree = "<group>";
 		};
+		303566901F70CD2B009E6EFB /* 销售出库 */ = {
+			isa = PBXGroup;
+			children = (
+				303566911F70CD2B009E6EFB /* GetToAddressListViewController.h */,
+				303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */,
+				303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */,
+				303566941F70CD2B009E6EFB /* StockOutConfirmViewController.h */,
+				303566951F70CD2B009E6EFB /* StockOutConfirmViewController.m */,
+				303566961F70CD2B009E6EFB /* StockOutConfirmViewController.xib */,
+				303566971F70CD2B009E6EFB /* StockOutViewController.h */,
+				303566981F70CD2B009E6EFB /* StockOutViewController.m */,
+				303566991F70CD2B009E6EFB /* StockOutViewController.xib */,
+			);
+			path = "销售出库";
+			sourceTree = "<group>";
+		};
+		303566A01F70CD44009E6EFB /* 入库明细 */ = {
+			isa = PBXGroup;
+			children = (
+				303566A11F70CD44009E6EFB /* GetOupputInfoViewController.h */,
+				303566A21F70CD44009E6EFB /* GetOupputInfoViewController.m */,
+				303566A31F70CD44009E6EFB /* GetOupputInfoViewController.xib */,
+				303566A41F70CD44009E6EFB /* GetOupputListViewController.h */,
+				303566A51F70CD44009E6EFB /* GetOupputListViewController.m */,
+				303566A61F70CD44009E6EFB /* GetOupputListViewController.xib */,
+			);
+			path = "入库明细";
+			sourceTree = "<group>";
+		};
+		303566AB1F70CD5F009E6EFB /* 入库退货 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "入库退货";
+			sourceTree = "<group>";
+		};
 		304A7AE41DB925990039B0B2 /* Custum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,7 +1529,6 @@
 				30BB2D971F459359002E51E7 /* 库存登记 */,
 				30201F131F1083760055BA6A /* 客户费用 */,
 				301D7DB41F5A3D8D00D83410 /* 费用帐单 */,
-				30DE404E1F6D0F1200845CBB /* 入库确认 */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1840,9 +1875,11 @@
 				301AD3A01F6A1EBD00CD13D0 /* StockNoListViewController.h */,
 				301AD3A11F6A1EBD00CD13D0 /* StockNoListViewController.m */,
 				301AD3A21F6A1EBD00CD13D0 /* StockNoListViewController.xib */,
-				30BB2E2A1F46DF1D002E51E7 /* 出库 */,
-				30BB2E1F1F46DF02002E51E7 /* 出入明细 */,
+				303566A01F70CD44009E6EFB /* 入库明细 */,
+				303566AB1F70CD5F009E6EFB /* 入库退货 */,
+				303566901F70CD2B009E6EFB /* 销售出库 */,
 				309E10F31F6F98D9008E1F49 /* 退货管理 */,
+				30DE404E1F6D0F1200845CBB /* 入库确认 */,
 			);
 			path = "库存管理";
 			sourceTree = "<group>";
@@ -1889,35 +1926,6 @@
 				309E10CD1F6D14FB008E1F49 /* 入库确认 */,
 			);
 			path = "库存管理";
-			sourceTree = "<group>";
-		};
-		30BB2E1F1F46DF02002E51E7 /* 出入明细 */ = {
-			isa = PBXGroup;
-			children = (
-				30BB2E231F46DF02002E51E7 /* GetOupputListViewController.h */,
-				30BB2E241F46DF02002E51E7 /* GetOupputListViewController.m */,
-				30BB2E251F46DF02002E51E7 /* GetOupputListViewController.xib */,
-				30BB2E201F46DF02002E51E7 /* GetOupputInfoViewController.h */,
-				30BB2E211F46DF02002E51E7 /* GetOupputInfoViewController.m */,
-				30BB2E221F46DF02002E51E7 /* GetOupputInfoViewController.xib */,
-			);
-			path = "出入明细";
-			sourceTree = "<group>";
-		};
-		30BB2E2A1F46DF1D002E51E7 /* 出库 */ = {
-			isa = PBXGroup;
-			children = (
-				30BB2E2B1F46DFDF002E51E7 /* StockOutViewController.h */,
-				30BB2E2C1F46DFDF002E51E7 /* StockOutViewController.m */,
-				30BB2E2D1F46DFDF002E51E7 /* StockOutViewController.xib */,
-				301AFA741F4AD6BC00E4FDFF /* GetToAddressListViewController.h */,
-				301AFA751F4AD6BC00E4FDFF /* GetToAddressListViewController.m */,
-				301AFA761F4AD6BC00E4FDFF /* GetToAddressListViewController.xib */,
-				30942A751F5005A9000095F3 /* StockOutConfirmViewController.h */,
-				30942A761F5005A9000095F3 /* StockOutConfirmViewController.m */,
-				30942A771F5005A9000095F3 /* StockOutConfirmViewController.xib */,
-			);
-			path = "出库";
 			sourceTree = "<group>";
 		};
 		30BBF12E1F17612400496518 /* 客户管理 */ = {
@@ -2370,8 +2378,7 @@
 				309E10EB1F6D1D9F008E1F49 /* InPutWorkflowViewController.m */,
 				309E10EC1F6D1D9F008E1F49 /* InPutWorkflowViewController.xib */,
 			);
-			name = "入库确认";
-			path = "库存管理/入库确认";
+			path = "入库确认";
 			sourceTree = "<group>";
 		};
 		30DE40541F6D114900845CBB /* 入库确认 */ = {
@@ -2509,10 +2516,10 @@
 				30BB2E031F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.xib in Resources */,
 				30BBF1371F17612400496518 /* Add_AddressViewController.xib in Resources */,
 				301D7DC71F5A3E0400D83410 /* AddressListTableViewCell.xib in Resources */,
+				3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */,
 				302A94251F4579450020E1C1 /* MainCollection.plist in Resources */,
 				30F7B8E21DBFAE80004CD128 /* SelectedGiftsTableViewCell.xib in Resources */,
 				30BE65041EE6BE5B00BD6978 /* ProductManListTableViewCell.xib in Resources */,
-				30BB2E2F1F46DFDF002E51E7 /* StockOutViewController.xib in Resources */,
 				3051DB621F1868840034629B /* AddPartyViewController.xib in Resources */,
 				30BB2DCB1F459375002E51E7 /* ConfirmAddStockTableViewCell.xib in Resources */,
 				308783941D98CD45002EED76 /* LaunchScreen.storyboard in Resources */,
@@ -2530,6 +2537,7 @@
 				304A7AF41DBA62710039B0B2 /* ConfirmOrderTableViewCell.xib in Resources */,
 				30EF59BC1DAE0F01003F5729 /* OrderProgressNodeTableViewCell.xib in Resources */,
 				3051DB7C1F1895740034629B /* NormalAdressListViewController.xib in Resources */,
+				303566A81F70CD44009E6EFB /* GetOupputInfoViewController.xib in Resources */,
 				301D7DBE1F5A3D8D00D83410 /* GetAppBusinessFeeListViewController.xib in Resources */,
 				30EF59B71DAE06C5003F5729 /* OrderProgressNodeViewController.xib in Resources */,
 				30BB2DCF1F459375002E51E7 /* GetStockListTableViewCell.xib in Resources */,
@@ -2537,8 +2545,8 @@
 				30078D221DBA73EA00429813 /* AddGiftsViewController.xib in Resources */,
 				30CDC63B1D9907CD0035602F /* PB.bundle in Resources */,
 				30CDC6601D9907CD0035602F /* SVProgressHUD.bundle in Resources */,
-				30BB2E271F46DF02002E51E7 /* GetOupputInfoViewController.xib in Resources */,
 				30BB2DF21F459485002E51E7 /* StockManViewController.xib in Resources */,
+				3035669D1F70CD2B009E6EFB /* StockOutConfirmViewController.xib in Resources */,
 				30126A741DB0715E00BABACF /* SelectGoodsViewController.xib in Resources */,
 				30E5A07B1D9E075800D94F77 /* OrderDetailViewController.xib in Resources */,
 				30EF59CF1DAF5C6D003F5729 /* CustomerAddressTableViewCell.xib in Resources */,
@@ -2550,13 +2558,12 @@
 				30F7B8D51DBF0B33004CD128 /* AddGiftProductsTableViewCell.xib in Resources */,
 				304A7AB71DB612180039B0B2 /* BrandTableViewCell.xib in Resources */,
 				30A3C30E1D9A101C00BBE0DA /* MakeOrderViewController.xib in Resources */,
+				303566AA1F70CD44009E6EFB /* GetOupputListViewController.xib in Resources */,
 				30E5A0761D9DFB6300D94F77 /* SearchOrderPathViewController.xib in Resources */,
-				301AFA781F4AD6BC00E4FDFF /* GetToAddressListViewController.xib in Resources */,
 				309E10EE1F6D1D9F008E1F49 /* InPutWorkflowViewController.xib in Resources */,
 				301AD3A41F6A1EBD00CD13D0 /* StockNoListViewController.xib in Resources */,
 				304A34191F0E071B0055D50C /* AreaCityViewController.xib in Resources */,
 				304A7AC11DB85ED00039B0B2 /* CheckSignatureViewController.xib in Resources */,
-				30BB2E291F46DF02002E51E7 /* GetOupputListViewController.xib in Resources */,
 				30A3C3011D9A0E0F00BBE0DA /* MainViewController.xib in Resources */,
 				304A7ADA1DB8BAE20039B0B2 /* ChartViewController.xib in Resources */,
 				30A3C2F01D991E1000BBE0DA /* WelcomeViewController.xib in Resources */,
@@ -2577,6 +2584,7 @@
 				3072AE8E1DA8CDA400359147 /* OrderDetailTableViewCell.xib in Resources */,
 				30E9C0A61DA8E15A00A09182 /* HotProductViewController.xib in Resources */,
 				30E5A05E1D9BC16800D94F77 /* CheckOrderTableViewCell.xib in Resources */,
+				3035669F1F70CD2B009E6EFB /* StockOutViewController.xib in Resources */,
 				30CDC65D1D9907CD0035602F /* CoreSVP.bundle in Resources */,
 				30BB2DAD1F459359002E51E7 /* ConfirmAddStockViewController.xib in Resources */,
 				30EF59AF1DACDBC6003F5729 /* OrderTmsDetailsTableViewCell.xib in Resources */,
@@ -2584,7 +2592,6 @@
 				30A3C31D1D9A501300BBE0DA /* MainCollectionViewCell.xib in Resources */,
 				30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */,
 				30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */,
-				30942A791F5005A9000095F3 /* StockOutConfirmViewController.xib in Resources */,
 				30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */,
 				30E9C0A11DA8E10300A09182 /* NewsViewController.xib in Resources */,
 			);
@@ -2669,6 +2676,7 @@
 				301AD3B61F6A292600CD13D0 /* StockNoItemModel.m in Sources */,
 				304A7AB61DB612180039B0B2 /* BrandTableViewCell.m in Sources */,
 				30BB2DCE1F459375002E51E7 /* GetStockListTableViewCell.m in Sources */,
+				3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */,
 				304A34161F0E071B0055D50C /* AreaProvinceViewController.m in Sources */,
 				304A7AC91DB868080039B0B2 /* CheckSignatureService.m in Sources */,
 				30A3C2F41D991E4C00BBE0DA /* LoginService.m in Sources */,
@@ -2719,7 +2727,6 @@
 				3088D30D1F4BDE96006031D9 /* GetOupputItemModel.m in Sources */,
 				30E5A04D1D9B769000D94F77 /* CheckOrderService.m in Sources */,
 				30CDC6461D9907CD0035602F /* CoreArchive.m in Sources */,
-				30BB2E261F46DF02002E51E7 /* GetOupputInfoViewController.m in Sources */,
 				304A7ADD1DB8BCFE0039B0B2 /* ChartService.m in Sources */,
 				302160931F15BEE40049374F /* RegisterService.m in Sources */,
 				30EF59AA1DACCA94003F5729 /* OrderTmsDetailsService.m in Sources */,
@@ -2746,6 +2753,7 @@
 				309E10D11F6D1510008E1F49 /* GetInputListTableViewCell.m in Sources */,
 				30CDC6611D9907CD0035602F /* SVProgressHUD.m in Sources */,
 				30201F0A1F1082220055BA6A /* GetAppBillFeeListModel.m in Sources */,
+				303566A71F70CD44009E6EFB /* GetOupputInfoViewController.m in Sources */,
 				301D7DB01F5A3D2E00D83410 /* GetAppBillFeeListTableViewCell.m in Sources */,
 				30E5A0751D9DFB6300D94F77 /* SearchOrderPathViewController.m in Sources */,
 				301D7DE21F5A3E5800D83410 /* UITextView+Trim.m in Sources */,
@@ -2801,7 +2809,6 @@
 				3072AE8D1DA8CDA400359147 /* OrderDetailTableViewCell.m in Sources */,
 				3051DB6E1F1878570034629B /* DeleteAppUserPartyService.m in Sources */,
 				302A057A1DB0AF4C00972490 /* SelectGoodsService.m in Sources */,
-				30BB2E2E1F46DFDF002E51E7 /* StockOutViewController.m in Sources */,
 				30BB2DAE1F459359002E51E7 /* CustomerListSearchResultsViewController.m in Sources */,
 				30BB2DEA1F4593AD002E51E7 /* AppStockModel.m in Sources */,
 				30EF59C01DAE2520003F5729 /* MakeOrderTableViewCell.m in Sources */,
@@ -2811,7 +2818,6 @@
 				3088D3071F4BDC49006031D9 /* GetOupputModel.m in Sources */,
 				304A7AC51DB867A90039B0B2 /* CheckOrderPathViewController.m in Sources */,
 				30BB2DEC1F4593AD002E51E7 /* StockModel.m in Sources */,
-				30942A781F5005A9000095F3 /* StockOutConfirmViewController.m in Sources */,
 				30942A7E1F5006A4000095F3 /* ConfirmOrderViewController.m in Sources */,
 				301AD39F1F69F8FF00CD13D0 /* Store_GetStockNoListService.m in Sources */,
 				309E10DA1F6D175E008E1F49 /* Stock_GetInputInfoService.m in Sources */,
@@ -2820,6 +2826,7 @@
 				302160991F15BF3A0049374F /* LoginButton.m in Sources */,
 				30201F0B1F1082220055BA6A /* GetAppBusinessFeeListModel.m in Sources */,
 				3072AE891DA8948D00359147 /* OrderDetailService.m in Sources */,
+				3035669E1F70CD2B009E6EFB /* StockOutViewController.m in Sources */,
 				30BE65031EE6BE5B00BD6978 /* ProductManListTableViewCell.m in Sources */,
 				30E5A0561D9B9E6C00D94F77 /* StateTackModel.m in Sources */,
 				30CDC65E1D9907CD0035602F /* CoreSVP.m in Sources */,
@@ -2837,6 +2844,7 @@
 				30CDC65C1D9907CD0035602F /* UIImageView+SD.m in Sources */,
 				30CDC67B1D990B430035602F /* Tools.m in Sources */,
 				3088D31A1F4C1A2D006031D9 /* GetOupputInfoTableViewCell.m in Sources */,
+				303566A91F70CD44009E6EFB /* GetOupputListViewController.m in Sources */,
 				304A7AA91DB4D3E10039B0B2 /* ShoppingCartTableViewCell.m in Sources */,
 				30CDC6551D9907CD0035602F /* UIImage+Water.m in Sources */,
 				309E10ED1F6D1D9F008E1F49 /* InPutWorkflowViewController.m in Sources */,
@@ -2866,6 +2874,7 @@
 				30A3C3001D9A0E0F00BBE0DA /* MainViewController.m in Sources */,
 				301AD3A31F6A1EBD00CD13D0 /* StockNoListViewController.m in Sources */,
 				301D7DC61F5A3E0400D83410 /* AddressListTableViewCell.m in Sources */,
+				3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */,
 				30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */,
 				30F7B8E11DBFAE80004CD128 /* SelectedGiftsTableViewCell.m in Sources */,
 				30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */,
@@ -2888,12 +2897,10 @@
 				301AD3B71F6A292600CD13D0 /* StockNoListModel.m in Sources */,
 				304A34181F0E071B0055D50C /* AreaCityViewController.m in Sources */,
 				308783861D98CD45002EED76 /* main.m in Sources */,
-				301AFA771F4AD6BC00E4FDFF /* GetToAddressListViewController.m in Sources */,
 				30BB2DB01F459359002E51E7 /* CustomerListViewController.m in Sources */,
 				302A05801DB0C60100972490 /* ProductModel.m in Sources */,
 				304A7ACC1DB86F670039B0B2 /* SignatureAndPictureModel.m in Sources */,
 				30BB2DE81F4593AD002E51E7 /* AddStockModel.m in Sources */,
-				30BB2E281F46DF02002E51E7 /* GetOupputListViewController.m in Sources */,
 				30B439D41F1DF48E0092A015 /* AddPartyModel.m in Sources */,
 				30201F061F1082220055BA6A /* AppBusinessFeeListModel.m in Sources */,
 				301D7DE01F5A3E5800D83410 /* UITableView+NoDataPrompt.m in Sources */,

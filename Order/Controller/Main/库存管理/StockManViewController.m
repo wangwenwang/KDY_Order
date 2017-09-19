@@ -88,7 +88,6 @@
 
 @end
 
-//
 
 #define kCellHeight 80
 
@@ -145,21 +144,27 @@
     
     NSUInteger tag = sender.tag;
     
-    if(tag == 1001) {
+    if(tag == 1004) {
         
         GetOupputListViewController *vc = [[GetOupputListViewController alloc] init];
+        vc.addressM = _addressM;
         [self.navigationController pushViewController:vc animated:YES];
     } else if(tag == 1002) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
-    } else if(tag == 1004) {
+    } else if(tag == 1005) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
-    } else if(tag == 1005) {
+    } else if(tag == 1006) {
+        
+        [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+        [_selectGoodsService getPayTypeData];
+    } else if(tag == 1001) {
         
         GetInputListViewController *vc = [[GetInputListViewController alloc] init];
+        vc.addressM = _addressM;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

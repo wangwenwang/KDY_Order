@@ -53,7 +53,7 @@
     
     [self registerCell];
     
-    [_service GetInputList:_app.user.IDX andstrPage:1 andstrPageCount:999];
+    [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:999];
 }
 
 - (void)didReceiveMemoryWarning {

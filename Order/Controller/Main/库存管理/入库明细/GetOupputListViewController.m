@@ -18,6 +18,8 @@
 
 @interface GetOupputListViewController ()<Store_GetOupputListServiceDelegate>
 
+@property (strong, nonatomic) NSArray *menuTexts;
+
 
 // 出库列表
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -52,13 +54,13 @@
     
     [super viewDidLoad];
     
-    self.title = @"出库列表";
+    self.title = @"出库明细";
     
     // 注册Cell
     [self registerCell];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_service GetOupputList:1 andstrPageCount:20];
+    [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
     
     // 下拉刷新
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
@@ -82,7 +84,7 @@
     
     if([Tools isConnectionAvailable]) {
         
-        [_service GetOupputList:1 andstrPageCount:20];
+        [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -169,6 +171,7 @@
 - (void)successOfGetOupputList_NoData {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
     
     [_tableView noData:@"没有数据哦" andImageName:LM_NoResult_noResult];
 }
@@ -177,6 +180,7 @@
 - (void)failureOfGetOupputList:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
     
     [Tools showAlert:self.view andTitle:msg];
 }

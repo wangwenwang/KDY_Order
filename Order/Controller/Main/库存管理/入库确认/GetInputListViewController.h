@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddressModel.h"
 
 @interface GetInputListViewController : UIViewController
+
+@property (strong, nonatomic) AddressModel *addressM;
 
 @end

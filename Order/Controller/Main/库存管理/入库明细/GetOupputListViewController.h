@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddressModel.h"
 
 @interface GetOupputListViewController : UIViewController
 
 @property (assign, nonatomic) BOOL refreshList;
+
+@property (strong, nonatomic) AddressModel *addressM;
 
 @end

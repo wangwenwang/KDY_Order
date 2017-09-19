@@ -168,7 +168,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out_in" translatesAutoresizingMaskIntoConstraints="NO" id="pIJ-QY-xla"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出入明细" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5v-VY-pG0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入库明细" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5v-VY-pG0">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -197,7 +197,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_return" translatesAutoresizingMaskIntoConstraints="NO" id="xGm-uu-FQF"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退货管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FD8-BF-AQI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入库退货" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FD8-BF-AQI">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -211,19 +211,16 @@
                                                 <constraint firstItem="xGm-uu-FQF" firstAttribute="centerX" secondItem="nIN-Fa-Gfh" secondAttribute="centerX" id="zxp-ak-1ey"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNP-fd-KzV" userLabel="3">
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-pB-I5O" userLabel="4">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-pB-I5O" userLabel="3">
                                             <subviews>
-                                                <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-z9-aFa">
+                                                <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-z9-aFa">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <action selector="didselectItem:" destination="-1" eventType="touchUpInside" id="7NA-w9-3aK"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out" translatesAutoresizingMaskIntoConstraints="NO" id="olI-aX-d3C"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出库" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voP-dV-izY">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_confirm" translatesAutoresizingMaskIntoConstraints="NO" id="olI-aX-d3C"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="盘点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voP-dV-izY">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -241,20 +238,20 @@
                                                 <constraint firstItem="1Z1-z9-aFa" firstAttribute="top" secondItem="aF7-pB-I5O" secondAttribute="top" id="uFO-we-rR2"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-e9-ngj" userLabel="5">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-e9-ngj" userLabel="4">
                                             <subviews>
-                                                <button opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cls-a3-TQP">
+                                                <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cls-a3-TQP">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <action selector="didselectItem:" destination="-1" eventType="touchUpInside" id="dwv-zB-JXQ"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入库确认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TY-Jp-H53">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出库明细" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TY-Jp-H53">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_confirm" translatesAutoresizingMaskIntoConstraints="NO" id="Cvs-J1-sax"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out_in" translatesAutoresizingMaskIntoConstraints="NO" id="Cvs-J1-sax"/>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -268,31 +265,69 @@
                                                 <constraint firstItem="Cls-a3-TQP" firstAttribute="top" secondItem="a3L-e9-ngj" secondAttribute="top" id="yIk-YD-0WL"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OY2-Yk-1eJ" userLabel="6">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OY2-Yk-1eJ" userLabel="5">
+                                            <subviews>
+                                                <button opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cQ-qH-VTL">
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="didselectItem:" destination="-1" eventType="touchUpInside" id="62b-Cc-mc2"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out" translatesAutoresizingMaskIntoConstraints="NO" id="V5H-t6-LvU"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出库退货" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkW-gj-ieB">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="9cQ-qH-VTL" firstAttribute="leading" secondItem="OY2-Yk-1eJ" secondAttribute="leading" id="PQo-vR-GCt"/>
+                                                <constraint firstAttribute="trailing" secondItem="9cQ-qH-VTL" secondAttribute="trailing" id="Wf4-py-3yH"/>
+                                                <constraint firstAttribute="bottom" secondItem="9cQ-qH-VTL" secondAttribute="bottom" id="coV-nd-z3R"/>
+                                                <constraint firstItem="DkW-gj-ieB" firstAttribute="centerY" secondItem="OY2-Yk-1eJ" secondAttribute="centerY" constant="15" id="iVO-ox-8os"/>
+                                                <constraint firstItem="V5H-t6-LvU" firstAttribute="centerY" secondItem="OY2-Yk-1eJ" secondAttribute="centerY" constant="-15" id="jkU-cN-Fvf"/>
+                                                <constraint firstItem="V5H-t6-LvU" firstAttribute="centerX" secondItem="OY2-Yk-1eJ" secondAttribute="centerX" id="kpW-k8-WtU"/>
+                                                <constraint firstItem="9cQ-qH-VTL" firstAttribute="top" secondItem="OY2-Yk-1eJ" secondAttribute="top" id="mSN-S3-T7Y"/>
+                                                <constraint firstItem="DkW-gj-ieB" firstAttribute="centerX" secondItem="OY2-Yk-1eJ" secondAttribute="centerX" id="mfb-F2-OzJ"/>
+                                            </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2O-CI-Zas" userLabel="7">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-Pe-Q2x" userLabel="6">
+                                            <subviews>
+                                                <button opaque="NO" tag="1006" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0w-bp-zdI">
+                                                    <frame key="frameInset" minX="14" width="89" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="didselectItem:" destination="-1" eventType="touchUpInside" id="oJY-ec-LF5"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销售出库" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TV-pN-sZM">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_return" translatesAutoresizingMaskIntoConstraints="NO" id="XrU-Vu-mgn"/>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-Pe-Q2x" userLabel="8">
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="0TV-pN-sZM" firstAttribute="centerX" secondItem="ipd-Pe-Q2x" secondAttribute="centerX" id="55i-yX-88h"/>
+                                                <constraint firstItem="0TV-pN-sZM" firstAttribute="centerY" secondItem="ipd-Pe-Q2x" secondAttribute="centerY" constant="15" id="7Nb-kR-IMn"/>
+                                                <constraint firstItem="XrU-Vu-mgn" firstAttribute="centerY" secondItem="ipd-Pe-Q2x" secondAttribute="centerY" constant="-15" id="nut-PP-OoT"/>
+                                                <constraint firstItem="XrU-Vu-mgn" firstAttribute="centerX" secondItem="ipd-Pe-Q2x" secondAttribute="centerX" id="z2G-V9-UkF"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="0.91120463412313846" blue="0.86538657326861479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="bNP-fd-KzV" firstAttribute="top" secondItem="wot-US-vLl" secondAttribute="top" id="7HN-2T-NAi"/>
-                                        <constraint firstItem="bNP-fd-KzV" firstAttribute="bottom" secondItem="wot-US-vLl" secondAttribute="bottom" id="9zJ-1m-IOg"/>
-                                        <constraint firstItem="B2O-CI-Zas" firstAttribute="width" secondItem="a3L-e9-ngj" secondAttribute="width" id="FgZ-CZ-0ih"/>
-                                        <constraint firstItem="B2O-CI-Zas" firstAttribute="bottom" secondItem="a3L-e9-ngj" secondAttribute="bottom" id="G11-ec-xHO"/>
-                                        <constraint firstItem="bNP-fd-KzV" firstAttribute="leading" secondItem="nIN-Fa-Gfh" secondAttribute="trailing" id="Ghu-vu-duv"/>
                                         <constraint firstItem="nIN-Fa-Gfh" firstAttribute="leading" secondItem="wot-US-vLl" secondAttribute="trailing" id="IU5-Wf-Mve"/>
                                         <constraint firstAttribute="bottom" secondItem="a3L-e9-ngj" secondAttribute="bottom" id="JVg-VF-KSb"/>
                                         <constraint firstItem="ipd-Pe-Q2x" firstAttribute="bottom" secondItem="a3L-e9-ngj" secondAttribute="bottom" id="MqT-wD-Lty"/>
-                                        <constraint firstItem="aF7-pB-I5O" firstAttribute="leading" secondItem="bNP-fd-KzV" secondAttribute="trailing" id="PeE-je-Nn8"/>
                                         <constraint firstAttribute="height" constant="150" id="SLe-Lz-FvD"/>
                                         <constraint firstItem="wot-US-vLl" firstAttribute="leading" secondItem="vbA-7z-WHW" secondAttribute="leading" id="Tjk-HB-fOw"/>
                                         <constraint firstItem="OY2-Yk-1eJ" firstAttribute="bottom" secondItem="a3L-e9-ngj" secondAttribute="bottom" id="WG7-ef-WdZ"/>
                                         <constraint firstItem="OY2-Yk-1eJ" firstAttribute="width" secondItem="a3L-e9-ngj" secondAttribute="width" id="Wat-Mo-2b1"/>
+                                        <constraint firstItem="aF7-pB-I5O" firstAttribute="leading" secondItem="nIN-Fa-Gfh" secondAttribute="trailing" id="Y1f-wM-aZ9"/>
                                         <constraint firstItem="nIN-Fa-Gfh" firstAttribute="width" secondItem="wot-US-vLl" secondAttribute="width" id="Y5L-pN-aUL"/>
                                         <constraint firstItem="OY2-Yk-1eJ" firstAttribute="top" secondItem="a3L-e9-ngj" secondAttribute="top" id="a2i-hV-avR"/>
                                         <constraint firstItem="a3L-e9-ngj" firstAttribute="leading" secondItem="wot-US-vLl" secondAttribute="leading" id="abF-Ff-5v2"/>
@@ -302,17 +337,14 @@
                                         <constraint firstItem="nIN-Fa-Gfh" firstAttribute="top" secondItem="wot-US-vLl" secondAttribute="top" id="epI-tg-IYv"/>
                                         <constraint firstItem="aF7-pB-I5O" firstAttribute="top" secondItem="wot-US-vLl" secondAttribute="top" id="fU0-bc-xGG"/>
                                         <constraint firstItem="ipd-Pe-Q2x" firstAttribute="width" secondItem="a3L-e9-ngj" secondAttribute="width" id="hS2-9p-vMU"/>
+                                        <constraint firstItem="ipd-Pe-Q2x" firstAttribute="leading" secondItem="OY2-Yk-1eJ" secondAttribute="trailing" id="hlT-Gx-BXQ"/>
                                         <constraint firstItem="ipd-Pe-Q2x" firstAttribute="top" secondItem="a3L-e9-ngj" secondAttribute="top" id="hm3-3y-sdO"/>
                                         <constraint firstItem="ipd-Pe-Q2x" firstAttribute="trailing" secondItem="aF7-pB-I5O" secondAttribute="trailing" id="ibA-cc-cWN"/>
-                                        <constraint firstItem="B2O-CI-Zas" firstAttribute="top" secondItem="a3L-e9-ngj" secondAttribute="top" id="mex-le-mja"/>
-                                        <constraint firstItem="B2O-CI-Zas" firstAttribute="leading" secondItem="OY2-Yk-1eJ" secondAttribute="trailing" id="nEU-rK-drM"/>
                                         <constraint firstItem="OY2-Yk-1eJ" firstAttribute="leading" secondItem="a3L-e9-ngj" secondAttribute="trailing" id="pFk-z3-xUf"/>
                                         <constraint firstItem="aF7-pB-I5O" firstAttribute="bottom" secondItem="wot-US-vLl" secondAttribute="bottom" id="sUW-UB-H0L"/>
                                         <constraint firstItem="a3L-e9-ngj" firstAttribute="top" secondItem="wot-US-vLl" secondAttribute="bottom" id="wFO-pg-j5b"/>
                                         <constraint firstItem="a3L-e9-ngj" firstAttribute="height" secondItem="wot-US-vLl" secondAttribute="height" id="xYR-lM-Bih"/>
-                                        <constraint firstItem="ipd-Pe-Q2x" firstAttribute="leading" secondItem="B2O-CI-Zas" secondAttribute="trailing" id="xw5-jT-hUG"/>
                                         <constraint firstAttribute="trailing" secondItem="aF7-pB-I5O" secondAttribute="trailing" id="yKX-pI-V6p"/>
-                                        <constraint firstItem="bNP-fd-KzV" firstAttribute="width" secondItem="wot-US-vLl" secondAttribute="width" id="yiO-Zg-Ker"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
