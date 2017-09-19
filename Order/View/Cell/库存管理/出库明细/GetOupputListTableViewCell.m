@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
 
 // 出库类型
-@property (weak, nonatomic) IBOutlet UIImageView *OUTPUT_STATE;
+@property (weak, nonatomic) IBOutlet UILabel *OUTPUT_TYPE;
 
 // 取消提示
 @property (weak, nonatomic) IBOutlet UILabel *promptLabel;
@@ -46,11 +46,9 @@
     
     if([getOupputM.oUTPUTSTATE isEqualToString:@"OPEN"]) {
         
-        _OUTPUT_STATE.image = [UIImage imageNamed:@"LM_store_out_state_open"];
         _promptLabel.hidden = YES;
     } else if([getOupputM.oUTPUTSTATE isEqualToString:@"CANCEL"]) {
         
-        _OUTPUT_STATE.image = [UIImage imageNamed:@"LM_store_out_state_cancel"];
         _promptLabel.hidden = NO;
     }
 }

@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="GetOupputListTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="GetInputListTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -49,29 +49,33 @@
                                     <constraint firstAttribute="height" constant="0.29999999999999999" id="KuJ-VU-A77"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out_state_open" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-FO-ehh"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此库存已取消" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVW-9X-j91">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此入库单已取消" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVW-9X-j91">
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.47292302520000001" green="0.47380878069999999" blue="0.48732529009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="采购入库" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTY-Uo-cxQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.23627657182863007" green="0.45503691983122363" blue="0.22525600593371392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oVW-9X-j91" firstAttribute="top" secondItem="ef3-FO-ehh" secondAttribute="bottom" constant="1" id="71K-gB-y4f"/>
                             <constraint firstAttribute="trailing" secondItem="tks-Kw-xIv" secondAttribute="trailing" id="DDQ-I4-Cth"/>
                             <constraint firstItem="Lyo-FD-ZMB" firstAttribute="leading" secondItem="vC2-5H-cWB" secondAttribute="trailing" id="EVW-k8-d6p"/>
                             <constraint firstItem="MFW-Iw-llC" firstAttribute="centerY" secondItem="3da-lc-xOT" secondAttribute="centerY" id="G5v-td-gvP"/>
                             <constraint firstItem="GCg-Wh-0re" firstAttribute="leading" secondItem="giT-yQ-I5t" secondAttribute="leading" id="Ivp-3p-GFU"/>
                             <constraint firstItem="Lyo-FD-ZMB" firstAttribute="centerY" secondItem="vC2-5H-cWB" secondAttribute="centerY" id="Iwj-Ke-Zvl"/>
-                            <constraint firstItem="ef3-FO-ehh" firstAttribute="centerY" secondItem="giT-yQ-I5t" secondAttribute="centerY" id="K0r-cz-UUe"/>
+                            <constraint firstItem="GCg-Wh-0re" firstAttribute="top" secondItem="oVW-9X-j91" secondAttribute="bottom" constant="2" id="Lwb-a1-1uD"/>
+                            <constraint firstItem="oVW-9X-j91" firstAttribute="top" secondItem="sTY-Uo-cxQ" secondAttribute="bottom" constant="8" id="OjP-5c-c3o"/>
                             <constraint firstItem="vC2-5H-cWB" firstAttribute="leading" secondItem="giT-yQ-I5t" secondAttribute="leading" constant="8" id="SWa-aN-3el"/>
+                            <constraint firstAttribute="trailing" secondItem="oVW-9X-j91" secondAttribute="trailing" constant="8" id="VQX-2M-xnS"/>
+                            <constraint firstAttribute="trailing" secondItem="sTY-Uo-cxQ" secondAttribute="trailing" constant="8" id="agm-Lp-RBX"/>
                             <constraint firstItem="MFW-Iw-llC" firstAttribute="leading" secondItem="3da-lc-xOT" secondAttribute="trailing" id="d8L-5e-Bne"/>
-                            <constraint firstAttribute="trailing" secondItem="ef3-FO-ehh" secondAttribute="trailing" constant="15" id="fkh-NF-bDO"/>
                             <constraint firstAttribute="trailing" secondItem="GCg-Wh-0re" secondAttribute="trailing" id="fkm-aq-wZt"/>
                             <constraint firstItem="3da-lc-xOT" firstAttribute="top" secondItem="vC2-5H-cWB" secondAttribute="bottom" constant="5" id="gDA-F7-v2o"/>
                             <constraint firstItem="tks-Kw-xIv" firstAttribute="leading" secondItem="giT-yQ-I5t" secondAttribute="leading" id="geo-Ie-VLr"/>
-                            <constraint firstItem="ef3-FO-ehh" firstAttribute="trailing" secondItem="oVW-9X-j91" secondAttribute="trailing" constant="-8" id="lZp-YA-PYz"/>
                             <constraint firstAttribute="bottom" secondItem="GCg-Wh-0re" secondAttribute="bottom" constant="0.5" id="oQW-ea-v0g"/>
                             <constraint firstItem="3da-lc-xOT" firstAttribute="leading" secondItem="vC2-5H-cWB" secondAttribute="leading" id="qlM-Pg-646"/>
                             <constraint firstItem="tks-Kw-xIv" firstAttribute="top" secondItem="giT-yQ-I5t" secondAttribute="top" id="wrx-yv-eiW"/>
@@ -89,14 +93,11 @@
             <color key="backgroundColor" red="0.9403298497" green="0.94710832830000002" blue="0.95945650339999999" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="ADD_DATE" destination="MFW-Iw-llC" id="r6o-Ys-zF4"/>
+                <outlet property="INPUT_TYPE" destination="sTY-Uo-cxQ" id="Wet-Uc-lyr"/>
                 <outlet property="OUTPUT_NO" destination="Lyo-FD-ZMB" id="fpO-dW-3BM"/>
-                <outlet property="OUTPUT_STATE" destination="ef3-FO-ehh" id="9DX-em-s08"/>
                 <outlet property="promptLabel" destination="oVW-9X-j91" id="rwZ-Ye-0Ej"/>
             </connections>
             <point key="canvasLocation" x="34" y="68"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="LM_store_out_state_open" width="25" height="25"/>
-    </resources>
 </document>

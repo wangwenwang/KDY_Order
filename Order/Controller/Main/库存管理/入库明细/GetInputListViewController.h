@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) AddressModel *addressM;
 
+@property (assign, nonatomic) BOOL refreshList;
+
 @end

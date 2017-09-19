@@ -9,10 +9,10 @@
 #import "GetInputListViewController.h"
 #import "Stock_GetInputListService.h"
 #import "AppDelegate.h"
-#import "GetInputListTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "UITableView+NoDataPrompt.h"
 #import "Tools.h"
+#import "GetInputListTableViewCell.h"
 #import "GetInputInfoViewController.h"
 
 @interface GetInputListViewController ()<GetInputListServiceDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -28,7 +28,7 @@
 @end
 
 
-#define kCellHeight 60
+#define kCellHeight 72
 
 #define kCellName @"GetInputListTableViewCell"
 
@@ -105,7 +105,7 @@
     InputModel *m = _inputListM.inputModel[indexPath.row];
     
     GetInputInfoViewController *vc = [[GetInputInfoViewController alloc] init];
-    vc.outputIdx = m.iDX;
+    vc.intputIdx = m.iDX;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

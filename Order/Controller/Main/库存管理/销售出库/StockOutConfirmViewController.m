@@ -321,6 +321,14 @@ typedef enum _CloseDatePicker {
         _sendViewHeight.constant += overflowHeight;
     }
     
+    // 收货地址换行
+    overflowHeight = [Tools getHeightOfString:_getToAddressM.aDDRESSINFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
+    
+    if(overflowHeight > 0) {
+        
+        _receiveViewHeight.constant += overflowHeight;
+    }
+    
     // 产品名称换行
     CGFloat tableViewHeight = 0;
     for (int i = 0; i < _promotionDetailsOfServer.count; i++) {

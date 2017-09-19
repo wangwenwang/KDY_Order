@@ -44,5 +44,11 @@
 		<key>imageName</key>
 		<string>ic_product_GetAppBusinessFeeList</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>库存管理</string>
+		<key>imageName</key>
+		<string>LM_stock_management</string>
+	</dict>
 </array>
 </plist>

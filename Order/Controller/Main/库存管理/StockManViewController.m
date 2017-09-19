@@ -26,6 +26,7 @@
 
 // 入库
 #import "GetInputListViewController.h"
+#import "InputReturnViewController.h"
 
 @interface StockManViewController ()<Store_GetOutProductListServiceDelegate, SelectGoodsServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate>
 
@@ -86,6 +87,8 @@
 // 暂存请求产品类型的回调结果
 @property (strong, nonatomic) NSMutableArray *productTypes;
 
+@property (assign, nonatomic) NSInteger didselectItemIndex;
+
 @end
 
 
@@ -143,6 +146,8 @@
 - (IBAction)didselectItem:(UIButton *)sender {
     
     NSUInteger tag = sender.tag;
+    
+    _didselectItemIndex = tag;
     
     if(tag == 1004) {
         
@@ -239,8 +244,10 @@
 
 - (void)successOfGetOutProductList:(NSMutableArray *)products {
     
-        [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
+    if(_didselectItemIndex == 1006) {
+        
         StockOutViewController *vc = [[StockOutViewController alloc] init];
         vc.payTypes = _payTypes;
         vc.productTypes = _productTypes;
@@ -248,8 +255,21 @@
         vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
         vc.address = _addressM;
         vc.party = _partyM;
-    
+        
         [self.navigationController pushViewController:vc animated:YES];
+        
+    } else if(_didselectItemIndex == 1002) {
+        
+        InputReturnViewController *vc = [[InputReturnViewController alloc] init];
+        vc.payTypes = _payTypes;
+        vc.productTypes = _productTypes;
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+        vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+        vc.address = _addressM;
+        vc.party = _partyM;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
