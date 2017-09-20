@@ -23,10 +23,12 @@
 #import "SelectGoodsService.h"
 #import "Store_GetOutProductListService.h"
 
-
 // 入库
 #import "GetInputListViewController.h"
 #import "InputReturnViewController.h"
+
+// 出库退库
+#import "OutputReturnViewController.h"
 
 @interface StockManViewController ()<Store_GetOutProductListServiceDelegate, SelectGoodsServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate>
 
@@ -261,6 +263,17 @@
     } else if(_didselectItemIndex == 1002) {
         
         InputReturnViewController *vc = [[InputReturnViewController alloc] init];
+        vc.payTypes = _payTypes;
+        vc.productTypes = _productTypes;
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+        vc.dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+        vc.address = _addressM;
+        vc.party = _partyM;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if(_didselectItemIndex == 1006) {
+        
+        OutputReturnViewController *vc = [[OutputReturnViewController alloc] init];
         vc.payTypes = _payTypes;
         vc.productTypes = _productTypes;
         NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];

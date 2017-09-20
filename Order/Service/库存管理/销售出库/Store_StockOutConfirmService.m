@@ -105,17 +105,17 @@
         
         if(type == 1) {
             
-            NSLog(@"出库成功---%@", responseObject);
+            NSLog(@"出库/出库退库成功---%@", responseObject);
             [_delegate successOfOrderConfirmWithCommit];
             
         } else {
             
-            NSLog(@"出库失败---");
+            NSLog(@"出库/出库退库失败---");
             [self failureOfOrderConfirmWithCommit:msg];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败---%@", error);
+        NSLog(@"出库/出库退库，请求失败---%@", error);
         [self failureOfOrderConfirmWithCommit:nil];
     }];
 }

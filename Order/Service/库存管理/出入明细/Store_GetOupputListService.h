@@ -29,6 +29,6 @@
 
 @property (weak, nonatomic)id <Store_GetOupputListServiceDelegate> delegate;
 
-- (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount;
+- (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX;
 
 @end

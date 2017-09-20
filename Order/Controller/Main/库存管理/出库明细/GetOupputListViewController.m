@@ -15,6 +15,7 @@
 #import "Tools.h"
 #import "GetOupputInfoViewController.h"
 #import <MJRefresh.h>
+#import "AppDelegate.h"
 
 @interface GetOupputListViewController ()<Store_GetOupputListServiceDelegate>
 
@@ -29,6 +30,8 @@
 
 // 出库
 @property (strong, nonatomic) GetOupputListModel *getOupputListM;
+
+@property (strong, nonatomic) AppDelegate *app;
 
 @end
 
@@ -45,6 +48,8 @@
         
         _service = [[Store_GetOupputListService alloc] init];
         _service.delegate = self;
+        
+        _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -60,7 +65,7 @@
     [self registerCell];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+    [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999 andBUSINESS_IDX:_app.business.BUSINESS_IDX];
     
     // 下拉刷新
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
@@ -84,7 +89,7 @@
     
     if([Tools isConnectionAvailable]) {
         
-        [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+        [_service GetOupputList:_addressM.IDX andstrPage:1 andstrPageCount:9999 andBUSINESS_IDX:_app.business.BUSINESS_IDX];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];

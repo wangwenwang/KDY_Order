@@ -1,12 +1,12 @@
 //
-//  StockOutViewController.m
+//  OutputReturnViewController.m
 //  Order
 //
 //  Created by 凯东源 on 2017/8/18.
 //  Copyright © 2017年 凯东源. All rights reserved.
 //
 
-#import "StockOutViewController.h"
+#import "OutputReturnViewController.h"
 #import "SelectGoodsTableViewCell.h"
 #import "Store_GetOutProductListService.h"
 #import "PayTypeModel.h"
@@ -20,7 +20,7 @@
 #import "payTypeTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
-#import "StockOutConfirmViewController.h"
+#import "OutputReturnConfirmViewController.h"
 #import "Store_StockOutConfirmService.h"
 #import "PromotionOrderModel.h"
 #import "AppDelegate.h"
@@ -49,7 +49,7 @@
 /// 产品Cell的高度
 #define kProductCellHeight 69
 
-CGFloat const gestureMinimumTranslation_a = 5.0 ;
+CGFloat const gestureMinimumTranslation_c = 5.0 ;
 
 typedef enum : NSInteger {
     
@@ -66,7 +66,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface StockOutViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
+@interface OutputReturnViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
     
     CameraMoveDirection direction;
 }
@@ -291,11 +291,11 @@ typedef enum : NSInteger {
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
 // 收货人地址
-@property (strong, nonatomic) UILabel *receiveLabel;
+@property (strong, nonatomic) UILabel *sendLabel;
 
 @end
 
-@implementation StockOutViewController
+@implementation OutputReturnViewController
 
 
 #pragma mark - 生命周期
@@ -366,15 +366,15 @@ typedef enum : NSInteger {
 
 - (void)sendOnclick {
     
-    
+    GetToAddressListViewController *vc = [[GetToAddressListViewController alloc] init];
+    vc.address_idx = _address.IDX;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (void)receiveOnclick {
     
-    GetToAddressListViewController *vc = [[GetToAddressListViewController alloc] init];
-    vc.address_idx = _address.IDX;
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
@@ -477,7 +477,7 @@ typedef enum : NSInteger {
     
     _getToAddressM = aNotify.userInfo[@"msg"];
     
-    _receiveLabel.text = [NSString stringWithFormat:@"收货地址: %@", _getToAddressM.pARTYNAME];
+    _sendLabel.text = [NSString stringWithFormat:@"发货信息: %@", _getToAddressM.pARTYNAME];
 }
 
 
@@ -621,7 +621,7 @@ typedef enum : NSInteger {
         
         return direction;
     // determine if horizontal swipe only if you meet some minimum velocity
-    if (fabs(translation.x) > gestureMinimumTranslation_a) {
+    if (fabs(translation.x) > gestureMinimumTranslation_c) {
         
         BOOL gestureHorizontal = NO;
         if (translation.y == 0.0 )
@@ -642,7 +642,7 @@ typedef enum : NSInteger {
     }
     
     // determine if vertical swipe only if you meet some minimum velocity
-    else if (fabs(translation.y) > gestureMinimumTranslation_a) {
+    else if (fabs(translation.y) > gestureMinimumTranslation_c) {
         
         BOOL gestureVertical = NO;
         
@@ -678,11 +678,11 @@ typedef enum : NSInteger {
     [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
     sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     // Label
-    UILabel *sendLabel = [[UILabel alloc] init];
-    [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
-    [sendLabel setFont:[UIFont systemFontOfSize:14]];
-    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
-    [sendView addSubview:sendLabel];
+    _sendLabel = [[UILabel alloc] init];
+    [_sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
+    [_sendLabel setFont:[UIFont systemFontOfSize:14]];
+    _sendLabel.text = @"发货信息: ";
+    [sendView addSubview:_sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
     tap_send.numberOfTouchesRequired = 1;
@@ -694,11 +694,11 @@ typedef enum : NSInteger {
     [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     // Label
-    _receiveLabel = [[UILabel alloc] init];
-    [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
-    [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    _receiveLabel.text = @"收货信息:";
-    [receiveView addSubview:_receiveLabel];
+    UILabel *receiveLabel = [[UILabel alloc] init];
+    [receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
+    [receiveLabel setFont:[UIFont systemFontOfSize:14]];
+    receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _address.ADDRESS_INFO];
+    [receiveView addSubview:receiveLabel];
     // 手势
     UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
     tap_receive.numberOfTouchesRequired = 1;
@@ -1669,7 +1669,7 @@ typedef enum : NSInteger {
         }
     }
     
-    StockOutConfirmViewController *vc = [[StockOutConfirmViewController alloc] init];
+    OutputReturnConfirmViewController *vc = [[OutputReturnConfirmViewController alloc] init];
     vc.productsOfLocal = _selectedProducts;
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;

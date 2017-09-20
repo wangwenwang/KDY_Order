@@ -368,6 +368,10 @@
 		30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F7B8E81DC36CA7004CD128 /* Default-568@2x.png */; };
 		30F93E121F31B3FF001904F1 /* LMBlurredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F93E0E1F31B3FF001904F1 /* LMBlurredView.m */; };
 		30F93E131F31B3FF001904F1 /* LMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F93E111F31B3FF001904F1 /* LMPickerView.m */; };
+		3B0DC1411F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13C1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m */; };
+		3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */; };
+		3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */; };
+		3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -998,6 +1002,12 @@
 		30F93E0E1F31B3FF001904F1 /* LMBlurredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMBlurredView.m; sourceTree = "<group>"; };
 		30F93E101F31B3FF001904F1 /* LMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPickerView.h; sourceTree = "<group>"; };
 		30F93E111F31B3FF001904F1 /* LMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPickerView.m; sourceTree = "<group>"; };
+		3B0DC13B1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnConfirmViewController.h; sourceTree = "<group>"; };
+		3B0DC13C1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnConfirmViewController.m; sourceTree = "<group>"; };
+		3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnConfirmViewController.xib; sourceTree = "<group>"; };
+		3B0DC13E1F72CCCE00D1E6AA /* OutputReturnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnViewController.h; sourceTree = "<group>"; };
+		3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnViewController.m; sourceTree = "<group>"; };
+		3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnViewController.xib; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Order.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1525,13 +1535,6 @@
 			path = "出入明细";
 			sourceTree = "<group>";
 		};
-		309E10F31F6F98D9008E1F49 /* 退货管理 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "退货管理";
-			sourceTree = "<group>";
-		};
 		30A3C2E41D991E1000BBE0DA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1933,7 +1936,7 @@
 				303566AB1F70CD5F009E6EFB /* 入库退货 */,
 				303566CF1F70FF6A009E6EFB /* 出库明细 */,
 				303566901F70CD2B009E6EFB /* 销售出库 */,
-				309E10F31F6F98D9008E1F49 /* 退货管理 */,
+				3B0DC11C1F72BF3B00D1E6AA /* 出库退货 */,
 			);
 			path = "库存管理";
 			sourceTree = "<group>";
@@ -2467,6 +2470,19 @@
 			path = LMPickerView;
 			sourceTree = "<group>";
 		};
+		3B0DC11C1F72BF3B00D1E6AA /* 出库退货 */ = {
+			isa = PBXGroup;
+			children = (
+				3B0DC13E1F72CCCE00D1E6AA /* OutputReturnViewController.h */,
+				3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */,
+				3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */,
+				3B0DC13B1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.h */,
+				3B0DC13C1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m */,
+				3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */,
+			);
+			path = "出库退货";
+			sourceTree = "<group>";
+		};
 		A5516C1ACE2CD89545D8610B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2572,6 +2588,7 @@
 				30CDC6421D9907CD0035602F /* PhotoItemView.xib in Resources */,
 				30F7B8DD1DBFAD36004CD128 /* SelectedGiftsViewController.xib in Resources */,
 				30BB2DB31F459359002E51E7 /* GetAppStockListViewController.xib in Resources */,
+				3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */,
 				30D996201DAB718800974553 /* TransportInformationViewController.xib in Resources */,
 				30BB2DB11F459359002E51E7 /* CustomerListViewController.xib in Resources */,
 				304A7AF41DBA62710039B0B2 /* ConfirmOrderTableViewCell.xib in Resources */,
@@ -2611,6 +2628,7 @@
 				301D7DBC1F5A3D8D00D83410 /* GetAppBillFeeListViewController.xib in Resources */,
 				302675DE1F72494D0098DEF1 /* InputReturnConfirmViewController.xib in Resources */,
 				308783911D98CD45002EED76 /* Assets.xcassets in Resources */,
+				3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */,
 				304A7AAA1DB4D3E10039B0B2 /* ShoppingCartTableViewCell.xib in Resources */,
 				304A341E1F0E10ED0055D50C /* ChinaArea.plist in Resources */,
 				30BB2DC71F459375002E51E7 /* AddStockCellTableViewCell.xib in Resources */,
@@ -2797,6 +2815,7 @@
 				301D7DB01F5A3D2E00D83410 /* GetAppBillFeeListTableViewCell.m in Sources */,
 				30E5A0751D9DFB6300D94F77 /* SearchOrderPathViewController.m in Sources */,
 				301D7DE21F5A3E5800D83410 /* UITextView+Trim.m in Sources */,
+				3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */,
 				304A7AF31DBA62710039B0B2 /* ConfirmOrderTableViewCell.m in Sources */,
 				30B948EA1EEA4B5500E4C3EC /* IB_UIView.m in Sources */,
 				30E5A07A1D9E075800D94F77 /* OrderDetailViewController.m in Sources */,
@@ -2943,6 +2962,7 @@
 				301AD3B71F6A292600CD13D0 /* StockNoListModel.m in Sources */,
 				304A34181F0E071B0055D50C /* AreaCityViewController.m in Sources */,
 				308783861D98CD45002EED76 /* main.m in Sources */,
+				3B0DC1411F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m in Sources */,
 				30BB2DB01F459359002E51E7 /* CustomerListViewController.m in Sources */,
 				302A05801DB0C60100972490 /* ProductModel.m in Sources */,
 				304A7ACC1DB86F670039B0B2 /* SignatureAndPictureModel.m in Sources */,
