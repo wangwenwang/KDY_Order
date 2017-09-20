@@ -20,7 +20,7 @@
 #import "payTypeTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
-#import "StockOutConfirmViewController.h"
+#import "InputReturnConfirmViewController.h"
 #import "Store_StockOutConfirmService.h"
 #import "PromotionOrderModel.h"
 #import "AppDelegate.h"
@@ -29,6 +29,7 @@
 #import "LMBlurredView.h"
 #import "GetToAddressListViewController.h"
 #import "GetToAddressModel.h"
+#import "Stock_GetInputToPartySearchsService.h"
 
 /*
  *
@@ -66,7 +67,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface InputReturnViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
+@interface InputReturnViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate, Store_GetInputToPartySearchsServiceDelegate> {
     
     CameraMoveDirection direction;
 }
@@ -225,7 +226,7 @@ typedef enum : NSInteger {
 // 提交订单
 - (IBAction)confirmOrderOnclick:(UITapGestureRecognizer *)sender;
 
-@property (strong, nonatomic) GetToAddressModel *getToAddressM;
+@property (strong, nonatomic) InputToAddressModel *inputToAddressM;
 
 
 /*************      自定义下单产品数量专区      *************/
@@ -290,6 +291,9 @@ typedef enum : NSInteger {
 // 收货人地址
 @property (strong, nonatomic) UILabel *receiveLabel;
 
+
+@property (strong, nonatomic) Stock_GetInputToPartySearchsService *getToAddress_service;
+
 @end
 
 @implementation InputReturnViewController
@@ -323,6 +327,9 @@ typedef enum : NSInteger {
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _currentSection = 0;
         _brandRow = 0;
+        
+        _getToAddress_service = [[Stock_GetInputToPartySearchsService alloc] init];
+        _getToAddress_service.delegate = self;
     }
     return self;
 }
@@ -356,7 +363,7 @@ typedef enum : NSInteger {
     
     [self addTableHeaderView];
     
-    [self addNotification];
+    [_getToAddress_service GetInputToPartySearchs:_app.business.BUSINESS_IDX andstrAddressIdx:_address.IDX];
 }
 
 
@@ -368,9 +375,7 @@ typedef enum : NSInteger {
 
 - (void)receiveOnclick {
     
-    GetToAddressListViewController *vc = [[GetToAddressListViewController alloc] init];
-    vc.address_idx = _address.IDX;
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
@@ -450,29 +455,7 @@ typedef enum : NSInteger {
 
 - (void)dealloc {
     
-    [self removeNotification];
-}
-
-
-#pragma mark - 通知
-
-- (void)addNotification {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMsg:) name:kStockOutViewController_receiveMsg object:nil];
-}
-
-
-- (void)removeNotification {
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kStockOutViewController_receiveMsg object:nil];
-}
-
-
-- (void)receiveMsg:(NSNotification *)aNotify {
-    
-    _getToAddressM = aNotify.userInfo[@"msg"];
-    
-    _receiveLabel.text = [NSString stringWithFormat:@"收货地址: %@", _getToAddressM.aDDRESSINFO];
 }
 
 
@@ -667,7 +650,7 @@ typedef enum : NSInteger {
     [tableHeadView setFrame:CGRectMake(0, 0, ScreenWidth, 97)];
     _myTableView.tableHeaderView = tableHeadView;
     
-    // 发货信息
+    // 发货方地址
     UIView *sendView = [[UIView alloc] init];
     [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
     sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -675,7 +658,7 @@ typedef enum : NSInteger {
     UILabel *sendLabel = [[UILabel alloc] init];
     [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [sendLabel setFont:[UIFont systemFontOfSize:14]];
-    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
+    sendLabel.text = [NSString stringWithFormat:@"发货方地址:%@", _address.ADDRESS_INFO];
     [sendView addSubview:sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -683,7 +666,7 @@ typedef enum : NSInteger {
     [sendView addGestureRecognizer:tap_send];
     [tableHeadView addSubview:sendView];
     
-    // 收货信息
+    // 供应商地址
     UIView *receiveView = [[UIView alloc] init];
     [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -691,7 +674,7 @@ typedef enum : NSInteger {
     _receiveLabel = [[UILabel alloc] init];
     [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    _receiveLabel.text = @"收货信息:";
+    _receiveLabel.text = @"供应商地址:";
     [receiveView addSubview:_receiveLabel];
     // 手势
     UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
@@ -708,14 +691,14 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
-        if(_getToAddressM != nil) {
+        if(_inputToAddressM != nil) {
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self setProductCurrentPrice];
             [_service getPromotionData:[self getSubitString:_selectedProducts]];
         } else {
             
-            [Tools showAlert:self.view andTitle:@"请填写收货信息"];
+            [Tools showAlert:self.view andTitle:@"缺少供应商信息"];
         }
         
     } else {
@@ -1249,6 +1232,9 @@ typedef enum : NSInteger {
 
 - (IBAction)productTypeOnclick:(UITapGestureRecognizer *)sender {
     
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
+    
     _leftView.hidden = NO;
     
     [self hiddenProductTypeView];
@@ -1304,6 +1290,9 @@ typedef enum : NSInteger {
 
 
 - (IBAction)brandOnclick:(UITapGestureRecognizer *)sender {
+    
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
     
     [self hiddenBrandView];
 }
@@ -1657,14 +1646,14 @@ typedef enum : NSInteger {
         }
     }
     
-    StockOutConfirmViewController *vc = [[StockOutConfirmViewController alloc] init];
+    InputReturnConfirmViewController *vc = [[InputReturnConfirmViewController alloc] init];
     vc.productsOfLocal = _selectedProducts;
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;
     vc.addressM = _address;
     vc.orderPayType = _currentPayType.Key;
     vc.partyM = _party;
-    vc.getToAddressM = _getToAddressM;
+    vc.inputToAddressM = _inputToAddressM;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -1853,6 +1842,19 @@ typedef enum : NSInteger {
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     _keyboardHeight = 0;
+}
+
+
+#pragma mark - Store_GetInputToPartySearchsServiceDelegate
+
+- (void)successOfGetGetInputToPartySearchs:(InputToAddressModel *)inputToAddressM {
+    
+    _inputToAddressM = inputToAddressM;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _receiveLabel.text = [NSString stringWithFormat:@"供应商地址:%@", inputToAddressM.aDDRESSINFO];
+    });
 }
 
 @end

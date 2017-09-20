@@ -1255,6 +1255,9 @@ typedef enum : NSInteger {
 
 - (IBAction)productTypeOnclick:(UITapGestureRecognizer *)sender {
     
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
+    
     _leftView.hidden = NO;
     
     [self hiddenProductTypeView];
@@ -1310,6 +1313,9 @@ typedef enum : NSInteger {
 
 
 - (IBAction)brandOnclick:(UITapGestureRecognizer *)sender {
+    
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
     
     [self hiddenBrandView];
 }

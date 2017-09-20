@@ -33,9 +33,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DD-N7-Qq3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称: " textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DD-N7-Qq3">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.44523008966244726" green="0.44523008966244726" blue="0.44523008966244726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtw-IM-oM8" userLabel="我是底边框">
@@ -48,6 +48,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iUs-kN-R52" firstAttribute="leading" secondItem="a8C-kX-KgP" secondAttribute="trailing" id="6cy-bn-wTE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5DD-N7-Qq3" secondAttribute="trailing" constant="2" id="7kt-qe-jy4"/>
                             <constraint firstItem="qtw-IM-oM8" firstAttribute="leading" secondItem="PbC-65-vJk" secondAttribute="leading" id="9Jx-a3-1vT"/>
                             <constraint firstItem="crL-5H-AEA" firstAttribute="leading" secondItem="PbC-65-vJk" secondAttribute="leading" id="OkL-oT-RH7"/>
                             <constraint firstItem="a8C-kX-KgP" firstAttribute="leading" secondItem="PbC-65-vJk" secondAttribute="leading" constant="8" id="PfR-2h-dGp"/>

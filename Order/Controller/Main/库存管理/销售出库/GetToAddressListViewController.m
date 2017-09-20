@@ -127,9 +127,26 @@
     
     _getToAddressListM = getToAddressListM;
     
+    CGFloat tableViewHeight = 0;
     for (GetToAddressModel *m in _getToAddressListM.getToAddressModel) {
         
-        m.cellHeight = kCellHeight;
+        // 单行高度
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:ScreenWidth];
+        
+        CGFloat ADDRESS_INFO_height = [Tools getHeightOfString:m.aDDRESSINFO fontSize:14 andWidth:(ScreenWidth - 8 - 2)];
+        
+        CGFloat cellHeight = 0;
+        if(ADDRESS_INFO_height > oneLine) {
+            
+            cellHeight = kCellHeight + ADDRESS_INFO_height - oneLine;
+        } else {
+            
+            cellHeight = kCellHeight;
+        }
+        
+        m.cellHeight = cellHeight;
+        
+        tableViewHeight += m.cellHeight;
     }
     
     [_tableView reloadData];

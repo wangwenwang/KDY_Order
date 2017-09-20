@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "GetInputListViewController.h"
 #import "Stock_InPutWorkflowService.h"
+#import "UITableView+NoDataPrompt.h"
 
 @interface GetInputInfoViewController ()<GetInputInfoServiceDelegate, InPutWorkflowServiceDelegate>
 
@@ -123,14 +124,6 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [_confirm_service InPutWorkflow:_intputIdx andADUT_USER:_app.user.USER_NAME];
-}
-
-
-- (IBAction)cancelOnclick {
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    //    [_service cancel:_intputIdx andOPER_USER:_app.user.IDX];
 }
 
 
@@ -271,7 +264,39 @@
         _bottomViewHeight.constant = 0;
     }
     
+    // 起始地址 换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:ScreenWidth];
+    CGFloat ADDRESS_INFO_height = [Tools getHeightOfString:_inputInfoListM.inputInfoModel.aDDRESSINFO fontSize:14 andWidth:(ScreenWidth - 12 - 65 - 3)];
+    if(ADDRESS_INFO_height > oneLine) {
+        
+        _headerViewHeight.constant += (ADDRESS_INFO_height - oneLine);
+    }
+    
+    // 目的地址 换行
+    oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:ScreenWidth];
+    CGFloat SUPPLIER_ADDRESS_height = [Tools getHeightOfString:_inputInfoListM.inputInfoModel.sUPPLIERADDRESS fontSize:14 andWidth:(ScreenWidth - 12 - 65 - 3)];
+    if(SUPPLIER_ADDRESS_height > oneLine) {
+        
+        _headerViewHeight.constant += (SUPPLIER_ADDRESS_height - oneLine);
+    }
+    
     _scrollContentViewHeight.constant = _headerViewHeight.constant + 30 + tableViewHeight + _bottomViewHeight.constant;
+}
+
+
+- (void)successOfGetInputInfo_NoData {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [_tableView noData:@"没有货物信息" andImageName:LM_NoResult_noOrder];
+}
+
+
+- (void)failureOfGetInputInfo:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [_tableView noData:@"请求失败，请重试..." andImageName:LM_NoResult_noResult];
 }
 
 

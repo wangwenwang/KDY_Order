@@ -13,12 +13,13 @@
 
 @implementation Stock_GetInputListService
 
-- (void)GetInputList:(nullable NSString *)ADD_USER andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount {
+- (void)GetInputList:(nullable NSString *)ADD_USER andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX {
     
     NSDictionary *parameters = @{
                                  @"ADD_USER" : ADD_USER,
                                  @"strPage" : @(strPage),
                                  @"strPageCount" : @(strPageCount),
+                                 @"BUSINESS_IDX" : BUSINESS_IDX,
                                  @"strLicense" : @"",
                                  };
     

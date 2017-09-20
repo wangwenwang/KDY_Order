@@ -27,6 +27,6 @@
 @property (weak, nonatomic) id <GetInputListServiceDelegate> delegate;
 
 
-- (void)GetInputList:(nullable NSString *)ADD_USER andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount;
+- (void)GetInputList:(nullable NSString *)ADD_USER andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX;
 
 @end

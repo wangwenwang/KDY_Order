@@ -267,6 +267,12 @@
 /// 入库详情
 #define API_GetInputInfo @"http://oms.kaidongyuan.com:8088/api/GetInputInfo"
 
+/// 上一级地址
+#define API_GetInputToPartySearch @"http://oms.kaidongyuan.com:8088/api/GetInputToPartySearch"
+
+/// 保存入库单
+#define API_SaveInput @"http://oms.kaidongyuan.com:8088/api/SaveInput"
+
 
 
 /*--------- 判断iOS版本 ---------*/

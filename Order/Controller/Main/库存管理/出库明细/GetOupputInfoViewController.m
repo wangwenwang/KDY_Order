@@ -281,7 +281,9 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    [Tools showAlert:self.view andTitle:msg];
+    [self pop];
+    
+    [Tools showAlert:self.view andTitle:msg andTime:2.5];
 }
 
 
@@ -307,9 +309,7 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    [self pop];
-    
-    [Tools showAlert:self.view andTitle:msg andTime:2.5];
+    [Tools showAlert:self.view andTitle:msg];
 }
 
 @end

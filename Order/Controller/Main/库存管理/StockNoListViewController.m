@@ -143,6 +143,12 @@
     
     [self fullData];
     
+    // 产品名称换行
+    CGFloat contentWidth = ScreenWidth - 15 - 65 + 3;
+    // Label 单行高度
+    CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:999.9];
+    CGFloat overflowHeight = [Tools getHeightOfString:_stockNoListM.stockNoInfoModel.pRODUCTNAME fontSize:14 andWidth:contentWidth] - oneLineHeight;
+    _infoViewHeight.constant = _infoViewHeight.constant + overflowHeight;
     _scrollContentViewHeight.constant = 12 + _infoViewHeight.constant + 12 + _stockNoListM.stockNoItemModel.count * kCellHeight;
     
     [_tableView removeNoOrderPrompt];

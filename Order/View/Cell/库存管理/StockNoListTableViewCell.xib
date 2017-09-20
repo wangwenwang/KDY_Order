@@ -37,6 +37,16 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="库存批号: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-NF-EDR">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生产日期: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOM-FY-Zp6">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.89680788069999995" green="0.89848754630000005" blue="0.92411901600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -45,8 +55,12 @@
                             <constraint firstItem="FNV-j8-Kgj" firstAttribute="centerY" secondItem="SNT-gs-vHD" secondAttribute="centerY" id="Emq-fG-bUr"/>
                             <constraint firstItem="SNT-gs-vHD" firstAttribute="leading" secondItem="xh7-8r-t8u" secondAttribute="leading" id="GzD-EC-31h"/>
                             <constraint firstItem="FNV-j8-Kgj" firstAttribute="leading" secondItem="SNT-gs-vHD" secondAttribute="trailing" id="KOZ-dA-jtV"/>
+                            <constraint firstItem="BOM-FY-Zp6" firstAttribute="leading" secondItem="fbk-NF-EDR" secondAttribute="trailing" constant="2" id="QIF-Pu-ZMx"/>
+                            <constraint firstItem="BOM-FY-Zp6" firstAttribute="centerY" secondItem="V3s-gs-d3Z" secondAttribute="centerY" id="Qhm-Sf-GkQ"/>
                             <constraint firstItem="xh7-8r-t8u" firstAttribute="leading" secondItem="V3s-gs-d3Z" secondAttribute="leading" constant="12" id="WPp-hG-zmq"/>
                             <constraint firstItem="SNT-gs-vHD" firstAttribute="top" secondItem="xh7-8r-t8u" secondAttribute="bottom" constant="5" id="dud-sF-z1Y"/>
+                            <constraint firstAttribute="trailing" secondItem="BOM-FY-Zp6" secondAttribute="trailing" constant="5" id="nQ7-mS-615"/>
+                            <constraint firstItem="BOM-FY-Zp6" firstAttribute="centerY" secondItem="fbk-NF-EDR" secondAttribute="centerY" id="qCD-4R-O9t"/>
                             <constraint firstItem="inb-tF-h4H" firstAttribute="leading" secondItem="xh7-8r-t8u" secondAttribute="trailing" id="x2f-mr-xBz"/>
                         </constraints>
                     </view>
@@ -62,6 +76,8 @@
             <connections>
                 <outlet property="BATCH_NUMBER" destination="inb-tF-h4H" id="Apa-Qp-3HC"/>
                 <outlet property="PRODUCT_STATE" destination="FNV-j8-Kgj" id="GHc-Lu-aLB"/>
+                <outlet property="STOCK_QTY" destination="fbk-NF-EDR" id="HDw-7z-EAQ"/>
+                <outlet property="STOCK_UOM" destination="BOM-FY-Zp6" id="vI7-ZE-XZD"/>
             </connections>
             <point key="canvasLocation" x="34" y="146"/>
         </tableViewCell>

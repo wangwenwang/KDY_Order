@@ -7,11 +7,15 @@
 //
 
 #import "Store_GetOutProductListTableViewCell.h"
+#import "Tools.h"
 
 @interface Store_GetOutProductListTableViewCell ()
 
 // 产品名称
 @property (weak, nonatomic) IBOutlet UILabel *PRODUCT_NAME;
+
+// 数量
+@property (weak, nonatomic) IBOutlet UILabel *STOCK_QTY;
 
 @end
 
@@ -31,6 +35,8 @@
 - (void)setStockProductM:(StockProductModel *)stockProductM {
     
     _PRODUCT_NAME.text = stockProductM.pRODUCTNAME;
+    
+    _STOCK_QTY.text = [NSString stringWithFormat:@"%@%@", [Tools formatFloat:[stockProductM.sTOCKQTY floatValue]], stockProductM.sTOCKUOM];
 }
 
 @end

@@ -1,12 +1,12 @@
 //
-//  StockOutConfirmViewController.m
+//  InputReturnConfirmViewController.m
 //  Order
 //
 //  Created by 凯东源 on 16/10/21.
 //  Copyright © 2016年 凯东源. All rights reserved.
 //
 
-#import "StockOutConfirmViewController.h"
+#import "InputReturnConfirmViewController.h"
 #import "ConfirmOrderTableViewCell.h"
 #import "ProductModel.h"
 #import "PromotionDetailModel.h"
@@ -18,12 +18,12 @@
 #import "OrderGiftModel.h"
 #import "ConfirmOrderGiftsTableViewCell.h"
 #import "NSString+Trim.h"
-#import "Store_StockOutConfirmService.h"
 #import <Masonry.h>
 #import "LMPickerView.h"
 #import "StockManViewController.h"
+#import "Stock_SaveInputService.h"
 
-@interface StockOutConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, Store_StockOutConfirmServiceDelegate, LMPickerViewDelegate>
+@interface InputReturnConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, Stock_SaveInputServiceDelegate, LMPickerViewDelegate>
 
 #define ProductTableViewCellHeight 69
 #define GiftTableViewCellHeight 69
@@ -211,8 +211,8 @@
 // 时间、备注、确认高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *time_remark_commit_Height;
 
-// 订单确认服务
-@property (strong, nonatomic) Store_StockOutConfirmService *service;
+// 保存入库单
+@property (strong, nonatomic) Stock_SaveInputService *service;
 
 - (IBAction)confirmOnclick:(UIButton *)sender;
 
@@ -235,7 +235,7 @@ typedef enum _CloseDatePicker {
 static CGFloat g_sumInfoSuperViewHeight = 0;
 
 
-@implementation StockOutConfirmViewController
+@implementation InputReturnConfirmViewController
 
 - (instancetype)init {
     
@@ -249,7 +249,7 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"yyyy-MM-dd"];
         _selectedDate = [NSDate date];
-        _service = [[Store_StockOutConfirmService alloc] init];
+        _service = [[Stock_SaveInputService alloc] init];
         _service.delegate = self;
         _isOnclickDateSure = NO;
         
@@ -325,7 +325,7 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
     }
     
     // 收货地址换行
-    overflowHeight = [Tools getHeightOfString:_getToAddressM.aDDRESSINFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
+    overflowHeight = [Tools getHeightOfString:_inputToAddressM.aDDRESSINFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
     
     if(overflowHeight > 0) {
         
@@ -395,9 +395,9 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
     
     // 收货信息
-    _CONTACT_PERSON_receive.text = _getToAddressM.cONTACTPERSON;
-    _CONTACT_TEL_receive.text = _getToAddressM.cONTACTTEL;
-    _ADDRESS_INFO_receive.text = _getToAddressM.aDDRESSINFO;
+    _CONTACT_PERSON_receive.text = @"";
+    _CONTACT_TEL_receive.text = @"";
+    _ADDRESS_INFO_receive.text =  _inputToAddressM.aDDRESSINFO;
     
     
     // 没有赠品
@@ -597,7 +597,7 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
         [Tools showAlert:self.view andTitle:@"订单处理异常"];
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_service confirm:dictStr];
+        [_service SaveInput:dictStr];
     }
 }
 
@@ -616,26 +616,23 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
-                              @"销售出库", @"OUTPUT_TYPE",
+                              @"采购退库", @"INPUT_TYPE",
                               _addressM.IDX, @"ADDRESS_IDX",
                               _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
                               _partyM.PARTY_NAME, @"ADDRESS_NAME",
                               _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
-                              @"", @"OUTPUT_NO",      // 出库单号未知
-                              @"", @"INPUT_NO",       // 原采购单号未知
-                              _partyM.PARTY_CODE, @"PARTY_CODE",
-                              _partyM.PARTY_NAME, @"PARTY_NAME",
-                              _getToAddressM.aDDRESSINFO, @"PARTY_INFO",
-                              @(p.TOTAL_QTY), @"OUTPUT_QTY",
-                              actPrice, @"OUTPUT_SUM",
-                              orgPrice, @"PRICE",
-                              @"", @"OUTPUT_DATE",    // 出库时间未知
-                              @(p.TOTAL_WEIGHT), @"OUTPUT_WEIGHT",
-                              @(p.TOTAL_VOLUME), @"OUTPUT_VOLUME",
+                              @"", @"INPUT_NO",       // 入库单号未知
+                              @"", @"OUTPUT_NO",      // 原单出库单号未知
+                              _inputToAddressM.iTEMCODE, @"SUPPLIER_CODE",
+                              _inputToAddressM.pARTYNAME, @"SUPPLIER_NAME",
+                              _inputToAddressM.aDDRESSINFO, @"SUPPLIER_ADDRESS",
                               _remarkTextV.text, @"PARTY_MARK",
-                              @"", @"ADUT_MARK",      // 审核备注未知
-                              _app.user.IDX, @"ADD_USER",
-                              [Tools getCurrentDate], @"ADD_DATE",
+                              @"", @"ADUT_MARK",
+                              @(-p.TOTAL_QTY), @"INPUT_QTY",
+                              actPrice, @"INPUT_SUM",
+                              @"", @"INPUT_DATE", // 入库时间未知
+                              @(p.TOTAL_WEIGHT), @"INPUT_WEIGHT",
+                              @(p.TOTAL_VOLUME), @"INPUT_VOLUME",
                               _app.user.USER_NAME, @"OPER_USER",
                               Result, @"Info",
                               nil];
@@ -659,22 +656,16 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
                                   p.PRODUCT_NO, @"PRODUCT_NO",
                                   p.PRODUCT_NAME, @"PRODUCT_NAME",
                                   @"", @"PRODUCT_DESC",
-                                  @(p.ACT_PRICE), @"SUM",
+                                  @(p.LINE_NO), @"LINE_NO",
                                   @(p.PO_WEIGHT), @"PRODUCT_WEIGHT",
                                   @(p.PO_VOLUME), @"PRODUCT_VOLUME",
-                                  @(p.PO_QTY), @"OUTPUT_QTY",
-                                  pro.PRODUCT_UOM, @"OUTPUT_UOM",
-                                  @(p.PO_WEIGHT), @"OUTPUT_WEIGHT",
-                                  @(p.PO_VOLUME), @"OUTPUT_VOLUME",
-                                  @(p.ORG_PRICE), @"ORG_PRICE",
-                                  @(p.ACT_PRICE), @"ACT_PRICE",
-                                  p.SALE_REMARK, @"SALE_REMARK",
-                                  @(p.MJ_PRICE), @"MJ_PRICE",
-                                  p.MJ_REMARK, @"MJ_REMARK",
+                                  @(-p.PO_QTY), @"INPUT_QTY",
+                                  pro.PRODUCT_UOM, @"INPUT_UOM",
                                   @"", @"PRODUCTION_DATE",     // 生产日期未知
                                   @"", @"BATCH_NUMBER",        // 批次未知
                                   @"", @"PRODUCT_STATE",       // 货物状态未知
-                                  _app.user.USER_NAME, @"OPER_USER",
+                                  @(p.ACT_PRICE), @"PRICE",
+                                  @(p.ACT_PRICE * p.PO_QTY), @"SUM",
                                   nil];
             
             NSString *s = [Tools JsonStringWithDictonary:dict];

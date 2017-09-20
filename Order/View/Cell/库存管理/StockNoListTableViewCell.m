@@ -7,6 +7,7 @@
 //
 
 #import "StockNoListTableViewCell.h"
+#import "Tools.h"
 
 @interface StockNoListTableViewCell ()
 
@@ -15,6 +16,12 @@
 
 // 生产日期
 @property (weak, nonatomic) IBOutlet UILabel *PRODUCT_STATE;
+
+// 库存数量
+@property (weak, nonatomic) IBOutlet UILabel *STOCK_QTY;
+
+// 物品单位
+@property (weak, nonatomic) IBOutlet UILabel *STOCK_UOM;
 
 @end
 
@@ -37,6 +44,8 @@
     
     _BATCH_NUMBER.text = stockNoItemM.bATCHNUMBER;
     _PRODUCT_STATE.text = stockNoItemM.pRODUCTSTATE;
+    _STOCK_QTY.text = [Tools formatFloat:[stockNoItemM.sTOCKQTY floatValue]];
+    _STOCK_UOM.text = stockNoItemM.sTOCKUOM;
 }
 
 @end

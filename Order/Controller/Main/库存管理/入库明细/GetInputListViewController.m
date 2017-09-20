@@ -59,7 +59,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+    [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999 andBUSINESS_IDX:_app.business.BUSINESS_IDX];
     
     // 下拉刷新
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
@@ -72,7 +72,7 @@
     
     if([Tools isConnectionAvailable]) {
         
-        [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999];
+        [_service GetInputList:_addressM.IDX andstrPage:1 andstrPageCount:9999 andBUSINESS_IDX:_app.business.BUSINESS_IDX];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -152,6 +152,8 @@
 - (void)successOfGetInputList:(InputListModel *)inputListM {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
+    _refreshList = NO;
     
     _inputListM = inputListM;
     
@@ -164,6 +166,7 @@
 - (void)successOfGetInputList_NoData {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
     
     [_tableView noData:@"没有数据" andImageName:LM_NoResult_noOrder];
 }
@@ -172,6 +175,7 @@
 - (void)failureOfGetInputList:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
     
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取库存批次失败"];
 }

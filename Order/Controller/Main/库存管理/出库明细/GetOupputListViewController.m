@@ -156,6 +156,7 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [_tableView.mj_header endRefreshing];
+    _refreshList = NO;
     
     _getOupputListM = getOupputListM;
     
