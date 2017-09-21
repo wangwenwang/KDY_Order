@@ -43,6 +43,15 @@
     
     _OUTPUT_NO.text = getOupputM.oUTPUTNO;
     _ADD_DATE.text = getOupputM.aDDDATE;
+    _OUTPUT_TYPE.text = getOupputM.oUTPUTTYPE;
+    
+    if([getOupputM.oUTPUTTYPE isEqualToString:@"销售出库"]) {
+        
+        _OUTPUT_TYPE.textColor = RGB(64, 147, 45);
+    } else if([getOupputM.oUTPUTTYPE isEqualToString:@"出库退库"]) {
+        
+        _OUTPUT_TYPE.textColor = [UIColor redColor];
+    }
     
     if([getOupputM.oUTPUTSTATE isEqualToString:@"OPEN"]) {
         

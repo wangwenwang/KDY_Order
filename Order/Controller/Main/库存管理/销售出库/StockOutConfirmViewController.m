@@ -70,6 +70,9 @@
 // 收货信息高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *receiveViewHeight;
 
+// 门店名称
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME_receive;
+
 // 联系人名
 @property (weak, nonatomic) IBOutlet UILabel *CONTACT_PERSON_receive;
 
@@ -232,7 +235,7 @@ typedef enum _CloseDatePicker {
     CloseDatePicker_TYPE_CANCEL,            // 取消
 } DateType;
 
-static CGFloat g_sumInfoSuperViewHeight = 0;
+static CGFloat g_sumInfoSuperViewHeight_c = 0;
 
 
 @implementation StockOutConfirmViewController
@@ -395,6 +398,7 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
     
     // 收货信息
+    _PARTY_NAME_receive.text = _getToAddressM.pARTYNAME;
     _CONTACT_PERSON_receive.text = _getToAddressM.cONTACTPERSON;
     _CONTACT_TEL_receive.text = _getToAddressM.cONTACTTEL;
     _ADDRESS_INFO_receive.text = _getToAddressM.aDDRESSINFO;
@@ -464,10 +468,10 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
         _mjTotalLabel.text = nil;
         _actPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _promotionOrder.ACT_PRICE];
         
-        if(!g_sumInfoSuperViewHeight) {
+        if(!g_sumInfoSuperViewHeight_c) {
             
             _sumInfoSuperViewHeight.constant -= 30;
-            g_sumInfoSuperViewHeight = _sumInfoSuperViewHeight.constant;
+            g_sumInfoSuperViewHeight_c = _sumInfoSuperViewHeight.constant;
         }
     } else {
         _promotionPromptLabel.text = @"促销策略：";

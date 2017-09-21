@@ -56,7 +56,7 @@
     
     _PRODUCT_NO.text = getOupputItemM.pRODUCTNO;
     _PRODUCT_NAME.text = getOupputItemM.pRODUCTNAME;
-    _OUTPUT_QTY.text = [Tools OneDecimal:getOupputItemM.oUTPUTQTY];
+    _OUTPUT_QTY.text = [NSString stringWithFormat:@"%@%@", [Tools OneDecimal:getOupputItemM.oUTPUTQTY], getOupputItemM.oUTPUTUOM];
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:getOupputItemM.oUTPUTWEIGHT];
     _OUTPUT_VOLUME.text = [Tools TwoDecimal:getOupputItemM.oUTPUTVOLUME];
     _ORG_PRICE.text = [Tools TwoDecimal:getOupputItemM.oRGPRICE];

@@ -721,7 +721,7 @@ typedef enum : NSInteger {
             [_service getPromotionData:[self getSubitString:_selectedProducts]];
         } else {
             
-            [Tools showAlert:self.view andTitle:@"请填写收货信息"];
+            [Tools showAlert:self.view andTitle:@"请填写发货信息"];
         }
         
     } else {

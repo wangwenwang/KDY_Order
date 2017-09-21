@@ -232,7 +232,7 @@ typedef enum _CloseDatePicker {
     CloseDatePicker_TYPE_CANCEL,            // 取消
 } DateType;
 
-static CGFloat g_sumInfoSuperViewHeight = 0;
+static CGFloat g_sumInfoSuperViewHeight_a = 0;
 
 
 @implementation InputReturnConfirmViewController
@@ -395,8 +395,8 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
     
     // 收货信息
-    _CONTACT_PERSON_receive.text = @"";
-    _CONTACT_TEL_receive.text = @"";
+    _CONTACT_PERSON_receive.text = _inputToAddressM.cONTACTPERSON;
+    _CONTACT_TEL_receive.text = _inputToAddressM.cONTACTTEL;
     _ADDRESS_INFO_receive.text =  _inputToAddressM.aDDRESSINFO;
     
     
@@ -464,10 +464,10 @@ static CGFloat g_sumInfoSuperViewHeight = 0;
         _mjTotalLabel.text = nil;
         _actPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _promotionOrder.ACT_PRICE];
         
-        if(!g_sumInfoSuperViewHeight) {
+        if(!g_sumInfoSuperViewHeight_a) {
             
             _sumInfoSuperViewHeight.constant -= 30;
-            g_sumInfoSuperViewHeight = _sumInfoSuperViewHeight.constant;
+            g_sumInfoSuperViewHeight_a = _sumInfoSuperViewHeight.constant;
         }
     } else {
         _promotionPromptLabel.text = @"促销策略：";

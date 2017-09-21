@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InputModel.h"
 
 @interface GetInputInfoViewController : UIViewController
 
 
-@property (copy, nonatomic) NSString *intputIdx;
+@property (strong, nonatomic) InputModel *inputM;
 
 @end

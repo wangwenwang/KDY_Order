@@ -10,6 +10,8 @@
 
 
 NSString *const kInputToAddressModelADDRESSINFO = @"ADDRESS_INFO";
+NSString *const kInputToAddressModelCONTACTPERSON = @"CONTACT_PERSON";
+NSString *const kInputToAddressModelCONTACTTEL = @"CONTACT_TEL";
 NSString *const kInputToAddressModelIDX = @"IDX";
 NSString *const kInputToAddressModelITEMCODE = @"ITEM_CODE";
 NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
@@ -26,6 +28,12 @@ NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
     self = [super init];
     if(![dictionary[kInputToAddressModelADDRESSINFO] isKindOfClass:[NSNull class]]){
         self.aDDRESSINFO = dictionary[kInputToAddressModelADDRESSINFO];
+    }
+    if(![dictionary[kInputToAddressModelCONTACTPERSON] isKindOfClass:[NSNull class]]){
+        self.cONTACTPERSON = dictionary[kInputToAddressModelCONTACTPERSON];
+    }
+    if(![dictionary[kInputToAddressModelCONTACTTEL] isKindOfClass:[NSNull class]]){
+        self.cONTACTTEL = dictionary[kInputToAddressModelCONTACTTEL];
     }
     if(![dictionary[kInputToAddressModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kInputToAddressModelIDX];
@@ -48,6 +56,12 @@ NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
     if(self.aDDRESSINFO != nil){
         dictionary[kInputToAddressModelADDRESSINFO] = self.aDDRESSINFO;
+    }
+    if(self.cONTACTPERSON != nil){
+        dictionary[kInputToAddressModelCONTACTPERSON] = self.cONTACTPERSON;
+    }
+    if(self.cONTACTTEL != nil){
+        dictionary[kInputToAddressModelCONTACTTEL] = self.cONTACTTEL;
     }
     if(self.iDX != nil){
         dictionary[kInputToAddressModelIDX] = self.iDX;
@@ -73,6 +87,12 @@ NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
     if(self.aDDRESSINFO != nil){
         [aCoder encodeObject:self.aDDRESSINFO forKey:kInputToAddressModelADDRESSINFO];
     }
+    if(self.cONTACTPERSON != nil){
+        [aCoder encodeObject:self.cONTACTPERSON forKey:kInputToAddressModelCONTACTPERSON];
+    }
+    if(self.cONTACTTEL != nil){
+        [aCoder encodeObject:self.cONTACTTEL forKey:kInputToAddressModelCONTACTTEL];
+    }
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kInputToAddressModelIDX];
     }
@@ -92,6 +112,8 @@ NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
 {
     self = [super init];
     self.aDDRESSINFO = [aDecoder decodeObjectForKey:kInputToAddressModelADDRESSINFO];
+    self.cONTACTPERSON = [aDecoder decodeObjectForKey:kInputToAddressModelCONTACTPERSON];
+    self.cONTACTTEL = [aDecoder decodeObjectForKey:kInputToAddressModelCONTACTTEL];
     self.iDX = [aDecoder decodeObjectForKey:kInputToAddressModelIDX];
     self.iTEMCODE = [aDecoder decodeObjectForKey:kInputToAddressModelITEMCODE];
     self.pARTYNAME = [aDecoder decodeObjectForKey:kInputToAddressModelPARTYNAME];
@@ -107,6 +129,8 @@ NSString *const kInputToAddressModelPARTYNAME = @"PARTY_NAME";
     InputToAddressModel *copy = [InputToAddressModel new];
     
     copy.aDDRESSINFO = [self.aDDRESSINFO copy];
+    copy.cONTACTPERSON = [self.cONTACTPERSON copy];
+    copy.cONTACTTEL = [self.cONTACTTEL copy];
     copy.iDX = [self.iDX copy];
     copy.iTEMCODE = [self.iTEMCODE copy];
     copy.pARTYNAME = [self.pARTYNAME copy];

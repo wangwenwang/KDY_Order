@@ -105,9 +105,18 @@
     
     [self registerCell];
     
+    [self initUI];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_service GetInputInfo:_intputIdx];
+    [_service GetInputInfo:_inputM.iDX];
+    
+    // 已取消 或 已审核，不显示"确认入库"、"取消入库" 按钮
+    if([_inputM.iNPUTSTATE isEqualToString:@"CANCEL"] || [_inputM.iNPUTWORKFLOW isEqualToString:@"已审核"]) {
+        
+        _bottomView.hidden = YES;
+        _bottomViewHeight.constant = 0;
+    }
 }
 
 
@@ -123,11 +132,23 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_confirm_service InPutWorkflow:_intputIdx andADUT_USER:_app.user.USER_NAME];
+    [_confirm_service InPutWorkflow:_inputM.iDX andADUT_USER:_app.user.USER_NAME];
 }
 
 
 #pragma mark - 功能函数
+
+- (void)initUI {
+    
+    _OUTPUT_NO.text = @"";
+    _ADD_DATE.text = @"";
+    _ADDRESS_INFO.text = @" ";
+    _PARTY_INFO.text = @" ";
+    _OUTPUT_QTY.text = @"";
+    _OUTPUT_WEIGHT.text = @"";
+    _OUTPUT_VOLUME.text = @"";
+}
+
 
 // 注册Cell
 - (void)registerCell {
@@ -203,20 +224,6 @@
 }
 
 
-#pragma mark - 功能函数
-
-- (void)initUI {
-    
-    _OUTPUT_NO.text = @"";
-    _ADD_DATE.text = @"";
-    _ADDRESS_INFO.text = @"";
-    _PARTY_INFO.text = @"";
-    _OUTPUT_QTY.text = @"";
-    _OUTPUT_WEIGHT.text = @"";
-    _OUTPUT_VOLUME.text = @"";
-}
-
-
 #pragma mark - Store_GetOupputInfoServiceDelegate
 
 - (void)successOfGetInputInfo:(InputInfoListModel *)inputInfoListM {
@@ -256,13 +263,6 @@
     }
     
     [_tableView reloadData];
-    
-    // 已取消 或 已审核，不显示"确认入库"、"取消入库" 按钮
-    if([_inputInfoListM.inputInfoModel.iNPUTSTATE isEqualToString:@"CANCEL"] || [_inputInfoListM.inputInfoModel.iNPUTWORKFLOW isEqualToString:@"已审核"]) {
-        
-        _bottomView.hidden = YES;
-        _bottomViewHeight.constant = 0;
-    }
     
     // 起始地址 换行
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:ScreenWidth];

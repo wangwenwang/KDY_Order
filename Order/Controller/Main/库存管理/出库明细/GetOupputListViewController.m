@@ -105,6 +105,7 @@
 
 #pragma mark - 功能函数
 
+
 // 注册Cell
 - (void)registerCell {
     
@@ -150,7 +151,7 @@
     GetOupputModel *m = _getOupputListM.getOupputModel[indexPath.row];
     
     GetOupputInfoViewController *vc = [[GetOupputInfoViewController alloc] init];
-    vc.storeIdx = [m.iDX integerValue];
+    vc.oupputM = m;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -179,7 +180,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [_tableView.mj_header endRefreshing];
     
-    [_tableView noData:@"没有数据哦" andImageName:LM_NoResult_noResult];
+    [_tableView noData:@"您还没有出库明细" andImageName:LM_NoResult_noOrder];
 }
 
 

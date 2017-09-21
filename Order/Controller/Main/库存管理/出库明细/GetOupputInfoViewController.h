@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GetOupputModel.h"
 
 @interface GetOupputInfoViewController : UIViewController
 
 
-@property (assign, nonatomic) NSInteger storeIdx;
+@property (strong, nonatomic) GetOupputModel *oupputM;
 
 @end

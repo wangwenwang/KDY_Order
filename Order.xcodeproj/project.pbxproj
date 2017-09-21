@@ -98,6 +98,7 @@
 		302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05821DB0C9E700972490 /* ProductPolicyModel.m */; };
 		302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05851DB0CC7200972490 /* PolicyItemModel.m */; };
 		302A94251F4579450020E1C1 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302A94241F4579450020E1C1 /* MainCollection.plist */; };
+		302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */; };
 		3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */; };
 		3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */; };
 		3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566951F70CD2B009E6EFB /* StockOutConfirmViewController.m */; };
@@ -540,6 +541,8 @@
 		302A05841DB0CC7200972490 /* PolicyItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyItemModel.h; sourceTree = "<group>"; };
 		302A05851DB0CC7200972490 /* PolicyItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyItemModel.m; sourceTree = "<group>"; };
 		302A94241F4579450020E1C1 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
+		302F6D411F73A57E00A84F39 /* Stock_GetOutProductTypeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock_GetOutProductTypeService.h; sourceTree = "<group>"; };
+		302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock_GetOutProductTypeService.m; sourceTree = "<group>"; };
 		303566911F70CD2B009E6EFB /* GetToAddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListViewController.h; sourceTree = "<group>"; };
 		303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetToAddressListViewController.m; sourceTree = "<group>"; };
 		303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetToAddressListViewController.xib; sourceTree = "<group>"; };
@@ -1258,8 +1261,7 @@
 				302675D81F72469B0098DEF1 /* InputToAddressModel.h */,
 				302675D91F72469B0098DEF1 /* InputToAddressModel.m */,
 			);
-			name = "入库退货";
-			path = "库存管理/入库退货";
+			path = "入库退货";
 			sourceTree = "<group>";
 		};
 		302675E01F724BCA0098DEF1 /* 销售出库 */ = {
@@ -1269,6 +1271,8 @@
 				302675E21F724BCA0098DEF1 /* Store_GetToAddressListService.m */,
 				302675E31F724BCA0098DEF1 /* Store_StockOutConfirmService.h */,
 				302675E41F724BCA0098DEF1 /* Store_StockOutConfirmService.m */,
+				302F6D411F73A57E00A84F39 /* Stock_GetOutProductTypeService.h */,
+				302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */,
 			);
 			path = "销售出库";
 			sourceTree = "<group>";
@@ -1682,8 +1686,6 @@
 				30201F211F1083AB0055BA6A /* 客户费用 */,
 				30201EF61F1082220055BA6A /* 帐单费用 */,
 				3051DB8E1F1898EF0034629B /* 客户管理 */,
-				30DE40541F6D114900845CBB /* 入库确认 */,
-				302675D71F7246740098DEF1 /* 入库退货 */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1966,6 +1968,8 @@
 				301AD3AE1F6A290D00CD13D0 /* 库存批次 */,
 				3088D2FE1F4BDC49006031D9 /* 出入明细 */,
 				301AFA7D1F4ADC3900E4FDFF /* 出库 */,
+				302675D71F7246740098DEF1 /* 入库退货 */,
+				30DE40541F6D114900845CBB /* 入库确认 */,
 			);
 			path = "库存管理";
 			sourceTree = "<group>";
@@ -2437,8 +2441,7 @@
 				309E10E11F6D19E0008E1F49 /* InputItemModel.h */,
 				309E10E21F6D19E0008E1F49 /* InputItemModel.m */,
 			);
-			name = "入库确认";
-			path = "库存管理/入库确认";
+			path = "入库确认";
 			sourceTree = "<group>";
 		};
 		30E616E41F28771B0039D73D /* Classes */ = {
@@ -2785,6 +2788,7 @@
 				30A3C30D1D9A101C00BBE0DA /* MakeOrderViewController.m in Sources */,
 				3088D3051F4BDC49006031D9 /* GetOupputDetailModel.m in Sources */,
 				3088D30D1F4BDE96006031D9 /* GetOupputItemModel.m in Sources */,
+				302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */,
 				30E5A04D1D9B769000D94F77 /* CheckOrderService.m in Sources */,
 				30CDC6461D9907CD0035602F /* CoreArchive.m in Sources */,
 				304A7ADD1DB8BCFE0039B0B2 /* ChartService.m in Sources */,

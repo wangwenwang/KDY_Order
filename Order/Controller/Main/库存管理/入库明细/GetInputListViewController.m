@@ -142,7 +142,7 @@
     InputModel *m = _inputListM.inputModel[indexPath.row];
     
     GetInputInfoViewController *vc = [[GetInputInfoViewController alloc] init];
-    vc.intputIdx = m.iDX;
+    vc.inputM = m;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -168,7 +168,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [_tableView.mj_header endRefreshing];
     
-    [_tableView noData:@"没有数据" andImageName:LM_NoResult_noOrder];
+    [_tableView noData:@"您还没有入库明细" andImageName:LM_NoResult_noOrder];
 }
 
 

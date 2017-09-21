@@ -18,10 +18,13 @@
 #import "Store_GetPartyStockListService.h"
 #import "StockNoListViewController.h"
 
+//
+
 // 出库
 #import "AppDelegate.h"
-#import "SelectGoodsService.h"
+#import "Stock_GetOutProductTypeService.h"
 #import "Store_GetOutProductListService.h"
+#import "SelectGoodsService.h"
 
 // 入库
 #import "GetInputListViewController.h"
@@ -30,7 +33,7 @@
 // 出库退库
 #import "OutputReturnViewController.h"
 
-@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, SelectGoodsServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate>
+@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, GetOutProductTypeServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate, SelectGoodsServiceDelegate>
 
 // 网络层，库存列表
 @property (strong, nonatomic) Store_GetPartyStockListService *service;
@@ -84,6 +87,8 @@
 
 @property (strong, nonatomic) SelectGoodsService *selectGoodsService;
 
+@property (strong, nonatomic) Stock_GetOutProductTypeService *getOutProductTypeService;
+
 @property (strong, nonatomic) Store_GetOutProductListService *store_GetOutProductListService;
 
 // 暂存请求产品类型的回调结果
@@ -112,6 +117,9 @@
         
         _selectGoodsService = [[SelectGoodsService alloc] init];
         _selectGoodsService.delegate = self;
+        
+        _getOutProductTypeService = [[Stock_GetOutProductTypeService alloc] init];
+        _getOutProductTypeService.delegate = self;
         
         _store_GetOutProductListService = [[Store_GetOutProductListService alloc] init];
         _store_GetOutProductListService.delegate = self;
@@ -315,7 +323,7 @@
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     
-    [_selectGoodsService getProductTypesData];
+    [_getOutProductTypeService GetOutProductType];
 }
 
 
@@ -328,7 +336,7 @@
 
 
 // 获取产品类型回调
-- (void)successOfGetProductTypeData:(NSMutableArray *)productTypes {
+- (void)successOfGetOutProductType:(NSMutableArray *)productTypes {
     
     _productTypes = productTypes;
     
@@ -342,7 +350,7 @@
 }
 
 
-- (void)failureOfGetProductTypeData:(NSString *)msg {
+- (void)failureOfGetOutProductType:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
@@ -380,7 +388,7 @@
     
     [MBProgressHUD hideHUDForView:_tableView animated:YES];
     
-    [_tableView noData:@"没有数据" andImageName:LM_NoResult_noOrder];
+    [_tableView noData:@"您还没有库存" andImageName:LM_NoResult_noOrder];
 }
 
 

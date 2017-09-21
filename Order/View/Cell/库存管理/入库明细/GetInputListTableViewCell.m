@@ -45,6 +45,14 @@
     _ADD_DATE.text = inputM.aDDDATE;
     _INPUT_TYPE.text = inputM.iNPUTTYPE;
     
+    if([inputM.iNPUTTYPE isEqualToString:@"采购入库"]) {
+        
+        _INPUT_TYPE.textColor = RGB(64, 147, 45);
+    } else if([inputM.iNPUTTYPE isEqualToString:@"采购退库"]) {
+        
+        _INPUT_TYPE.textColor = [UIColor redColor];
+    }
+    
     if([inputM.iNPUTSTATE isEqualToString:@"OPEN"]) {
         
         if([inputM.iNPUTWORKFLOW isEqualToString:@"已审核"]) {

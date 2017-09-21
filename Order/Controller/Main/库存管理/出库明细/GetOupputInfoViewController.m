@@ -97,9 +97,20 @@
     
     [self registerCell];
     
+    [self initUI];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_service GetOupputInfo:_storeIdx];
+    [_service GetOupputInfo:[_oupputM.iDX integerValue]];
+    
+//    _confirmBtn
+    
+    // 已取消 或 不是新建，不显示"确认出库"、"取消出库" 按钮
+    if([_oupputM.oUTPUTSTATE isEqualToString:@"CANCEL"] || ![_oupputM.oUTPUTWORKFLOW isEqualToString:@"新建"]) {
+        
+        _bottomView.hidden = YES;
+        _bottomViewHeight.constant = 0;
+    }
 }
 
 
@@ -115,7 +126,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_service confirm:_storeIdx andADUT_USER:_app.user.USER_NAME];
+    [_service confirm:[_oupputM.iDX integerValue] andADUT_USER:_app.user.USER_NAME];
 }
 
 
@@ -123,11 +134,23 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [_service cancel:_storeIdx andOPER_USER:_app.user.IDX];
+    [_service cancel:[_oupputM.iDX integerValue] andOPER_USER:_app.user.IDX];
 }
 
 
 #pragma mark - 功能函数
+
+- (void)initUI {
+    
+    _OUTPUT_NO.text = @"";
+    _ADD_DATE.text = @"";
+    _ADDRESS_INFO.text = @" ";
+    _PARTY_INFO.text = @" ";
+    _OUTPUT_QTY.text = @"";
+    _OUTPUT_WEIGHT.text = @"";
+    _OUTPUT_VOLUME.text = @"";
+}
+
 
 // 注册Cell
 - (void)registerCell {
@@ -203,20 +226,6 @@
 }
 
 
-#pragma mark - 功能函数
-
-- (void)initUI {
-    
-    _OUTPUT_NO.text = @"";
-    _ADD_DATE.text = @"";
-    _ADDRESS_INFO.text = @"";
-    _PARTY_INFO.text = @"";
-    _OUTPUT_QTY.text = @"";
-    _OUTPUT_WEIGHT.text = @"";
-    _OUTPUT_VOLUME.text = @"";
-}
-
-
 #pragma mark - Store_GetOupputInfoServiceDelegate
 
 - (void)successOfGetOupputInfo:(GetOupputDetailModel *)getOupputDetailM {
@@ -257,13 +266,6 @@
     }
     
     [_tableView reloadData];
-    
-    // 已取消 或 不是新建，不显示"确认出库"、"取消出库" 按钮
-    if([_getOupputDetailM.getOupputInfoModel.oUTPUTSTATE isEqualToString:@"CANCEL"] || ![_getOupputDetailM.getOupputInfoModel.oUTPUTWORKFLOW isEqualToString:@"新建"]) {
-        
-        _bottomView.hidden = YES;
-        _bottomViewHeight.constant = 0;
-    }
     
     _scrollContentViewHeight.constant = _headerViewHeight.constant + 30 + tableViewHeight + _bottomViewHeight.constant;
 }

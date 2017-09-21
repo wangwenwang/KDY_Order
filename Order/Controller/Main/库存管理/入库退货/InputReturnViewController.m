@@ -658,7 +658,7 @@ typedef enum : NSInteger {
     UILabel *sendLabel = [[UILabel alloc] init];
     [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [sendLabel setFont:[UIFont systemFontOfSize:14]];
-    sendLabel.text = [NSString stringWithFormat:@"发货方地址:%@", _address.ADDRESS_INFO];
+    sendLabel.text = [NSString stringWithFormat:@"发货方地址: %@", _address.ADDRESS_INFO];
     [sendView addSubview:sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -674,7 +674,7 @@ typedef enum : NSInteger {
     _receiveLabel = [[UILabel alloc] init];
     [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    _receiveLabel.text = @"供应商地址:";
+    _receiveLabel.text = @"供应商地址: ";
     [receiveView addSubview:_receiveLabel];
     // 手势
     UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
@@ -1853,7 +1853,7 @@ typedef enum : NSInteger {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        _receiveLabel.text = [NSString stringWithFormat:@"供应商地址:%@", inputToAddressM.aDDRESSINFO];
+        _receiveLabel.text = [NSString stringWithFormat:@"供应商地址: %@", inputToAddressM.aDDRESSINFO];
     });
 }
 

@@ -477,7 +477,7 @@ typedef enum : NSInteger {
     
     _getToAddressM = aNotify.userInfo[@"msg"];
     
-    _receiveLabel.text = [NSString stringWithFormat:@"收货地址: %@", _getToAddressM.pARTYNAME];
+    _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
 }
 
 
@@ -681,7 +681,7 @@ typedef enum : NSInteger {
     UILabel *sendLabel = [[UILabel alloc] init];
     [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [sendLabel setFont:[UIFont systemFontOfSize:14]];
-    sendLabel.text = [NSString stringWithFormat:@"发货信息:%@", _address.ADDRESS_INFO];
+    sendLabel.text = [NSString stringWithFormat:@"发货信息: %@", _address.ADDRESS_INFO];
     [sendView addSubview:sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -721,9 +721,8 @@ typedef enum : NSInteger {
             [_service getPromotionData:[self getSubitString:_selectedProducts]];
         } else {
             
-            [Tools showAlert:self.view andTitle:@"请填写收货信息"];
+            [Tools showAlert:self.view andTitle:@"请填收货信息"];
         }
-        
     } else {
         
         [Tools showAlert:self.view andTitle:@"至少选择一种产品！"];

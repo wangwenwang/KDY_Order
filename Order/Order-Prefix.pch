@@ -68,7 +68,7 @@
 
 /*--------- 全局变量 ---------*/
 
-//记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
+// 记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
 #define kWelcomeImageName @"ListTimeSelectProduct"
 
 //
@@ -234,7 +234,7 @@
 /// 出库的收货人
 #define API_GetToAddressList @"http://oms.kaidongyuan.com:8088/api/GetToAddressList"
 
-/// 获取产品列表
+/// 获取出库产品列表
 #define API_GetOutProductList @"http://oms.kaidongyuan.com:8088/api/GetOutProductList"
 
 /// 保存出库单
@@ -273,6 +273,8 @@
 /// 保存入库单
 #define API_SaveInput @"http://oms.kaidongyuan.com:8088/api/SaveInput"
 
+/// 获取产品分类列表
+#define API_GetOutProductType @"http://oms.kaidongyuan.com:8088/api/GetOutProductType"
 
 
 /*--------- 判断iOS版本 ---------*/
