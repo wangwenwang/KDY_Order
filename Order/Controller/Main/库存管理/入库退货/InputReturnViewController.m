@@ -48,7 +48,7 @@
 #define PayTypeCellHeight 27
 
 /// 产品Cell的高度
-#define kProductCellHeight 69
+#define kProductCellHeight 89
 
 CGFloat const gestureMinimumTranslation_b = 5.0 ;
 
@@ -1855,6 +1855,12 @@ typedef enum : NSInteger {
         
         _receiveLabel.text = [NSString stringWithFormat:@"供应商地址: %@", inputToAddressM.aDDRESSINFO];
     });
+}
+
+
+- (void)failureOfGetInputToPartySearchs:(NSString *)msg {
+    
+    [Tools showAlert:self.view andTitle:msg];
 }
 
 @end

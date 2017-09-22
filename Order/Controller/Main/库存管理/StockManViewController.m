@@ -323,7 +323,7 @@
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     
-    [_getOutProductTypeService GetOutProductType];
+    [_getOutProductTypeService GetOutProductType:_addressM.IDX];
 }
 
 

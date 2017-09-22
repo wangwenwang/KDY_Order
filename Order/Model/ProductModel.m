@@ -35,6 +35,7 @@
 //        _selectedProductCount = 0;
         _PRODUCTION_DATE = @"";
         _PRODUCT_UOM = @"";
+        _PRODUCT_STOCK_QTY = @"";
     }
     return self;
 }
@@ -74,6 +75,7 @@
         
         
         _PRODUCT_UOM = dict[@"PRODUCT_UOM"] ? dict[@"PRODUCT_UOM"] : _PRODUCT_UOM;
+        _PRODUCT_STOCK_QTY = dict[@"STOCK_QTY"] ? dict[@"STOCK_QTY"] : _PRODUCT_STOCK_QTY;
         
     } @catch (NSException *exception) {
         

@@ -47,7 +47,7 @@
 #define PayTypeCellHeight 27
 
 /// 产品Cell的高度
-#define kProductCellHeight 69
+#define kProductCellHeight 89
 
 CGFloat const gestureMinimumTranslation_c = 5.0 ;
 

@@ -27,9 +27,10 @@
     return self;
 }
 
-- (void)GetOutProductType {
+- (void)GetOutProductType:(NSString *)strAddressIdx {
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 _app.business.BUSINESS_IDX, @"strBusinessId",
+                                strAddressIdx, @"strAddressIdx",
                                 @"", @"strLicense",
                                 nil];
     
@@ -37,7 +38,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GET_PRODUCT_TYPE parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:API_GetOutProductType parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"请求出库产品类型成功---%@", responseObject);

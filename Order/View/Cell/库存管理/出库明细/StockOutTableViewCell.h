@@ -1,5 +1,5 @@
 //
-//  SelectGoodsTableViewCell.h
+//  StockOutTableViewCell.h
 //  Order
 //
 //  Created by 凯东源 on 16/10/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProductModel.h"
 
-@protocol SelectGoodsTableViewCellDelegate <NSObject>
+@protocol StockOutTableViewCellDelegate <NSObject>
 
 @optional
 - (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section;
@@ -21,13 +21,13 @@
 - (void)productNumberOnclick:(double)price andIndexRow:(int)indexRow andSelectedNumber:(long long)selectedNumber andSection:(NSInteger)section;
 
 @optional
-- (void)noStockOfSelectGoodsTableViewCell;
+- (void)noStockOfStockOutTableViewCell;
 
 @end
 
-@interface SelectGoodsTableViewCell : UITableViewCell
+@interface StockOutTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) id<SelectGoodsTableViewCellDelegate> delegate;
+@property (weak, nonatomic) id<StockOutTableViewCellDelegate> delegate;
 
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;

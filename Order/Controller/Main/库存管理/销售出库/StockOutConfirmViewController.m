@@ -829,6 +829,7 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
 
 #pragma mark - ConfirmOrderTableViewCellDelegate
 
+
 - (void)delOnclickOfConfirmOrderTableViewCell:(NSInteger)indexRow {
     
     PromotionDetailModel *m = _promotionDetailsOfServer[indexRow];

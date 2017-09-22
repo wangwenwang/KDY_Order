@@ -7,7 +7,7 @@
 //
 
 #import "StockOutViewController.h"
-#import "SelectGoodsTableViewCell.h"
+#import "StockOutTableViewCell.h"
 #import "Store_GetOutProductListService.h"
 #import "PayTypeModel.h"
 #import "ProductModel.h"
@@ -29,6 +29,7 @@
 #import "LMBlurredView.h"
 #import "GetToAddressListViewController.h"
 #import "GetToAddressModel.h"
+#import "UITableView+NoDataPrompt.h"
 
 /*
  *
@@ -47,7 +48,7 @@
 #define PayTypeCellHeight 27
 
 /// 产品Cell的高度
-#define kProductCellHeight 69
+#define kProductCellHeight 89
 
 CGFloat const gestureMinimumTranslation_a = 5.0 ;
 
@@ -66,7 +67,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface StockOutViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
+@interface StockOutViewController () <UITableViewDelegate, UITableViewDataSource, StockOutTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate> {
     
     CameraMoveDirection direction;
 }
@@ -562,7 +563,7 @@ typedef enum : NSInteger {
 // 注册Cell
 - (void)registerCell {
     
-    [_myTableView registerNib:[UINib nibWithNibName:@"SelectGoodsTableViewCell" bundle:nil] forCellReuseIdentifier:@"SelectGoodsTableViewCell"];
+    [_myTableView registerNib:[UINib nibWithNibName:@"StockOutTableViewCell" bundle:nil] forCellReuseIdentifier:@"StockOutTableViewCell"];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [_shoppingCarTableView registerNib:[UINib nibWithNibName:@"ShoppingCartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ShoppingCartTableViewCell"];
@@ -858,8 +859,8 @@ typedef enum : NSInteger {
         ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexPath.row];
         
         // 处理界面
-        static NSString *cellId = @"SelectGoodsTableViewCell";
-        SelectGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+        static NSString *cellId = @"StockOutTableViewCell";
+        StockOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
         cell.delegate = self;
         cell.tag = indexPath.row;
         cell.section = _currentSection;
@@ -874,6 +875,7 @@ typedef enum : NSInteger {
         cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
+        cell.STOCK_QTY.text = [NSString stringWithFormat:@"%@%@", [Tools formatFloat:[m.PRODUCT_STOCK_QTY floatValue]], m.PRODUCT_UOM];
         
         // 促销信息的处理
         cell.policyPromptView.hidden = !m.PRODUCT_POLICY.count;
@@ -1089,7 +1091,7 @@ typedef enum : NSInteger {
 }
 
 
-#pragma mark - SelectGoodsTableViewCellDelegate
+#pragma mark - StockOutTableViewCellDelegate
 
 // 在产品列表里删除产品回调
 - (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
@@ -1121,6 +1123,14 @@ typedef enum : NSInteger {
 // 在产品列表里添加产品回调
 - (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
     
+    ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexRow];
+    
+    if((_currentMakeOrderTotalCount + 1) > [m.PRODUCT_STOCK_QTY intValue]) {
+        
+        [Tools showAlert:self.view andTitle:@"库存不足"];
+        return;
+    }
+    
     _currentMakeOrderTotalCount += 1;
     _currentMakeOrderTotalPrice += price;
     
@@ -1147,7 +1157,7 @@ typedef enum : NSInteger {
 }
 
 
-- (void)noStockOfSelectGoodsTableViewCell {
+- (void)noStockOfStockOutTableViewCell {
     
     [Tools showAlert:self.view andTitle:@"产品数量超过库存数量"];
 }
@@ -1254,8 +1264,8 @@ typedef enum : NSInteger {
 
 - (IBAction)productTypeOnclick:(UITapGestureRecognizer *)sender {
     
-    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-    return;
+//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+//    return;
     
     _leftView.hidden = NO;
     
@@ -1313,8 +1323,8 @@ typedef enum : NSInteger {
 
 - (IBAction)brandOnclick:(UITapGestureRecognizer *)sender {
     
-    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-    return;
+//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+//    return;
     
     [self hiddenBrandView];
 }
@@ -1464,6 +1474,8 @@ typedef enum : NSInteger {
     
     [self fd];
     
+    [_myTableView removeNoOrderPrompt];
+    
     [_myTableView reloadData];
 }
 
@@ -1472,12 +1484,9 @@ typedef enum : NSInteger {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
-    //    [_products removeAllObjects];
+    [_myTableView noData:msg andImageName:LM_NoResult_noResult];
     
     [_myTableView reloadData];
-    
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取产品列表失败"];
-    
 }
 
 
@@ -1864,6 +1873,53 @@ typedef enum : NSInteger {
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     _keyboardHeight = 0;
+}
+
+
+#pragma mark - Store_GetOutProductListServiceDelegate
+
+- (void)successOfGetOutProductList:(NSMutableArray *)products {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
+    [_dictProducts setObject:dict forKey:@(_brandRow)];
+    
+    for (int i = 0; i < _selectedProducts.count; i++) {
+        ProductModel *sm = _selectedProducts[i];
+        NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
+        for(int j = 0; j < array.count; j++) {
+            ProductModel *am = array[j];
+            if(sm.IDX == am.IDX) {
+                [array replaceObjectAtIndex:j withObject:sm];
+                break;
+            }
+        }
+    }
+    
+    [self fd];
+    
+    [_myTableView reloadData];
+}
+
+
+- (void)successOfGetOutProductList_NoData {
+    
+    [_dictProducts removeAllObjects];
+    
+    [_myTableView noData:@"没有数据" andImageName:LM_NoResult_noResult];
+    
+    [_myTableView reloadData];
+}
+
+
+- (void)failureOfGetOutProductList:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [_myTableView noData:msg andImageName:LM_NoResult_noResult];
+    
+    [_myTableView reloadData];
 }
 
 @end

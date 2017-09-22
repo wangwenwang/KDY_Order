@@ -32,7 +32,21 @@
         
         if(_type == 1) {
             
-            InputToAddressModel *inputToAddressM = [[InputToAddressModel alloc] initWithDictionary:responseObject[@"result"][@"List"]];
+            InputToAddressModel *inputToAddressM = nil;
+            @try {
+                
+                inputToAddressM = [[InputToAddressModel alloc] initWithDictionary:responseObject[@"result"][@"List"]];
+            } @catch (NSException *exception) {
+                
+                if([responseObject[@"result"][@"List"] isEqualToString:@""]) {
+                    
+                    [self failureOfGetInputToPartySearchs:@"供应商地址为空"];
+                } else {
+                    
+                    [self failureOfGetInputToPartySearchs:@"解析供应商地址失败"];
+                }
+                return;
+            }
             
             [self successOfGetGetInputToPartySearchs:inputToAddressM];
         } else {

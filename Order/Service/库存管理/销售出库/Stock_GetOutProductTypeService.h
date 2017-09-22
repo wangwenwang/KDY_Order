@@ -26,6 +26,6 @@
 
 @property (weak, nonatomic)id <GetOutProductTypeServiceDelegate> delegate;
 
-- (void)GetOutProductType;
+- (void)GetOutProductType:(NSString *)strAddressIdx;
 
 @end

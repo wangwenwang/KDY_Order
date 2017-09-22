@@ -231,6 +231,8 @@
 /// 获取地址省
 #define API_NormalAdressList @"http://oms.kaidongyuan.com:8088/api/NormalAdressList"
 
+
+/*-------------------- 库存管理功能 --------------------*/
 /// 出库的收货人
 #define API_GetToAddressList @"http://oms.kaidongyuan.com:8088/api/GetToAddressList"
 
@@ -273,7 +275,7 @@
 /// 保存入库单
 #define API_SaveInput @"http://oms.kaidongyuan.com:8088/api/SaveInput"
 
-/// 获取产品分类列表
+/// 获取出库时，产品分类列表
 #define API_GetOutProductType @"http://oms.kaidongyuan.com:8088/api/GetOutProductType"
 
 

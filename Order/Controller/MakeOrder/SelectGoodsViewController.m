@@ -805,6 +805,8 @@ typedef enum : NSInteger {
         cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
+        cell.STOCK_QTY.text = @"";
+        cell.STOCK_QTY_Label.text = @"";
         
         // 促销信息的处理
         cell.policyPromptView.hidden = !m.PRODUCT_POLICY.count;

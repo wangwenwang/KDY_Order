@@ -16,6 +16,10 @@
 
 @interface GetOupputInfoViewController ()<Store_GetOupputInfoServiceDelegate>
 
+
+// 出库单号 提示
+@property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO_Prompt;
+
 // 出库单号
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
 
@@ -93,8 +97,6 @@
     
     [super viewDidLoad];
     
-    self.title = @"出库详情";
-    
     [self registerCell];
     
     [self initUI];
@@ -103,13 +105,28 @@
     
     [_service GetOupputInfo:[_oupputM.iDX integerValue]];
     
-//    _confirmBtn
+    //    _confirmBtn
     
     // 已取消 或 不是新建，不显示"确认出库"、"取消出库" 按钮
     if([_oupputM.oUTPUTSTATE isEqualToString:@"CANCEL"] || ![_oupputM.oUTPUTWORKFLOW isEqualToString:@"新建"]) {
         
         _bottomView.hidden = YES;
         _bottomViewHeight.constant = 0;
+    } else {
+        
+        if([_oupputM.oUTPUTTYPE isEqualToString:@"销售出库"]) {
+            
+            self.title = @"出库详情";
+            _OUTPUT_NO_Prompt.text = @"出库订单号为: ";
+            [_confirmBtn setTitle:@"确认入库" forState:UIControlStateNormal];
+            [_cancelBtn setTitle:@"取消入库" forState:UIControlStateNormal];
+        } else if([_oupputM.oUTPUTTYPE isEqualToString:@"出库退库"]) {
+            
+            self.title = @"退库详情";
+            _OUTPUT_NO_Prompt.text = @"退库订单号为: ";
+            [_confirmBtn setTitle:@"确认退库" forState:UIControlStateNormal];
+            [_cancelBtn setTitle:@"取消退库" forState:UIControlStateNormal];
+        }
     }
 }
 

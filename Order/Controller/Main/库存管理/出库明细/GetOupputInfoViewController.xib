@@ -11,6 +11,7 @@
                 <outlet property="ADDRESS_INFO" destination="can-Q2-wHW" id="xwa-b8-iXB"/>
                 <outlet property="ADD_DATE" destination="Xux-0q-0fB" id="XLe-Ar-InA"/>
                 <outlet property="OUTPUT_NO" destination="S38-ai-6pi" id="1Tk-z7-9Nk"/>
+                <outlet property="OUTPUT_NO_Prompt" destination="vgA-qp-bxc" id="Eri-u5-I3C"/>
                 <outlet property="OUTPUT_QTY" destination="EAV-l7-3EP" id="wDG-Cf-lPN"/>
                 <outlet property="OUTPUT_VOLUME" destination="q2a-oH-gZ7" id="ct9-Or-Omp"/>
                 <outlet property="OUTPUT_WEIGHT" destination="nkO-Qo-vXl" id="3Qb-69-r8r"/>

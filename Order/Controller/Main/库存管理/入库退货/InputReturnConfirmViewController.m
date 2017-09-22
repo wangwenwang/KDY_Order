@@ -682,10 +682,10 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
 
 #pragma mark - OrderConfirmServiceDelegate
 
-- (void)successOfOrderConfirmWithCommit {
+- (void)successOfSaveInput:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:@"提交成功!"];
+    [Tools showAlert:self.view andTitle:msg];
     [_commitBtn setEnabled:NO];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -708,7 +708,7 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
 }
 
 
-- (void)failureOfOrderConfirmWithCommit:(NSString *)msg {
+- (void)failureOfSaveInput:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
