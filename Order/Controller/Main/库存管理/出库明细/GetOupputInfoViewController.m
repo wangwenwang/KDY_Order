@@ -118,8 +118,8 @@
             
             self.title = @"出库详情";
             _OUTPUT_NO_Prompt.text = @"出库订单号为: ";
-            [_confirmBtn setTitle:@"确认入库" forState:UIControlStateNormal];
-            [_cancelBtn setTitle:@"取消入库" forState:UIControlStateNormal];
+            [_confirmBtn setTitle:@"确认出库" forState:UIControlStateNormal];
+            [_cancelBtn setTitle:@"取消出库" forState:UIControlStateNormal];
         } else if([_oupputM.oUTPUTTYPE isEqualToString:@"出库退库"]) {
             
             self.title = @"退库详情";
@@ -194,6 +194,9 @@
     // 按钮不可点击
     _cancelBtn.enabled = NO;
     _confirmBtn.enabled = NO;
+    
+    // 通知库存列表更新
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStockManViewController_refreshList object:nil];
     
     // 延迟pop
     dispatch_async(dispatch_get_global_queue(0, 0), ^{

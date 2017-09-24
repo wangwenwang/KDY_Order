@@ -746,10 +746,17 @@ typedef enum : NSInteger {
     // 改变的单一产品下单数量，有可能是负数
     long long modifyNumber = number - _selectedProductNumber;
     
+    // 最大库存
+    ProductModel *product = _dictProducts[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
+    long long maxSize = [product.PRODUCT_STOCK_QTY longLongValue];
+    
     // 如果填写后的数量与填写前的一样，则不操作
     if(modifyNumber == 0) {
         
         [Tools showAlert:_app.window andTitle:@"数量无更改"];
+    } else if(number > maxSize) {
+        
+        [Tools showAlert:_app.window andTitle:@"库存不足"];
     } else {
         
         // 下单总数量
@@ -1123,14 +1130,6 @@ typedef enum : NSInteger {
 // 在产品列表里添加产品回调
 - (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
     
-    ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexRow];
-    
-    if((_currentMakeOrderTotalCount + 1) > [m.PRODUCT_STOCK_QTY intValue]) {
-        
-        [Tools showAlert:self.view andTitle:@"库存不足"];
-        return;
-    }
-    
     _currentMakeOrderTotalCount += 1;
     _currentMakeOrderTotalPrice += price;
     
@@ -1432,7 +1431,7 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
+        CGFloat contentWidth = ScreenWidth - (62 - 40 + 3 - 105);
         // Label 单行高度
         CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         

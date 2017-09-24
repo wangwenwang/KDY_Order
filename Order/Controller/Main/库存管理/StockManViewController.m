@@ -33,7 +33,7 @@
 // 出库退库
 #import "OutputReturnViewController.h"
 
-@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, GetOutProductTypeServiceDelegate, Store_GetPartyStockListServiceDelegate, Store_GetPartyStockListServiceDelegate, SelectGoodsServiceDelegate>
+@interface StockManViewController ()<Store_GetOutProductListServiceDelegate, GetOutProductTypeServiceDelegate, Store_GetPartyStockListServiceDelegate, SelectGoodsServiceDelegate>
 
 // 网络层，库存列表
 @property (strong, nonatomic) Store_GetPartyStockListService *service;
@@ -141,13 +141,35 @@
     
     [MBProgressHUD showHUDAddedTo:_tableView animated:YES];
     
-    [_service GetPartyStockList:_addressM.IDX andBUSINESS_IDX:_app.business.BUSINESS_IDX andstrPage:1 andstrPageCount:999];
+    [self requestNetWork];
+    
+    [self addNotification];
 }
 
 
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
+}
+
+
+- (void)dealloc {
+    
+    [self removeNotification];
+}
+
+
+#pragma mark - 通知
+
+- (void)addNotification {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestNetWork) name:kStockManViewController_refreshList object:nil];
+}
+
+
+- (void)removeNotification {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kStockManViewController_refreshList object:nil];
 }
 
 
@@ -205,6 +227,14 @@
     _CONTACT_PERSON.text = _addressM.CONTACT_PERSON;
     _ADDRESS_CODE.text = _addressM.ADDRESS_CODE;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
+}
+
+
+#pragma mark - 网络请求
+
+- (void)requestNetWork {
+    
+    [_service GetPartyStockList:_addressM.IDX andBUSINESS_IDX:_app.business.BUSINESS_IDX andstrPage:1 andstrPageCount:9999];
 }
 
 

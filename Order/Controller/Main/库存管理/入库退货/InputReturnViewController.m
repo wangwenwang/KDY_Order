@@ -7,7 +7,7 @@
 //
 
 #import "InputReturnViewController.h"
-#import "SelectGoodsTableViewCell.h"
+#import "StockOutTableViewCell.h"
 #import "Store_GetOutProductListService.h"
 #import "PayTypeModel.h"
 #import "ProductModel.h"
@@ -67,7 +67,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface InputReturnViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate, Store_GetInputToPartySearchsServiceDelegate> {
+@interface InputReturnViewController () <UITableViewDelegate, UITableViewDataSource, StockOutTableViewCellDelegate, ShoppingCartTableViewCellDelegate, Store_GetOutProductListServiceDelegate, Store_StockOutConfirmServiceDelegate, LMBlurredViewDelegate, Store_GetInputToPartySearchsServiceDelegate> {
     
     CameraMoveDirection direction;
 }
@@ -539,7 +539,7 @@ typedef enum : NSInteger {
 // 注册Cell
 - (void)registerCell {
     
-    [_myTableView registerNib:[UINib nibWithNibName:@"SelectGoodsTableViewCell" bundle:nil] forCellReuseIdentifier:@"SelectGoodsTableViewCell"];
+    [_myTableView registerNib:[UINib nibWithNibName:@"StockOutTableViewCell" bundle:nil] forCellReuseIdentifier:@"StockOutTableViewCell"];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [_shoppingCarTableView registerNib:[UINib nibWithNibName:@"ShoppingCartTableViewCell" bundle:nil] forCellReuseIdentifier:@"ShoppingCartTableViewCell"];
@@ -666,7 +666,7 @@ typedef enum : NSInteger {
     [sendView addGestureRecognizer:tap_send];
     [tableHeadView addSubview:sendView];
     
-    // 供应商地址
+    // 供应商名称
     UIView *receiveView = [[UIView alloc] init];
     [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -674,7 +674,7 @@ typedef enum : NSInteger {
     _receiveLabel = [[UILabel alloc] init];
     [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    _receiveLabel.text = @"供应商地址: ";
+    _receiveLabel.text = @"供应商名称: ";
     [receiveView addSubview:_receiveLabel];
     // 手势
     UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
@@ -723,10 +723,17 @@ typedef enum : NSInteger {
     // 改变的单一产品下单数量，有可能是负数
     long long modifyNumber = number - _selectedProductNumber;
     
+    // 最大库存
+    ProductModel *product = _dictProducts[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
+    long long maxSize = [product.PRODUCT_STOCK_QTY longLongValue];
+    
     // 如果填写后的数量与填写前的一样，则不操作
     if(modifyNumber == 0) {
         
         [Tools showAlert:_app.window andTitle:@"数量无更改"];
+    } else if(number > maxSize) {
+        
+        [Tools showAlert:_app.window andTitle:@"库存不足"];
     } else {
         
         // 下单总数量
@@ -836,8 +843,8 @@ typedef enum : NSInteger {
         ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexPath.row];
         
         // 处理界面
-        static NSString *cellId = @"SelectGoodsTableViewCell";
-        SelectGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+        static NSString *cellId = @"StockOutTableViewCell";
+        StockOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
         cell.delegate = self;
         cell.tag = indexPath.row;
         cell.section = _currentSection;
@@ -852,6 +859,7 @@ typedef enum : NSInteger {
         cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
+        cell.STOCK_QTY.text = [NSString stringWithFormat:@"%@%@", [Tools formatFloat:[m.PRODUCT_STOCK_QTY floatValue]], m.PRODUCT_UOM];
         
         // 促销信息的处理
         cell.policyPromptView.hidden = !m.PRODUCT_POLICY.count;
@@ -1067,7 +1075,7 @@ typedef enum : NSInteger {
 }
 
 
-#pragma mark - SelectGoodsTableViewCellDelegate
+#pragma mark - StockOutTableViewCellDelegate
 
 // 在产品列表里删除产品回调
 - (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
@@ -1125,7 +1133,7 @@ typedef enum : NSInteger {
 }
 
 
-- (void)noStockOfSelectGoodsTableViewCell {
+- (void)noStockOfStockOutTableViewCell {
     
     [Tools showAlert:self.view andTitle:@"产品数量超过库存数量"];
 }
@@ -1853,7 +1861,7 @@ typedef enum : NSInteger {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        _receiveLabel.text = [NSString stringWithFormat:@"供应商地址: %@", inputToAddressM.aDDRESSINFO];
+        _receiveLabel.text = [NSString stringWithFormat:@"供应商名称: %@", inputToAddressM.pARTYNAME];
     });
 }
 

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "InputModel.h"
 
+
+/**
+ 入库列表Cell
+ */
 @interface GetInputListTableViewCell : UITableViewCell
 
 

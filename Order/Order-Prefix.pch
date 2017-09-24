@@ -115,6 +115,9 @@
 // StockOutViewController 接收地址
 #define kStockOutViewController_receiveMsg @"StockOutViewController_receiveMsg"
 
+// StockManViewController 刷新列表数据
+#define kStockManViewController_refreshList @"StockManViewController_refreshList"
+
 
 
 

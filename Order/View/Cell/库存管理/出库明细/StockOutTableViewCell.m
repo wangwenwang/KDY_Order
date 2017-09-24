@@ -98,43 +98,44 @@
     }
 }
 
+
 - (void)add {
+    
     _product.CHOICED_SIZE ++;
+    
     NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
+    
     [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
+    
     if([_delegate respondsToSelector:@selector(addNumberOnclick:andIndexRow:andSection:)]) {
+        
         [_delegate addNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
     }
 }
 
+
 - (IBAction)productNumberOnclick:(UIButton *)sender {
     
-    //    long long selectedNumber = [[_productNumberButton titleForState:UIControlStateNormal] longLongValue];
-    //
-    //    if([_delegate respondsToSelector:@selector(productNumberOnclick:andIndexRow:andSelectedNumber:)]) {
-    //        [_delegate productNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSelectedNumber:selectedNumber];
-    //    }
-    
     long long selectedNumber = [[_productNumberButton titleForState:UIControlStateNormal] longLongValue];
-    if([_product.ISINVENTORY isEqualToString:@"Y"]) {
-        
-        long long maxSize = _product.PRODUCT_INVENTORY;
-        if(selectedNumber <= maxSize) {
-            
+//
+//        long long maxSize = [_product.PRODUCT_STOCK_QTY longLongValue];
+//        if(selectedNumber < maxSize) {
+    
             [self customize:selectedNumber];
-        } else {
-            if([_delegate respondsToSelector:@selector(noStockOfStockOutTableViewCell)]) {
-                [_delegate noStockOfStockOutTableViewCell];
-            }
-        }
-    } else {
-        
-        [self customize:selectedNumber];
-    }
+//        } else {
+//            
+//            if([_delegate respondsToSelector:@selector(noStockOfStockOutTableViewCell)]) {
+//                
+//                [_delegate noStockOfStockOutTableViewCell];
+//            }
+//        }
 }
 
+
 - (void)customize:(long long)selectedNumber {
+    
     if([_delegate respondsToSelector:@selector(productNumberOnclick:andIndexRow:andSelectedNumber:andSection:)]) {
+        
         [_delegate productNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSelectedNumber:selectedNumber andSection:self.section];
     }
 }

@@ -10,8 +10,8 @@
 
 @interface GetInputListTableViewCell ()
 
-// 出库单号
-@property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
+// 入库单号
+@property (weak, nonatomic) IBOutlet UILabel *INPUT_NO;
 
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
@@ -21,6 +21,12 @@
 
 // 取消提示
 @property (weak, nonatomic) IBOutlet UILabel *promptLabel;
+
+// 原单出库单号
+@property (weak, nonatomic) IBOutlet UILabel *ORG_NO;
+
+// 供应商
+@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
 
 @end
 
@@ -41,9 +47,11 @@
 
 - (void)setInputM:(InputModel *)inputM {
     
-    _OUTPUT_NO.text = inputM.iNPUTNO;
+    _INPUT_NO.text = inputM.iNPUTNO;
     _ADD_DATE.text = inputM.aDDDATE;
     _INPUT_TYPE.text = inputM.iNPUTTYPE;
+    _ORG_NO.text = inputM.oUTPUTNO;
+    _SUPPLIER_NAME.text = inputM.sUPPLIERNAME;
     
     if([inputM.iNPUTTYPE isEqualToString:@"采购入库"]) {
         

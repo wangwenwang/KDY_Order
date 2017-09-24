@@ -29,7 +29,7 @@
 @end
 
 
-#define kCellHeight 72
+#define kCellHeight 111
 
 #define kCellName @"GetInputListTableViewCell"
 

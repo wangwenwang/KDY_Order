@@ -19,7 +19,13 @@
 @interface GetInputInfoViewController ()<GetInputInfoServiceDelegate, InPutWorkflowServiceDelegate>
 
 // 入库单号
+@property (weak, nonatomic) IBOutlet UILabel *INPUT_NO;
+
+// 原单出库单号
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
+
+// 供应商
+@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
 
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
@@ -140,8 +146,10 @@
 
 - (void)initUI {
     
+    _INPUT_NO.text = @"";
     _OUTPUT_NO.text = @"";
     _ADD_DATE.text = @"";
+    _SUPPLIER_NAME.text = @"";
     _ADDRESS_INFO.text = @" ";
     _PARTY_INFO.text = @" ";
     _OUTPUT_QTY.text = @"";
@@ -176,7 +184,10 @@
     _cancelBtn.enabled = NO;
     _confirmBtn.enabled = NO;
     
-    // 延迟pop
+    // 通知库存列表更新
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStockManViewController_refreshList object:nil];
+    
+    // 延迟popk
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         sleep(2);
@@ -232,8 +243,10 @@
     
     _inputInfoListM = inputInfoListM;
     
-    _OUTPUT_NO.text = _inputInfoListM.inputInfoModel.iNPUTNO;
+    _INPUT_NO.text = _inputInfoListM.inputInfoModel.iNPUTNO;
+    _OUTPUT_NO.text = _inputInfoListM.inputInfoModel.oUTPUTNO;
     _ADD_DATE.text = _inputInfoListM.inputInfoModel.aDDDATE;
+    _SUPPLIER_NAME.text = _inputInfoListM.inputInfoModel.sUPPLIERNAME;
     _ADDRESS_INFO.text = _inputInfoListM.inputInfoModel.aDDRESSINFO;
     _PARTY_INFO.text = _inputInfoListM.inputInfoModel.sUPPLIERADDRESS;
     _OUTPUT_QTY.text =  [Tools OneDecimal:_inputInfoListM.inputInfoModel.iNPUTQTY];
