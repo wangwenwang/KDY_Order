@@ -359,7 +359,11 @@ typedef enum : NSInteger {
     
     _otherMsg_top.constant = ScreenHeight / 2 - CGRectGetHeight(_otherMsgView.frame) / 2 - 64 - 20;
     
-    [self addTableHeaderView];
+    // 其它出库不要地址
+    if(_didselectIndex != 1008) {
+        
+        [self addTableHeaderView];
+    }
     
     [self addNotification];
 }
@@ -715,7 +719,7 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
-        if(_getToAddressM != nil) {
+        if(_getToAddressM != nil || _didselectIndex == 1008) {
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self setProductCurrentPrice];
@@ -1016,9 +1020,6 @@ typedef enum : NSInteger {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:brand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
-        
-        
-        //         getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:brand;
     }
     
     // 操作UI
@@ -1431,11 +1432,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - (62 - 40 + 3 - 105);
+        CGFloat contentWidth = ScreenWidth - (62 + 40 - 3 + 105);
         // Label 单行高度
         CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:[self getProductName:m.PRODUCT_NAME] fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             
@@ -1684,6 +1685,7 @@ typedef enum : NSInteger {
     vc.orderPayType = _currentPayType.Key;
     vc.partyM = _party;
     vc.getToAddressM = _getToAddressM;
+    vc.didselectIndex = _didselectIndex;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

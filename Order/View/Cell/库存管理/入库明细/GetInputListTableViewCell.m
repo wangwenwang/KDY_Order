@@ -7,26 +7,30 @@
 //
 
 #import "GetInputListTableViewCell.h"
+#import "Tools.h"
 
 @interface GetInputListTableViewCell ()
 
 // 入库单号
 @property (weak, nonatomic) IBOutlet UILabel *INPUT_NO;
 
+// 原单出库单号
+@property (weak, nonatomic) IBOutlet UILabel *ORG_NO;
+
+// 供应商
+@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
+
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
+
+// 入库数量
+@property (weak, nonatomic) IBOutlet UILabel *INPUT_QTY;
 
 // 入库类型
 @property (weak, nonatomic) IBOutlet UILabel *INPUT_TYPE;
 
 // 取消提示
 @property (weak, nonatomic) IBOutlet UILabel *promptLabel;
-
-// 原单出库单号
-@property (weak, nonatomic) IBOutlet UILabel *ORG_NO;
-
-// 供应商
-@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
 
 @end
 
@@ -48,9 +52,10 @@
 - (void)setInputM:(InputModel *)inputM {
     
     _INPUT_NO.text = inputM.iNPUTNO;
-    _ADD_DATE.text = inputM.aDDDATE;
-    _INPUT_TYPE.text = inputM.iNPUTTYPE;
     _ORG_NO.text = inputM.oUTPUTNO;
+    _ADD_DATE.text = inputM.aDDDATE;
+    _INPUT_QTY.text = [Tools OneDecimal:inputM.iNPUTQTY];
+    _INPUT_TYPE.text = inputM.iNPUTTYPE;
     _SUPPLIER_NAME.text = inputM.sUPPLIERNAME;
     
     if([inputM.iNPUTTYPE isEqualToString:@"采购入库"]) {

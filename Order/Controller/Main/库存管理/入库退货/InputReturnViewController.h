@@ -22,4 +22,7 @@
 
 @property (strong, nonatomic) PartyModel *party;
 
+/// 点击事件下标
+@property (assign, nonatomic) NSInteger didselectIndex;
+
 @end

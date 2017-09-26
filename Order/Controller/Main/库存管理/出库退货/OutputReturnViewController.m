@@ -47,7 +47,7 @@
 #define PayTypeCellHeight 27
 
 /// 产品Cell的高度
-#define kProductCellHeight 89
+#define kProductCellHeight 72
 
 CGFloat const gestureMinimumTranslation_c = 5.0 ;
 
@@ -875,6 +875,8 @@ typedef enum : NSInteger {
         cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
+        cell.STOCK_QTY.text = @"";
+        cell.STOCK_QTY_Label.text = @"";
         
         // 促销信息的处理
         cell.policyPromptView.hidden = !m.PRODUCT_POLICY.count;
@@ -1423,11 +1425,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
+        CGFloat contentWidth = ScreenWidth - (62 + 40 - 3 + 105);
         // Label 单行高度
         CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:[self getProductName:m.PRODUCT_NAME] fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             

@@ -361,7 +361,11 @@ typedef enum : NSInteger {
     
     _otherMsg_top.constant = ScreenHeight / 2 - CGRectGetHeight(_otherMsgView.frame) / 2 - 64 - 20;
     
-    [self addTableHeaderView];
+    // 其它入库不要地址
+    if(_didselectIndex != 1004) {
+        
+        [self addTableHeaderView];
+    }
     
     [_getToAddress_service GetInputToPartySearchs:_app.business.BUSINESS_IDX andstrAddressIdx:_address.IDX];
 }
@@ -1408,11 +1412,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
+        CGFloat contentWidth = ScreenWidth - (62 + 40 - 3 + 105);
         // Label 单行高度
         CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:[self getProductName:m.PRODUCT_NAME] fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             
@@ -1662,6 +1666,7 @@ typedef enum : NSInteger {
     vc.orderPayType = _currentPayType.Key;
     vc.partyM = _party;
     vc.inputToAddressM = _inputToAddressM;
+    vc.didselectIndex = _didselectIndex;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

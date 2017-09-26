@@ -617,19 +617,43 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
     // 总付款价
     NSString *actPrice = [_actPriceLabel.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
     
+    
+    NSString *OUTPUT_TYPE =  @"";  // 出库类型
+    NSString *PARTY_CODE = @"";    // 门店代码
+    NSString *PARTY_NAME = @"";    // 门店名称
+    NSString *PARTY_INFO = @"";    // 门店地址
+    
+    // 销售出库
+    if(_didselectIndex == 1006) {
+        
+        OUTPUT_TYPE = @"销售出库";
+        PARTY_CODE = _getToAddressM.iTEMCODE;
+        PARTY_NAME = _getToAddressM.pARTYNAME;
+        PARTY_INFO = _getToAddressM.aDDRESSINFO;
+    }
+    // 其它出库
+    else if(_didselectIndex == 1008) {
+        
+        OUTPUT_TYPE = @"其它出库";
+        PARTY_CODE = @"";
+        PARTY_NAME = @"";
+        PARTY_INFO = @"";
+    }
+    
+    
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
-                              @"销售出库", @"OUTPUT_TYPE",
+                              OUTPUT_TYPE, @"OUTPUT_TYPE",
                               _addressM.IDX, @"ADDRESS_IDX",
                               _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
                               _partyM.PARTY_NAME, @"ADDRESS_NAME",
                               _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
                               @"", @"OUTPUT_NO",      // 出库单号未知
                               @"", @"INPUT_NO",       // 原采购单号未知
-                              _partyM.PARTY_CODE, @"PARTY_CODE",
-                              _partyM.PARTY_NAME, @"PARTY_NAME",
-                              _getToAddressM.aDDRESSINFO, @"PARTY_INFO",
+                              PARTY_CODE, @"PARTY_CODE",
+                              PARTY_NAME, @"PARTY_NAME",
+                              PARTY_INFO, @"PARTY_INFO",
                               @(p.TOTAL_QTY), @"OUTPUT_QTY",
                               actPrice, @"OUTPUT_SUM",
                               orgPrice, @"PRICE",

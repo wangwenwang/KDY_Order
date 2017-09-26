@@ -181,20 +181,20 @@
     
     _didselectItemIndex = tag;
     
-    if(tag == 1004) {
+    if(tag == 1005) {
         
         GetOupputListViewController *vc = [[GetOupputListViewController alloc] init];
         vc.addressM = _addressM;
         [self.navigationController pushViewController:vc animated:YES];
-    } else if(tag == 1002) {
+    } else if(tag == 1002 || tag == 1004) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
-    } else if(tag == 1005) {
+    } else if(tag == 1006 || tag == 1008) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
-    } else if(tag == 1006) {
+    } else if(tag == 1007) {
         
         [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
         [_selectGoodsService getPayTypeData];
@@ -286,9 +286,10 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    if(_didselectItemIndex == 1005) {
+    if(_didselectItemIndex == 1006 || _didselectItemIndex == 1008) {
         
         StockOutViewController *vc = [[StockOutViewController alloc] init];
+        vc.didselectIndex = _didselectItemIndex;
         vc.payTypes = _payTypes;
         vc.productTypes = _productTypes;
         NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
@@ -298,9 +299,10 @@
         
         [self.navigationController pushViewController:vc animated:YES];
         
-    } else if(_didselectItemIndex == 1002) {
+    } else if(_didselectItemIndex == 1002 || _didselectItemIndex == 1004) {
         
         InputReturnViewController *vc = [[InputReturnViewController alloc] init];
+        vc.didselectIndex = _didselectItemIndex;
         vc.payTypes = _payTypes;
         vc.productTypes = _productTypes;
         NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
@@ -309,7 +311,7 @@
         vc.party = _partyM;
         
         [self.navigationController pushViewController:vc animated:YES];
-    } else if(_didselectItemIndex == 1006) {
+    } else if(_didselectItemIndex == 1007) {
         
         OutputReturnViewController *vc = [[OutputReturnViewController alloc] init];
         vc.payTypes = _payTypes;
@@ -336,7 +338,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    [Tools showAlert:self.view andTitle:msg];
+    [Tools showAlert:self.view andTitle:[msg isEqualToString:@""] ? @"缺少产品列表" : msg];
 }
 
 
@@ -361,7 +363,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取支付方式失败"];
+    [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取支付方式失败" : msg];
 }
 
 
@@ -384,7 +386,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取产品类型失败"];
+    [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取产品类型失败" : msg];
 }
 
 
@@ -426,7 +428,8 @@
     
     [MBProgressHUD hideHUDForView:_tableView animated:YES];
     
-    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取库存列表失败"];
+    [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取库存列表失败" : msg];
+    
 }
 
 @end

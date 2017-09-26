@@ -29,7 +29,7 @@
 @end
 
 
-#define kCellHeight 111
+#define kCellHeight 125
 
 #define kCellName @"GetInputListTableViewCell"
 
@@ -117,7 +117,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    InputModel *m = _inputListM.inputModel[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -157,6 +158,25 @@
     
     _inputListM = inputListM;
     
+    for (InputModel *m in _inputListM.inputModel) {
+        
+        // 单行高度
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:ScreenWidth];
+        
+        CGFloat SUPPLIER_NAME_height = [Tools getHeightOfString:m.sUPPLIERNAME fontSize:13 andWidth:(ScreenWidth - 8 - 48 - 3)];
+        
+        CGFloat oneCellHeight = 0;
+        if(SUPPLIER_NAME_height > oneLine) {
+            
+            oneCellHeight = kCellHeight + SUPPLIER_NAME_height - oneLine;
+        } else {
+            
+            oneCellHeight = kCellHeight;
+        }
+        
+        m.cellHeight = oneCellHeight;
+    }
+    
     [_tableView removeNoOrderPrompt];
     
     [_tableView reloadData];
@@ -177,7 +197,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [_tableView.mj_header endRefreshing];
     
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取库存批次失败"];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取入库列表失败"];
 }
 
 @end

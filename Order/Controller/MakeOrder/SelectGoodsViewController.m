@@ -971,13 +971,13 @@ typedef enum : NSInteger {
         [_myTableView reloadData];
     } else if(tableView.tag == 1003) {
         
-        // 选择品类
+        // 选择类型
         [self selectProductType:indexPath.row andRefreshTableView:YES];
         
-    }  else if(tableView.tag == 1004) {
+    } else if(tableView.tag == 1004) {
         _brandRow = indexPath.row;
         
-        // 选择品类
+        // 选择分类
         [self selectProductType:0 andRefreshTableView:NO];
         [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
@@ -1357,11 +1357,11 @@ typedef enum : NSInteger {
         
         ProductModel *m = array[j];
         // Label 容器宽度
-        CGFloat contentWidth = ScreenWidth - 62 - 40 + 3 - 105;
+        CGFloat contentWidth = ScreenWidth - (62 + 40 - 3 + 105);
         // Label 单行高度
-        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
         
-        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
+        CGFloat overflowHeight = [Tools getHeightOfString:[self getProductName:m.PRODUCT_NAME] fontSize:13 andWidth:contentWidth] - oneLineHeight;
         
         if(overflowHeight > 0) {
             

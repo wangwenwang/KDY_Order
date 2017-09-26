@@ -257,7 +257,7 @@
     _OUTPUT_NO.text = _getOupputDetailM.getOupputInfoModel.oUTPUTNO;
     _ADD_DATE.text = _getOupputDetailM.getOupputInfoModel.aDDDATE;
     _ADDRESS_INFO.text = _getOupputDetailM.getOupputInfoModel.aDDRESSINFO;
-    _PARTY_INFO.text = _getOupputDetailM.getOupputInfoModel.pARTYINFO;
+    _PARTY_INFO.text = [_getOupputDetailM.getOupputInfoModel.pARTYINFO isEqualToString:@""] ? @" " : _getOupputDetailM.getOupputInfoModel.pARTYINFO;
     _OUTPUT_QTY.text =  [Tools OneDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTQTY];
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTWEIGHT];
     _OUTPUT_VOLUME.text = [Tools TwoDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTVOLUME];

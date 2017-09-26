@@ -613,19 +613,45 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
     // 总付款价
     NSString *actPrice = [_actPriceLabel.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
     
+    NSString *INPUT_TYPE =  @"";        // 入库类型
+    NSString *SUPPLIER_CODE = @"";      // 供应商代码
+    NSString *SUPPLIER_NAME = @"";      // 供应商名称
+    NSString *SUPPLIER_ADDRESS = @"";   // 供应商地址
+    NSInteger INPUT_QTY = 0;            // 入库数量
+    
+    // 采购退库
+    if(_didselectIndex == 1002) {
+        
+        INPUT_TYPE = @"采购退库";
+        SUPPLIER_CODE = _inputToAddressM.iTEMCODE;
+        SUPPLIER_NAME = _inputToAddressM.pARTYNAME;
+        SUPPLIER_ADDRESS = _inputToAddressM.aDDRESSINFO;
+        INPUT_QTY = -p.TOTAL_QTY;
+    }
+    // 其它入库
+    else if(_didselectIndex == 1004) {
+        
+        INPUT_TYPE = @"其它入库";
+        SUPPLIER_CODE = @"";
+        SUPPLIER_NAME = @"";
+        SUPPLIER_ADDRESS = @"";
+        INPUT_QTY = p.TOTAL_QTY;
+    }
+    
+    
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                               _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
-                              @"采购退库", @"INPUT_TYPE",
+                              INPUT_TYPE, @"INPUT_TYPE",
                               _addressM.IDX, @"ADDRESS_IDX",
                               _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
                               _partyM.PARTY_NAME, @"ADDRESS_NAME",
                               _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
                               @"", @"INPUT_NO",       // 入库单号未知
                               @"", @"OUTPUT_NO",      // 原单出库单号未知
-                              _inputToAddressM.iTEMCODE, @"SUPPLIER_CODE",
-                              _inputToAddressM.pARTYNAME, @"SUPPLIER_NAME",
-                              _inputToAddressM.aDDRESSINFO, @"SUPPLIER_ADDRESS",
+                              SUPPLIER_CODE, @"SUPPLIER_CODE",
+                              INPUT_TYPE, @"SUPPLIER_NAME",
+                              SUPPLIER_ADDRESS, @"SUPPLIER_ADDRESS",
                               _remarkTextV.text, @"PARTY_MARK",
                               @"", @"ADUT_MARK",
                               @(-p.TOTAL_QTY), @"INPUT_QTY",

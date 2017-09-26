@@ -117,18 +117,8 @@
 - (IBAction)productNumberOnclick:(UIButton *)sender {
     
     long long selectedNumber = [[_productNumberButton titleForState:UIControlStateNormal] longLongValue];
-//
-//        long long maxSize = [_product.PRODUCT_STOCK_QTY longLongValue];
-//        if(selectedNumber < maxSize) {
     
-            [self customize:selectedNumber];
-//        } else {
-//            
-//            if([_delegate respondsToSelector:@selector(noStockOfStockOutTableViewCell)]) {
-//                
-//                [_delegate noStockOfStockOutTableViewCell];
-//            }
-//        }
+    [self customize:selectedNumber];
 }
 
 

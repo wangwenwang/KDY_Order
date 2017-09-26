@@ -35,7 +35,7 @@
 
 @end
 
-#define kCellHeight 72
+#define kCellHeight 103
 
 #define kCellName @"GetOupputListTableViewCell"
 
@@ -168,8 +168,24 @@
     
     for (GetOupputModel *m in _getOupputListM.getOupputModel) {
         
-        m.cellHeight = kCellHeight;
+        // 单行高度
+        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:ScreenWidth];
+        
+        CGFloat PARTY_NAME_height = [Tools getHeightOfString:m.pARTYNAME fontSize:13 andWidth:(ScreenWidth - 8 - 61 - 3)];
+        
+        CGFloat oneCellHeight = 0;
+        if(PARTY_NAME_height > oneLine) {
+            
+            oneCellHeight = kCellHeight + PARTY_NAME_height - oneLine;
+        } else {
+            
+            oneCellHeight = kCellHeight;
+        }
+        
+        m.cellHeight = oneCellHeight;
     }
+    
+    [_tableView removeNoOrderPrompt];
     
     [_tableView reloadData];
 }
@@ -189,7 +205,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [_tableView.mj_header endRefreshing];
     
-    [Tools showAlert:self.view andTitle:msg];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取出库列表失败"];
 }
 
 @end

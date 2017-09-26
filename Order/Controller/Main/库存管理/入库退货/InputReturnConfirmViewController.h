@@ -37,4 +37,7 @@
 // 收货地址
 @property (strong, nonatomic) InputToAddressModel *inputToAddressM;
 
+/// 点击事件下标
+@property (assign, nonatomic) NSInteger didselectIndex;
+
 @end

@@ -7,14 +7,21 @@
 //
 
 #import "GetOupputListTableViewCell.h"
+#import "Tools.h"
 
 @interface GetOupputListTableViewCell ()
 
 // 出库单号
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
 
+// 出库客户名称
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
+
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
+
+// 出库数量
+@property (weak, nonatomic) IBOutlet UILabel *OUTPUT_QTY;
 
 // 出库类型
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_TYPE;
@@ -42,7 +49,9 @@
 - (void)setGetOupputM:(GetOupputModel *)getOupputM {
     
     _OUTPUT_NO.text = getOupputM.oUTPUTNO;
+    _PARTY_NAME.text = [getOupputM.pARTYNAME isEqualToString:@""] ? @" " : getOupputM.pARTYNAME;
     _ADD_DATE.text = getOupputM.aDDDATE;
+    _OUTPUT_QTY.text = [Tools OneDecimal:getOupputM.oUTPUTQTY];
     _OUTPUT_TYPE.text = getOupputM.oUTPUTTYPE;
     
     if([getOupputM.oUTPUTTYPE isEqualToString:@"销售出库"]) {
