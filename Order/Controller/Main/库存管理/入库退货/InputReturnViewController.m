@@ -735,7 +735,7 @@ typedef enum : NSInteger {
     if(modifyNumber == 0) {
         
         [Tools showAlert:_app.window andTitle:@"数量无更改"];
-    } else if(number > maxSize) {
+    } else if(number > maxSize && _didselectIndex != 1004) {
         
         [Tools showAlert:_app.window andTitle:@"库存不足"];
     } else {
@@ -854,6 +854,7 @@ typedef enum : NSInteger {
         cell.section = _currentSection;
         cell.cellHeight = PolicyCellHeight;
         cell.selfHeight = m.cellHeight;
+        cell.didselectIndex = _didselectIndex;
         
         NSString *imageURL = [NSString stringWithFormat:@"%@/%@", API_ServerAddress, m.PRODUCT_URL];
         

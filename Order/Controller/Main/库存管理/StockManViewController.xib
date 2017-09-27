@@ -246,7 +246,7 @@
                                                         <action selector="didselectItem:" destination="-1" eventType="touchUpInside" id="80a-d1-5gA"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_confirm" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-LO-HiZ"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_in_other" translatesAutoresizingMaskIntoConstraints="NO" id="hVg-LO-HiZ"/>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其它入库" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdw-Kw-de9">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -359,7 +359,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_return" translatesAutoresizingMaskIntoConstraints="NO" id="8ia-59-hlb"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LM_store_out_other" translatesAutoresizingMaskIntoConstraints="NO" id="8ia-59-hlb"/>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -462,8 +462,10 @@
     </objects>
     <resources>
         <image name="LM_store_confirm" width="30" height="30"/>
+        <image name="LM_store_in_other" width="27" height="29"/>
         <image name="LM_store_out" width="30" height="30"/>
         <image name="LM_store_out_in" width="30" height="31"/>
+        <image name="LM_store_out_other" width="27" height="29"/>
         <image name="LM_store_return" width="30" height="30"/>
     </resources>
 </document>

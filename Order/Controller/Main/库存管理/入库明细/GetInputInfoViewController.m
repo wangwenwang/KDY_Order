@@ -24,17 +24,20 @@
 // 原单出库单号
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_NO;
 
-// 供应商
-@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
-
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
 
-// 库存客户地址
-@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
+// 供应商
+@property (weak, nonatomic) IBOutlet UILabel *SUPPLIER_NAME;
 
 // 供应商地址
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_INFO;
+
+// 库存客户名称
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_NAME;
+
+// 库存客户地址
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
 
 // 入库数量
 @property (weak, nonatomic) IBOutlet UILabel *OUTPUT_QTY;
@@ -149,8 +152,9 @@
     _INPUT_NO.text = @"";
     _OUTPUT_NO.text = @"";
     _ADD_DATE.text = @"";
-    _SUPPLIER_NAME.text = @"";
+    _ADDRESS_NAME.text = @"";
     _ADDRESS_INFO.text = @" ";
+    _SUPPLIER_NAME.text = @"";
     _PARTY_INFO.text = @" ";
     _OUTPUT_QTY.text = @"";
     _OUTPUT_WEIGHT.text = @"";
@@ -246,8 +250,9 @@
     _INPUT_NO.text = _inputInfoListM.inputInfoModel.iNPUTNO;
     _OUTPUT_NO.text = _inputInfoListM.inputInfoModel.oUTPUTNO;
     _ADD_DATE.text = _inputInfoListM.inputInfoModel.aDDDATE;
-    _SUPPLIER_NAME.text = _inputInfoListM.inputInfoModel.sUPPLIERNAME;
+    _ADDRESS_NAME.text = _inputInfoListM.inputInfoModel.aDDRESSNAME;
     _ADDRESS_INFO.text = _inputInfoListM.inputInfoModel.aDDRESSINFO;
+    _SUPPLIER_NAME.text = _inputInfoListM.inputInfoModel.sUPPLIERNAME;
     _PARTY_INFO.text = [_inputInfoListM.inputInfoModel.sUPPLIERADDRESS isEqualToString:@""] ? @" " : _inputInfoListM.inputInfoModel.sUPPLIERADDRESS;
     _OUTPUT_QTY.text =  [Tools OneDecimal:_inputInfoListM.inputInfoModel.iNPUTQTY];
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:_inputInfoListM.inputInfoModel.iNPUTWEIGHT];

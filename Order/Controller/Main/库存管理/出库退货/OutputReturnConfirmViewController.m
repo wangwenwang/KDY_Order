@@ -609,6 +609,21 @@ static CGFloat g_sumInfoSuperViewHeight_b = 0;
     
     NSMutableArray *OrderDetails = [self promotionDetailModelTransfromNSString:p.OrderDetails];
     
+    
+    // 总重量
+    CGFloat OUTPUT_WEIGHT = 0;
+    // 总体积
+    CGFloat OUTPUT_VOLUME = 0;
+    
+    
+    
+    for (int i = 0; i < p.OrderDetails.count; i++) {
+        
+        PromotionDetailModel *detailPro = p.OrderDetails[i];
+        OUTPUT_WEIGHT += detailPro.PO_WEIGHT * detailPro.PO_QTY;
+        OUTPUT_VOLUME += detailPro.PO_VOLUME * detailPro.PO_QTY;
+    }
+    
     NSDictionary *Result = @{@"Result" : OrderDetails};
     
     // 总原价
@@ -634,8 +649,8 @@ static CGFloat g_sumInfoSuperViewHeight_b = 0;
                               actPrice, @"OUTPUT_SUM",
                               orgPrice, @"PRICE",
                               @"", @"OUTPUT_DATE",    // 出库时间未知
-                              @(p.TOTAL_WEIGHT), @"OUTPUT_WEIGHT",
-                              @(p.TOTAL_VOLUME), @"OUTPUT_VOLUME",
+                              @(OUTPUT_WEIGHT), @"OUTPUT_WEIGHT",
+                              @(OUTPUT_VOLUME), @"OUTPUT_VOLUME",
                               _remarkTextV.text, @"PARTY_MARK",
                               @"", @"ADUT_MARK",      // 审核备注未知
                               _app.user.IDX, @"ADD_USER",
@@ -657,6 +672,17 @@ static CGFloat g_sumInfoSuperViewHeight_b = 0;
         for(int i = 0; i < ps.count; i++) {
             PromotionDetailModel *p = ps[i];
             ProductModel *pro = _productsOfLocal[i];
+            
+            
+            
+            // 入库重量
+            CGFloat OUTPUT_WEIGHT = p.PO_WEIGHT * p.PO_QTY;
+            // 入库体积
+            CGFloat OUTPUT_VOLUME = p.PO_VOLUME * p.PO_QTY;
+            // 金额
+            CGFloat SUM = p.ACT_PRICE * p.PO_QTY;
+            
+            
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                   p.PRODUCT_TYPE, @"PRODUCT_TYPE",
                                   @(p.PRODUCT_IDX), @"PRODUCT_IDX",

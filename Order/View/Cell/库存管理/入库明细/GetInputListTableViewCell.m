@@ -56,9 +56,9 @@
     _ADD_DATE.text = inputM.aDDDATE;
     _INPUT_QTY.text = [Tools OneDecimal:inputM.iNPUTQTY];
     _INPUT_TYPE.text = inputM.iNPUTTYPE;
-    _SUPPLIER_NAME.text = inputM.sUPPLIERNAME;
+    _SUPPLIER_NAME.text = [inputM.sUPPLIERNAME isEqualToString:@""] ? @" " : inputM.sUPPLIERNAME;
     
-    if([inputM.iNPUTTYPE isEqualToString:@"采购入库"]) {
+    if([inputM.iNPUTTYPE isEqualToString:@"采购入库"] || [inputM.iNPUTTYPE isEqualToString:@"其它入库"]) {
         
         _INPUT_TYPE.textColor = RGB(64, 147, 45);
     } else if([inputM.iNPUTTYPE isEqualToString:@"采购退库"]) {

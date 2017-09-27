@@ -1039,13 +1039,13 @@ typedef enum : NSInteger {
         [_myTableView reloadData];
     } else if(tableView.tag == 1003) {
         
-        // 选择品类
+        // 选择类型
         [self selectProductType:indexPath.row andRefreshTableView:YES];
         
     }  else if(tableView.tag == 1004) {
         _brandRow = indexPath.row;
         
-        // 选择品类
+        // 选择分类
         [self selectProductType:0 andRefreshTableView:NO];
         [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
@@ -1053,7 +1053,6 @@ typedef enum : NSInteger {
         ProductTbModel *m = _brands[indexPath.row];
         _selectedBrand = [m.PRODUCT_CLASS isEqualToString:@"全部"] ? @"" : m.PRODUCT_CLASS;
         
-        //        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
         [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:_selectedBrand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
         
         //操作UI
@@ -1264,8 +1263,8 @@ typedef enum : NSInteger {
 
 - (IBAction)productTypeOnclick:(UITapGestureRecognizer *)sender {
     
-//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-//    return;
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
     
     _leftView.hidden = NO;
     
@@ -1323,8 +1322,8 @@ typedef enum : NSInteger {
 
 - (IBAction)brandOnclick:(UITapGestureRecognizer *)sender {
     
-//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-//    return;
+    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+    return;
     
     [self hiddenBrandView];
 }
@@ -1883,6 +1882,8 @@ typedef enum : NSInteger {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
+    [_myTableView removeNoOrderPrompt];
+    
     NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
     [_dictProducts setObject:dict forKey:@(_brandRow)];
     
@@ -1900,7 +1901,10 @@ typedef enum : NSInteger {
     
     [self fd];
     
-    [_myTableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [_myTableView reloadData];
+    });
 }
 
 

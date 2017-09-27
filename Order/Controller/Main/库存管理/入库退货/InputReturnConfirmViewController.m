@@ -605,6 +605,19 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
     
     NSMutableArray *OrderDetails = [self promotionDetailModelTransfromNSString:p.OrderDetails];
     
+    
+    // 总重量
+    CGFloat INPUT_WEIGHT = 0;
+    // 总体积
+    CGFloat INPUT_VOLUME = 0;
+    
+    for (int i = 0; i < p.OrderDetails.count; i++) {
+        
+        PromotionDetailModel *detailPro = p.OrderDetails[i];
+        INPUT_WEIGHT += detailPro.PO_WEIGHT * detailPro.PO_QTY;
+        INPUT_VOLUME += detailPro.PO_VOLUME * detailPro.PO_QTY;
+    }
+    
     NSDictionary *Result = @{@"Result" : OrderDetails};
     
     // 总原价
@@ -650,15 +663,15 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
                               @"", @"INPUT_NO",       // 入库单号未知
                               @"", @"OUTPUT_NO",      // 原单出库单号未知
                               SUPPLIER_CODE, @"SUPPLIER_CODE",
-                              INPUT_TYPE, @"SUPPLIER_NAME",
+                              SUPPLIER_NAME, @"SUPPLIER_NAME",
                               SUPPLIER_ADDRESS, @"SUPPLIER_ADDRESS",
                               _remarkTextV.text, @"PARTY_MARK",
                               @"", @"ADUT_MARK",
                               @(INPUT_QTY), @"INPUT_QTY",
                               actPrice, @"INPUT_SUM",
                               @"", @"INPUT_DATE", // 入库时间未知
-                              @(p.TOTAL_WEIGHT), @"INPUT_WEIGHT",
-                              @(p.TOTAL_VOLUME), @"INPUT_VOLUME",
+                              @(INPUT_WEIGHT), @"INPUT_WEIGHT",
+                              @(INPUT_VOLUME), @"INPUT_VOLUME",
                               _app.user.USER_NAME, @"OPER_USER",
                               Result, @"Info",
                               nil];
@@ -691,6 +704,13 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
                 INPUT_QTY = p.PO_QTY;
             }
             
+            // 入库重量
+            CGFloat INPUT_WEIGHT = p.PO_WEIGHT * p.PO_QTY;
+            // 入库体积
+            CGFloat INPUT_VOLUME = p.PO_VOLUME * p.PO_QTY;
+            // 金额
+            CGFloat SUM = p.ACT_PRICE * p.PO_QTY;
+            
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                   p.PRODUCT_TYPE, @"PRODUCT_TYPE",
                                   @(p.PRODUCT_IDX), @"PRODUCT_IDX",
@@ -700,13 +720,15 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
                                   @(p.LINE_NO), @"LINE_NO",
                                   @(p.PO_WEIGHT), @"PRODUCT_WEIGHT",
                                   @(p.PO_VOLUME), @"PRODUCT_VOLUME",
+                                  @(INPUT_WEIGHT), @"INPUT_WEIGHT",
+                                  @(INPUT_VOLUME), @"INPUT_VOLUME",
                                   @(INPUT_QTY), @"INPUT_QTY",
                                   pro.PRODUCT_UOM, @"INPUT_UOM",
                                   @"", @"PRODUCTION_DATE",     // 生产日期未知
                                   @"", @"BATCH_NUMBER",        // 批次未知
                                   @"", @"PRODUCT_STATE",       // 货物状态未知
                                   @(p.ACT_PRICE), @"PRICE",
-                                  @(p.ACT_PRICE * p.PO_QTY), @"SUM",
+                                  @(SUM), @"SUM",
                                   nil];
             
             NSString *s = [Tools JsonStringWithDictonary:dict];

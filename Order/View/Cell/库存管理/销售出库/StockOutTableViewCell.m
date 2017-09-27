@@ -89,7 +89,9 @@
 - (IBAction)addNumberOnclick:(UIButton *)sender {
     
     long long maxSize = [_product.PRODUCT_STOCK_QTY longLongValue];
-    if(_product.CHOICED_SIZE < maxSize) {
+    
+    // didselectIndex == 1002,表示入库退货，需要考虑库存。1004为其它入库，不需要考虑库存
+    if(_product.CHOICED_SIZE < maxSize || _didselectIndex == 1004) {
         [self add];
     } else {
         if([_delegate respondsToSelector:@selector(noStockOfStockOutTableViewCell)]) {

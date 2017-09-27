@@ -54,7 +54,7 @@
     _OUTPUT_QTY.text = [Tools OneDecimal:getOupputM.oUTPUTQTY];
     _OUTPUT_TYPE.text = getOupputM.oUTPUTTYPE;
     
-    if([getOupputM.oUTPUTTYPE isEqualToString:@"销售出库"]) {
+    if([getOupputM.oUTPUTTYPE isEqualToString:@"销售出库"] || [getOupputM.oUTPUTTYPE isEqualToString:@"其它出库"]) {
         
         _OUTPUT_TYPE.textColor = RGB(64, 147, 45);
     } else if([getOupputM.oUTPUTTYPE isEqualToString:@"出库退库"]) {

@@ -54,11 +54,16 @@
 
 - (void)setInputItemM:(InputItemModel *)inputItemM {
     
+    // 重量
+    NSString *OUTPUT_WEIGHT = [NSString stringWithFormat:@"%f", [inputItemM.pRODUCTWEIGHT floatValue] * [inputItemM.iNPUTQTY intValue]];
+    // 体积
+    NSString *OUTPUT_VOLUME = [NSString stringWithFormat:@"%f", [inputItemM.pRODUCTVOLUME floatValue] * [inputItemM.iNPUTQTY intValue]];
+    
     _PRODUCT_NO.text = inputItemM.pRODUCTNO;
     _PRODUCT_NAME.text = inputItemM.pRODUCTNAME;
     _OUTPUT_QTY.text = [NSString stringWithFormat:@"%@%@", [Tools OneDecimal:inputItemM.iNPUTQTY], inputItemM.iNPUTUOM];
-    _OUTPUT_WEIGHT.text = [Tools TwoDecimal:inputItemM.pRODUCTWEIGHT];
-    _OUTPUT_VOLUME.text = [Tools TwoDecimal:inputItemM.pRODUCTVOLUME];
+    _OUTPUT_WEIGHT.text = [Tools TwoDecimal:OUTPUT_WEIGHT];
+    _OUTPUT_VOLUME.text = [Tools TwoDecimal:OUTPUT_VOLUME];
     _ORG_PRICE.text = [Tools TwoDecimal:inputItemM.pRICE];
     
     // 付款价

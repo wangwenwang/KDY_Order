@@ -26,8 +26,14 @@
 // 制单时间
 @property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
 
+// 库存客户名称
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_NAME;
+
 // 库存客户地址
 @property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
+
+// 出库客户名称(门店名称)
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
 
 // 出库客户地址
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_INFO;
@@ -97,6 +103,8 @@
     
     [super viewDidLoad];
     
+    self.title = @"出库详情";
+    
     [self registerCell];
     
     [self initUI];
@@ -161,7 +169,9 @@
     
     _OUTPUT_NO.text = @"";
     _ADD_DATE.text = @"";
+    _ADDRESS_NAME.text = @"";
     _ADDRESS_INFO.text = @" ";
+    _PARTY_NAME.text = @"";
     _PARTY_INFO.text = @" ";
     _OUTPUT_QTY.text = @"";
     _OUTPUT_WEIGHT.text = @"";
@@ -256,7 +266,9 @@
     
     _OUTPUT_NO.text = _getOupputDetailM.getOupputInfoModel.oUTPUTNO;
     _ADD_DATE.text = _getOupputDetailM.getOupputInfoModel.aDDDATE;
+    _ADDRESS_NAME.text = _getOupputDetailM.getOupputInfoModel.aDDRESSNAME;
     _ADDRESS_INFO.text = _getOupputDetailM.getOupputInfoModel.aDDRESSINFO;
+    _PARTY_NAME.text = _getOupputDetailM.getOupputInfoModel.pARTYNAME;
     _PARTY_INFO.text = [_getOupputDetailM.getOupputInfoModel.pARTYINFO isEqualToString:@""] ? @" " : _getOupputDetailM.getOupputInfoModel.pARTYINFO;
     _OUTPUT_QTY.text =  [Tools OneDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTQTY];
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTWEIGHT];

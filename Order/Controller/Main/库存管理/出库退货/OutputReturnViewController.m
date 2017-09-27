@@ -867,6 +867,7 @@ typedef enum : NSInteger {
         cell.cellHeight = PolicyCellHeight;
         cell.selfHeight = m.cellHeight;
         
+        
         NSString *imageURL = [NSString stringWithFormat:@"%@/%@", API_ServerAddress, m.PRODUCT_URL];
         
         // 填充基本数据

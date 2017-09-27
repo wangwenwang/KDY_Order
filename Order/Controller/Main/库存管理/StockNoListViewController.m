@@ -70,6 +70,8 @@
     
     self.title = @"库存详情";
     
+    [self initUI];
+    
     [self registerCell];
     
     [_service GetStockNoList:_stock_idx];
@@ -83,6 +85,15 @@
 
 
 #pragma mark - 功能函数
+
+// 初始化UI
+- (void)initUI {
+    
+    _PRODUCT_NO.text = @"";
+    _PRODUCT_NAME.text = @" ";
+    _STOCK_QTY.text = @"";
+    _EDIT_DATE.text = @"";
+}
 
 // 注册Cell
 - (void)registerCell {

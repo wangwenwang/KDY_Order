@@ -91,4 +91,7 @@
 /// 库存数量 提示
 @property (weak, nonatomic) IBOutlet UILabel *STOCK_QTY_Label;
 
+/// 点击事件下标
+@property (assign, nonatomic) NSInteger didselectIndex;
+
 @end
