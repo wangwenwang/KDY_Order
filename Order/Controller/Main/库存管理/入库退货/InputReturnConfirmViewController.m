@@ -654,7 +654,7 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
                               SUPPLIER_ADDRESS, @"SUPPLIER_ADDRESS",
                               _remarkTextV.text, @"PARTY_MARK",
                               @"", @"ADUT_MARK",
-                              @(-p.TOTAL_QTY), @"INPUT_QTY",
+                              @(INPUT_QTY), @"INPUT_QTY",
                               actPrice, @"INPUT_SUM",
                               @"", @"INPUT_DATE", // 入库时间未知
                               @(p.TOTAL_WEIGHT), @"INPUT_WEIGHT",
@@ -671,11 +671,26 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
 
 - (NSMutableArray *)promotionDetailModelTransfromNSString:(NSMutableArray *)ps {
     NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    
     @try {
-        
         for(int i = 0; i < ps.count; i++) {
             PromotionDetailModel *p = ps[i];
             ProductModel *pro = _productsOfLocal[i];
+            
+            NSInteger INPUT_QTY =  0;        // 入库类型
+            
+            // 采购退库
+            if(_didselectIndex == 1002) {
+                
+                INPUT_QTY = -p.PO_QTY;
+            }
+            // 其它入库
+            else if(_didselectIndex == 1004) {
+                
+                INPUT_QTY = p.PO_QTY;
+            }
+            
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                                   p.PRODUCT_TYPE, @"PRODUCT_TYPE",
                                   @(p.PRODUCT_IDX), @"PRODUCT_IDX",
@@ -685,7 +700,7 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
                                   @(p.LINE_NO), @"LINE_NO",
                                   @(p.PO_WEIGHT), @"PRODUCT_WEIGHT",
                                   @(p.PO_VOLUME), @"PRODUCT_VOLUME",
-                                  @(-p.PO_QTY), @"INPUT_QTY",
+                                  @(INPUT_QTY), @"INPUT_QTY",
                                   pro.PRODUCT_UOM, @"INPUT_UOM",
                                   @"", @"PRODUCTION_DATE",     // 生产日期未知
                                   @"", @"BATCH_NUMBER",        // 批次未知

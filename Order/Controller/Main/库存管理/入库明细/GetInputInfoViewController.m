@@ -248,7 +248,7 @@
     _ADD_DATE.text = _inputInfoListM.inputInfoModel.aDDDATE;
     _SUPPLIER_NAME.text = _inputInfoListM.inputInfoModel.sUPPLIERNAME;
     _ADDRESS_INFO.text = _inputInfoListM.inputInfoModel.aDDRESSINFO;
-    _PARTY_INFO.text = _inputInfoListM.inputInfoModel.sUPPLIERADDRESS;
+    _PARTY_INFO.text = [_inputInfoListM.inputInfoModel.sUPPLIERADDRESS isEqualToString:@""] ? @" " : _inputInfoListM.inputInfoModel.sUPPLIERADDRESS;
     _OUTPUT_QTY.text =  [Tools OneDecimal:_inputInfoListM.inputInfoModel.iNPUTQTY];
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:_inputInfoListM.inputInfoModel.iNPUTWEIGHT];
     _OUTPUT_VOLUME.text = [Tools TwoDecimal:_inputInfoListM.inputInfoModel.iNPUTVOLUME];
