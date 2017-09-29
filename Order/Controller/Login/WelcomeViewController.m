@@ -52,15 +52,12 @@
         _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(skipAd) userInfo:nil repeats:YES];
         
         NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
-        if([welcomeImageName isEqualToString:@"YIB"]) {
+        if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
             
             _welcomeImageView.image = [UIImage imageNamed:@"welcome1"];
         } else if([welcomeImageName isEqualToString:@"DK"]) {
             
             _welcomeImageView.image = [UIImage imageNamed:@"welcome2"];
-        }  else if([welcomeImageName isEqualToString:@"QH"]) {
-            
-            _welcomeImageView.image = [UIImage imageNamed:@"welcome3"];
         } else {
             
             [self skipAd];

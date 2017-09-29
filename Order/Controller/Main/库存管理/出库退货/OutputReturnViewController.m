@@ -1039,16 +1039,13 @@ typedef enum : NSInteger {
     }  else if(tableView.tag == 1004) {
         _brandRow = indexPath.row;
         
-        // 选择品类
-        [self selectProductType:0 andRefreshTableView:NO];
-        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
-        
         // 选择品牌
         ProductTbModel *m = _brands[indexPath.row];
         _selectedBrand = [m.PRODUCT_CLASS isEqualToString:@"全部"] ? @"" : m.PRODUCT_CLASS;
         
-        //        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
-        [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:_selectedBrand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
+        // 选择品类
+        [self selectProductType:0 andRefreshTableView:YES];
+        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
         //操作UI
         _brandLabel.text = [NSString stringWithFormat:@"分类:%@", [_selectedBrand isEqualToString:@""] ? @"全部" : _selectedBrand];
@@ -1258,8 +1255,8 @@ typedef enum : NSInteger {
 
 - (IBAction)productTypeOnclick:(UITapGestureRecognizer *)sender {
     
-    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-    return;
+//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+//    return;
     
     _leftView.hidden = NO;
     
@@ -1317,8 +1314,8 @@ typedef enum : NSInteger {
 
 - (IBAction)brandOnclick:(UITapGestureRecognizer *)sender {
     
-    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
-    return;
+//    [Tools showAlert:self.view andTitle:@"此功能维护中..."];
+//    return;
     
     [self hiddenBrandView];
 }

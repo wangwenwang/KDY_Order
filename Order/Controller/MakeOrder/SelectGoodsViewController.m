@@ -977,19 +977,17 @@ typedef enum : NSInteger {
     } else if(tableView.tag == 1004) {
         _brandRow = indexPath.row;
         
-        // 选择分类
-        [self selectProductType:0 andRefreshTableView:NO];
-        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
-        
         // 选择品牌
         ProductTbModel *m = _brands[indexPath.row];
         _selectedBrand = [m.PRODUCT_CLASS isEqualToString:@"全部"] ? @"" : m.PRODUCT_CLASS;
         
-        [_selectGoodsService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:_selectedBrand];
+        // 选择分类
+        [self selectProductType:0 andRefreshTableView:YES];
+        [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
-        //操作UI
+        // 操作UI
         _brandLabel.text = [NSString stringWithFormat:@"分类:%@", [_selectedBrand isEqualToString:@""] ? @"全部" : _selectedBrand];
-        //修改品牌Label的部分文字颜色
+        // 修改品牌Label的部分文字颜色
         [self NSForegroundColorAttributeName:_brandLabel.text andRange:NSMakeRange(3,_brandLabel.text.length - 3) andLabel:_brandLabel];
         
     } else if(tableView.tag == 1005) {
