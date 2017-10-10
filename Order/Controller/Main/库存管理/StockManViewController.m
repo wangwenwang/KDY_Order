@@ -203,6 +203,9 @@
         GetInputListViewController *vc = [[GetInputListViewController alloc] init];
         vc.addressM = _addressM;
         [self.navigationController pushViewController:vc animated:YES];
+    } else if(tag == 1003) {
+        
+        [Tools showAlert:self.view andTitle:@"维护中..."];
     }
 }
 
