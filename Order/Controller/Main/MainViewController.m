@@ -148,13 +148,18 @@
     NSString *dataPath = [[NSBundle mainBundle]pathForResource:@"MainCollection.plist" ofType:nil];
     _myCollectionDataArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
     
-    if([_app.business.BUSINESS_IDX intValue] == 7 || [_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0 || [_app.business.BUSINESS_NAME rangeOfString:@"怡宝"].length > 0) {
+    if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0) {
         
     } else {
         
         if(_myCollectionDataArrM.count >= 7) {
             
             [_myCollectionDataArrM removeObjectAtIndex:6];
+            
+            if(_myCollectionDataArrM.count >= 7) {
+                
+                [_myCollectionDataArrM removeObjectAtIndex:6];
+            }
         }
     }
 }
@@ -239,13 +244,13 @@
         GetFeeListViewController *vc = [[GetFeeListViewController alloc] init];
         vc.title = title;
         
-//        [self presentViewController:vc animated:YES completion:nil];
+        //        [self presentViewController:vc animated:YES completion:nil];
         [self.navigationController pushViewController:vc animated:YES];
         
-//        CustomerListViewController *vc = [[CustomerListViewController alloc] init];
-//        vc.title = title;
-//        vc.vcClass = NSStringFromClass([self class]);
-//        [self.navigationController pushViewController:vc animated:YES];
+        //        CustomerListViewController *vc = [[CustomerListViewController alloc] init];
+        //        vc.title = title;
+        //        vc.vcClass = NSStringFromClass([self class]);
+        //        [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"费用帐单"]) {
         
         CustomerListViewController *vc = [[CustomerListViewController alloc] init];
