@@ -1248,9 +1248,16 @@ typedef enum : NSInteger {
     [UIView animateWithDuration:0.5 animations:^{
         
         _shoppingCarHeight.constant = _isShowSoppingCar ? 0 : _lastShoppingCarHeiht;
-        [_bottomView layoutIfNeeded];
-        [_shoppingCarView layoutIfNeeded];
-        _isShowSoppingCar ? nil : [_myTableView layoutIfNeeded];
+        
+        if(SystemVersion >= 10.0) {
+            
+            [self.view layoutIfNeeded];
+        } else {
+            
+            [_bottomView layoutIfNeeded];
+            [_shoppingCarView layoutIfNeeded];
+            _isShowSoppingCar ? nil : [_myTableView layoutIfNeeded];
+        }
     } completion:^(BOOL finished) {
         
         _isShowSoppingCar = _isShowSoppingCar ? NO : YES;
