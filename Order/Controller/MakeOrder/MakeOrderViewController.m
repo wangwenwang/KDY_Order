@@ -652,12 +652,12 @@
     vc.address = _currentAddress;
     vc.party = _currentParty;
     
-    // 缓存机制
-    if([_temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)] isKindOfClass:[NSMutableDictionary class]]) {
-        
-        vc.dictProducts = _temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)];
-    } else {
-        
+//    // 缓存机制
+//    if([_temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)] isKindOfClass:[NSMutableDictionary class]]) {
+//        
+//        vc.dictProducts = _temp_Party[@(_currentParty_Index)][@(_currentAddress_Index)];
+//    } else {
+    
         NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
         NSMutableDictionary *dictP = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
         vc.dictProducts = dictP;
@@ -669,7 +669,7 @@
         
         [dictAddress addEntriesFromDictionary:@{@(_currentAddress_Index) : dictP}];
         [_temp_Party addEntriesFromDictionary:@{@(_currentParty_Index) : dictAddress}];
-    }
+//    }
     
     [self.navigationController pushViewController:vc animated:YES];
 }

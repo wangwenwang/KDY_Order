@@ -216,8 +216,34 @@ typedef enum _CloseDatePicker {
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     
+    
+    
+    
+    CGFloat giftTableViewHeight = 0;
+    for (int i = 0; i < _selectedGifts.count; i++) {
+        
+        PromotionDetailModel *m = _selectedGifts[i];
+        
+        // Label 容器宽度
+        CGFloat contentWidth = ScreenWidth - (3 + 35 + 3 + 30 + 10 + 10);
+        // Label 单行高度
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
+        
+        CGFloat overflowHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:13 andWidth:contentWidth] - oneLineHeight;
+        
+        if(overflowHeight > 0) {
+            
+            m.cellHeight = GiftTableViewCellHeight + overflowHeight;
+        } else {
+            
+            m.cellHeight = GiftTableViewCellHeight;
+        }
+        
+        giftTableViewHeight += m.cellHeight;
+    }
     //设置赠品TableView高度
-    _giftsTableViewHeight.constant = GiftTableViewCellHeight * _selectedGifts.count;
+    _giftsTableViewHeight.constant = giftTableViewHeight;
+    
     
     _scrollContentViewHeight.constant = 450 + _orderTableViewHeight.constant + (_giftTableView.hidden ? 0 : _giftsTableViewHeight.constant);
 }
@@ -288,23 +314,37 @@ typedef enum _CloseDatePicker {
 
 - (void)initUI {
     
-    //没有赠品
-    _noGiftPromptLabel.hidden = _selectedGifts.count;
-    
-    _giftTableView.hidden = !_selectedGifts.count;
-    
-    _customizePriceView.hidden = YES;
-    _coverView.hidden = YES;
-    
-    //设置添加赠品按钮是否可见
-    NSString *bussinessCode = _app.business.BUSINESS_CODE;
-    if([bussinessCode rangeOfString:@"QH"].length > 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
-        //  if([bussinessName isEqualToString:@"凯东源前海项目"] && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
+    // 指定赠品
+    if(_promotionDetailGiftsOfServer.count > 0) {
         
-        _addGiftButton.hidden = NO;
-    } else {
-        
+        _selectedGifts = _promotionDetailGiftsOfServer;
+        _noGiftPromptLabel.hidden = YES;
+        _giftTableView.hidden = NO;
+        _customizePriceView.hidden = YES;
+        _coverView.hidden = YES;
         _addGiftButton.hidden = YES;
+    }
+    
+    // 手选赠品或没有
+    else {
+        //没有赠品
+        _noGiftPromptLabel.hidden = _selectedGifts.count;
+        
+        _giftTableView.hidden = !_selectedGifts.count;
+        
+        _customizePriceView.hidden = YES;
+        _coverView.hidden = YES;
+        
+        //设置添加赠品按钮是否可见
+        NSString *bussinessCode = _app.business.BUSINESS_CODE;
+        if([bussinessCode rangeOfString:@"QH"].length > 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
+            //  if([bussinessName isEqualToString:@"凯东源前海项目"] && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
+            
+            _addGiftButton.hidden = NO;
+        } else {
+            
+            _addGiftButton.hidden = YES;
+        }
     }
     
     [self refreshCollectDada];
@@ -705,13 +745,12 @@ typedef enum _CloseDatePicker {
     
     if(tableView.tag == 1001) {
         
-        // 获取数据
         PromotionDetailModel *m = _promotionDetailsOfServer[indexPath.row];
-        
         return m.cellHeight;
     } else if(tableView.tag == 1002) {
         
-        return GiftTableViewCellHeight;
+        PromotionDetailModel *m = _selectedGifts[indexPath.row];
+        return m.cellHeight;
     } else {
         
         return 0;

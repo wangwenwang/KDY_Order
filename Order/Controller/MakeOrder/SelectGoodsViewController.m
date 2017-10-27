@@ -27,6 +27,7 @@
 #import "PromotionDetailModel.h"
 #import <Masonry.h>
 #import "LMBlurredView.h"
+#import "LM_alert.h"
 
 /*
  *
@@ -1612,7 +1613,7 @@ typedef enum : NSInteger {
     vc.productsOfLocal = _selectedProducts;
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;
-    //    vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
+    vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
     vc.orderAddressCode = _address.ADDRESS_CODE;
     vc.orderAddressIdx = _address.IDX;
     vc.orderPayType = _currentPayType.Key;
@@ -1806,6 +1807,17 @@ typedef enum : NSInteger {
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     _keyboardHeight = 0;
+}
+
+
+- (BOOL)navigationShouldPopOnBackButton {
+    
+    [LM_alert showLMAlertViewWithTitle:@"" message:@"是否放弃下订操作" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } cancelClickHandle:nil];
+    
+    return  NO;
 }
 
 @end
