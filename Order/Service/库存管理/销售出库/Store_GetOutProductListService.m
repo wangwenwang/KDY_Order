@@ -84,7 +84,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求产品类型失败:%@", error);
-        [self failureOfGetOutProductList:nil];
+        [self failureOfGetOutProductList:@"请求产品类型失败"];
     }];
 }
 
@@ -116,6 +116,69 @@
         
         [_delegate failureOfGetOutProductList:msg];
     }
+}
+
+
+- (void)getProductsData:(nullable NSString *)orderPartyId andOrderAddressIdx:(nullable NSString *)orderAddressIdx andProductTypeIndex:(int)index andProductType:(nullable NSString *)productType andOrderBrand:(nullable NSString *)orderBrand {
+    
+    orderPartyId = orderPartyId ? orderPartyId : @"";
+    orderAddressIdx = orderAddressIdx ? orderAddressIdx : @"";
+    index = index ? index : 0;
+    productType = productType ? productType : @"";
+    orderBrand = orderBrand ? orderBrand : @"";
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                _app.business.BUSINESS_IDX, @"strBusinessId",
+                                orderPartyId, @"strPartyIdx",
+                                orderAddressIdx, @"strPartyAddressIdx",
+                                @"", @"strLicense",
+                                productType, @"strProductType",
+                                orderBrand, @"strProductClass",
+                                nil];
+    
+    NSLog(@"请求产品参数：%@", parameters);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:API_GetInputProductListType parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求产品数据成功---%@", responseObject);
+        int _type = [responseObject[@"type"] intValue];
+        NSString *msg = responseObject[@"msg"];
+        
+        if(_type == 1) {
+            
+            NSMutableArray *products = [[NSMutableArray alloc] init];
+            
+            NSArray *arrResult = responseObject[@"result"];
+            if([arrResult isKindOfClass:[NSArray class]]) {
+                if(arrResult.count < 1) {
+                    [self failureOfGetOutProductList:@"获取产品数据失败，数据为空！"];
+                }else {
+                    for(int i = 0; i < arrResult.count; i++) {
+                        ProductModel *m = [[ProductModel alloc] init];
+                        [m setDict:arrResult[i]];
+                        
+                        [products addObject:m];
+                    }
+                    
+                    if([_delegate respondsToSelector:@selector(successOfGetOutProductList:)]) {
+                        
+                        [_delegate successOfGetOutProductList:products];
+                    }
+                }
+            }else {
+                [self failureOfGetOutProductList:msg];
+            }
+        }else {
+            [self failureOfGetOutProductList:msg];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求产品类型失败:%@", error);
+        [self failureOfGetOutProductList:nil];
+    }];
 }
 
 @end

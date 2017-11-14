@@ -30,6 +30,6 @@
 
 @property (weak, nonatomic, nullable)id <Store_GetStockNoListServiceDelegate> delegate;
 
-- (void)GetStockNoList:(nullable NSString *)IDX;
+- (void)GetStockNoList:(nullable NSString *)IDX andstrPage:(NSUInteger)strPage;
 
 @end

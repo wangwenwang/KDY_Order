@@ -314,22 +314,24 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
     
     // 发货地址换行
     CGFloat contentWidth = ScreenWidth - 12 - 61 - 8;
-    
     CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:12 andWidth:999.9];
-    
     CGFloat overflowHeight = [Tools getHeightOfString:_addressM.ADDRESS_INFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
-    
     if(overflowHeight > 0) {
-        
-        _sendViewHeight.constant += overflowHeight;
+        if(_didselectIndex == 1004) {
+            _receiveViewHeight.constant += overflowHeight;
+        } else {
+            _sendViewHeight.constant += overflowHeight;
+        }
     }
     
     // 收货地址换行
     overflowHeight = [Tools getHeightOfString:_inputToAddressM.aDDRESSINFO fontSize:12 andWidth:contentWidth] - oneLineHeight;
-    
     if(overflowHeight > 0) {
-        
-        _receiveViewHeight.constant += overflowHeight;
+        if(_didselectIndex == 1004) {
+            _sendViewHeight.constant += overflowHeight;
+        } else {
+            _receiveViewHeight.constant += overflowHeight;
+        }
     }
     
     // 产品名称换行
@@ -388,6 +390,19 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
 
 - (void)initUI {
     
+    if(_didselectIndex == 1004) {
+        
+        // 发货信息
+        _PARTY_NAME.text = @"";
+        _CONTACT_PERSON.text = _inputToAddressM.cONTACTPERSON;
+        _CONTACT_TEL.text = _inputToAddressM.cONTACTTEL;
+        _ADDRESS_INFO.text = _inputToAddressM.aDDRESSINFO;
+        
+        // 收货信息
+        _CONTACT_PERSON_receive.text = _addressM.CONTACT_PERSON;
+        _CONTACT_TEL_receive.text = _addressM.CONTACT_TEL;
+        _ADDRESS_INFO_receive.text = _addressM.ADDRESS_INFO;
+    } else {
     // 发货信息
     _PARTY_NAME.text = _partyM.PARTY_NAME;
     _CONTACT_PERSON.text = _addressM.CONTACT_PERSON;
@@ -398,6 +413,7 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
     _CONTACT_PERSON_receive.text = _inputToAddressM.cONTACTPERSON;
     _CONTACT_TEL_receive.text = _inputToAddressM.cONTACTTEL;
     _ADDRESS_INFO_receive.text =  _inputToAddressM.aDDRESSINFO;
+}
     
     
     // 没有赠品

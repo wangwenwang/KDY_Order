@@ -23,6 +23,9 @@
 // 物品单位
 @property (weak, nonatomic) IBOutlet UILabel *STOCK_UOM;
 
+// 操作日期
+@property (weak, nonatomic) IBOutlet UILabel *CHANGE_DATE;
+
 @end
 
 @implementation StockNoListTableViewCell
@@ -42,10 +45,11 @@
 
 - (void)setStockNoItemM:(StockNoItemModel *)stockNoItemM {
     
-    _BATCH_NUMBER.text = stockNoItemM.bATCHNUMBER;
-    _PRODUCT_STATE.text = stockNoItemM.pRODUCTSTATE;
+    _BATCH_NUMBER.text = stockNoItemM.sTOCKNO;
+    _PRODUCT_STATE.text = stockNoItemM.pRODUCTIONDATE;
     _STOCK_QTY.text = [Tools formatFloat:[stockNoItemM.sTOCKQTY floatValue]];
     _STOCK_UOM.text = stockNoItemM.sTOCKUOM;
+    _CHANGE_DATE.text = stockNoItemM.cHANGEDATE;
 }
 
 @end

@@ -1812,7 +1812,7 @@ typedef enum : NSInteger {
 
 - (BOOL)navigationShouldPopOnBackButton {
     
-    [LM_alert showLMAlertViewWithTitle:@"" message:@"是否放弃下订操作" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
+    [LM_alert showLMAlertViewWithTitle:@"" message:@"是否取消下单" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
         
         [self.navigationController popToRootViewControllerAnimated:YES];
     } cancelClickHandle:nil];

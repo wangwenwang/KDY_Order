@@ -48,7 +48,7 @@
 
 
 
-#define kCellHeight 60
+#define kCellHeight 79
 
 #define kCellName @"StockNoListTableViewCell"
 
@@ -74,7 +74,7 @@
     
     [self registerCell];
     
-    [_service GetStockNoList:_stock_idx];
+    [_service GetStockNoList:_stock_idx andstrPage:1];
 }
 
 

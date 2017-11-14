@@ -29,7 +29,7 @@
 
 @interface Store_GetOutProductListService : NSObject
 
-@property (weak, nonatomic)id <Store_GetOutProductListServiceDelegate> delegate;
+@property (weak, nonatomic) id <Store_GetOutProductListServiceDelegate> delegate;
 
 
 /**
@@ -42,5 +42,16 @@
  @param strPageCount          页面条数
  */
 - (void)GetOutProductList:(nullable NSString *)strProductType andstrProductClass:(nullable NSString *)strProductClass andstrPartyAddressIdx:(NSInteger)strPartyAddressIdx andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount;
+
+/**
+ 获取产品数据，其它入库时调用
+ 
+ @param orderPartyId    客户id
+ @param orderAddressIdx 地址
+ @param index           在产品分类列表集合中的位置
+ @param productType     产品类型
+ @param orderBrand      产品分类
+ */
+- (void)getProductsData:(nullable NSString *)orderPartyId andOrderAddressIdx:(nullable NSString *)orderAddressIdx andProductTypeIndex:(int)index andProductType:(nullable NSString *)productType andOrderBrand:(nullable NSString *)orderBrand;
 
 @end

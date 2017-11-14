@@ -9,22 +9,13 @@
 #import "StockNoItemModel.h"
 
 
-NSString *const kStockNoItemModelABWORKFLOW = @"AB_WORKFLOW";
-NSString *const kStockNoItemModelADDRESSCODE = @"ADDRESS_CODE";
-NSString *const kStockNoItemModelADDRESSIDX = @"ADDRESS_IDX";
-NSString *const kStockNoItemModelADDRESSNAME = @"ADDRESS_NAME";
-NSString *const kStockNoItemModelADDDATE = @"ADD_DATE";
-NSString *const kStockNoItemModelBATCHNUMBER = @"BATCH_NUMBER";
-NSString *const kStockNoItemModelBUSINESSIDX = @"BUSINESS_IDX";
-NSString *const kStockNoItemModelEDITDATE = @"EDIT_DATE";
-NSString *const kStockNoItemModelIDX = @"IDX";
-NSString *const kStockNoItemModelLINENO = @"LINE_NO";
-NSString *const kStockNoItemModelOPERATORNAME = @"OPERATOR_NAME";
+NSString *const kStockNoItemModelCHANGEDATE = @"CHANGE_DATE";
+NSString *const kStockNoItemModelCHANGENO = @"CHANGE_NO";
+NSString *const kStockNoItemModelCHANGETYPE = @"CHANGE_TYPE";
 NSString *const kStockNoItemModelPRICE = @"PRICE";
-NSString *const kStockNoItemModelPRODUCTIDX = @"PRODUCT_IDX";
-NSString *const kStockNoItemModelPRODUCTNAME = @"PRODUCT_NAME";
-NSString *const kStockNoItemModelPRODUCTNO = @"PRODUCT_NO";
-NSString *const kStockNoItemModelPRODUCTSTATE = @"PRODUCT_STATE";
+NSString *const kStockNoItemModelPRODUCTIONDATE = @"PRODUCTION_DATE";
+NSString *const kStockNoItemModelSOURCENO = @"SOURCE_NO";
+NSString *const kStockNoItemModelSOURCETYPE = @"SOURCE_TYPE";
 NSString *const kStockNoItemModelSTOCKNO = @"STOCK_NO";
 NSString *const kStockNoItemModelSTOCKQTY = @"STOCK_QTY";
 NSString *const kStockNoItemModelSTOCKUOM = @"STOCK_UOM";
@@ -36,53 +27,26 @@ NSString *const kStockNoItemModelSUM = @"SUM";
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
-    if(![dictionary[kStockNoItemModelABWORKFLOW] isKindOfClass:[NSNull class]]){
-        self.aBWORKFLOW = dictionary[kStockNoItemModelABWORKFLOW];
+    if(![dictionary[kStockNoItemModelCHANGEDATE] isKindOfClass:[NSNull class]]){
+        self.cHANGEDATE = dictionary[kStockNoItemModelCHANGEDATE];
     }
-    if(![dictionary[kStockNoItemModelADDRESSCODE] isKindOfClass:[NSNull class]]){
-        self.aDDRESSCODE = dictionary[kStockNoItemModelADDRESSCODE];
+    if(![dictionary[kStockNoItemModelCHANGENO] isKindOfClass:[NSNull class]]){
+        self.cHANGENO = dictionary[kStockNoItemModelCHANGENO];
     }
-    if(![dictionary[kStockNoItemModelADDRESSIDX] isKindOfClass:[NSNull class]]){
-        self.aDDRESSIDX = dictionary[kStockNoItemModelADDRESSIDX];
-    }
-    if(![dictionary[kStockNoItemModelADDRESSNAME] isKindOfClass:[NSNull class]]){
-        self.aDDRESSNAME = dictionary[kStockNoItemModelADDRESSNAME];
-    }
-    if(![dictionary[kStockNoItemModelADDDATE] isKindOfClass:[NSNull class]]){
-        self.aDDDATE = dictionary[kStockNoItemModelADDDATE];
-    }
-    if(![dictionary[kStockNoItemModelBATCHNUMBER] isKindOfClass:[NSNull class]]){
-        self.bATCHNUMBER = dictionary[kStockNoItemModelBATCHNUMBER];
-    }
-    if(![dictionary[kStockNoItemModelBUSINESSIDX] isKindOfClass:[NSNull class]]){
-        self.bUSINESSIDX = dictionary[kStockNoItemModelBUSINESSIDX];
-    }
-    if(![dictionary[kStockNoItemModelEDITDATE] isKindOfClass:[NSNull class]]){
-        self.eDITDATE = dictionary[kStockNoItemModelEDITDATE];
-    }
-    if(![dictionary[kStockNoItemModelIDX] isKindOfClass:[NSNull class]]){
-        self.iDX = dictionary[kStockNoItemModelIDX];
-    }
-    if(![dictionary[kStockNoItemModelLINENO] isKindOfClass:[NSNull class]]){
-        self.lINENO = dictionary[kStockNoItemModelLINENO];
-    }
-    if(![dictionary[kStockNoItemModelOPERATORNAME] isKindOfClass:[NSNull class]]){
-        self.oPERATORNAME = dictionary[kStockNoItemModelOPERATORNAME];
+    if(![dictionary[kStockNoItemModelCHANGETYPE] isKindOfClass:[NSNull class]]){
+        self.cHANGETYPE = dictionary[kStockNoItemModelCHANGETYPE];
     }
     if(![dictionary[kStockNoItemModelPRICE] isKindOfClass:[NSNull class]]){
         self.pRICE = dictionary[kStockNoItemModelPRICE];
     }
-    if(![dictionary[kStockNoItemModelPRODUCTIDX] isKindOfClass:[NSNull class]]){
-        self.pRODUCTIDX = dictionary[kStockNoItemModelPRODUCTIDX];
+    if(![dictionary[kStockNoItemModelPRODUCTIONDATE] isKindOfClass:[NSNull class]]){
+        self.pRODUCTIONDATE = dictionary[kStockNoItemModelPRODUCTIONDATE];
     }
-    if(![dictionary[kStockNoItemModelPRODUCTNAME] isKindOfClass:[NSNull class]]){
-        self.pRODUCTNAME = dictionary[kStockNoItemModelPRODUCTNAME];
+    if(![dictionary[kStockNoItemModelSOURCENO] isKindOfClass:[NSNull class]]){
+        self.sOURCENO = dictionary[kStockNoItemModelSOURCENO];
     }
-    if(![dictionary[kStockNoItemModelPRODUCTNO] isKindOfClass:[NSNull class]]){
-        self.pRODUCTNO = dictionary[kStockNoItemModelPRODUCTNO];
-    }
-    if(![dictionary[kStockNoItemModelPRODUCTSTATE] isKindOfClass:[NSNull class]]){
-        self.pRODUCTSTATE = dictionary[kStockNoItemModelPRODUCTSTATE];
+    if(![dictionary[kStockNoItemModelSOURCETYPE] isKindOfClass:[NSNull class]]){
+        self.sOURCETYPE = dictionary[kStockNoItemModelSOURCETYPE];
     }
     if(![dictionary[kStockNoItemModelSTOCKNO] isKindOfClass:[NSNull class]]){
         self.sTOCKNO = dictionary[kStockNoItemModelSTOCKNO];
@@ -106,53 +70,26 @@ NSString *const kStockNoItemModelSUM = @"SUM";
 -(NSDictionary *)toDictionary
 {
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
-    if(self.aBWORKFLOW != nil){
-        dictionary[kStockNoItemModelABWORKFLOW] = self.aBWORKFLOW;
+    if(self.cHANGEDATE != nil){
+        dictionary[kStockNoItemModelCHANGEDATE] = self.cHANGEDATE;
     }
-    if(self.aDDRESSCODE != nil){
-        dictionary[kStockNoItemModelADDRESSCODE] = self.aDDRESSCODE;
+    if(self.cHANGENO != nil){
+        dictionary[kStockNoItemModelCHANGENO] = self.cHANGENO;
     }
-    if(self.aDDRESSIDX != nil){
-        dictionary[kStockNoItemModelADDRESSIDX] = self.aDDRESSIDX;
-    }
-    if(self.aDDRESSNAME != nil){
-        dictionary[kStockNoItemModelADDRESSNAME] = self.aDDRESSNAME;
-    }
-    if(self.aDDDATE != nil){
-        dictionary[kStockNoItemModelADDDATE] = self.aDDDATE;
-    }
-    if(self.bATCHNUMBER != nil){
-        dictionary[kStockNoItemModelBATCHNUMBER] = self.bATCHNUMBER;
-    }
-    if(self.bUSINESSIDX != nil){
-        dictionary[kStockNoItemModelBUSINESSIDX] = self.bUSINESSIDX;
-    }
-    if(self.eDITDATE != nil){
-        dictionary[kStockNoItemModelEDITDATE] = self.eDITDATE;
-    }
-    if(self.iDX != nil){
-        dictionary[kStockNoItemModelIDX] = self.iDX;
-    }
-    if(self.lINENO != nil){
-        dictionary[kStockNoItemModelLINENO] = self.lINENO;
-    }
-    if(self.oPERATORNAME != nil){
-        dictionary[kStockNoItemModelOPERATORNAME] = self.oPERATORNAME;
+    if(self.cHANGETYPE != nil){
+        dictionary[kStockNoItemModelCHANGETYPE] = self.cHANGETYPE;
     }
     if(self.pRICE != nil){
         dictionary[kStockNoItemModelPRICE] = self.pRICE;
     }
-    if(self.pRODUCTIDX != nil){
-        dictionary[kStockNoItemModelPRODUCTIDX] = self.pRODUCTIDX;
+    if(self.pRODUCTIONDATE != nil){
+        dictionary[kStockNoItemModelPRODUCTIONDATE] = self.pRODUCTIONDATE;
     }
-    if(self.pRODUCTNAME != nil){
-        dictionary[kStockNoItemModelPRODUCTNAME] = self.pRODUCTNAME;
+    if(self.sOURCENO != nil){
+        dictionary[kStockNoItemModelSOURCENO] = self.sOURCENO;
     }
-    if(self.pRODUCTNO != nil){
-        dictionary[kStockNoItemModelPRODUCTNO] = self.pRODUCTNO;
-    }
-    if(self.pRODUCTSTATE != nil){
-        dictionary[kStockNoItemModelPRODUCTSTATE] = self.pRODUCTSTATE;
+    if(self.sOURCETYPE != nil){
+        dictionary[kStockNoItemModelSOURCETYPE] = self.sOURCETYPE;
     }
     if(self.sTOCKNO != nil){
         dictionary[kStockNoItemModelSTOCKNO] = self.sTOCKNO;
@@ -178,53 +115,26 @@ NSString *const kStockNoItemModelSUM = @"SUM";
  */
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    if(self.aBWORKFLOW != nil){
-        [aCoder encodeObject:self.aBWORKFLOW forKey:kStockNoItemModelABWORKFLOW];
+    if(self.cHANGEDATE != nil){
+        [aCoder encodeObject:self.cHANGEDATE forKey:kStockNoItemModelCHANGEDATE];
     }
-    if(self.aDDRESSCODE != nil){
-        [aCoder encodeObject:self.aDDRESSCODE forKey:kStockNoItemModelADDRESSCODE];
+    if(self.cHANGENO != nil){
+        [aCoder encodeObject:self.cHANGENO forKey:kStockNoItemModelCHANGENO];
     }
-    if(self.aDDRESSIDX != nil){
-        [aCoder encodeObject:self.aDDRESSIDX forKey:kStockNoItemModelADDRESSIDX];
-    }
-    if(self.aDDRESSNAME != nil){
-        [aCoder encodeObject:self.aDDRESSNAME forKey:kStockNoItemModelADDRESSNAME];
-    }
-    if(self.aDDDATE != nil){
-        [aCoder encodeObject:self.aDDDATE forKey:kStockNoItemModelADDDATE];
-    }
-    if(self.bATCHNUMBER != nil){
-        [aCoder encodeObject:self.bATCHNUMBER forKey:kStockNoItemModelBATCHNUMBER];
-    }
-    if(self.bUSINESSIDX != nil){
-        [aCoder encodeObject:self.bUSINESSIDX forKey:kStockNoItemModelBUSINESSIDX];
-    }
-    if(self.eDITDATE != nil){
-        [aCoder encodeObject:self.eDITDATE forKey:kStockNoItemModelEDITDATE];
-    }
-    if(self.iDX != nil){
-        [aCoder encodeObject:self.iDX forKey:kStockNoItemModelIDX];
-    }
-    if(self.lINENO != nil){
-        [aCoder encodeObject:self.lINENO forKey:kStockNoItemModelLINENO];
-    }
-    if(self.oPERATORNAME != nil){
-        [aCoder encodeObject:self.oPERATORNAME forKey:kStockNoItemModelOPERATORNAME];
+    if(self.cHANGETYPE != nil){
+        [aCoder encodeObject:self.cHANGETYPE forKey:kStockNoItemModelCHANGETYPE];
     }
     if(self.pRICE != nil){
         [aCoder encodeObject:self.pRICE forKey:kStockNoItemModelPRICE];
     }
-    if(self.pRODUCTIDX != nil){
-        [aCoder encodeObject:self.pRODUCTIDX forKey:kStockNoItemModelPRODUCTIDX];
+    if(self.pRODUCTIONDATE != nil){
+        [aCoder encodeObject:self.pRODUCTIONDATE forKey:kStockNoItemModelPRODUCTIONDATE];
     }
-    if(self.pRODUCTNAME != nil){
-        [aCoder encodeObject:self.pRODUCTNAME forKey:kStockNoItemModelPRODUCTNAME];
+    if(self.sOURCENO != nil){
+        [aCoder encodeObject:self.sOURCENO forKey:kStockNoItemModelSOURCENO];
     }
-    if(self.pRODUCTNO != nil){
-        [aCoder encodeObject:self.pRODUCTNO forKey:kStockNoItemModelPRODUCTNO];
-    }
-    if(self.pRODUCTSTATE != nil){
-        [aCoder encodeObject:self.pRODUCTSTATE forKey:kStockNoItemModelPRODUCTSTATE];
+    if(self.sOURCETYPE != nil){
+        [aCoder encodeObject:self.sOURCETYPE forKey:kStockNoItemModelSOURCETYPE];
     }
     if(self.sTOCKNO != nil){
         [aCoder encodeObject:self.sTOCKNO forKey:kStockNoItemModelSTOCKNO];
@@ -247,22 +157,13 @@ NSString *const kStockNoItemModelSUM = @"SUM";
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
-    self.aBWORKFLOW = [aDecoder decodeObjectForKey:kStockNoItemModelABWORKFLOW];
-    self.aDDRESSCODE = [aDecoder decodeObjectForKey:kStockNoItemModelADDRESSCODE];
-    self.aDDRESSIDX = [aDecoder decodeObjectForKey:kStockNoItemModelADDRESSIDX];
-    self.aDDRESSNAME = [aDecoder decodeObjectForKey:kStockNoItemModelADDRESSNAME];
-    self.aDDDATE = [aDecoder decodeObjectForKey:kStockNoItemModelADDDATE];
-    self.bATCHNUMBER = [aDecoder decodeObjectForKey:kStockNoItemModelBATCHNUMBER];
-    self.bUSINESSIDX = [aDecoder decodeObjectForKey:kStockNoItemModelBUSINESSIDX];
-    self.eDITDATE = [aDecoder decodeObjectForKey:kStockNoItemModelEDITDATE];
-    self.iDX = [aDecoder decodeObjectForKey:kStockNoItemModelIDX];
-    self.lINENO = [aDecoder decodeObjectForKey:kStockNoItemModelLINENO];
-    self.oPERATORNAME = [aDecoder decodeObjectForKey:kStockNoItemModelOPERATORNAME];
+    self.cHANGEDATE = [aDecoder decodeObjectForKey:kStockNoItemModelCHANGEDATE];
+    self.cHANGENO = [aDecoder decodeObjectForKey:kStockNoItemModelCHANGENO];
+    self.cHANGETYPE = [aDecoder decodeObjectForKey:kStockNoItemModelCHANGETYPE];
     self.pRICE = [aDecoder decodeObjectForKey:kStockNoItemModelPRICE];
-    self.pRODUCTIDX = [aDecoder decodeObjectForKey:kStockNoItemModelPRODUCTIDX];
-    self.pRODUCTNAME = [aDecoder decodeObjectForKey:kStockNoItemModelPRODUCTNAME];
-    self.pRODUCTNO = [aDecoder decodeObjectForKey:kStockNoItemModelPRODUCTNO];
-    self.pRODUCTSTATE = [aDecoder decodeObjectForKey:kStockNoItemModelPRODUCTSTATE];
+    self.pRODUCTIONDATE = [aDecoder decodeObjectForKey:kStockNoItemModelPRODUCTIONDATE];
+    self.sOURCENO = [aDecoder decodeObjectForKey:kStockNoItemModelSOURCENO];
+    self.sOURCETYPE = [aDecoder decodeObjectForKey:kStockNoItemModelSOURCETYPE];
     self.sTOCKNO = [aDecoder decodeObjectForKey:kStockNoItemModelSTOCKNO];
     self.sTOCKQTY = [aDecoder decodeObjectForKey:kStockNoItemModelSTOCKQTY];
     self.sTOCKUOM = [aDecoder decodeObjectForKey:kStockNoItemModelSTOCKUOM];
@@ -278,22 +179,13 @@ NSString *const kStockNoItemModelSUM = @"SUM";
 {
     StockNoItemModel *copy = [StockNoItemModel new];
     
-    copy.aBWORKFLOW = [self.aBWORKFLOW copy];
-    copy.aDDRESSCODE = [self.aDDRESSCODE copy];
-    copy.aDDRESSIDX = [self.aDDRESSIDX copy];
-    copy.aDDRESSNAME = [self.aDDRESSNAME copy];
-    copy.aDDDATE = [self.aDDDATE copy];
-    copy.bATCHNUMBER = [self.bATCHNUMBER copy];
-    copy.bUSINESSIDX = [self.bUSINESSIDX copy];
-    copy.eDITDATE = [self.eDITDATE copy];
-    copy.iDX = [self.iDX copy];
-    copy.lINENO = [self.lINENO copy];
-    copy.oPERATORNAME = [self.oPERATORNAME copy];
+    copy.cHANGEDATE = [self.cHANGEDATE copy];
+    copy.cHANGENO = [self.cHANGENO copy];
+    copy.cHANGETYPE = [self.cHANGETYPE copy];
     copy.pRICE = [self.pRICE copy];
-    copy.pRODUCTIDX = [self.pRODUCTIDX copy];
-    copy.pRODUCTNAME = [self.pRODUCTNAME copy];
-    copy.pRODUCTNO = [self.pRODUCTNO copy];
-    copy.pRODUCTSTATE = [self.pRODUCTSTATE copy];
+    copy.pRODUCTIONDATE = [self.pRODUCTIONDATE copy];
+    copy.sOURCENO = [self.sOURCENO copy];
+    copy.sOURCETYPE = [self.sOURCETYPE copy];
     copy.sTOCKNO = [self.sTOCKNO copy];
     copy.sTOCKQTY = [self.sTOCKQTY copy];
     copy.sTOCKUOM = [self.sTOCKUOM copy];

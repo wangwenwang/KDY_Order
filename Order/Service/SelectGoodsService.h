@@ -53,12 +53,12 @@
  */
 - (void)getPayTypeData;
 
+
 /**
  * 获取产品类型列表数据
  *
  * @return 发送请求是否成功
  */
-
 - (void)getProductTypesData;
 
 

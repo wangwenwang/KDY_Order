@@ -221,7 +221,7 @@ typedef enum : NSInteger {
 // 当前选择的品类
 @property (copy, nonatomic) NSString *selectedProductType;
 
-@property (strong, nonatomic) Store_GetOutProductListService *selectGoodsService;
+@property (strong, nonatomic) Store_GetOutProductListService *store_GetOutProductListService;
 
 // 提交订单
 - (IBAction)confirmOrderOnclick:(UITapGestureRecognizer *)sender;
@@ -305,8 +305,8 @@ typedef enum : NSInteger {
     
     if(self = [super init]) {
         
-        _selectGoodsService = [[Store_GetOutProductListService alloc] init];
-        _selectGoodsService.delegate = self;
+        _store_GetOutProductListService = [[Store_GetOutProductListService alloc] init];
+        _store_GetOutProductListService.delegate = self;
         _selectedProducts = [[NSMutableArray alloc] init];
         _isShowSoppingCar = NO;
         _currShoppingCarHeiht = 0;
@@ -365,9 +365,8 @@ typedef enum : NSInteger {
     if(_didselectIndex != 1004) {
         
         [self addTableHeaderView];
+        [_getToAddress_service GetInputToPartySearchs:_app.business.BUSINESS_IDX andstrAddressIdx:_address.IDX];
     }
-    
-    [_getToAddress_service GetInputToPartySearchs:_app.business.BUSINESS_IDX andstrAddressIdx:_address.IDX];
 }
 
 
@@ -695,7 +694,7 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
-        if(_inputToAddressM != nil) {
+        if(_inputToAddressM != nil || _didselectIndex == 1004) {
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self setProductCurrentPrice];
@@ -997,10 +996,12 @@ typedef enum : NSInteger {
     } else {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_selectGoodsService GetOutProductList:_selectedProductType andstrProductClass:brand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
         
-        
-        //         getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:brand;
+        if(_didselectIndex == 1004) {
+            [_store_GetOutProductListService getProductsData:_party.IDX andOrderAddressIdx:_address.IDX andProductTypeIndex:0 andProductType:_selectedProductType andOrderBrand:brand];
+        } else {
+            [_store_GetOutProductListService GetOutProductList:_selectedProductType andstrProductClass:brand andstrPartyAddressIdx:[_address.IDX integerValue] andstrPage:1 andstrPageCount:999];
+        }
     }
     
     // 操作UI
@@ -1010,8 +1011,6 @@ typedef enum : NSInteger {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"didSelectRowAtIndexPath");
     
     if(tableView.tag == 1001) {
         ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexPath.row];;
@@ -1034,9 +1033,9 @@ typedef enum : NSInteger {
         [self selectProductType:0 andRefreshTableView:YES];
         [_productTypeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:0];
         
-        //操作UI
+        // 操作UI
         _brandLabel.text = [NSString stringWithFormat:@"分类:%@", [_selectedBrand isEqualToString:@""] ? @"全部" : _selectedBrand];
-        //修改品牌Label的部分文字颜色
+        // 修改品牌Label的部分文字颜色
         [self NSForegroundColorAttributeName:_brandLabel.text andRange:NSMakeRange(3,_brandLabel.text.length - 3) andLabel:_brandLabel];
         
     } else if(tableView.tag == 1005) {
@@ -1436,45 +1435,6 @@ typedef enum : NSInteger {
 
 
 #pragma mark - SelectGoodsServiceDelegate
-
-//获取产品数据回调
-- (void)successOfGetProductData:(NSMutableArray *)products {
-    
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
-    [_dictProducts setObject:dict forKey:@(_brandRow)];
-    
-    for (int i = 0; i < _selectedProducts.count; i++) {
-        ProductModel *sm = _selectedProducts[i];
-        NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
-        for(int j = 0; j < array.count; j++) {
-            ProductModel *am = array[j];
-            if(sm.IDX == am.IDX) {
-                [array replaceObjectAtIndex:j withObject:sm];
-                break;
-            }
-        }
-    }
-    
-    [self fd];
-    
-    [_myTableView reloadData];
-}
-
-
-- (void)failureOfGetProductData:(NSString *)msg {
-    
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    //    [_products removeAllObjects];
-    
-    [_myTableView reloadData];
-    
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取产品列表失败"];
-    
-}
-
 
 // 产品模型转促销详情模型
 - (PromotionDetailModel *)getPromotionDetailByProduct:(ProductModel *)product andProductType:(NSString *)PRODUCT_TYPE andLineNo:(long long)LINE_NO andPoQty:(long long)PO_QTY andOperatorIdx:(long long) OPERATOR_IDX andActPrice:(double)ACT_PRICE {
@@ -1879,6 +1839,54 @@ typedef enum : NSInteger {
 - (void)failureOfGetInputToPartySearchs:(NSString *)msg {
     
     [Tools showAlert:self.view andTitle:msg];
+}
+
+
+#pragma mark - Store_GetOutProductListServiceDelegate
+
+- (void)successOfGetOutProductList:(NSMutableArray *)products {
+    
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//
+//    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+//    _dictProducts = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+//    [_myTableView reloadData];
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
+    [_dictProducts setObject:dict forKey:@(_brandRow)];
+    
+    for (int i = 0; i < _selectedProducts.count; i++) {
+        ProductModel *sm = _selectedProducts[i];
+        NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
+        for(int j = 0; j < array.count; j++) {
+            ProductModel *am = array[j];
+            if(sm.IDX == am.IDX) {
+                [array replaceObjectAtIndex:j withObject:sm];
+                break;
+            }
+        }
+    }
+    
+    [self fd];
+    
+    [_myTableView reloadData];
+}
+
+
+- (void)successOfGetOutProductList_NoData {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:@"没有产品数据"];
+}
+
+
+- (void)failureOfGetOutProductList:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:[msg isEqualToString:@""] ? @"缺少产品列表" : msg];
+    [_myTableView reloadData];
 }
 
 @end

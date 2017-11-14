@@ -230,6 +230,14 @@
     _CONTACT_PERSON.text = _addressM.CONTACT_PERSON;
     _ADDRESS_CODE.text = _addressM.ADDRESS_CODE;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
+    
+    // 地址信息换行
+    CGFloat oneHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    CGFloat mulHeight = [Tools getHeightOfString:_addressM.ADDRESS_INFO fontSize:14 andWidth:ScreenWidth - 10 - 8 - 65 - 3 - 10];
+    CGFloat overHeight = mulHeight - oneHeight * 2;
+    if(overHeight >= 0) {
+        _addressViewHeight.constant += overHeight;
+    }
 }
 
 
@@ -358,7 +366,11 @@
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     
+    if(_didselectItemIndex == 1004) {
+        [_getOutProductTypeService getProductTypesData_All];
+    } else {
     [_getOutProductTypeService GetOutProductType:_addressM.IDX];
+    }
 }
 
 
@@ -381,7 +393,11 @@
     // 开启一个新菊花来请求网络，这两个菊花可以打平
     [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
     
+    if(_didselectItemIndex == 1004) {
+        [_store_GetOutProductListService getProductsData:_partyM.IDX andOrderAddressIdx:_addressM.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
+    } else {
     [_store_GetOutProductListService GetOutProductList:@"" andstrProductClass:@"" andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:999];
+    }
 }
 
 
@@ -389,7 +405,7 @@
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
-    [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取产品类型失败" : msg];
+    [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取产品类型失败,可能仓库没货哦" : msg andTime:4.5];
 }
 
 
@@ -432,7 +448,6 @@
     [MBProgressHUD hideHUDForView:_tableView animated:YES];
     
     [Tools showAlert:_app.window andTitle:[msg isEqualToString:@""] ? @"获取库存列表失败" : msg];
-    
 }
 
 @end

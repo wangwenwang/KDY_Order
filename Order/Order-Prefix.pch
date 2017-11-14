@@ -239,8 +239,11 @@
 /// 出库的收货人
 #define API_GetToAddressList @"http://oms.kaidongyuan.com:8088/api/GetToAddressList"
 
-/// 获取出库产品列表
+/// 获取出库产品列表（库存产品）
 #define API_GetOutProductList @"http://oms.kaidongyuan.com:8088/api/GetOutProductList"
+
+/// 获取出库产品列表（全部产品）
+#define API_GetInputProductListType @"http://oms.kaidongyuan.com:8088/api/GetInputProductListType"
 
 /// 保存出库单
 #define API_SaveOutput @"http://oms.kaidongyuan.com:8088/api/SaveOutput"
@@ -260,8 +263,11 @@
 /// 获取库存列表数据
 #define API_GetPartyStockList @"http://oms.kaidongyuan.com:8088/api/GetPartyStockList"
 
-/// 获取库存批次
+/// 获取库存批次，第一个（已废除）
 #define API_GetStockNoList @"http://oms.kaidongyuan.com:8088/api/GetStockNoList"
+
+/// 获取库存批次，第二个（由于服务端问题，每次加参数都要增加接口）
+#define API_GetNewStockNoList @"http://oms.kaidongyuan.com:8088/api/GetNewStockNoList"
 
 /// 入库确认
 #define API_InPutWorkflow @"http://oms.kaidongyuan.com:8088/api/InPutWorkflow"

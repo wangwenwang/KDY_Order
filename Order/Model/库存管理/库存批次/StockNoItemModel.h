@@ -10,22 +10,13 @@
 
 @interface StockNoItemModel : NSObject
 
-@property (nonatomic, strong) NSString * aBWORKFLOW;
-@property (nonatomic, strong) NSString * aDDRESSCODE;
-@property (nonatomic, strong) NSString * aDDRESSIDX;
-@property (nonatomic, strong) NSString * aDDRESSNAME;
-@property (nonatomic, strong) NSString * aDDDATE;
-@property (nonatomic, strong) NSString * bATCHNUMBER;
-@property (nonatomic, strong) NSString * bUSINESSIDX;
-@property (nonatomic, strong) NSString * eDITDATE;
-@property (nonatomic, strong) NSString * iDX;
-@property (nonatomic, strong) NSString * lINENO;
-@property (nonatomic, strong) NSString * oPERATORNAME;
+@property (nonatomic, strong) NSString * cHANGEDATE;
+@property (nonatomic, strong) NSString * cHANGENO;
+@property (nonatomic, strong) NSString * cHANGETYPE;
 @property (nonatomic, strong) NSString * pRICE;
-@property (nonatomic, strong) NSString * pRODUCTIDX;
-@property (nonatomic, strong) NSString * pRODUCTNAME;
-@property (nonatomic, strong) NSString * pRODUCTNO;
-@property (nonatomic, strong) NSString * pRODUCTSTATE;
+@property (nonatomic, strong) NSString * pRODUCTIONDATE;
+@property (nonatomic, strong) NSString * sOURCENO;
+@property (nonatomic, strong) NSString * sOURCETYPE;
 @property (nonatomic, strong) NSString * sTOCKNO;
 @property (nonatomic, strong) NSString * sTOCKQTY;
 @property (nonatomic, strong) NSString * sTOCKUOM;

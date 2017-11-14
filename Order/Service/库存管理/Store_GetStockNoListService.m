@@ -11,18 +11,20 @@
 
 @implementation Store_GetStockNoListService
 
-- (void)GetStockNoList:(nullable NSString *)IDX {
+- (void)GetStockNoList:(nullable NSString *)IDX andstrPage:(NSUInteger)strPage {
     
     NSDictionary *parameters = @{
                                  @"IDX" : IDX,
                                  @"strLicense" : @"",
+                                 @"strPage" : @(strPage),
+                                 @"strPageCount" : @99999,
                                  };
     
     NSLog(@"获取库存批次：%@", parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GetStockNoList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:API_GetNewStockNoList parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"请求库存产品批次数据失败---%@", responseObject);
