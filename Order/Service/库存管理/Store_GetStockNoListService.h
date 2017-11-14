@@ -7,14 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StockNoWaterListModel.h"
 #import "StockNoListModel.h"
 
 
 @protocol Store_GetStockNoListServiceDelegate <NSObject>
 
+/// 出库产品流水列表 成功
+@optional
+- (void)successOfGetStockNoWaterList:(StockNoWaterListModel * _Nullable )stockNoListM;
+
+/// 出库产品流水列表 没有数据
+@optional
+- (void)successOfGetStockNoWaterList_NoData;
+
+/// 出库产品流水列表 失败
+@optional
+- (void)failureOfGetStockNoWaterList:(NSString * _Nullable)msg;
+
+
+
 /// 出库产品列表 成功
 @optional
-- (void)successOfGetStockNoList:(StockNoListModel * _Nullable )stockNoListM;
+- (void)successOfGetStockNoList:(StockNoWaterListModel * _Nullable )stockNoListM;
 
 /// 出库产品列表 没有数据
 @optional
@@ -30,6 +45,8 @@
 
 @property (weak, nonatomic, nullable)id <Store_GetStockNoListServiceDelegate> delegate;
 
-- (void)GetStockNoList:(nullable NSString *)IDX andstrPage:(NSUInteger)strPage;
+- (void)GetStockNoWaterList:(nullable NSString *)IDX andstrPage:(NSUInteger)strPage;
+
+- (void)GetStockNoList:(nullable NSString *)IDX;
 
 @end

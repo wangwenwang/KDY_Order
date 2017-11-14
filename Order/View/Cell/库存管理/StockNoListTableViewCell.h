@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StockNoWaterItemModel.h"
 #import "StockNoItemModel.h"
 
 @interface StockNoListTableViewCell : UITableViewCell
 
+
+@property (strong, nonatomic) StockNoWaterItemModel *stockNoWaterItemM;
 
 @property (strong, nonatomic) StockNoItemModel *stockNoItemM;
 

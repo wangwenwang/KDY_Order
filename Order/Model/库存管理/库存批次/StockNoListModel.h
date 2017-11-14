@@ -10,37 +10,48 @@
 #import "StockNoInfoModel.h"
 #import "StockNoItemModel.h"
 
+
+
 //{
 //    "StockNoInfoModel": {
-//        "BUSINESS_IDX": "222",
-//        "IDX": "9",
-//        "ADDRESS_IDX": "55280",
-//        "ADDRESS_NAME": "肇庆端州区和信烟酒商行",
-//        "PRODUCT_IDX": "32225",
-//        "PRODUCT_NO": "YB.0111",
-//        "PRICE": "54.0000",
-//        "OPERATOR_NAME": "张玉萍",
+//        "BUSINESS_IDX": "122",
+//        "IDX": "6",
+//        "ADDRESS_IDX": "68932",
+//        "ADDRESS_NAME": "葵隽仓库",
+//        "PRODUCT_IDX": "33944",
+//        "PRODUCT_NO": "YB.0135",
+//        "PRICE": "55.0000",
+//        "OPERATOR_NAME": "系统管理员",
 //        "STOCK_UOM": "箱",
-//        "PRODUCT_NAME": "咖啡香浓,180ml,1×24",
-//        "ADDRESS_CODE": "09.1401",
-//        "EDIT_DATE": "2017-11-14 14:05:07",
-//        "STOCK_QTY": "1.0000",
-//        "ADD_DATE": "2017-11-14 14:05:07",
-//        "SUM": "54.0000"
+//        "PRODUCT_NAME": "水溶C100/445ml×1×15  (青皮桔)",
+//        "ADDRESS_CODE": "BSTEST",
+//        "EDIT_DATE": "2017-09-14 08:46:06",
+//        "STOCK_QTY": "10.0000",
+//        "ADD_DATE": "2017-09-14 08:46:06",
+//        "SUM": "550.0000"
 //    },
 //    "StockNoItemModel": [
 //                         {
-//                             "CHANGE_DATE": "2017-11-14 14:05:07",
-//                             "PRODUCTION_DATE": "",
-//                             "PRICE": "54.0000",
-//                             "CHANGE_TYPE": "INPUT",
-//                             "SOURCE_NO": "0000000382",
-//                             "SOURCE_TYPE": "",
-//                             "STOCK_NO": "0000000130",
-//                             "STOCK_QTY": "1.0000",
 //                             "STOCK_UOM": "箱",
-//                             "SUM": "54.0000",
-//                             "CHANGE_NO": "0000000350"
+//                             "PRODUCT_STATE": "",
+//                             "AB_WORKFLOW": "NR",
+//                             "ADDRESS_CODE": "BSTEST",
+//                             "PRODUCT_NO": "YB.0135",
+//                             "SUM": "550.0000",
+//                             "BATCH_NUMBER": "",
+//                             "ADD_DATE": "2017-09-14 08:46:06",
+//                             "BUSINESS_IDX": "122",
+//                             "STOCK_QTY": "10.0000",
+//                             "PRODUCT_IDX": "33944",
+//                             "ADDRESS_NAME": "葵隽仓库",
+//                             "LINE_NO": "1",
+//                             "ADDRESS_IDX": "68932",
+//                             "PRODUCT_NAME": "水溶C100/445ml×1×15  (青皮桔)",
+//                             "OPERATOR_NAME": "系统管理员",
+//                             "STOCK_NO": "0000000006",
+//                             "PRICE": "55.0000",
+//                             "EDIT_DATE": "2017-09-14 08:46:06",
+//                             "IDX": "9"
 //                         }
 //                         ]
 //}

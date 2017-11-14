@@ -46,10 +46,20 @@
 - (void)setStockNoItemM:(StockNoItemModel *)stockNoItemM {
     
     _BATCH_NUMBER.text = stockNoItemM.sTOCKNO;
-    _PRODUCT_STATE.text = stockNoItemM.pRODUCTIONDATE;
+    _PRODUCT_STATE.text = stockNoItemM.pRODUCTSTATE;
     _STOCK_QTY.text = [Tools formatFloat:[stockNoItemM.sTOCKQTY floatValue]];
     _STOCK_UOM.text = stockNoItemM.sTOCKUOM;
-    _CHANGE_DATE.text = stockNoItemM.cHANGEDATE;
+    _CHANGE_DATE.text = stockNoItemM.eDITDATE;
+}
+
+
+- (void)setStockNoWaterItemM:(StockNoWaterItemModel *)stockNoWaterItemM {
+    
+    _BATCH_NUMBER.text = stockNoWaterItemM.sTOCKNO;
+    _PRODUCT_STATE.text = stockNoWaterItemM.pRODUCTIONDATE;
+    _STOCK_QTY.text = [Tools formatFloat:[stockNoWaterItemM.sTOCKQTY floatValue]];
+    _STOCK_UOM.text = stockNoWaterItemM.sTOCKUOM;
+    _CHANGE_DATE.text = stockNoWaterItemM.cHANGEDATE;
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "StockNoListTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
+#import "StockNoListDetailViewController.h"
 
 @interface StockNoListViewController ()<Store_GetStockNoListServiceDelegate>
 
@@ -74,13 +75,25 @@
     
     [self registerCell];
     
-    [_service GetStockNoList:_stock_idx andstrPage:1];
+    [_service GetStockNoList:_stock_idx];
+    
+    [Tools addNavRightItemTypeText:self andAction:@selector(water) andTitle:@"流水"];
 }
 
 
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
+}
+
+
+#pragma mark - function
+
+- (void)water {
+    
+    StockNoListDetailViewController *vc = [[StockNoListDetailViewController alloc] init];
+    vc.stock_idx = _stock_idx;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -95,13 +108,13 @@
     _EDIT_DATE.text = @"";
 }
 
+
 // 注册Cell
 - (void)registerCell {
     
     [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
 
 
 - (void)fullData {
