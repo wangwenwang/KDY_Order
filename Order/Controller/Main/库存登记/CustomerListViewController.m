@@ -160,6 +160,9 @@
         
         searchResultsViewController = [[CustomerListSearchResultsViewController alloc] init];
         searchResultsViewController.vcClass = _vcClass;
+        searchResultsViewController.functionName = _functionName;
+        searchResultsViewController.currentParty = _currentParty;
+        searchResultsViewController.nav = self.navigationController;
         
         _searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsViewController];
         searchResultsViewController.superVC = _searchController;

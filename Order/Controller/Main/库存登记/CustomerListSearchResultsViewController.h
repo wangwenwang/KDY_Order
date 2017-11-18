@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PartyModel.h"
 
 @interface CustomerListSearchResultsViewController : UIViewController
 
@@ -21,5 +22,14 @@
 
 
 @property (copy, nonatomic) NSString *vcClass;
+
+
+@property (copy, nonatomic) NSString *functionName;
+
+
+@property (strong, nonatomic) PartyModel *currentParty;
+
+
+@property (strong, nonatomic) UINavigationController *nav;
 
 @end
