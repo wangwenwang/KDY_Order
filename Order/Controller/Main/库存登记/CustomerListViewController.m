@@ -224,7 +224,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _partysFilter.count;
+    if(tableView.tag == 1001) {
+        
+        return _partysFilter.count;
+    } else if(tableView.tag == 1002) {
+        
+        return _address.count;
+    } else {
+        return 0;
+    }
 }
 
 
@@ -310,7 +318,6 @@
         [_blurredView clear];
         [self LMBlurredViewClear];
         
-        _currentParty = _partysFilter[indexPath.row];
         _currentAddress = _address[indexPath.row];
         [self pushStockManVC];
     }

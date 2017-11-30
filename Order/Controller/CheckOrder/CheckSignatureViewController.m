@@ -234,7 +234,7 @@
         for (NSUInteger i = 0; i< localImages.count; i++) {
             
             PhotoModel *pbModel=[[PhotoModel alloc] init];
-            pbModel.mid = i + 1;
+            pbModel.mid = [[NSDate date] timeIntervalSince1970];
             pbModel.image = localImages[i];
             
             //源frame
