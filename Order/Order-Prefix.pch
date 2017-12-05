@@ -288,6 +288,13 @@
 #define API_GetOutProductType @"http://oms.kaidongyuan.com:8088/api/GetOutProductType"
 
 
+
+/*-------------------- 每月计划功能 --------------------*/
+
+/// 获取出库时，产品分类列表
+#define API_ImportToOrderPlanList @"http://oms.kaidongyuan.com:8088/api/ImportToOrderPlanList"
+
+
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue
 

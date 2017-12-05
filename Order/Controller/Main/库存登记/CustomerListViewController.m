@@ -30,7 +30,12 @@
 // 地址管理
 #import "AddressListViewController.h"
 
-@interface CustomerListViewController ()<MakeOrderServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate> {
+// 每月计划
+#import "MonthlyPlanViewController.h"
+#import "AddMonthlyPlanViewController.h"
+#import "SelectGoodsService.h"
+
+@interface CustomerListViewController ()<MakeOrderServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate, SelectGoodsServiceDelegate> {
     
     CustomerListSearchResultsViewController *searchResultsViewController;
 }
@@ -62,6 +67,16 @@
 // 全局变量
 @property (strong, nonatomic) AppDelegate *app;
 
+// 请求产品列表
+// 暂存请求支付方式的回调结果
+@property (strong, nonatomic) NSMutableArray *payTypes;
+
+// 暂存请求产品类型的回调结果
+@property (strong, nonatomic) NSMutableArray *productTypes;
+
+@property (strong, nonatomic) SelectGoodsService *selectGoodsService;
+
+
 @end
 
 #define kCellHeight 95
@@ -81,6 +96,9 @@
         
         _partysFilter = [[NSMutableArray alloc] init];
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        _selectGoodsService = [[SelectGoodsService alloc] init];
+        _selectGoodsService.delegate = self;
     }
     return self;
 }
@@ -220,6 +238,22 @@
 }
 
 
+- (void)pushMonthlyPlanVC:(NSMutableArray *)products {
+    
+    AddMonthlyPlanViewController *vc = [[AddMonthlyPlanViewController alloc] init];
+    vc.payTypes = _payTypes;
+    vc.productTypes = _productTypes;
+    vc.address = _currentAddress;
+    vc.party = _currentParty;
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(0)];
+    NSMutableDictionary *dictP = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
+    vc.dictProducts = dictP;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -297,12 +331,28 @@
             AddStockViewController *vc = [[AddStockViewController alloc] init];
             vc.partyM = party;
             [self.navigationController pushViewController:vc animated:YES];
-        } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"费用帐单"]) {
+        }
+        
+        // 费用帐单
+        else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"费用帐单"]) {
             
             GetAppBillFeeListViewController *vc = [[GetAppBillFeeListViewController alloc] init];
             vc.PARTY_IDX = party.IDX;
             [self.navigationController pushViewController:vc animated:YES];
-        } else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
+        }
+        
+        // 库存管理
+        else if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
+            
+            PartyModel *m = _partysFilter[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
+        }
+        
+        // 每月计划
+        else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
             
             PartyModel *m = _partysFilter[indexPath.row];
             _currentParty = m;
@@ -319,7 +369,14 @@
         [self LMBlurredViewClear];
         
         _currentAddress = _address[indexPath.row];
-        [self pushStockManVC];
+        
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
+            
+            [self pushStockManVC];
+        } else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
+            
+            [_selectGoodsService getProductTypesData];
+        }
     }
 }
 
@@ -496,7 +553,18 @@
     } else if(_address.count == 1) {
         
         _currentAddress = _address[0];
-        [self pushStockManVC];
+        
+        // 库存管理
+        if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
+            
+            [self pushStockManVC];
+        }
+        
+        // 每月计划
+        else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
+        
+            [_selectGoodsService getProductTypesData];
+        }
     } else {
         
         [Tools showAlert:self.view andTitle:@"没有可用地址"];
@@ -534,6 +602,49 @@
             }];
         }
     }
+}
+
+
+#pragma mark - SelectGoodsServiceDelegate
+
+
+// 获取产品类型回调
+- (void)successOfGetProductTypeData:(NSMutableArray *)productTypes {
+    
+    _productTypes = productTypes;
+    
+    // 关闭上一个菊花
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    // 开启一个新菊花来请求网络，这两个菊花可以打平
+    [MBProgressHUD showHUDAddedTo:_app.window animated:YES];
+    
+    [_selectGoodsService getProductsData:_currentParty.IDX andOrderAddressIdx:_currentAddress.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
+}
+
+
+- (void)failureOfGetProductTypeData:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取产品类型失败"];
+}
+
+
+// 获取产品数据回调
+- (void)successOfGetProductData:(NSMutableArray *)products {
+    
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    [self pushMonthlyPlanVC:products];
+}
+
+
+- (void)failureOfGetProductData:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:_app.window animated:YES];
+    
+    [Tools showAlert:_app.window andTitle:msg ? msg : @"获取产品列表失败"];
 }
 
 @end

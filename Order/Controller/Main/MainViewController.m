@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import "GetFeeListViewController.h"
 #import "CustomerListViewController.h"
+#import "MonthlyPlanViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartServiceDelegate>
 
@@ -264,6 +265,11 @@
         vc.title = title;
         vc.vcClass = NSStringFromClass([self class]);
         vc.functionName = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if([title isEqualToString:@"每月计划"]) {
+        
+        MonthlyPlanViewController *vc = [[MonthlyPlanViewController alloc] init];
+        vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

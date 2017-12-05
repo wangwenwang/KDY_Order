@@ -50,5 +50,11 @@
 		<key>imageName</key>
 		<string>LM_stock_management</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>每月计划</string>
+		<key>imageName</key>
+		<string>LM_stock_management</string>
+	</dict>
 </array>
 </plist>
