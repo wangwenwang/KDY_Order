@@ -291,7 +291,13 @@
 
 /*-------------------- 每月计划功能 --------------------*/
 
-/// 获取出库时，产品分类列表
+/// 获取采购计划列表
+#define API_GetOrderPlanList @"http://oms.kaidongyuan.com:8088/api/GetOrderPlanList"
+
+/// 获取采购计划详情
+#define API_GetOrderPlanDetail @"http://oms.kaidongyuan.com:8088/api/GetOrderPlanDetail"
+
+/// 提交每月计划订单
 #define API_ImportToOrderPlanList @"http://oms.kaidongyuan.com:8088/api/ImportToOrderPlanList"
 
 

@@ -10,27 +10,32 @@
 
 @interface MonthlyPlanTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *PRODUCT_NAME;
+@property (weak, nonatomic) IBOutlet UILabel *ORD_NO;
+
+@property (weak, nonatomic) IBOutlet UILabel *ADD_DATE;
+
+@property (weak, nonatomic) IBOutlet UILabel *TO_NAME;
 
 @end
 
 @implementation MonthlyPlanTableViewCell
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 
-- (void)setPromotionDetailM:(PromotionDetailModel *)promotionDetailM {
+- (void)setMonthlyPlanM:(MonthlyPlanModel *)monthlyPlanM {
     
-    _PRODUCT_NAME.text = promotionDetailM.PRODUCT_NAME;
+    _ORD_NO.text = monthlyPlanM.oRDNO;
+    _ADD_DATE.text = monthlyPlanM.aDDDATE;
+    _TO_NAME.text = monthlyPlanM.tONAME;
 }
 
 @end

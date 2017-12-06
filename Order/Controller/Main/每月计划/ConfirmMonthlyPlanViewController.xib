@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmMonthlyPlanViewController">
             <connections>
                 <outlet property="addressViewHeight" destination="ftL-SP-8eH" id="fh8-0e-ZeO"/>
+                <outlet property="confirmBtn" destination="ZY1-42-axb" id="WhH-dv-W3A"/>
                 <outlet property="customerViewHeight" destination="j6E-CQ-ilT" id="MCB-CA-K3g"/>
                 <outlet property="productViewHeight" destination="cSZ-Cj-9bd" id="P1X-LH-4Wk"/>
                 <outlet property="scrollContentViewHeight" destination="d85-lG-tLa" id="Ng0-Zx-ui1"/>
@@ -216,10 +217,31 @@
                         <constraint firstAttribute="trailing" secondItem="icV-Jv-0E9" secondAttribute="trailing" id="x5w-Je-Q7P"/>
                     </constraints>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY1-42-axb">
+                    <rect key="frame" x="117" y="610" width="140" height="37"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="Mso-Sc-wxA"/>
+                        <constraint firstAttribute="width" constant="140" id="aee-Xk-cvK"/>
+                    </constraints>
+                    <state key="normal" title="确认">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer. cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmOnclick" destination="-1" eventType="touchUpInside" id="Us8-fL-Szm"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="ZY1-42-axb" secondAttribute="bottom" constant="20" id="3aQ-Zy-TBt"/>
                 <constraint firstItem="1t7-Q3-E4F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gwp-0f-AED"/>
+                <constraint firstItem="ZY1-42-axb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ucp-50-tYy"/>
                 <constraint firstAttribute="bottom" secondItem="1t7-Q3-E4F" secondAttribute="bottom" id="Z82-Vp-CFy"/>
                 <constraint firstItem="1t7-Q3-E4F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ayE-H5-XBl"/>
                 <constraint firstAttribute="trailing" secondItem="1t7-Q3-E4F" secondAttribute="trailing" id="rLF-zR-1SO"/>

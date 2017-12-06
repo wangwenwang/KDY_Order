@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PromotionDetailModel.h"
+#import "MonthlyPlanModel.h"
 
 @interface MonthlyPlanTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) PromotionDetailModel *promotionDetailM;
+@property (strong, nonatomic) MonthlyPlanModel *monthlyPlanM;
 
 @end
