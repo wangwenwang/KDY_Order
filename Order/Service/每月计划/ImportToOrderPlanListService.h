@@ -44,4 +44,8 @@
  */
 - (void)setConfirmData:(NSMutableArray *)returnGiftData andProducts:(NSMutableArray *)choicedProducts andTempTotalQTY:(long long)tempTotalQTY andDate:(NSDate *)date andRemark:(NSString *)remark andPromotionOrder:(PromotionOrderModel *)order andSelectPronotionDetails:(NSMutableArray *)selectPronotionDetails;
 
+- (NSString *)promotionOrderModelTransfromNSString:(PromotionOrderModel *)p andpartyId:(NSString *)partyId andorderAddressIdx:(NSString *)orderAddressIdx;
+
+- (NSMutableArray *)promotionDetailModelTransfromNSString:(NSMutableArray *)ps;
+
 @end

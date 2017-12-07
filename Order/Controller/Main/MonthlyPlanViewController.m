@@ -33,7 +33,7 @@
 
 #define kPageCount 20
 
-#define kCellHeight 85
+#define kCellHeight 109
 
 #define kCellName @"MonthlyPlanTableViewCell"
 
@@ -59,9 +59,11 @@
     
     [super viewDidLoad];
     
-    self.title = @"月计划列表";
+    self.title = @"计划列表";
     
     [self registerCell];
+    
+    [self addNotification];
     
     // 下拉刷新
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
@@ -76,9 +78,49 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    if(_isReloadTableView) {
+        
+        [_tableView.mj_header beginRefreshing];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
+}
+
+
+- (void)dealloc {
+    
+    [self removeNotification];
+}
+
+
+#pragma mark - 通知
+
+- (void)addNotification {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMsg:) name:kMonthlyPlanViewController_receiveMsg object:nil];
+}
+
+
+- (void)removeNotification {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMonthlyPlanViewController_receiveMsg object:nil];
+}
+
+
+- (void)receiveMsg:(NSNotification *)aNotify {
+    
+    _isReloadTableView = YES;
+    
+    NSString *msg = aNotify.userInfo[@"msg"];
+    [Tools showAlert:self.view andTitle:msg andTime:2.5];
 }
 
 
@@ -110,7 +152,7 @@
     if([Tools isConnectionAvailable]) {
         
         _page = 1;
-        [_service GetOrderPlanList:_app.business.BUSINESS_IDX andstrUserId:_app.user.IDX andstrPartyType:@"" andstrPartyId:@"" andstrState:@"" andstrPage:_page andstrPageCount:kPageCount];
+        [_service GetOrderPlanList:_app.business.BUSINESS_IDX andstrUserId:_app.user.IDX andstrPartyType:@"" andstrPartyId:@"" andstrState:@"ZHENG" andstrPage:_page andstrPageCount:kPageCount];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];

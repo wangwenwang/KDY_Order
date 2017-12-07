@@ -101,7 +101,7 @@
     NSLog(@"%s", __func__);
 }
 
-#pragma mark -- BMKMapViewDelegate
+#pragma mark - BMKMapViewDelegate
 /// 百度地图初始化完成
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
     //判断连接状态
@@ -245,7 +245,7 @@
     }
 }
 
-#pragma mark -- 功能函数
+#pragma mark - 功能函数
 
 /// 根据polyline设置地图范围
 - (void)mapViewFitPolyLine:(BMKPolyline *)polyline {

@@ -118,6 +118,9 @@
 // StockManViewController 刷新列表数据
 #define kStockManViewController_refreshList @"StockManViewController_refreshList"
 
+// MonthlyPlanViewController 接收消息，刷新列表
+#define kMonthlyPlanViewController_receiveMsg @"MonthlyPlanViewController_receiveMsg"
+
 
 
 

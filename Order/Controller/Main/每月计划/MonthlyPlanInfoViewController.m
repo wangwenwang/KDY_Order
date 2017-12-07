@@ -79,7 +79,7 @@
     
     [super viewDidLoad];
     
-    self.title = @"月计划详情";
+    self.title = @"计划详情";
     
     [self initUI];
     
@@ -185,6 +185,7 @@
         tableViewHeight += item.cellHeight;
     }
     _productViewHeight.constant = 30 + tableViewHeight;
+    _scrollContentViewHeight.constant = _customerViewHeight.constant + _productViewHeight.constant + _summaryViewHeight.constant;
     
     [_tableView reloadData];
     

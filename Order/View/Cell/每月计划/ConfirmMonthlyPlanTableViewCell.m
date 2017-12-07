@@ -12,25 +12,26 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *PRODUCT_NAME;
 
+@property (weak, nonatomic) IBOutlet UILabel *ORG_PRICE;
+
 @end
 
 @implementation ConfirmMonthlyPlanTableViewCell
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
-
 
 - (void)setPromotionDetailM:(PromotionDetailModel *)promotionDetailM {
     
     _PRODUCT_NAME.text = promotionDetailM.PRODUCT_NAME;
+    _ORG_PRICE.text = [NSString stringWithFormat:@"%.1f", promotionDetailM.ORG_PRICE];
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @interface TimeLabel : UILabel
 
+@property (strong, nonatomic) NSDate *date;
+
 @property (copy, nonatomic) NSString *time;
 
 @end

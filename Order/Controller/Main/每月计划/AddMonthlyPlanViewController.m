@@ -1319,8 +1319,6 @@ typedef enum : NSInteger {
 
 - (void)fd {
     
-    /*************  计算产品名称换行  *************/
-    
     NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
     
     for(int j = 0; j < array.count; j++) {
@@ -1341,13 +1339,12 @@ typedef enum : NSInteger {
             m.cellHeight = kProductCellHeight;
         }
     }
-    /*************  地址信息换行  *************/
 }
 
 
 #pragma mark - SelectGoodsServiceDelegate
 
-//获取产品数据回调
+// 获取产品数据回调
 - (void)successOfGetProductData:(NSMutableArray *)products {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -1366,9 +1363,7 @@ typedef enum : NSInteger {
             }
         }
     }
-    
     [self fd];
-    
     [_myTableView reloadData];
 }
 
@@ -1376,13 +1371,8 @@ typedef enum : NSInteger {
 - (void)failureOfGetProductData:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    //    [_products removeAllObjects];
-    
     [_myTableView reloadData];
-    
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取产品列表失败"];
-    
 }
 
 
@@ -1578,11 +1568,8 @@ typedef enum : NSInteger {
     vc.promotionOrder = promotionOrder;
     vc.promotionDetailsOfServer = promotionDetailOfNR;
     vc.promotionDetailGiftsOfServer = promotionDetailOfGF;
-    vc.orderAddressCode = _address.ADDRESS_CODE;
-    vc.orderAddressIdx = _address.IDX;
-    vc.orderPayType = _currentPayType.Key;
-    vc.orderAddressIdx = _address.IDX;
-    vc.partyId = _party.IDX;
+    vc.party = _party;
+    vc.address = _address;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

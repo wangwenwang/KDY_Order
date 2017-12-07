@@ -306,21 +306,15 @@
     
     // 客户名称换行
     [_customerNameLabel sizeToFit];
-    CGFloat overflowWidth = _customerNameLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _customerNameLabel_bottom.constant = 20;
-        _headViewHeight.constant = _headViewHeight.constant + _customerNameLabel_bottom.constant - 5;
-    }
+    CGFloat oneLine = CGRectGetHeight(_customerNameLabel.frame);
+    CGFloat mulLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:ScreenWidth - CGRectGetMaxX(_customerNameLabel.frame) - 3];
+    _customerNameLabel_bottom.constant += (mulLine - oneLine);
     
     // 客户地址换行
     [_customerAddressLabel sizeToFit];
-    overflowWidth = _customerAddressLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _customerAddressLabel_bottom.constant = 20;
-        _headViewHeight.constant = _headViewHeight.constant + _customerAddressLabel_bottom.constant - 5;
-    }
+    oneLine = CGRectGetHeight(_customerNameLabel.frame);
+    mulLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:ScreenWidth - CGRectGetMaxX(_customerNameLabel.frame) - 3];
+    _customerNameLabel_bottom.constant += (mulLine - oneLine);
 }
 
 

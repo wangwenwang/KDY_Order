@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PromotionOrderModel.h"
+#import "PartyModel.h"
+#import "AddressModel.h"
 
 @interface ConfirmMonthlyPlanViewController : UIViewController
 
@@ -22,16 +24,10 @@
 /// 已下单的产品(PromotionDetailModel)，服务器获取 (赠品)
 @property (strong, nonatomic) NSMutableArray *promotionDetailGiftsOfServer;
 
-/// 用户地址代码
-@property (copy, nonatomic) NSString *orderAddressCode;
+/// 客户信息
+@property (strong, nonatomic) PartyModel *party;
 
-/// 用户地址IDX
-@property (copy, nonatomic) NSString *orderAddressIdx;
-
-/// 支付方式
-@property (copy, nonatomic) NSString *orderPayType;
-
-/// 用户id
-@property (copy, nonatomic) NSString *partyId;
+/// 地址信息
+@property (strong, nonatomic) AddressModel *address;
 
 @end

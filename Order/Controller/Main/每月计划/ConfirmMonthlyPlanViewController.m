@@ -12,33 +12,68 @@
 #import "ImportToOrderPlanListService.h"
 #import <MBProgressHUD.h>
 #import "AppDelegate.h"
+#import "TimeLabel.h"
+#import "LMPickerView.h"
+#import "MonthlyPlanViewController.h"
 
-@interface ConfirmMonthlyPlanViewController ()<ImportToOrderPlanListServiceDelegate>
+@interface ConfirmMonthlyPlanViewController ()<ImportToOrderPlanListServiceDelegate, LMPickerViewDelegate>
 
+// 网络层
 @property (strong, nonatomic) ImportToOrderPlanListService *service;
 
+// 月份信息
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dateInfoViewHeight;
+
+// 客户信息
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_TYPE;
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_CODE;
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_CITY;
+@property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerViewHeight;
 
+// 地址信息高度
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_PERSON;
+@property (weak, nonatomic) IBOutlet UILabel *CONTACT_TEL;
+@property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressViewHeight;
 
+// 物品列表
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+// 物品信息高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *productViewHeight;
 
+// 滑动视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
 
+// 提交按钮
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
+// 全局变量
 @property (strong, nonatomic) AppDelegate *app;
+
+// 时间控件
+@property (strong, nonatomic)LMPickerView *LM;
+// 时间格式 yyyy-MM
+@property (strong, nonatomic) NSDateFormatter *formatter_mm;
+// 时间Label
+@property (weak, nonatomic) IBOutlet TimeLabel *REQUEST_ISSUE;
+// 时间输入线
+@property (weak, nonatomic) IBOutlet UIView *REQUEST_ISSUE_line;
+// 月份距左
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *REQUEST_ISSUE_leading;
 
 @end
 
 
-#define kCellHeight 44
+#define kCellHeight 65
 
 #define kCellName @"ConfirmMonthlyPlanTableViewCell"
 
+
 @implementation ConfirmMonthlyPlanViewController
+
+#pragma mark - 生命周期
 
 - (instancetype)init {
     
@@ -48,9 +83,17 @@
         _service.delegate = self;
         
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        _formatter_mm = [[NSDateFormatter alloc] init];
+        [_formatter_mm setDateFormat:@"yyyy-MM"];
+        
+        _LM = [[LMPickerView alloc] init];
+        _LM.delegate = self;
+        [_LM initDatePicker];
     }
     return self;
 }
+
 
 - (void)viewDidLoad {
     
@@ -58,9 +101,16 @@
     
     [super viewDidLoad];
     
+    [self fullUI];
+    
     [self registerCell];
     
     [self dealWithData];
+    
+    // 让月份站位居中
+    CGFloat REQUEST_ISSUE_width = CGRectGetWidth(_REQUEST_ISSUE.frame);
+    CGFloat REQUEST_ISSUE_line_width = CGRectGetWidth(_REQUEST_ISSUE_line.frame);
+    _REQUEST_ISSUE_leading.constant = (ScreenWidth - REQUEST_ISSUE_width - REQUEST_ISSUE_line_width) / 2;
 }
 
 
@@ -68,9 +118,7 @@
     
     [super updateViewConstraints];
     
-    _scrollContentViewHeight.constant = _customerViewHeight.constant +
-    _addressViewHeight.constant +
-    _productViewHeight.constant;
+    _scrollContentViewHeight.constant = _dateInfoViewHeight.constant + _customerViewHeight.constant + _addressViewHeight.constant + _productViewHeight.constant + 70;
 }
 
 
@@ -80,23 +128,51 @@
 }
 
 
+#pragma mark - 手势
+
+// 库存月份
+- (IBAction)REQUEST_ISSUE_DATE_onclick {
+    
+    NSDate *maxDate = nil;
+    NSDate *defaultDate = nil;
+    if(!_REQUEST_ISSUE.date) {
+        
+        defaultDate = [NSDate date];
+    } else {
+        
+        defaultDate = _REQUEST_ISSUE.date;
+    }
+    NSDate *minDate = [NSDate date];
+    
+    _LM.date = defaultDate;
+    _LM.maximumDate = maxDate;
+    _LM.minimumDate = minDate;
+    _LM.dateType = @"yyyy-MM";
+    [_LM showDatePicker];
+}
+
+
 #pragma mark - 事件
 
 - (IBAction)confirmOnclick {
     
-    
-    
-    [_service setConfirmData:nil andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:nil andRemark:@"备注" andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
-    
-    NSString *promotionOrderStr = [self promotionOrderModelTransfromNSString:_promotionOrder];
-    
-    if([promotionOrderStr isEqualToString:@""]) {
+    if(_REQUEST_ISSUE.date) {
         
-        [Tools showAlert:self.view andTitle:@"订单处理异常"];
+        [_service setConfirmData:nil andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:_REQUEST_ISSUE.date andRemark:@"备注" andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
+        
+        NSString *promotionOrderStr = [_service promotionOrderModelTransfromNSString:_promotionOrder andpartyId:_party.IDX andorderAddressIdx:_address.IDX];
+        
+        if([promotionOrderStr isEqualToString:@""]) {
+            
+            [Tools showAlert:self.view andTitle:@"订单处理异常"];
+        } else {
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service ImportToOrderPlanList:promotionOrderStr];
+        }
     } else {
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_service ImportToOrderPlanList:promotionOrderStr];
+        [Tools showAlert:self.view andTitle:@"请填写订单月份"];
     }
 }
 
@@ -110,20 +186,39 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+
+- (void)fullUI {
+    
+    _PARTY_TYPE.text = _party.PARTY_TYPE;
+    _PARTY_CODE.text = _party.PARTY_CODE;
+    _PARTY_CITY.text = _party.PARTY_CITY;
+    _PARTY_NAME.text = _party.PARTY_NAME;
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_PARTY_NAME.text fontSize:14 andWidth:ScreenWidth - 8 - 65 - 3];
+    _customerViewHeight.constant += (mulLine - oneLine);
+    
+    _CONTACT_PERSON.text = _address.CONTACT_PERSON;
+    _CONTACT_TEL.text = _address.CONTACT_TEL;
+    _ADDRESS_INFO.text = _address.ADDRESS_INFO;
+    oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    mulLine = [Tools getHeightOfString:_ADDRESS_INFO.text fontSize:14 andWidth:ScreenWidth - 8 - 65 - 3];
+    _addressViewHeight.constant += (mulLine - oneLine);
+}
+
+
 - (void)dealWithData {
     
     CGFloat tableViewHeight = 0;
     for (int i = 0; i < _promotionDetailsOfServer.count; i++) {
         
         PromotionDetailModel *m = _promotionDetailsOfServer[i];
-        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:999.9];
+        CGFloat oneLineHeight = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+        CGFloat mulLineHeight = [Tools getHeightOfString:m.PRODUCT_NAME fontSize:14 andWidth:ScreenWidth - 8 - 36.5 - 3];
         
-        m.cellHeight = kCellHeight;
+        m.cellHeight = kCellHeight + (mulLineHeight - oneLineHeight);
         tableViewHeight += m.cellHeight;
     }
-    
-    // 设置产品信息高度
-    _productViewHeight.constant = tableViewHeight;
+    _productViewHeight.constant = 20 + tableViewHeight;
 }
 
 
@@ -131,14 +226,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-        return _promotionDetailsOfServer.count;
+    return _promotionDetailsOfServer.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-        PromotionDetailModel *m = _promotionDetailsOfServer[indexPath.row];
-        return m.cellHeight;
+    PromotionDetailModel *m = _promotionDetailsOfServer[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -157,139 +252,6 @@
 }
 
 
-#pragma mark - 不明觉历函数
-
-- (NSString *)promotionOrderModelTransfromNSString:(PromotionOrderModel *)p {
-    
-    NSMutableArray *OrderDetails = [self promotionDetailModelTransfromNSString:p.OrderDetails];
-    NSMutableArray *GiftClasses = [[NSMutableArray alloc] init];
-    
-    @try {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @(p.ACT_PRICE), @"ACT_PRICE",
-                              p.ADD_DATE, @"ADD_DATE",
-                              _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
-                              @(p.BUSINESS_TYPE), @"BUSINESS_TYPE",
-                              p.CONSIGNEE_REMARK, @"CONSIGNEE_REMARK",
-                              p.EDIT_DATE, @"EDIT_DATE",
-                              @(9008), @"ENT_IDX",
-                              p.FROM_ADDRESS, @"FROM_ADDRESS",
-                              p.FROM_CITY, @"FROM_CITY",
-                              p.FROM_CNAME, @"FROM_CNAME",
-                              p.FROM_CODE, @"FROM_CODE",
-                              p.FROM_COUNTRY, @"FROM_COUNTRY",
-                              p.FROM_CSMS, @"FROM_CSMS",
-                              p.FROM_CTEL, @"FROM_CTEL",
-                              @(p.FROM_IDX), @"FROM_IDX",
-                              p.FROM_NAME, @"FROM_NAME",
-                              p.FROM_PROPERTY, @"FROM_PROPERTY",
-                              p.FROM_PROVINCE, @"FROM_PROVINCE",
-                              p.FROM_REGION, @"FROM_REGION",
-                              p.FROM_ZIP, @"FROM_ZIP",
-                              p.GROUP_NO, @"GROUP_NO",
-                              GiftClasses, @"GiftClasses",
-                              p.HAVE_GIFT, @"HAVE_GIFT",
-                              @(p.IDX), @"IDX",
-                              @(p.MJ_PRICE), @"MJ_PRICE",
-                              p.MJ_REMARK, @"MJ_REMARK",
-                              @(p.OPERATOR_IDX), @"OPERATOR_IDX",
-                              p.ORD_NO, @"ORD_NO",
-                              p.ORD_NO_CLIENT, @"ORD_NO_CLIENT",
-                              p.ORD_NO_CONSIGNEE, @"ORD_NO_CONSIGNEE",
-                              p.ORD_STATE, @"ORD_STATE",
-                              _partyId, @"ORG_IDX",
-                              @(p.ORG_PRICE), @"ORG_PRICE",
-                              OrderDetails, @"OrderPlanDetails",
-                              p.PARTY_IDX, @"PARTY_IDX",
-                              p.PAYMENT_TYPE, @"PAYMENT_TYPE",
-                              p.REQUEST_DELIVERY, @"REQUEST_DELIVERY",
-                              p.REQUEST_ISSUE, @"REQUEST_ISSUE",
-                              @(p.TOTAL_QTY), @"ORD_QTY",
-                              @(p.TOTAL_VOLUME), @"ORD_VOLUME",
-                              @(p.TOTAL_WEIGHT), @"ORD_WEIGHT",
-                              p.TO_ADDRESS, @"TO_ADDRESS",
-                              p.TO_CITY, @"TO_CITY",
-                              p.TO_CNAME, @"TO_CNAME",
-                              p.TO_CODE, @"TO_CODE",
-                              p.TO_COUNTRY, @"TO_COUNTRY",
-                              p.TO_CSMS, @"TO_CSMS",
-                              p.TO_CTEL, @"TO_CTEL",
-                              _orderAddressIdx, @"TO_IDX",
-                              p.TO_NAME, @"TO_NAME",
-                              p.TO_PROPERTY, @"TO_PROPERTY",
-                              p.TO_PROVINCE, @"TO_PROVINCE",
-                              p.TO_REGION, @"TO_REGION",
-                              p.TO_ZIP, @"TO_ZIP",
-                              nil];
-        
-        NSString *s = [Tools JsonStringWithDictonary:dict];
-        return s;
-    } @catch (NSException *exception) {
-        return @"";
-    }
-}
-
-
-- (NSMutableArray *)promotionDetailModelTransfromNSString:(NSMutableArray *)ps {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    @try {
-        for(int i = 0; i < ps.count; i++) {
-            PromotionDetailModel *p = ps[i];
-            NSDictionary *dict = nil;
-            if([p.PRODUCT_TYPE isEqualToString:@"NR"]) {
-                dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @(p.ACT_PRICE), @"ACT_PRICE",
-                        p.ADD_DATE, @"ADD_DATE",
-                        p.EDIT_DATE, @"EDIT_DATE",
-                        @(p.ENT_IDX), @"ENT_IDX",
-                        @(p.IDX), @"IDX",
-                        @(p.LINE_NO), @"LINE_NO",
-                        p.LOTTABLE01, @"LOTTABLE01",
-                        p.LOTTABLE02, @"LOTTABLE02",
-                        p.LOTTABLE03, @"LOTTABLE03",
-                        p.LOTTABLE04, @"LOTTABLE04",
-                        p.LOTTABLE05, @"LOTTABLE05",
-                        p.LOTTABLE06, @"LOTTABLE06",
-                        p.LOTTABLE07, @"LOTTABLE07",
-                        p.LOTTABLE08, @"LOTTABLE08",
-                        p.LOTTABLE09, @"LOTTABLE09",
-                        p.LOTTABLE10, @"LOTTABLE10",
-                        @(p.LOTTABLE11), @"LOTTABLE11",
-                        @(p.LOTTABLE12), @"LOTTABLE12",
-                        @(p.LOTTABLE13), @"LOTTABLE13",
-                        @(p.MJ_PRICE), @"MJ_PRICE",
-                        p.MJ_REMARK, @"MJ_REMARK",
-                        @(p.OPERATOR_IDX), @"OPERATOR_IDX",
-                        @(p.ORDER_IDX), @"ORDER_IDX",
-                        @(p.ORG_PRICE), @"ORG_PRICE",
-                        @(p.PO_QTY), @"PO_QTY",
-                        p.PO_UOM, @"PO_UOM",
-                        @(p.PO_VOLUME), @"PO_VOLUME",
-                        @(p.PO_WEIGHT), @"PO_WEIGHT",
-                        @(p.PRODUCT_IDX), @"PRODUCT_IDX",
-                        p.PRODUCT_NAME, @"PRODUCT_NAME",
-                        p.PRODUCT_NO, @"PRODUCT_NO",
-                        p.PRODUCT_TYPE, @"PRODUCT_TYPE",
-                        p.PRODUCT_URL, @"PRODUCT_URL",
-                        p.SALE_REMARK, @"SALE_REMARK",
-                        nil];
-            } else {
-                
-                dict = [[NSDictionary alloc] init];
-            }
-            
-            NSString *s = [Tools JsonStringWithDictonary:dict];
-            [array addObject:s];
-        }
-    } @catch (NSException *exception) {
-        
-        return [[NSMutableArray alloc] init];
-    }
-    
-    return array;
-}
-
-
 #pragma mark - ImportToOrderPlanListServiceDelegate
 
 - (void)successOfImportToOrderPlanList:(NSString *)msg {
@@ -298,22 +260,40 @@
     [Tools showAlert:self.view andTitle:@"提交成功!"];
     [_confirmBtn setEnabled:NO];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    // 找到nav上两层 并pop
+    MonthlyPlanViewController *listVc = nil;
+    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
         
-        sleep(2);
-        dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *vc = self.navigationController.viewControllers[i];
+        if([vc isKindOfClass:[MonthlyPlanViewController class]]) {
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        });
-    });
+            listVc = (MonthlyPlanViewController *)vc;
+            break;
+        }
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMonthlyPlanViewController_receiveMsg object:nil userInfo:@{@"msg":msg}];
+    [self.navigationController popToViewController:listVc animated:YES];
 }
 
 
 - (void)failureOfImportToOrderPlanList:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
     [Tools showAlert:self.view andTitle:msg ? msg : @"提交失败"];
+}
+
+
+#pragma mark - 时间模块
+
+- (void)PickerViewComplete:(NSDate *)date {
+    
+    _REQUEST_ISSUE.text = [NSString stringWithFormat:@"%@%@", @"订单月份: ", [_formatter_mm stringFromDate:date]];
+    _REQUEST_ISSUE.date = date;
+    
+    [_REQUEST_ISSUE sizeToFit];
+    [_REQUEST_ISSUE_line setHidden:YES];
+    CGFloat REQUEST_ISSUE_width = CGRectGetWidth(_REQUEST_ISSUE.frame);
+    _REQUEST_ISSUE_leading.constant = (ScreenWidth - REQUEST_ISSUE_width) / 2;
 }
 
 @end
