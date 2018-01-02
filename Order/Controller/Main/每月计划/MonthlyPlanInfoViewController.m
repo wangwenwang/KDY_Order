@@ -35,6 +35,9 @@
 // 下单体积
 @property (weak, nonatomic) IBOutlet UILabel *ORD_VOLUME;
 
+// 订单日期
+@property (weak, nonatomic) IBOutlet UILabel *REQUEST_ISSUE;
+
 // 订单状态
 @property (weak, nonatomic) IBOutlet UILabel *ORD_STATE;
 
@@ -116,6 +119,7 @@
     _ORD_WEIGHT.text = @" ";
     _ORD_VOLUME.text = @" ";
     _ORD_STATE.text = @" ";
+    _REQUEST_ISSUE.text = @" ";
     
     _ACT_PRICE.text = @" ";
     _CONSIGNEE_REMARK.text = @" ";
@@ -173,7 +177,18 @@
     _ORD_QTY.text = _monthlyPlanInfoM.oRDQTY;
     _ORD_WEIGHT.text = _monthlyPlanInfoM.oRDWEIGHT;
     _ORD_VOLUME.text = _monthlyPlanInfoM.oRDVOLUME;
-    _ORD_STATE.text = _monthlyPlanInfoM.oRDSTATE;
+    if([_monthlyPlanInfoM.oRDSTATE isEqualToString:@"OPEN"]) {
+        _ORD_STATE.text = @"新建";
+    } else if([_monthlyPlanInfoM.oRDSTATE isEqualToString:@"CANCEL"]) {
+        _ORD_STATE.text = @"已取消";
+    } else {
+        _ORD_STATE.text = @"已审核";
+    }
+    if(_monthlyPlanInfoM.rEQUESTISSUE.length > 7) {
+        _REQUEST_ISSUE.text = [_monthlyPlanInfoM.rEQUESTISSUE substringToIndex:7];
+    } else {
+        _REQUEST_ISSUE.text = @" ";
+    }
     
     CGFloat tableViewHeight = 0;
     for (int i = 0; i < _monthlyPlanInfoM.monthlyPlanItemModel.count; i++) {

@@ -30,14 +30,8 @@
 // 订单客户名称
 @property (weak, nonatomic) IBOutlet UILabel *customerNameLabel;
 
-// 订单客户名称 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerNameLabel_bottom;
-
 //订单客户地址
 @property (weak, nonatomic) IBOutlet UILabel *customerAddressLabel;
-
-// 订单客户地址 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerAddressLabel_bottom;
 
 // 订单起始地址
 @property (weak, nonatomic) IBOutlet UILabel *beginAddressLabel;
@@ -66,8 +60,8 @@
 // ScrollView高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
 
-// 头部View高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headViewHeight;
+// 订单信息高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerViewHeight;
 
 // 货物信息TableView高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderTableViewHeight;
@@ -157,7 +151,6 @@
     [self registerCell];
     
     [self addAnimationForLabel];
-    
 }
 
 
@@ -195,7 +188,7 @@
     _orderTableViewHeight.constant = allHeight;
     
     // 总高度
-    _scrollViewHeight.constant = _headViewHeight.constant + 40 + _orderTableViewHeight.constant + 50 + _giftsTableViewHeight.constant + _tailViewHeight.constant;
+    _scrollViewHeight.constant = _customerViewHeight.constant + 40 + _orderTableViewHeight.constant + 50 + _giftsTableViewHeight.constant + _tailViewHeight.constant;
 }
 
 
@@ -306,15 +299,17 @@
     
     // 客户名称换行
     [_customerNameLabel sizeToFit];
-    CGFloat oneLine = CGRectGetHeight(_customerNameLabel.frame);
-    CGFloat mulLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:ScreenWidth - CGRectGetMaxX(_customerNameLabel.frame) - 3];
-    _customerNameLabel_bottom.constant += (mulLine - oneLine);
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_customerNameLabel.text fontSize:_customerNameLabel.font.pointSize andWidth:ScreenWidth - 12 - 60.5 - 3];
+    _customerViewHeight.constant += (mulLine - oneLine);
     
     // 客户地址换行
-    [_customerAddressLabel sizeToFit];
-    oneLine = CGRectGetHeight(_customerNameLabel.frame);
-    mulLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:ScreenWidth - CGRectGetMaxX(_customerNameLabel.frame) - 3];
-    _customerNameLabel_bottom.constant += (mulLine - oneLine);
+    mulLine = [Tools getHeightOfString:_customerAddressLabel.text fontSize:_customerAddressLabel.font.pointSize andWidth:ScreenWidth - 12 - 60.5 - 3];
+    _customerViewHeight.constant += (mulLine - oneLine);
+    
+    // 起始地点换行
+    mulLine = [Tools getHeightOfString:_beginAddressLabel.text fontSize:_beginAddressLabel.font.pointSize andWidth:ScreenWidth - 12 - 60.5 - 3];
+    _customerViewHeight.constant += (mulLine - oneLine);
 }
 
 

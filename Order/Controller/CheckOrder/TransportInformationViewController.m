@@ -25,15 +25,11 @@
 
 // 客户名称
 @property (weak, nonatomic) IBOutlet UILabel *customerNameLabel;
-
-// 客户名称 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerNameLabel_bottom;
+@property (weak, nonatomic) IBOutlet UILabel *customerNamePromptLabel;
 
 // 目的地址
 @property (weak, nonatomic) IBOutlet UILabel *toAddressLabel;
-
-// 目的地址 距下
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toAddressLabel_bottom;
+@property (weak, nonatomic) IBOutlet UILabel *toAddressPromptLabel;
 
 // 下单总量
 @property (weak, nonatomic) IBOutlet UILabel *orderTotalLabel;
@@ -111,11 +107,12 @@
     [super didReceiveMemoryWarning];
 }
 
-//填充数据
+
+// 填充数据
 - (void)fullData {
-    
-    _customerNameLabel.text = _tmsInformtions.ORD_TO_NAME;
-    _toAddressLabel.text = _tmsInformtions.ORD_TO_ADDRESS;
+
+    _customerNameLabel.text = [_tmsInformtions.ORD_TO_NAME isEqualToString:@""] ? @" " : _tmsInformtions.ORD_TO_NAME;
+    _toAddressLabel.text = [_tmsInformtions.ORD_TO_ADDRESS isEqualToString:@""] ? @" " : _tmsInformtions.ORD_TO_ADDRESS;
     _orderTotalLabel.text = [NSString stringWithFormat:@"%.1f件", _tmsInformtions.ORD_QTY];
     _sendGoodsTotalLabel.text = [NSString stringWithFormat:@"%.1f件", _tmsInformtions.TMS_QTY];
     _orderTotalWeightLabel.text = [NSString stringWithFormat:@"%@吨", _tmsInformtions.ORD_WEIGHT];
@@ -136,22 +133,15 @@
 - (void)addAnimationForLabel {
     
     // 客户名称换行
-    [_customerNameLabel sizeToFit];
-    CGFloat overflowWidth = _customerNameLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _customerNameLabel_bottom.constant = 20;
-        _headViewHeight.constant += _customerNameLabel_bottom.constant;
-    }
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:_customerNameLabel.font.pointSize andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_customerNameLabel.text fontSize:_customerNameLabel.font.pointSize andWidth:(ScreenWidth - CGRectGetMaxX(_customerNamePromptLabel.frame) - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _headViewHeight.constant += (mulLine - oneLine);
     
     // 客户地址换行
-    [_toAddressLabel sizeToFit];
-    overflowWidth = _toAddressLabel.frame.size.width - (ScreenWidth - (15 + 70));
-    if(overflowWidth > 0) {
-        
-        _toAddressLabel_bottom.constant = 20;
-        _headViewHeight.constant += _toAddressLabel_bottom.constant;
-    }
+    mulLine = [Tools getHeightOfString:_toAddressLabel.text fontSize:_toAddressLabel.font.pointSize andWidth:(ScreenWidth - CGRectGetMaxX(_toAddressPromptLabel.frame) - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _headViewHeight.constant += (mulLine - oneLine);
 }
 
 

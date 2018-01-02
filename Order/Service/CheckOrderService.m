@@ -44,6 +44,8 @@
                       nil];
     }
     
+    NSLog(@"接口:%@, 参数:%@", API_GET_ORDER_LIST, parameters);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     

@@ -88,7 +88,8 @@
     for(int i = 0; i < array.count; i++) {
         UIView *view = self.subviews[i];
         if(view.tag == 10068) {
-            view.hidden = YES;
+            [view removeFromSuperview];
+            break;
         }
     }
 }

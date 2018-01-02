@@ -1,20 +1,111 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsViewController">
             <connections>
+                <outlet property="scrollContentViewHeight" destination="AjN-u9-OAi" id="9dV-mY-yGz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5W-FG-LeG">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYz-Pq-izs">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尊敬的各经销商客户：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-yX-K4e">
+                                    <rect key="frame" x="25" y="20" width="153" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　　我司于8月份正式启用APP对账模式，即每月10号前我司将在APP上出具各经销商截止上月月底余额，请各经销商客户及时在APP进行查看与核实，有问题请及时反馈。" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-1T-hln">
+                                    <rect key="frame" x="25" y="50.5" width="270" height="90"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系人：桂小姐，谢谢！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBl-yb-wTE">
+                                    <rect key="frame" x="25" y="462" width="168.5" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Bi-hry">
+                                    <rect key="frame" x="25" y="407" width="270" height="43"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1U-5t-hbG">
+                                            <rect key="frame" x="0.0" y="-0.5" width="270" height="43"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="电话：13243863247">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tel" destination="-1" eventType="touchUpInside" id="h4v-sd-J9T"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="44b-4t-Jch"/>
+                                        <constraint firstItem="C1U-5t-hbG" firstAttribute="top" secondItem="SH2-Bi-hry" secondAttribute="top" id="KZl-Fx-JDl"/>
+                                        <constraint firstItem="C1U-5t-hbG" firstAttribute="leading" secondItem="SH2-Bi-hry" secondAttribute="leading" id="dEt-2P-FLJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="C1U-5t-hbG" secondAttribute="bottom" id="eFf-x7-8dI"/>
+                                        <constraint firstAttribute="trailing" secondItem="C1U-5t-hbG" secondAttribute="trailing" id="y9P-md-EOf"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="C3Q-yX-K4e" firstAttribute="top" secondItem="jYz-Pq-izs" secondAttribute="top" constant="20" id="2mi-Hz-sQf"/>
+                                <constraint firstAttribute="height" constant="500" id="AjN-u9-OAi"/>
+                                <constraint firstAttribute="bottom" secondItem="dBl-yb-wTE" secondAttribute="bottom" constant="20" id="Dbd-80-As5"/>
+                                <constraint firstAttribute="trailing" secondItem="SH2-Bi-hry" secondAttribute="trailing" constant="25" id="IFX-AQ-eCu"/>
+                                <constraint firstItem="dBl-yb-wTE" firstAttribute="top" secondItem="SH2-Bi-hry" secondAttribute="bottom" constant="12" id="Pi7-AX-P7L"/>
+                                <constraint firstItem="SH2-Bi-hry" firstAttribute="leading" secondItem="jYz-Pq-izs" secondAttribute="leading" constant="25" id="QQN-1f-X8V"/>
+                                <constraint firstItem="C3Q-yX-K4e" firstAttribute="leading" secondItem="jYz-Pq-izs" secondAttribute="leading" constant="25" id="R84-2p-BPI"/>
+                                <constraint firstAttribute="trailing" secondItem="NCd-1T-hln" secondAttribute="trailing" constant="25" id="Uny-6o-0Dx"/>
+                                <constraint firstItem="dBl-yb-wTE" firstAttribute="leading" secondItem="jYz-Pq-izs" secondAttribute="leading" constant="25" id="ZBy-pw-6PN"/>
+                                <constraint firstItem="NCd-1T-hln" firstAttribute="top" secondItem="C3Q-yX-K4e" secondAttribute="bottom" constant="12" id="aiC-ld-Ogj"/>
+                                <constraint firstItem="NCd-1T-hln" firstAttribute="leading" secondItem="jYz-Pq-izs" secondAttribute="leading" constant="25" id="if3-Lw-vtn"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="jYz-Pq-izs" secondAttribute="trailing" id="Cda-ZR-etQ"/>
+                        <constraint firstItem="jYz-Pq-izs" firstAttribute="leading" secondItem="F5W-FG-LeG" secondAttribute="leading" id="Dr5-iR-R3D"/>
+                        <constraint firstItem="jYz-Pq-izs" firstAttribute="centerX" secondItem="F5W-FG-LeG" secondAttribute="centerX" id="SXR-lu-RiW"/>
+                        <constraint firstAttribute="bottom" secondItem="jYz-Pq-izs" secondAttribute="bottom" id="sRj-cF-BvQ"/>
+                        <constraint firstItem="jYz-Pq-izs" firstAttribute="top" secondItem="F5W-FG-LeG" secondAttribute="top" id="yfR-66-DXX"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="F5W-FG-LeG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0jR-6h-ETe"/>
+                <constraint firstAttribute="trailing" secondItem="F5W-FG-LeG" secondAttribute="trailing" id="ScI-HQ-Vxp"/>
+                <constraint firstAttribute="bottom" secondItem="F5W-FG-LeG" secondAttribute="bottom" id="Yeu-HL-t2F"/>
+                <constraint firstItem="F5W-FG-LeG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="big-V1-890"/>
+            </constraints>
         </view>
     </objects>
 </document>

@@ -216,10 +216,9 @@
         SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
         [self.navigationController pushViewController:sopVC animated:YES];
     } else if(indexPath.row == 1) {
-        //        NewsViewController *newsVC = [[NewsViewController alloc] init];
-        //        [self.navigationController pushViewController:newsVC animated:YES];
         
-        [Tools showAlert:self.view andTitle:@"正在维护中..."];
+        NewsViewController *newsVC = [[NewsViewController alloc] init];
+        [self.navigationController pushViewController:newsVC animated:YES];
     } else if(indexPath.row == 2) {
         
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];

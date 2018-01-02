@@ -138,14 +138,14 @@
 /// 获取用户业务类型
 #define API_GET_BUISNESS_LIST @"http://oms.kaidongyuan.com:8088/api/GetBuisnessList"
 
+/// 获取热销产品
+#define API_GET_HOT_SELL_PRODUCT @"http://oms.kaidongyuan.com:8088/api/GetProductList"
+
 /// 获取用户业务类型
 #define API_UPDATA_PASSWORD @"http://oms.kaidongyuan.com:8088/api/modifyPassword"
 
 /// 获取订单详情
 #define API_GET_ORDER_DETAIL @"http://oms.kaidongyuan.com:8088/api/GetOrderDetail"
-
-/// 获取热销产品
-#define API_GET_HOT_SELL_PRODUCT @"http://oms.kaidongyuan.com:8088/api/GetProductList"
 
 /// 获取订单物流信息
 #define API_GET_ORDER_TMSLIST @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsList"

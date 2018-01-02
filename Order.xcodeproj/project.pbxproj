@@ -99,7 +99,6 @@
 		302A05801DB0C60100972490 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A057F1DB0C60100972490 /* ProductModel.m */; };
 		302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05821DB0C9E700972490 /* ProductPolicyModel.m */; };
 		302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 302A05851DB0CC7200972490 /* PolicyItemModel.m */; };
-		302A94251F4579450020E1C1 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302A94241F4579450020E1C1 /* MainCollection.plist */; };
 		302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */; };
 		3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 303566921F70CD2B009E6EFB /* GetToAddressListViewController.m */; };
 		3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303566931F70CD2B009E6EFB /* GetToAddressListViewController.xib */; };
@@ -172,6 +171,7 @@
 		3051DB7C1F1895740034629B /* NormalAdressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3051DB7A1F1895740034629B /* NormalAdressListViewController.xib */; };
 		3051DB921F1898EF0034629B /* NormalAdressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB911F1898EF0034629B /* NormalAdressListModel.m */; };
 		3051DB951F18999A0034629B /* NormalAdressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB941F18999A0034629B /* NormalAdressModel.m */; };
+		3054D1001FFB89FD00E1D9B2 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */; };
 		30598E471F1CB363000530D6 /* UpdateAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30598E461F1CB363000530D6 /* UpdateAddressService.m */; };
 		3072AE891DA8948D00359147 /* OrderDetailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3072AE881DA8948D00359147 /* OrderDetailService.m */; };
 		307988631F6B79A80063DE2A /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 307988601F6B79A80063DE2A /* ico_make.png */; };
@@ -221,6 +221,9 @@
 		30A3C3251D9A71AC00BBE0DA /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A3C3231D9A71AC00BBE0DA /* MineTableViewCell.m */; };
 		30A3C3261D9A71AC00BBE0DA /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A3C3241D9A71AC00BBE0DA /* MineTableViewCell.xib */; };
 		30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7506A1F18C46A00B46B93 /* LM_A_B_C_D.m */; };
+		30A967D71FDA2C060049B956 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A967D21FDA2C060049B956 /* ico_make.png */; };
+		30A967D81FDA2C060049B956 /* LMDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A967D41FDA2C060049B956 /* LMDropDownMenu.m */; };
+		30A967D91FDA2C060049B956 /* LMTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A967D61FDA2C060049B956 /* LMTitleView.m */; };
 		30B1AE661F74983300130A55 /* Store_GetOutProductListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B1AE651F74983300130A55 /* Store_GetOutProductListService.m */; };
 		30B1AE6C1F74986D00130A55 /* Store_GetOupputInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B1AE691F74986D00130A55 /* Store_GetOupputInfoService.m */; };
 		30B1AE6D1F74986D00130A55 /* Store_GetOupputListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B1AE6B1F74986D00130A55 /* Store_GetOupputListService.m */; };
@@ -574,7 +577,6 @@
 		302A05821DB0C9E700972490 /* ProductPolicyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductPolicyModel.m; sourceTree = "<group>"; };
 		302A05841DB0CC7200972490 /* PolicyItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyItemModel.h; sourceTree = "<group>"; };
 		302A05851DB0CC7200972490 /* PolicyItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyItemModel.m; sourceTree = "<group>"; };
-		302A94241F4579450020E1C1 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
 		302F6D411F73A57E00A84F39 /* Stock_GetOutProductTypeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stock_GetOutProductTypeService.h; sourceTree = "<group>"; };
 		302F6D421F73A57E00A84F39 /* Stock_GetOutProductTypeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stock_GetOutProductTypeService.m; sourceTree = "<group>"; };
 		303566911F70CD2B009E6EFB /* GetToAddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetToAddressListViewController.h; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 		3051DB911F1898EF0034629B /* NormalAdressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAdressListModel.m; sourceTree = "<group>"; };
 		3051DB931F18999A0034629B /* NormalAdressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalAdressModel.h; sourceTree = "<group>"; };
 		3051DB941F18999A0034629B /* NormalAdressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAdressModel.m; sourceTree = "<group>"; };
+		3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
 		30598E451F1CB363000530D6 /* UpdateAddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateAddressService.h; sourceTree = "<group>"; };
 		30598E461F1CB363000530D6 /* UpdateAddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAddressService.m; sourceTree = "<group>"; };
 		3072AE871DA8948D00359147 /* OrderDetailService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailService.h; sourceTree = "<group>"; };
@@ -774,6 +777,11 @@
 		30A3C3241D9A71AC00BBE0DA /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
 		30A750691F18C46A00B46B93 /* LM_A_B_C_D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LM_A_B_C_D.h; sourceTree = "<group>"; };
 		30A7506A1F18C46A00B46B93 /* LM_A_B_C_D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LM_A_B_C_D.m; sourceTree = "<group>"; };
+		30A967D21FDA2C060049B956 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		30A967D31FDA2C060049B956 /* LMDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDropDownMenu.h; sourceTree = "<group>"; };
+		30A967D41FDA2C060049B956 /* LMDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDropDownMenu.m; sourceTree = "<group>"; };
+		30A967D51FDA2C060049B956 /* LMTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMTitleView.h; sourceTree = "<group>"; };
+		30A967D61FDA2C060049B956 /* LMTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMTitleView.m; sourceTree = "<group>"; };
 		30B1AE641F74983300130A55 /* Store_GetOutProductListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetOutProductListService.h; sourceTree = "<group>"; };
 		30B1AE651F74983300130A55 /* Store_GetOutProductListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store_GetOutProductListService.m; sourceTree = "<group>"; };
 		30B1AE681F74986D00130A55 /* Store_GetOupputInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store_GetOupputInfoService.h; sourceTree = "<group>"; };
@@ -1486,6 +1494,7 @@
 		304A7AE41DB925990039B0B2 /* Custum */ = {
 			isa = PBXGroup;
 			children = (
+				30A967D11FDA2C060049B956 /* LMDropDownMenu_TitleView */,
 				301D7DE61F5A3ECE00D83410 /* IB_UIButton.h */,
 				301D7DE71F5A3ECE00D83410 /* IB_UIButton.m */,
 				30B948E81EEA4B5500E4C3EC /* IB_UIView.h */,
@@ -1694,7 +1703,7 @@
 				30A3C2FD1D9A0E0F00BBE0DA /* MainViewController.h */,
 				30A3C2FE1D9A0E0F00BBE0DA /* MainViewController.m */,
 				30A3C2FF1D9A0E0F00BBE0DA /* MainViewController.xib */,
-				302A94241F4579450020E1C1 /* MainCollection.plist */,
+				3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */,
 				30E5A0721D9DFB6300D94F77 /* SearchOrderPathViewController.h */,
 				30E5A0731D9DFB6300D94F77 /* SearchOrderPathViewController.m */,
 				30E5A0741D9DFB6300D94F77 /* SearchOrderPathViewController.xib */,
@@ -1969,6 +1978,18 @@
 				301D7DBF1F5A3E0400D83410 /* 客户管理 */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		30A967D11FDA2C060049B956 /* LMDropDownMenu_TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				30A967D21FDA2C060049B956 /* ico_make.png */,
+				30A967D31FDA2C060049B956 /* LMDropDownMenu.h */,
+				30A967D41FDA2C060049B956 /* LMDropDownMenu.m */,
+				30A967D51FDA2C060049B956 /* LMTitleView.h */,
+				30A967D61FDA2C060049B956 /* LMTitleView.m */,
+			);
+			path = LMDropDownMenu_TitleView;
 			sourceTree = "<group>";
 		};
 		30B1AE671F74986D00130A55 /* 出库明细 */ = {
@@ -2744,7 +2765,6 @@
 				30BBF1371F17612400496518 /* Add_AddressViewController.xib in Resources */,
 				301D7DC71F5A3E0400D83410 /* AddressListTableViewCell.xib in Resources */,
 				3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */,
-				302A94251F4579450020E1C1 /* MainCollection.plist in Resources */,
 				30F7B8E21DBFAE80004CD128 /* SelectedGiftsTableViewCell.xib in Resources */,
 				3035670B1F7103B0009E6EFB /* GetOupputInfoTableViewCell.xib in Resources */,
 				30BE65041EE6BE5B00BD6978 /* ProductManListTableViewCell.xib in Resources */,
@@ -2802,6 +2822,7 @@
 				3000CA031DB20E2F00D8E731 /* ProductPolicyTableViewCell.xib in Resources */,
 				30BB2DCD1F459375002E51E7 /* GetAppStockListTableViewCell.xib in Resources */,
 				301D7DBC1F5A3D8D00D83410 /* GetAppBillFeeListViewController.xib in Resources */,
+				3054D1001FFB89FD00E1D9B2 /* MainCollection.plist in Resources */,
 				302675DE1F72494D0098DEF1 /* InputReturnConfirmViewController.xib in Resources */,
 				308783911D98CD45002EED76 /* Assets.xcassets in Resources */,
 				30930B8E1FD6858700D320F9 /* MonthlyPlanTableViewCell.xib in Resources */,
@@ -2809,6 +2830,7 @@
 				304A7AAA1DB4D3E10039B0B2 /* ShoppingCartTableViewCell.xib in Resources */,
 				304A341E1F0E10ED0055D50C /* ChinaArea.plist in Resources */,
 				30BB2DC71F459375002E51E7 /* AddStockCellTableViewCell.xib in Resources */,
+				30A967D71FDA2C060049B956 /* ico_make.png in Resources */,
 				30BB2DB51F459359002E51E7 /* GetStockListViewController.xib in Resources */,
 				303567121F711BEB009E6EFB /* GetInputInfoViewController.xib in Resources */,
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
@@ -3077,6 +3099,7 @@
 				30EF59CE1DAF5C6D003F5729 /* CustomerAddressTableViewCell.m in Sources */,
 				3051DB7B1F1895740034629B /* NormalAdressListViewController.m in Sources */,
 				30930BAC1FD6AC8C00D320F9 /* AddMonthlyPlanTableViewCell.m in Sources */,
+				30A967D91FDA2C060049B956 /* LMTitleView.m in Sources */,
 				3088D3071F4BDC49006031D9 /* GetOupputModel.m in Sources */,
 				304A7AC51DB867A90039B0B2 /* CheckOrderPathViewController.m in Sources */,
 				30BB2DEC1F4593AD002E51E7 /* StockModel.m in Sources */,
@@ -3129,6 +3152,7 @@
 				304A7AAE1DB5F72C0039B0B2 /* ProductTypeTableViewCell.m in Sources */,
 				30BFCDAD1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.m in Sources */,
 				302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */,
+				30A967D81FDA2C060049B956 /* LMDropDownMenu.m in Sources */,
 				30CDC65B1D9907CD0035602F /* UIButton+SD.m in Sources */,
 				30930B871FD67E9800D320F9 /* ConfirmMonthlyPlanViewController.m in Sources */,
 				30E5A0591D9BB88300D94F77 /* BusinessModel.m in Sources */,

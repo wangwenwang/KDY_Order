@@ -16,7 +16,7 @@
 #import "LMPickerView.h"
 #import "MonthlyPlanViewController.h"
 
-@interface ConfirmMonthlyPlanViewController ()<ImportToOrderPlanListServiceDelegate, LMPickerViewDelegate>
+@interface ConfirmMonthlyPlanViewController ()<ImportToOrderPlanListServiceDelegate, LMPickerViewDelegate, UITextViewDelegate>
 
 // 网络层
 @property (strong, nonatomic) ImportToOrderPlanListService *service;
@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *PARTY_NAME;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *customerViewHeight;
 
-// 地址信息高度
+// 地址信息
 @property (weak, nonatomic) IBOutlet UILabel *CONTACT_PERSON;
 @property (weak, nonatomic) IBOutlet UILabel *CONTACT_TEL;
 @property (weak, nonatomic) IBOutlet UILabel *ADDRESS_INFO;
@@ -39,9 +39,14 @@
 
 // 物品列表
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-// 物品信息高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *productViewHeight;
+
+// 汇总信息
+@property (weak, nonatomic) IBOutlet UILabel *TOTAL_QTY;
+@property (weak, nonatomic) IBOutlet UILabel *ACT_PRICE;
+@property (weak, nonatomic) IBOutlet UITextView *remarkTextView;
+@property (weak, nonatomic) IBOutlet UILabel *remarkPromptLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeight;
 
 // 滑动视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
@@ -66,7 +71,7 @@
 @end
 
 
-#define kCellHeight 65
+#define kCellHeight 102
 
 #define kCellName @"ConfirmMonthlyPlanTableViewCell"
 
@@ -111,6 +116,9 @@
     CGFloat REQUEST_ISSUE_width = CGRectGetWidth(_REQUEST_ISSUE.frame);
     CGFloat REQUEST_ISSUE_line_width = CGRectGetWidth(_REQUEST_ISSUE_line.frame);
     _REQUEST_ISSUE_leading.constant = (ScreenWidth - REQUEST_ISSUE_width - REQUEST_ISSUE_line_width) / 2;
+    
+    _remarkTextView.layer.borderWidth = 1;
+    _remarkTextView.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
 
@@ -118,7 +126,7 @@
     
     [super updateViewConstraints];
     
-    _scrollContentViewHeight.constant = _dateInfoViewHeight.constant + _customerViewHeight.constant + _addressViewHeight.constant + _productViewHeight.constant + 70;
+    _scrollContentViewHeight.constant = _dateInfoViewHeight.constant + _customerViewHeight.constant + _addressViewHeight.constant + _productViewHeight.constant + _summaryViewHeight.constant + 80;
 }
 
 
@@ -158,7 +166,7 @@
     
     if(_REQUEST_ISSUE.date) {
         
-        [_service setConfirmData:nil andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:_REQUEST_ISSUE.date andRemark:@"备注" andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
+        [_service setConfirmData:nil andProducts:_productsOfLocal andTempTotalQTY:_promotionOrder.TOTAL_QTY andDate:_REQUEST_ISSUE.date andRemark:_remarkTextView.text andPromotionOrder:_promotionOrder andSelectPronotionDetails:_promotionDetailsOfServer];
         
         NSString *promotionOrderStr = [_service promotionOrderModelTransfromNSString:_promotionOrder andpartyId:_party.IDX andorderAddressIdx:_address.IDX];
         
@@ -203,6 +211,9 @@
     oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
     mulLine = [Tools getHeightOfString:_ADDRESS_INFO.text fontSize:14 andWidth:ScreenWidth - 8 - 65 - 3];
     _addressViewHeight.constant += (mulLine - oneLine);
+    
+    _TOTAL_QTY.text = [NSString stringWithFormat:@"%lld", _promotionOrder.TOTAL_QTY];
+    _ACT_PRICE.text = [NSString stringWithFormat:@"%.1f 元", _promotionOrder.ACT_PRICE];
 }
 
 
@@ -294,6 +305,26 @@
     [_REQUEST_ISSUE_line setHidden:YES];
     CGFloat REQUEST_ISSUE_width = CGRectGetWidth(_REQUEST_ISSUE.frame);
     _REQUEST_ISSUE_leading.constant = (ScreenWidth - REQUEST_ISSUE_width) / 2;
+}
+
+
+#pragma mark - 键盘回收
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString*)text {
+    
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    if (![text isEqualToString:@""]) {
+        _remarkPromptLabel.hidden = YES;
+    }
+    
+    if ([text isEqualToString:@""] && range.location == 0 && range.length == 1) {
+        _remarkPromptLabel.hidden = NO;
+    }
+    return YES;
 }
 
 @end
