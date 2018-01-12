@@ -9,7 +9,6 @@
 #import "MainViewController.h"
 #import "SDCycleScrollView.h"
 #import "MaincollectionViewCell.h"
-#import "SearchOrderPathViewController.h"
 #import "NewsViewController.h"
 #import "HotProductViewController.h"
 #import "ChartService.h"
@@ -21,6 +20,8 @@
 #import "GetFeeListViewController.h"
 #import "CustomerListViewController.h"
 #import "MonthlyPlanViewController.h"
+#import "GetTmsOrderByAddressViewController.h"
+#import "GetWmsProductZongViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartServiceDelegate>
 
@@ -149,22 +150,40 @@
     NSString *dataPath = [[NSBundle mainBundle]pathForResource:@"MainCollection.plist" ofType:nil];
     _myCollectionDataArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
     
-    if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length > 0) {
-        
-    } else {
-        
-        if(_myCollectionDataArrM.count >= 7) {
-            
-            [_myCollectionDataArrM removeObjectAtIndex:6];
-            
-            if(_myCollectionDataArrM.count >= 7) {
-                
-                [_myCollectionDataArrM removeObjectAtIndex:6];
+    
+    // 怡宝才有 "库存登记"、"费用帐单"、"库存管理" 功能
+    
+    if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length == 0) {
+        for (NSDictionary *dic in _myCollectionDataArrM) {
+            if([dic[@"title"] isEqualToString:@"库存登记"]) {
+                [_myCollectionDataArrM removeObject:dic];
+                break;
+            }
+        }
+        for (NSDictionary *dic in _myCollectionDataArrM) {
+            if([dic[@"title"] isEqualToString:@"费用帐单"]) {
+                [_myCollectionDataArrM removeObject:dic];
+                break;
+            }
+        }
+        for (NSDictionary *dic in _myCollectionDataArrM) {
+            if([dic[@"title"] isEqualToString:@"库存管理"]) {
+                [_myCollectionDataArrM removeObject:dic];
+                break;
+            }
+        }
+    }
+    
+    // 上海才有 "查看库存" 功能
+    if([_app.business.BUSINESS_CODE rangeOfString:@"DK"].length == 0) {
+        for (NSDictionary *dic in _myCollectionDataArrM) {
+            if([dic[@"title"] isEqualToString:@"查看库存"]) {
+                [_myCollectionDataArrM removeObject:dic];
+                break;
             }
         }
     }
 }
-
 
 #pragma mark - UICollectionViewDelegate
 
@@ -213,7 +232,7 @@
     
     if(indexPath.row == 0) {
         
-        SearchOrderPathViewController *sopVC = [[SearchOrderPathViewController alloc] init];
+        GetTmsOrderByAddressViewController *sopVC = [[GetTmsOrderByAddressViewController alloc] init];
         [self.navigationController pushViewController:sopVC animated:YES];
     } else if(indexPath.row == 1) {
         
@@ -268,6 +287,11 @@
     } else if([title isEqualToString:@"每月计划"]) {
         
         MonthlyPlanViewController *vc = [[MonthlyPlanViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if([title isEqualToString:@"查看库存"]) {
+        
+        GetWmsProductZongViewController *vc = [[GetWmsProductZongViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }

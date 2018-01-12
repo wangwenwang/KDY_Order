@@ -132,7 +132,7 @@
 /// 登陆接口
 #define API_LOGIN @"http://oms.kaidongyuan.com:8088/api/Login"
 
-/// 获取在途订单列表
+/// 获取订单列表
 #define API_GET_ORDER_LIST @"http://oms.kaidongyuan.com:8088/api/GetOrderList"
 
 /// 获取用户业务类型
@@ -141,7 +141,7 @@
 /// 获取热销产品
 #define API_GET_HOT_SELL_PRODUCT @"http://oms.kaidongyuan.com:8088/api/GetProductList"
 
-/// 获取用户业务类型
+/// 修改密码
 #define API_UPDATA_PASSWORD @"http://oms.kaidongyuan.com:8088/api/modifyPassword"
 
 /// 获取订单详情
@@ -302,6 +302,26 @@
 
 /// 提交每月计划订单
 #define API_ImportToOrderPlanList @"http://oms.kaidongyuan.com:8088/api/ImportToOrderPlanList"
+
+
+
+/*-------------------- 查询物流功能 --------------------*/
+
+/// 物流订单列表
+#define API_GetTmsOrderByAddress @"http://oms.kaidongyuan.com:8088/api/GetTmsOrderByAddress"
+
+/// 物流订单明细
+#define API_GetOrderTms @"http://oms.kaidongyuan.com:8088/api/GetOrderTms"
+
+
+
+/*-------------------- 查看库存功能 --------------------*/
+
+/// 产品库存汇总列表
+#define API_GetWmsProductZong @"http://oms.kaidongyuan.com:8088/api/GetWmsProductZong"
+
+/// 产品库存明细列表
+#define API_GetWmsProductSum @"http://oms.kaidongyuan.com:8088/api/GetWmsProductSum"
 
 
 /*--------- 判断iOS版本 ---------*/

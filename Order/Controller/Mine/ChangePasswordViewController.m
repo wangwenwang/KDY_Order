@@ -68,11 +68,15 @@
             if(![newPwd isEmpty]) {
                 if(![reNewPwd isEmpty]) {
                     if([newPwd isEqualToString:reNewPwd]) {
-                        if(reNewPwd.length >= 6) {
-                            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                            [_service changePassword:oldPwd andNewPassword:reNewPwd];
+                        if(![newPwd isEqualToString:oldPwd]){
+                            if(reNewPwd.length >= 6) {
+                                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                [_service changePassword:oldPwd andNewPassword:reNewPwd];
+                            }else {
+                                [Tools showAlert:self.view andTitle:@"密码不能小于6位数!"];
+                            }
                         }else {
-                          [Tools showAlert:self.view andTitle:@"密码不能小于6位数!"];
+                            [Tools showAlert:self.view andTitle:@"新密码与原密码不能相同!"];
                         }
                     }else {
                         [Tools showAlert:self.view andTitle:@"两次新密码不一致!"];

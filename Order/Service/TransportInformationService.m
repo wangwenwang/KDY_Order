@@ -37,6 +37,8 @@
                                 @"", @"strLicense",
                                 nil];
     
+    NSLog(@"获取订单物流信息参数:%@", parameters);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:API_GET_ORDER_TMSLIST parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {

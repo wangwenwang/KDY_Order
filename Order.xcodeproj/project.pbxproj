@@ -83,6 +83,9 @@
 		302160991F15BF3A0049374F /* LoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 302160981F15BF3A0049374F /* LoginButton.m */; };
 		3021609C1F15BF650049374F /* LoginTextFieId.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021609B1F15BF650049374F /* LoginTextFieId.m */; };
 		3021609F1F15C2390049374F /* LoginTextFieldSuperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021609E1F15C2390049374F /* LoginTextFieldSuperView.m */; };
+		30240EC21FFE0C44007BC134 /* GetOrderTmsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30240EC11FFE0C44007BC134 /* GetOrderTmsService.m */; };
+		30240EC51FFE1BBE007BC134 /* TmsOrderInfoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30240EC41FFE1BBE007BC134 /* TmsOrderInfoListModel.m */; };
+		30240EC81FFE1BD1007BC134 /* TmsOrderInfoItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30240EC71FFE1BD1007BC134 /* TmsOrderInfoItemModel.m */; };
 		3026007F1EE5726F001F6C38 /* UIViewController+LLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026007D1EE5726F001F6C38 /* UIViewController+LLAdd.m */; };
 		302600901EE69F8B001F6C38 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3026008B1EE69F8B001F6C38 /* README.md */; };
 		302600911EE69F8B001F6C38 /* SCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3026008D1EE69F8B001F6C38 /* SCBaseViewController.m */; };
@@ -171,7 +174,26 @@
 		3051DB7C1F1895740034629B /* NormalAdressListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3051DB7A1F1895740034629B /* NormalAdressListViewController.xib */; };
 		3051DB921F1898EF0034629B /* NormalAdressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB911F1898EF0034629B /* NormalAdressListModel.m */; };
 		3051DB951F18999A0034629B /* NormalAdressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3051DB941F18999A0034629B /* NormalAdressModel.m */; };
-		3054D1001FFB89FD00E1D9B2 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */; };
+		3054D1021FFC74E900E1D9B2 /* MainCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3054D1011FFC74E900E1D9B2 /* MainCollection.plist */; };
+		3054D1071FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3054D1051FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m */; };
+		3054D1081FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3054D1061FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib */; };
+		3054D10C1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3054D10B1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.m */; };
+		3054D1101FFCCF4500E1D9B2 /* TmsOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3054D10F1FFCCF4500E1D9B2 /* TmsOrderListModel.m */; };
+		3054D1131FFCCF5600E1D9B2 /* TmsOrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3054D1121FFCCF5600E1D9B2 /* TmsOrderItemModel.m */; };
+		3054D11B1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3054D1191FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m */; };
+		3054D11C1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3054D11A1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.xib */; };
+		3056B54B2007145700B4704A /* GetWmsProductSumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5492007145700B4704A /* GetWmsProductSumViewController.m */; };
+		3056B54C2007145700B4704A /* GetWmsProductSumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3056B54A2007145700B4704A /* GetWmsProductSumViewController.xib */; };
+		3056B55A2007177400B4704A /* GetWmsProductSumService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5592007177400B4704A /* GetWmsProductSumService.m */; };
+		3056B55E200887DF00B4704A /* GetWmsProductZongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B55C200887DF00B4704A /* GetWmsProductZongViewController.m */; };
+		3056B55F200887DF00B4704A /* GetWmsProductZongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3056B55D200887DF00B4704A /* GetWmsProductZongViewController.xib */; };
+		3056B5622008880C00B4704A /* GetWmsProductZongService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5612008880C00B4704A /* GetWmsProductZongService.m */; };
+		3056B566200892DA00B4704A /* CheckStockListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B565200892DA00B4704A /* CheckStockListModel.m */; };
+		3056B5692008930B00B4704A /* CheckStockItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5682008930B00B4704A /* CheckStockItemModel.m */; };
+		3056B56E2008988900B4704A /* GetWmsProductZongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B56C2008988900B4704A /* GetWmsProductZongTableViewCell.m */; };
+		3056B56F2008988900B4704A /* GetWmsProductZongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3056B56D2008988900B4704A /* GetWmsProductZongTableViewCell.xib */; };
+		3056B5722008AACE00B4704A /* CheckStockDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5712008AACE00B4704A /* CheckStockDetailListModel.m */; };
+		3056B5752008AAF300B4704A /* CheckStockDetailItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5742008AAF300B4704A /* CheckStockDetailItemModel.m */; };
 		30598E471F1CB363000530D6 /* UpdateAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30598E461F1CB363000530D6 /* UpdateAddressService.m */; };
 		3072AE891DA8948D00359147 /* OrderDetailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3072AE881DA8948D00359147 /* OrderDetailService.m */; };
 		307988631F6B79A80063DE2A /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 307988601F6B79A80063DE2A /* ico_make.png */; };
@@ -282,6 +304,8 @@
 		30BFCDA81FD7F5CD00ED3469 /* OrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCDA61FD7F5CD00ED3469 /* OrderDetailTableViewCell.m */; };
 		30BFCDAC1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCDAA1FD7F5EE00ED3469 /* MonthlyPlanInfoTableViewCell.xib */; };
 		30BFCDAD1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCDAB1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.m */; };
+		30C041742008B2FE00057AB2 /* GetWmsProductSumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C041722008B2FE00057AB2 /* GetWmsProductSumTableViewCell.m */; };
+		30C041752008B2FE00057AB2 /* GetWmsProductSumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30C041732008B2FE00057AB2 /* GetWmsProductSumTableViewCell.xib */; };
 		30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C476271F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m */; };
 		30C4762F1F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C476291F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.m */; };
 		30C476301F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C4762B1F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m */; };
@@ -350,8 +374,6 @@
 		30E5A06A1D9D0ADD00D94F77 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0681D9D0ADD00D94F77 /* ChangePasswordViewController.m */; };
 		30E5A06B1D9D0ADD00D94F77 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A0691D9D0ADD00D94F77 /* ChangePasswordViewController.xib */; };
 		30E5A06E1D9D138900D94F77 /* ChangePasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A06D1D9D138900D94F77 /* ChangePasswordService.m */; };
-		30E5A0751D9DFB6300D94F77 /* SearchOrderPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0731D9DFB6300D94F77 /* SearchOrderPathViewController.m */; };
-		30E5A0761D9DFB6300D94F77 /* SearchOrderPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A0741D9DFB6300D94F77 /* SearchOrderPathViewController.xib */; };
 		30E5A07A1D9E075800D94F77 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0781D9E075800D94F77 /* OrderDetailViewController.m */; };
 		30E5A07B1D9E075800D94F77 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A0791D9E075800D94F77 /* OrderDetailViewController.xib */; };
 		30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E616E61F28771B0039D73D /* ANBlurredImageView.m */; };
@@ -546,6 +568,12 @@
 		3021609B1F15BF650049374F /* LoginTextFieId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieId.m; sourceTree = "<group>"; };
 		3021609D1F15C2390049374F /* LoginTextFieldSuperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTextFieldSuperView.h; sourceTree = "<group>"; };
 		3021609E1F15C2390049374F /* LoginTextFieldSuperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextFieldSuperView.m; sourceTree = "<group>"; };
+		30240EC01FFE0C44007BC134 /* GetOrderTmsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetOrderTmsService.h; sourceTree = "<group>"; };
+		30240EC11FFE0C44007BC134 /* GetOrderTmsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetOrderTmsService.m; sourceTree = "<group>"; };
+		30240EC31FFE1BBE007BC134 /* TmsOrderInfoListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmsOrderInfoListModel.h; sourceTree = "<group>"; };
+		30240EC41FFE1BBE007BC134 /* TmsOrderInfoListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TmsOrderInfoListModel.m; sourceTree = "<group>"; };
+		30240EC61FFE1BD1007BC134 /* TmsOrderInfoItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmsOrderInfoItemModel.h; sourceTree = "<group>"; };
+		30240EC71FFE1BD1007BC134 /* TmsOrderInfoItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TmsOrderInfoItemModel.m; sourceTree = "<group>"; };
 		3026007C1EE5726F001F6C38 /* UIViewController+LLAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LLAdd.h"; sourceTree = "<group>"; };
 		3026007D1EE5726F001F6C38 /* UIViewController+LLAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLAdd.m"; sourceTree = "<group>"; };
 		3026007E1EE5726F001F6C38 /* YYKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKitMacro.h; sourceTree = "<group>"; };
@@ -694,7 +722,40 @@
 		3051DB911F1898EF0034629B /* NormalAdressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAdressListModel.m; sourceTree = "<group>"; };
 		3051DB931F18999A0034629B /* NormalAdressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalAdressModel.h; sourceTree = "<group>"; };
 		3051DB941F18999A0034629B /* NormalAdressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalAdressModel.m; sourceTree = "<group>"; };
-		3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
+		3054D1011FFC74E900E1D9B2 /* MainCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainCollection.plist; sourceTree = "<group>"; };
+		3054D1041FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetTmsOrderByAddressViewController.h; sourceTree = "<group>"; };
+		3054D1051FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetTmsOrderByAddressViewController.m; sourceTree = "<group>"; };
+		3054D1061FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetTmsOrderByAddressViewController.xib; sourceTree = "<group>"; };
+		3054D10A1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetTmsOrderByAddressService.h; sourceTree = "<group>"; };
+		3054D10B1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetTmsOrderByAddressService.m; sourceTree = "<group>"; };
+		3054D10E1FFCCF4500E1D9B2 /* TmsOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmsOrderListModel.h; sourceTree = "<group>"; };
+		3054D10F1FFCCF4500E1D9B2 /* TmsOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TmsOrderListModel.m; sourceTree = "<group>"; };
+		3054D1111FFCCF5600E1D9B2 /* TmsOrderItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmsOrderItemModel.h; sourceTree = "<group>"; };
+		3054D1121FFCCF5600E1D9B2 /* TmsOrderItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TmsOrderItemModel.m; sourceTree = "<group>"; };
+		3054D1181FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetTmsOrderByAddressTableViewCell.h; sourceTree = "<group>"; };
+		3054D1191FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetTmsOrderByAddressTableViewCell.m; sourceTree = "<group>"; };
+		3054D11A1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetTmsOrderByAddressTableViewCell.xib; sourceTree = "<group>"; };
+		3056B5482007145700B4704A /* GetWmsProductSumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductSumViewController.h; sourceTree = "<group>"; };
+		3056B5492007145700B4704A /* GetWmsProductSumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductSumViewController.m; sourceTree = "<group>"; };
+		3056B54A2007145700B4704A /* GetWmsProductSumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetWmsProductSumViewController.xib; sourceTree = "<group>"; };
+		3056B5582007177400B4704A /* GetWmsProductSumService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductSumService.h; sourceTree = "<group>"; };
+		3056B5592007177400B4704A /* GetWmsProductSumService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductSumService.m; sourceTree = "<group>"; };
+		3056B55B200887DF00B4704A /* GetWmsProductZongViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductZongViewController.h; sourceTree = "<group>"; };
+		3056B55C200887DF00B4704A /* GetWmsProductZongViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductZongViewController.m; sourceTree = "<group>"; };
+		3056B55D200887DF00B4704A /* GetWmsProductZongViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetWmsProductZongViewController.xib; sourceTree = "<group>"; };
+		3056B5602008880C00B4704A /* GetWmsProductZongService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductZongService.h; sourceTree = "<group>"; };
+		3056B5612008880C00B4704A /* GetWmsProductZongService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductZongService.m; sourceTree = "<group>"; };
+		3056B564200892DA00B4704A /* CheckStockListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckStockListModel.h; sourceTree = "<group>"; };
+		3056B565200892DA00B4704A /* CheckStockListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckStockListModel.m; sourceTree = "<group>"; };
+		3056B5672008930B00B4704A /* CheckStockItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckStockItemModel.h; sourceTree = "<group>"; };
+		3056B5682008930B00B4704A /* CheckStockItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckStockItemModel.m; sourceTree = "<group>"; };
+		3056B56B2008988900B4704A /* GetWmsProductZongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductZongTableViewCell.h; sourceTree = "<group>"; };
+		3056B56C2008988900B4704A /* GetWmsProductZongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductZongTableViewCell.m; sourceTree = "<group>"; };
+		3056B56D2008988900B4704A /* GetWmsProductZongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetWmsProductZongTableViewCell.xib; sourceTree = "<group>"; };
+		3056B5702008AACE00B4704A /* CheckStockDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckStockDetailListModel.h; sourceTree = "<group>"; };
+		3056B5712008AACE00B4704A /* CheckStockDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckStockDetailListModel.m; sourceTree = "<group>"; };
+		3056B5732008AAF300B4704A /* CheckStockDetailItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckStockDetailItemModel.h; sourceTree = "<group>"; };
+		3056B5742008AAF300B4704A /* CheckStockDetailItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckStockDetailItemModel.m; sourceTree = "<group>"; };
 		30598E451F1CB363000530D6 /* UpdateAddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateAddressService.h; sourceTree = "<group>"; };
 		30598E461F1CB363000530D6 /* UpdateAddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAddressService.m; sourceTree = "<group>"; };
 		3072AE871DA8948D00359147 /* OrderDetailService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailService.h; sourceTree = "<group>"; };
@@ -879,6 +940,9 @@
 		30BFCDA91FD7F5EE00ED3469 /* MonthlyPlanInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthlyPlanInfoTableViewCell.h; sourceTree = "<group>"; };
 		30BFCDAA1FD7F5EE00ED3469 /* MonthlyPlanInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthlyPlanInfoTableViewCell.xib; sourceTree = "<group>"; };
 		30BFCDAB1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthlyPlanInfoTableViewCell.m; sourceTree = "<group>"; };
+		30C041712008B2FE00057AB2 /* GetWmsProductSumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetWmsProductSumTableViewCell.h; sourceTree = "<group>"; };
+		30C041722008B2FE00057AB2 /* GetWmsProductSumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetWmsProductSumTableViewCell.m; sourceTree = "<group>"; };
+		30C041732008B2FE00057AB2 /* GetWmsProductSumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetWmsProductSumTableViewCell.xib; sourceTree = "<group>"; };
 		30C476261F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		30C476271F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
 		30C476281F4D2EFA00A5FB93 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -1009,9 +1073,6 @@
 		30E5A0691D9D0ADD00D94F77 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		30E5A06C1D9D138900D94F77 /* ChangePasswordService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordService.h; sourceTree = "<group>"; };
 		30E5A06D1D9D138900D94F77 /* ChangePasswordService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordService.m; sourceTree = "<group>"; };
-		30E5A0721D9DFB6300D94F77 /* SearchOrderPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOrderPathViewController.h; sourceTree = "<group>"; };
-		30E5A0731D9DFB6300D94F77 /* SearchOrderPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOrderPathViewController.m; sourceTree = "<group>"; };
-		30E5A0741D9DFB6300D94F77 /* SearchOrderPathViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOrderPathViewController.xib; sourceTree = "<group>"; };
 		30E5A0771D9E075800D94F77 /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		30E5A0781D9E075800D94F77 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		30E5A0791D9E075800D94F77 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
@@ -1574,6 +1635,104 @@
 			path = "地址管理";
 			sourceTree = "<group>";
 		};
+		3054D1031FFCC71F00E1D9B2 /* 物流订单 */ = {
+			isa = PBXGroup;
+			children = (
+				3054D1041FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.h */,
+				3054D1051FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m */,
+				3054D1061FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib */,
+			);
+			path = "物流订单";
+			sourceTree = "<group>";
+		};
+		3054D1091FFCC8F800E1D9B2 /* 物流订单 */ = {
+			isa = PBXGroup;
+			children = (
+				3054D10A1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.h */,
+				3054D10B1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.m */,
+				30240EC01FFE0C44007BC134 /* GetOrderTmsService.h */,
+				30240EC11FFE0C44007BC134 /* GetOrderTmsService.m */,
+			);
+			path = "物流订单";
+			sourceTree = "<group>";
+		};
+		3054D10D1FFCCF1900E1D9B2 /* 物流订单 */ = {
+			isa = PBXGroup;
+			children = (
+				3054D10E1FFCCF4500E1D9B2 /* TmsOrderListModel.h */,
+				3054D10F1FFCCF4500E1D9B2 /* TmsOrderListModel.m */,
+				3054D1111FFCCF5600E1D9B2 /* TmsOrderItemModel.h */,
+				3054D1121FFCCF5600E1D9B2 /* TmsOrderItemModel.m */,
+				30240EC31FFE1BBE007BC134 /* TmsOrderInfoListModel.h */,
+				30240EC41FFE1BBE007BC134 /* TmsOrderInfoListModel.m */,
+				30240EC61FFE1BD1007BC134 /* TmsOrderInfoItemModel.h */,
+				30240EC71FFE1BD1007BC134 /* TmsOrderInfoItemModel.m */,
+			);
+			path = "物流订单";
+			sourceTree = "<group>";
+		};
+		3054D1141FFCD25000E1D9B2 /* 物流订单 */ = {
+			isa = PBXGroup;
+			children = (
+				3054D1181FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.h */,
+				3054D1191FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m */,
+				3054D11A1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.xib */,
+			);
+			path = "物流订单";
+			sourceTree = "<group>";
+		};
+		3056B547200713A800B4704A /* 查看库存 */ = {
+			isa = PBXGroup;
+			children = (
+				3056B55B200887DF00B4704A /* GetWmsProductZongViewController.h */,
+				3056B55C200887DF00B4704A /* GetWmsProductZongViewController.m */,
+				3056B55D200887DF00B4704A /* GetWmsProductZongViewController.xib */,
+				3056B5482007145700B4704A /* GetWmsProductSumViewController.h */,
+				3056B5492007145700B4704A /* GetWmsProductSumViewController.m */,
+				3056B54A2007145700B4704A /* GetWmsProductSumViewController.xib */,
+			);
+			path = "查看库存";
+			sourceTree = "<group>";
+		};
+		3056B5572007176500B4704A /* 查看库存 */ = {
+			isa = PBXGroup;
+			children = (
+				3056B5602008880C00B4704A /* GetWmsProductZongService.h */,
+				3056B5612008880C00B4704A /* GetWmsProductZongService.m */,
+				3056B5582007177400B4704A /* GetWmsProductSumService.h */,
+				3056B5592007177400B4704A /* GetWmsProductSumService.m */,
+			);
+			path = "查看库存";
+			sourceTree = "<group>";
+		};
+		3056B5632008929A00B4704A /* 查看库存 */ = {
+			isa = PBXGroup;
+			children = (
+				3056B564200892DA00B4704A /* CheckStockListModel.h */,
+				3056B565200892DA00B4704A /* CheckStockListModel.m */,
+				3056B5672008930B00B4704A /* CheckStockItemModel.h */,
+				3056B5682008930B00B4704A /* CheckStockItemModel.m */,
+				3056B5702008AACE00B4704A /* CheckStockDetailListModel.h */,
+				3056B5712008AACE00B4704A /* CheckStockDetailListModel.m */,
+				3056B5732008AAF300B4704A /* CheckStockDetailItemModel.h */,
+				3056B5742008AAF300B4704A /* CheckStockDetailItemModel.m */,
+			);
+			path = "查看库存";
+			sourceTree = "<group>";
+		};
+		3056B56A2008986E00B4704A /* 查看库存 */ = {
+			isa = PBXGroup;
+			children = (
+				3056B56B2008988900B4704A /* GetWmsProductZongTableViewCell.h */,
+				3056B56C2008988900B4704A /* GetWmsProductZongTableViewCell.m */,
+				3056B56D2008988900B4704A /* GetWmsProductZongTableViewCell.xib */,
+				30C041712008B2FE00057AB2 /* GetWmsProductSumTableViewCell.h */,
+				30C041722008B2FE00057AB2 /* GetWmsProductSumTableViewCell.m */,
+				30C041732008B2FE00057AB2 /* GetWmsProductSumTableViewCell.xib */,
+			);
+			path = "查看库存";
+			sourceTree = "<group>";
+		};
 		3079885F1F6B79A80063DE2A /* JSDropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,10 +1862,7 @@
 				30A3C2FD1D9A0E0F00BBE0DA /* MainViewController.h */,
 				30A3C2FE1D9A0E0F00BBE0DA /* MainViewController.m */,
 				30A3C2FF1D9A0E0F00BBE0DA /* MainViewController.xib */,
-				3054D0FF1FFB89FC00E1D9B2 /* MainCollection.plist */,
-				30E5A0721D9DFB6300D94F77 /* SearchOrderPathViewController.h */,
-				30E5A0731D9DFB6300D94F77 /* SearchOrderPathViewController.m */,
-				30E5A0741D9DFB6300D94F77 /* SearchOrderPathViewController.xib */,
+				3054D1011FFC74E900E1D9B2 /* MainCollection.plist */,
 				30E9C09D1DA8E10300A09182 /* NewsViewController.h */,
 				30E9C09E1DA8E10300A09182 /* NewsViewController.m */,
 				30E9C09F1DA8E10300A09182 /* NewsViewController.xib */,
@@ -1716,6 +1872,8 @@
 				304A7AD61DB8BAE20039B0B2 /* ChartViewController.h */,
 				304A7AD71DB8BAE20039B0B2 /* ChartViewController.m */,
 				304A7AD81DB8BAE20039B0B2 /* ChartViewController.xib */,
+				3056B547200713A800B4704A /* 查看库存 */,
+				3054D1031FFCC71F00E1D9B2 /* 物流订单 */,
 				30061B241FD649B500B4CA53 /* 每月计划 */,
 				30BB2DED1F4593D3002E51E7 /* 库存管理 */,
 				30BB2D971F459359002E51E7 /* 库存登记 */,
@@ -1758,6 +1916,8 @@
 				30F7B8D71DBF37FC004CD128 /* AddGiftsService.m */,
 				302160911F15BEE40049374F /* RegisterService.h */,
 				302160921F15BEE40049374F /* RegisterService.m */,
+				3056B5572007176500B4704A /* 查看库存 */,
+				3054D1091FFCC8F800E1D9B2 /* 物流订单 */,
 				30061B231FD6490500B4CA53 /* 每月计划 */,
 				30BB2DF31F467B33002E51E7 /* 库存管理 */,
 				30BB2DD01F459391002E51E7 /* 库存登记 */,
@@ -1813,6 +1973,8 @@
 				30078D2A1DBB1AE400429813 /* PromotionOrderModel.m */,
 				30078D2C1DBB2AA200429813 /* OrderGiftModel.h */,
 				30078D2D1DBB2AA200429813 /* OrderGiftModel.m */,
+				3056B5632008929A00B4704A /* 查看库存 */,
+				3054D10D1FFCCF1900E1D9B2 /* 物流订单 */,
 				30F235B21FD7BCDC0056846C /* 每月计划 */,
 				30BB2DF71F46820A002E51E7 /* 库存管理 */,
 				30BB2DDD1F4593AD002E51E7 /* 库存登记 */,
@@ -1970,6 +2132,8 @@
 				30BE65001EE6BE5B00BD6978 /* ProductManListTableViewCell.h */,
 				30BE65011EE6BE5B00BD6978 /* ProductManListTableViewCell.m */,
 				30BE65021EE6BE5B00BD6978 /* ProductManListTableViewCell.xib */,
+				3056B56A2008986E00B4704A /* 查看库存 */,
+				3054D1141FFCD25000E1D9B2 /* 物流订单 */,
 				30930B891FD6852800D320F9 /* 每月计划 */,
 				30BB2DFE1F4697A0002E51E7 /* 库存管理 */,
 				30BB2DB61F459375002E51E7 /* 库存登记 */,
@@ -2717,6 +2881,11 @@
 					308783801D98CD45002EED76 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = AP5995A5FC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -2771,6 +2940,7 @@
 				30BFCDAC1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.xib in Resources */,
 				3051DB621F1868840034629B /* AddPartyViewController.xib in Resources */,
 				30061B331FD64F3100B4CA53 /* SelectGoodsViewController.xib in Resources */,
+				3056B56F2008988900B4704A /* GetWmsProductZongTableViewCell.xib in Resources */,
 				30BB2DCB1F459375002E51E7 /* ConfirmAddStockTableViewCell.xib in Resources */,
 				308783941D98CD45002EED76 /* LaunchScreen.storyboard in Resources */,
 				30E9C0AB1DA8E22500A09182 /* HotProductTableViewCell.xib in Resources */,
@@ -2798,6 +2968,7 @@
 				30BB2DF21F459485002E51E7 /* StockManViewController.xib in Resources */,
 				3035669D1F70CD2B009E6EFB /* StockOutConfirmViewController.xib in Resources */,
 				303567031F710384009E6EFB /* GetInputListTableViewCell.xib in Resources */,
+				3054D1081FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib in Resources */,
 				30E5A07B1D9E075800D94F77 /* OrderDetailViewController.xib in Resources */,
 				30EF59CF1DAF5C6D003F5729 /* CustomerAddressTableViewCell.xib in Resources */,
 				302160901F15BD500049374F /* RegisterViewController.xib in Resources */,
@@ -2809,7 +2980,6 @@
 				30F7B8D51DBF0B33004CD128 /* AddGiftProductsTableViewCell.xib in Resources */,
 				304A7AB71DB612180039B0B2 /* BrandTableViewCell.xib in Resources */,
 				30A3C30E1D9A101C00BBE0DA /* MakeOrderViewController.xib in Resources */,
-				30E5A0761D9DFB6300D94F77 /* SearchOrderPathViewController.xib in Resources */,
 				301AD3A41F6A1EBD00CD13D0 /* StockNoListViewController.xib in Resources */,
 				304A34191F0E071B0055D50C /* AreaCityViewController.xib in Resources */,
 				304A7AC11DB85ED00039B0B2 /* CheckSignatureViewController.xib in Resources */,
@@ -2817,12 +2987,14 @@
 				30A3C3011D9A0E0F00BBE0DA /* MainViewController.xib in Resources */,
 				304A7ADA1DB8BAE20039B0B2 /* ChartViewController.xib in Resources */,
 				30A3C2F01D991E1000BBE0DA /* WelcomeViewController.xib in Resources */,
+				30C041752008B2FE00057AB2 /* GetWmsProductSumTableViewCell.xib in Resources */,
 				301D7DC91F5A3E0400D83410 /* GetPartyListTableViewCell.xib in Resources */,
 				30930BA61FD6AC4700D320F9 /* SelectGoodsTableViewCell.xib in Resources */,
 				3000CA031DB20E2F00D8E731 /* ProductPolicyTableViewCell.xib in Resources */,
 				30BB2DCD1F459375002E51E7 /* GetAppStockListTableViewCell.xib in Resources */,
 				301D7DBC1F5A3D8D00D83410 /* GetAppBillFeeListViewController.xib in Resources */,
-				3054D1001FFB89FD00E1D9B2 /* MainCollection.plist in Resources */,
+				3054D1021FFC74E900E1D9B2 /* MainCollection.plist in Resources */,
+				3054D11C1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.xib in Resources */,
 				302675DE1F72494D0098DEF1 /* InputReturnConfirmViewController.xib in Resources */,
 				308783911D98CD45002EED76 /* Assets.xcassets in Resources */,
 				30930B8E1FD6858700D320F9 /* MonthlyPlanTableViewCell.xib in Resources */,
@@ -2833,6 +3005,7 @@
 				30A967D71FDA2C060049B956 /* ico_make.png in Resources */,
 				30BB2DB51F459359002E51E7 /* GetStockListViewController.xib in Resources */,
 				303567121F711BEB009E6EFB /* GetInputInfoViewController.xib in Resources */,
+				3056B55F200887DF00B4704A /* GetWmsProductZongViewController.xib in Resources */,
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
 				30F7B8E71DC036FB004CD128 /* ConfirmOrderGiftsTableViewCell.xib in Resources */,
 				301AD3BC1F6A2D1500CD13D0 /* StockNoListTableViewCell.xib in Resources */,
@@ -2853,6 +3026,7 @@
 				3035670D1F7103B0009E6EFB /* GetOupputListTableViewCell.xib in Resources */,
 				30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */,
 				30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */,
+				3056B54C2007145700B4704A /* GetWmsProductSumViewController.xib in Resources */,
 				30E9C0A11DA8E10300A09182 /* NewsViewController.xib in Resources */,
 				30930B931FD6903D00D320F9 /* ConfirmMonthlyPlanTableViewCell.xib in Resources */,
 			);
@@ -2939,6 +3113,7 @@
 				304A7AC91DB868080039B0B2 /* CheckSignatureService.m in Sources */,
 				303567001F710384009E6EFB /* GetInputInfoTableViewCell.m in Sources */,
 				30A3C2F41D991E4C00BBE0DA /* LoginService.m in Sources */,
+				3054D10C1FFCC90700E1D9B2 /* GetTmsOrderByAddressService.m in Sources */,
 				3088D30A1F4BDE16006031D9 /* GetOupputInfoModel.m in Sources */,
 				302675E91F725E550098DEF1 /* Stock_SaveInputService.m in Sources */,
 				301D7DEB1F5A3F5400D83410 /* RouteAnnotation.m in Sources */,
@@ -2960,8 +3135,10 @@
 				304A7AD91DB8BAE20039B0B2 /* ChartViewController.m in Sources */,
 				3051DB611F1868840034629B /* AddPartyViewController.m in Sources */,
 				304A7AEA1DB925990039B0B2 /* MyPNPieChart.m in Sources */,
+				3056B5622008880C00B4704A /* GetWmsProductZongService.m in Sources */,
 				30BB2DE91F4593AD002E51E7 /* AppStockListModel.m in Sources */,
 				309E10E61F6D1A0D008E1F49 /* InputInfoModel.m in Sources */,
+				3054D1131FFCCF5600E1D9B2 /* TmsOrderItemModel.m in Sources */,
 				302600921EE69F8B001F6C38 /* UIView+Uitls.m in Sources */,
 				301AFA801F4ADC4500E4FDFF /* GetToAddressListModel.m in Sources */,
 				30BFCDA81FD7F5CD00ED3469 /* OrderDetailTableViewCell.m in Sources */,
@@ -2970,6 +3147,7 @@
 				30CDC6591D9907CD0035602F /* UIImage+ReMake.m in Sources */,
 				30CDC63C1D9907CD0035602F /* PBBlurImageView.m in Sources */,
 				307988641F6B79A80063DE2A /* JSDropDownMenu.m in Sources */,
+				30240EC21FFE0C44007BC134 /* GetOrderTmsService.m in Sources */,
 				3035670C1F7103B0009E6EFB /* GetOupputListTableViewCell.m in Sources */,
 				30A3C2ED1D991E1000BBE0DA /* LoginViewController.m in Sources */,
 				30CDC6471D9907CD0035602F /* CALayer+Anim.m in Sources */,
@@ -2980,6 +3158,7 @@
 				302675E51F724BCA0098DEF1 /* Store_GetToAddressListService.m in Sources */,
 				30CDC6511D9907CD0035602F /* UIImage+Color.m in Sources */,
 				30A3C3251D9A71AC00BBE0DA /* MineTableViewCell.m in Sources */,
+				3056B54B2007145700B4704A /* GetWmsProductSumViewController.m in Sources */,
 				30E9C0A51DA8E15A00A09182 /* HotProductViewController.m in Sources */,
 				30DE40571F6D116100845CBB /* InputListModel.m in Sources */,
 				30A3C3121D9A102800BBE0DA /* MineViewController.m in Sources */,
@@ -2990,6 +3169,7 @@
 				30A3C2EF1D991E1000BBE0DA /* WelcomeViewController.m in Sources */,
 				30078D251DBB11B200429813 /* OrderConfirmService.m in Sources */,
 				30A3C30D1D9A101C00BBE0DA /* MakeOrderViewController.m in Sources */,
+				3054D1101FFCCF4500E1D9B2 /* TmsOrderListModel.m in Sources */,
 				3088D3051F4BDC49006031D9 /* GetOupputDetailModel.m in Sources */,
 				3088D30D1F4BDE96006031D9 /* GetOupputItemModel.m in Sources */,
 				302F6D431F73A57E00A84F39 /* Stock_GetOutProductTypeService.m in Sources */,
@@ -3005,8 +3185,10 @@
 				3041D80E1FA3044D008F74F8 /* UIViewController+BackButtonHandler.m in Sources */,
 				30CDC6581D9907CD0035602F /* UIWindow+Launch.m in Sources */,
 				301D7DDE1F5A3E5800D83410 /* NSString+Trim.m in Sources */,
+				3056B5752008AAF300B4704A /* CheckStockDetailItemModel.m in Sources */,
 				30E5A0661D9CF91300D94F77 /* AboutViewController.m in Sources */,
 				30EF59AE1DACDBC6003F5729 /* OrderTmsDetailsTableViewCell.m in Sources */,
+				3056B56E2008988900B4704A /* GetWmsProductZongTableViewCell.m in Sources */,
 				30CDC64F1D9907CD0035602F /* UIDevice+Extend.m in Sources */,
 				3021605E1F135B850049374F /* LM_alert.m in Sources */,
 				30E9C0AE1DA8E58A00A09182 /* HotProductService.m in Sources */,
@@ -3019,6 +3201,7 @@
 				30F235B51FD7BD040056846C /* MonthlyPlanListModel.m in Sources */,
 				30078D211DBA73EA00429813 /* AddGiftsViewController.m in Sources */,
 				30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */,
+				3054D1071FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m in Sources */,
 				30BB2DFA1F46821B002E51E7 /* StockProductListModel.m in Sources */,
 				30BB2DCC1F459375002E51E7 /* GetAppStockListTableViewCell.m in Sources */,
 				30930B821FD66BED00D320F9 /* AddMonthlyPlanViewController.m in Sources */,
@@ -3026,9 +3209,9 @@
 				30201F0A1F1082220055BA6A /* GetAppBillFeeListModel.m in Sources */,
 				301D7DB01F5A3D2E00D83410 /* GetAppBillFeeListTableViewCell.m in Sources */,
 				301CFDD11FBAF9FF00C8CB39 /* StockNoWaterItemModel.m in Sources */,
-				30E5A0751D9DFB6300D94F77 /* SearchOrderPathViewController.m in Sources */,
 				301D7DE21F5A3E5800D83410 /* UITextView+Trim.m in Sources */,
 				3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */,
+				3056B55E200887DF00B4704A /* GetWmsProductZongViewController.m in Sources */,
 				304A7AF31DBA62710039B0B2 /* ConfirmOrderTableViewCell.m in Sources */,
 				30B1AE661F74983300130A55 /* Store_GetOutProductListService.m in Sources */,
 				30B948EA1EEA4B5500E4C3EC /* IB_UIView.m in Sources */,
@@ -3056,6 +3239,7 @@
 				3026007F1EE5726F001F6C38 /* UIViewController+LLAdd.m in Sources */,
 				30BBF1361F17612400496518 /* Add_AddressViewController.m in Sources */,
 				30C476301F4D2EFA00A5FB93 /* TPKeyboardAvoidingTableView.m in Sources */,
+				3056B5722008AACE00B4704A /* CheckStockDetailListModel.m in Sources */,
 				303566CB1F70FF57009E6EFB /* GetInputListViewController.m in Sources */,
 				30BB2DEB1F4593AD002E51E7 /* StockListModel.m in Sources */,
 				304A7AE31DB91F1A0039B0B2 /* ProductChartModel.m in Sources */,
@@ -3077,6 +3261,7 @@
 				30F7B8CF1DBF0B15004CD128 /* AddGiftTypesTableViewCell.m in Sources */,
 				30BB2DC81F459375002E51E7 /* AddStockTableViewCell.m in Sources */,
 				30CDC64C1D9907CD0035602F /* NSString+Extend.m in Sources */,
+				3056B5692008930B00B4704A /* CheckStockItemModel.m in Sources */,
 				301D7DDC1F5A3E5800D83410 /* NSDictionary+Extension.m in Sources */,
 				3000CA021DB20E2F00D8E731 /* ProductPolicyTableViewCell.m in Sources */,
 				3021609F1F15C2390049374F /* LoginTextFieldSuperView.m in Sources */,
@@ -3128,10 +3313,12 @@
 				30BB2DD91F459391002E51E7 /* AddStockService.m in Sources */,
 				302675DA1F72469B0098DEF1 /* InputToAddressModel.m in Sources */,
 				30EF59BB1DAE0F01003F5729 /* OrderProgressNodeTableViewCell.m in Sources */,
+				30240EC81FFE1BD1007BC134 /* TmsOrderInfoItemModel.m in Sources */,
 				30CDC6571D9907CD0035602F /* UIView+Extend.m in Sources */,
 				30CDC65C1D9907CD0035602F /* UIImageView+SD.m in Sources */,
 				30CDC67B1D990B430035602F /* Tools.m in Sources */,
 				303566D81F70FF6A009E6EFB /* GetOupputListViewController.m in Sources */,
+				3054D11B1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m in Sources */,
 				301CFDCF1FBAF9FF00C8CB39 /* StockNoWaterInfoModel.m in Sources */,
 				303566B81F70F2AD009E6EFB /* InputReturnViewController.m in Sources */,
 				304A7AA91DB4D3E10039B0B2 /* ShoppingCartTableViewCell.m in Sources */,
@@ -3151,6 +3338,7 @@
 				30CDC65F1D9907CD0035602F /* SVIndefiniteAnimatedView.m in Sources */,
 				304A7AAE1DB5F72C0039B0B2 /* ProductTypeTableViewCell.m in Sources */,
 				30BFCDAD1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.m in Sources */,
+				3056B566200892DA00B4704A /* CheckStockListModel.m in Sources */,
 				302A05861DB0CC7200972490 /* PolicyItemModel.m in Sources */,
 				30A967D81FDA2C060049B956 /* LMDropDownMenu.m in Sources */,
 				30CDC65B1D9907CD0035602F /* UIButton+SD.m in Sources */,
@@ -3165,9 +3353,12 @@
 				30598E471F1CB363000530D6 /* UpdateAddressService.m in Sources */,
 				30BBF1381F17612400496518 /* AddressListViewController.m in Sources */,
 				30A3C3001D9A0E0F00BBE0DA /* MainViewController.m in Sources */,
+				30C041742008B2FE00057AB2 /* GetWmsProductSumTableViewCell.m in Sources */,
 				301AD3A31F6A1EBD00CD13D0 /* StockNoListViewController.m in Sources */,
 				301D7DC61F5A3E0400D83410 /* AddressListTableViewCell.m in Sources */,
+				3056B55A2007177400B4704A /* GetWmsProductSumService.m in Sources */,
 				3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */,
+				30240EC51FFE1BBE007BC134 /* TmsOrderInfoListModel.m in Sources */,
 				30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */,
 				30F7B8E11DBFAE80004CD128 /* SelectedGiftsTableViewCell.m in Sources */,
 				30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */,

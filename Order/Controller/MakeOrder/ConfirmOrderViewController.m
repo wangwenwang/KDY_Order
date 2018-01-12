@@ -337,7 +337,7 @@ typedef enum _CloseDatePicker {
         
         //设置添加赠品按钮是否可见
         NSString *bussinessCode = _app.business.BUSINESS_CODE;
-        if([bussinessCode rangeOfString:@"QH"].length > 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
+        if([bussinessCode rangeOfString:@"YIB"].length == 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
             //  if([bussinessName isEqualToString:@"凯东源前海项目"] && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
             
             _addGiftButton.hidden = NO;
