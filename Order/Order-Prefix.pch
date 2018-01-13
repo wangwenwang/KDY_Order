@@ -121,6 +121,9 @@
 // MonthlyPlanViewController 接收消息，刷新列表
 #define kMonthlyPlanViewController_receiveMsg @"MonthlyPlanViewController_receiveMsg"
 
+// GetTmsOrderByAddressViewController 刷新列表数据
+#define kGetTmsOrderByAddressViewController_refreshList @"GetTmsOrderByAddressViewController_refreshList"
+
 
 
 

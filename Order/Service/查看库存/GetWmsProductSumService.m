@@ -37,23 +37,27 @@
         NSString *msg = responseObject[@"msg"];
         
         
-        CheckStockDetailListModel *checkStockDetailListM = [[CheckStockDetailListModel alloc] initWithDictionary:result];
-
-        if(type == 1) {
-
-            if(checkStockDetailListM.checkStockDetailItemModel.count < 1) {
-
-                [self successOfGetWmsProductSumService_NoData];
+        if([result isKindOfClass:[NSDictionary class]]) {
+            CheckStockDetailListModel *checkStockDetailListM = [[CheckStockDetailListModel alloc] initWithDictionary:result];
+            
+            if(type == 1) {
+                
+                if(checkStockDetailListM.checkStockDetailItemModel.count < 1) {
+                    
+                    [self successOfGetWmsProductSumService_NoData];
+                } else {
+                    
+                    [self successOfGetWmsProductSumService:checkStockDetailListM];
+                }
+            } else if(type == -2) {
+                
+                [self failureOfGetWmsProductSumService:msg];
             } else {
-
-                [self successOfGetWmsProductSumService:checkStockDetailListM];
+                
+                [self failureOfGetWmsProductSumService:msg];
             }
-        } else if(type == -2) {
-
-            [self failureOfGetWmsProductSumService:msg];
         } else {
-
-            [self failureOfGetWmsProductSumService:msg];
+            [self successOfGetWmsProductSumService_NoData];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

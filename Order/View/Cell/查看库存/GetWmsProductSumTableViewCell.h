@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CheckStockDetailItemModel.h"
 
 @interface GetWmsProductSumTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) CheckStockDetailItemModel *checkStockDetailItemM;
 
 @end

@@ -45,4 +45,16 @@
     [super setSelected:selected animated:animated];
 }
 
+
+- (void)setCheckStockDetailItemM:(CheckStockDetailItemModel *)checkStockDetailItemM {
+    
+    _Loc.text = checkStockDetailItemM.loc;
+    _lottable04.text = checkStockDetailItemM.lottable04;
+    _QTY.text = checkStockDetailItemM.qTY;
+    _Casecnt.text = checkStockDetailItemM.casecnt;
+    _sku.text = checkStockDetailItemM.sku;
+    _QTYALLOCATED.text = checkStockDetailItemM.qTYALLOCATED;
+    _WeiQTYALLOCATED.text = checkStockDetailItemM.weiQTYALLOCATED;
+}
+
 @end

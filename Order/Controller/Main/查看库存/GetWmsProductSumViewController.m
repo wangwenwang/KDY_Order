@@ -7,9 +7,12 @@
 //
 
 #import "GetWmsProductSumViewController.h"
-#import "GetWmsProductSumService.h"
+#import "GetWmsProductSumTableViewCell.h"
 #import "CheckStockDetailListModel.h"
+#import "UITableView+NoDataPrompt.h"
+#import "GetWmsProductSumService.h"
 #import "AppDelegate.h"
+#import "Tools.h"
 
 @interface GetWmsProductSumViewController ()<GetWmsProductSumServiceDelegate>
 
@@ -43,16 +46,20 @@
 
 @property (strong, nonatomic) CheckStockDetailListModel *checkStockDetailListM;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *stockInfoViewHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewHeight;
+
 @end
 
 #define kPageCount 20
 
-#define kCellHeight 192
+#define kCellHeight 101
 
-#define kCellName @"GetTmsOrderByAddressTableViewCell"
+#define kCellName @"GetWmsProductSumTableViewCell"
 
 // 温馨提示
-#define kPrompt @"您还没有物流订单哦"
+#define kPrompt @"您还没有库存明细哦"
 
 @implementation GetWmsProductSumViewController
 
@@ -70,6 +77,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.title = @"库存详情";
+    
+    [self registerCell];
     
     [self initUI];
     
@@ -94,6 +105,13 @@
     _WeiQTYALLOCATED.text = _checkStockItemM.weiQTYALLOCATED;
 }
 
+// 注册Cell
+- (void)registerCell {
+    
+    [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
 
 #pragma mark - UITableViewDelegate
 
@@ -113,11 +131,11 @@
 
     // 处理界面
     static NSString *cellId = kCellName;
-    GetTmsOrderByAddressTableViewCell *cell = (GetTmsOrderByAddressTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    GetWmsProductSumTableViewCell *cell = (GetWmsProductSumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
 
-    TmsOrderItemModel *m = _tmsOrderListM.tmsOrderItemModel[indexPath.row];
+    CheckStockDetailItemModel *m = _checkStockDetailListM.checkStockDetailItemModel[indexPath.row];
 
-    cell.tmsOrderItemM = m;
+    cell.checkStockDetailItemM = m;
 
     return cell;
 }
@@ -129,19 +147,32 @@
     
     _checkStockDetailListM = checkStockDetailListM;
     
+    // 产品名称换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_checkStockItemM.descr fontSize:14 andWidth:(ScreenWidth - 12 - 65 - 3)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _stockInfoViewHeight.constant += (mulLine - oneLine);
+    
+    _scrollContentViewHeight.constant = 12 + _stockInfoViewHeight.constant + 12 + _checkStockDetailListM.checkStockDetailItemModel.count * kCellHeight;
+    
+    [_tableView reloadData];
 }
 
 
 - (void)successOfGetWmsProductSumService_NoData {
     
+    _checkStockDetailListM = nil;
     
+    [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    
+    [_tableView reloadData];
 }
 
 
 - (void)failureOfGetWmsProductSumService:(NSString *)msg {
     
-    
+    [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败"];
 }
-
 
 @end

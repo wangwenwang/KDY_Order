@@ -31,9 +31,12 @@
 #import "AddressListViewController.h"
 
 // 每月计划
-#import "MonthlyPlanViewController.h"
 #import "AddMonthlyPlanViewController.h"
+#import "MonthlyPlanViewController.h"
 #import "SelectGoodsService.h"
+
+// 物流订单
+#import "GetTmsOrderByAddressViewController.h"
 
 @interface CustomerListViewController ()<MakeOrderServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate, SelectGoodsServiceDelegate> {
     
@@ -254,6 +257,17 @@
 }
 
 
+- (void)popGetTmsOrderVC {
+    
+    StockManViewController *vc = [[StockManViewController alloc] init];
+    vc.partyM = _currentParty;
+    vc.addressM = _currentAddress;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGetTmsOrderByAddressViewController_refreshList object:nil userInfo:@{@"msg":_currentAddress.IDX}];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -360,6 +374,16 @@
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [_service getPartygetAddressInfo:m.IDX];
         }
+        
+        // 物流订单
+        else if([_vcClass isEqualToString:NSStringFromClass([GetTmsOrderByAddressViewController class])]) {
+            
+            PartyModel *m = _partysFilter[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
+        }
     }
     
     // 客户地址
@@ -370,12 +394,22 @@
         
         _currentAddress = _address[indexPath.row];
         
+        // 库存管理
         if([_vcClass isEqualToString:NSStringFromClass([MainViewController class])] && [_functionName isEqualToString:@"库存管理"]) {
             
             [self pushStockManVC];
-        } else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
+        }
+        
+        // 每月计划
+        else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
             
             [_selectGoodsService getProductTypesData];
+        }
+        
+        // 物流订单
+        else if([_vcClass isEqualToString:NSStringFromClass([GetTmsOrderByAddressViewController class])]) {
+            
+            [self popGetTmsOrderVC];
         }
     }
 }
@@ -564,6 +598,12 @@
         else if([_vcClass isEqualToString:NSStringFromClass([MonthlyPlanViewController class])]) {
         
             [_selectGoodsService getProductTypesData];
+        }
+        
+        // 物流订单
+        else if([_vcClass isEqualToString:NSStringFromClass([GetTmsOrderByAddressViewController class])]) {
+            
+            [self popGetTmsOrderVC];
         }
     } else {
         

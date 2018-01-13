@@ -10,6 +10,8 @@
 #import "TransportInformationViewController.h"
 #import "GetTmsOrderByAddressTableViewCell.h"
 #import "GetTmsOrderByAddressService.h"
+#import "CustomerListViewController.h"
+#import "UITableView+NoDataPrompt.h"
 #import "GetOrderTmsService.h"
 #import <MBProgressHUD.h>
 #import "AppDelegate.h"
@@ -20,8 +22,6 @@
 
 @property (strong, nonatomic) AppDelegate *app;
 
-@property (strong, nonatomic) TmsOrderListModel *tmsOrderListM;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (assign, nonatomic) int page;
@@ -29,6 +29,11 @@
 @property (strong, nonatomic) GetTmsOrderByAddressService *service;
 
 @property (strong, nonatomic) TmsOrderItemModel *tmsOrderItemM;
+
+@property (copy, nonatomic) NSString *partyAddressId;
+
+// TableView数据
+@property (strong, nonatomic) NSMutableArray *orders;
 
 @end
 
@@ -48,9 +53,11 @@
     
     if(self = [super init]) {
         
+        _orders = [[NSMutableArray alloc] init];
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _service = [[GetTmsOrderByAddressService alloc] init];
         _service.delegate = self;
+        _partyAddressId = @"";
     }
     return self;
 }
@@ -60,6 +67,8 @@
     [super viewDidLoad];
     
     self.title = @"查询物流";
+    
+    [self addNotification];
     
     [self registerCell];
     
@@ -71,6 +80,42 @@
     // 上拉分页加载
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataUp)];
     _tableView.mj_footer.hidden = YES;
+    
+    [_tableView.mj_header beginRefreshing];
+    
+    [Tools addNavRightItemTypeText:self andAction:@selector(rightNavOnclick) andTitle:@"筛选"];
+}
+
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc {
+    
+    [self removeNotification];
+}
+
+
+#pragma mark - 通知
+
+- (void)addNotification {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestNetWork:) name:kGetTmsOrderByAddressViewController_refreshList object:nil];
+}
+
+- (void)removeNotification {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kGetTmsOrderByAddressViewController_refreshList object:nil];
+}
+
+- (void)requestNetWork:(NSNotification *)aNotify {
+    
+    [Tools addNavRightItemTypeText:self andAction:@selector(rightNavOnclick) andTitle:@"已筛选"];
+    
+    NSString *msg = aNotify.userInfo[@"msg"];
+    
+    _partyAddressId = msg;
     
     [_tableView.mj_header beginRefreshing];
 }
@@ -91,7 +136,7 @@
     if([Tools isConnectionAvailable]) {
         
         _page ++;
-        [_service GetTmsOrderByAddress:_app.business.BUSINESS_IDX andUserIdx:_app.user.IDX andPartyAdressId:@"" andPage:_page andPagesize:kPageCount];
+        [_service GetTmsOrderByAddress:_app.business.BUSINESS_IDX andUserIdx:_app.user.IDX andPartyAdressId:_partyAddressId andPage:_page andPagesize:kPageCount];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -104,17 +149,19 @@
     if([Tools isConnectionAvailable]) {
         
         _page = 1;
-        [_service GetTmsOrderByAddress:_app.business.BUSINESS_IDX andUserIdx:_app.user.IDX andPartyAdressId:@"" andPage:_page andPagesize:kPageCount];
+        [_service GetTmsOrderByAddress:_app.business.BUSINESS_IDX andUserIdx:_app.user.IDX andPartyAdressId:_partyAddressId andPage:_page andPagesize:kPageCount];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
     }
 }
 
-
-- (void)didReceiveMemoryWarning {
+- (void)rightNavOnclick {
     
-    [super didReceiveMemoryWarning];
+    CustomerListViewController *vc = [[CustomerListViewController alloc] init];
+    vc.title = @"选择客户";
+    vc.vcClass = NSStringFromClass([self class]);
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -122,7 +169,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _tmsOrderListM.tmsOrderItemModel.count;
+    return _orders.count;
 }
 
 
@@ -138,7 +185,7 @@
     static NSString *cellId = kCellName;
     GetTmsOrderByAddressTableViewCell *cell = (GetTmsOrderByAddressTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
-    TmsOrderItemModel *m = _tmsOrderListM.tmsOrderItemModel[indexPath.row];
+    TmsOrderItemModel *m = _orders[indexPath.row];
     
     cell.tmsOrderItemM = m;
     
@@ -149,7 +196,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TmsOrderItemModel *m = _tmsOrderListM.tmsOrderItemModel[indexPath.row];
+    TmsOrderItemModel *m = _orders[indexPath.row];
     _tmsOrderItemM = m;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     GetOrderTmsService *getOrderTmsService= [[GetOrderTmsService alloc] init];
@@ -162,26 +209,72 @@
 
 - (void)successOfGetTmsOrderByAddress:(TmsOrderListModel *)tmsOrderListM {
     
-    _tmsOrderListM = tmsOrderListM;
     [_tableView.mj_header endRefreshing];
     [_tableView.mj_footer endRefreshing];
+    
+    // 页数处理
+    if(_page == 1) {
+        
+        _orders = [tmsOrderListM.tmsOrderItemModel mutableCopy];
+        
+        // 添加没订单提示
+        if(tmsOrderListM.tmsOrderItemModel.count == 0) {
+            
+            [_tableView noData:kPrompt andImageName:LM_NoResult_noResult];
+        } else {
+            
+            [_tableView removeNoOrderPrompt];
+        }
+    } else {
+        
+        for(int i = 0; i < tmsOrderListM.tmsOrderItemModel.count; i++) {
+            
+            TmsOrderItemModel *tmsOrderItemM = tmsOrderListM.tmsOrderItemModel[i];
+            [_orders addObject:tmsOrderItemM];
+        }
+    }
+    
+    // 是否隐藏上拉
+    if(_orders.count > 19) {
+        
+        _tableView.mj_footer.hidden = NO;
+    } else {
+        
+        _tableView.mj_footer.hidden = YES;
+    }
     
     [_tableView reloadData];
 }
 
 - (void)successOfGetTmsOrderByAddress_NoData {
     
-    _tmsOrderListM = nil;
     [_tableView.mj_header endRefreshing];
-    [_tableView.mj_footer endRefreshing];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    if(_page == 1) { // 没有数据
+        
+        [_orders removeAllObjects];
+        _tableView.mj_footer.hidden = YES;
+        [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    } else {  // 已加载完毕
+        
+        [_tableView.mj_footer endRefreshingWithNoMoreData];
+        [_tableView removeNoOrderPrompt];
+        [_tableView.mj_footer setCount_NoMoreData:_orders.count];
+    }
     
     [_tableView reloadData];
 }
 
 - (void)failureOfGetTmsOrderByAddress:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败"];
+    [_tableView.mj_header endRefreshing];
+    [_tableView.mj_footer endRefreshing];
+    //tableView上拉无更多数据时会进入这个回调
+    if(_page == 1) {
+        
+        [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    }
 }
 
 

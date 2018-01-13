@@ -16,7 +16,7 @@
 - (void)GetWmsProductZong:(nullable NSString *)BusinessCode andProductNo:(nullable NSString *)ProductNo andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount {
     
     NSDictionary *parameters = @{
-                                 @"BusinessCode" : @"ZLG02",
+                                 @"BusinessCode" : BusinessCode,
                                  @"ProductNo" : ProductNo,
                                  @"strPage" : @(strPage),
                                  @"strPageCount" : @(strPageCount),
@@ -33,28 +33,31 @@
         NSLog(@"请求%@成功---%@", kAPI_NAME, responseObject);
         
         int type = [responseObject[@"type"] intValue];
-        NSDictionary *result = responseObject[@"result"];
+        id result = responseObject[@"result"];
         NSString *msg = responseObject[@"msg"];
         
-        
-                CheckStockListModel *checkStockListM = [[CheckStockListModel alloc] initWithDictionary:result];
-        
-                if(type == 1) {
-        
-                    if(checkStockListM.checkStockItemModel.count < 1) {
-        
-                        [self successOfGetWmsProductZong_NoData];
-                    } else {
-        
-                        [self successOfGetWmsProductZong:checkStockListM];
-                    }
-                } else if(type == -2) {
-        
-                    [self failureOfGetWmsProductZong:msg];
+        if([result isKindOfClass:[NSDictionary class]]) {
+            CheckStockListModel *checkStockListM = [[CheckStockListModel alloc] initWithDictionary:result];
+            
+            if(type == 1) {
+                
+                if(checkStockListM.checkStockItemModel.count < 1) {
+                    
+                    [self successOfGetWmsProductZong_NoData];
                 } else {
-        
-                    [self failureOfGetWmsProductZong:msg];
+                    
+                    [self successOfGetWmsProductZong:checkStockListM];
                 }
+            } else if(type == -2) {
+                
+                [self failureOfGetWmsProductZong:msg];
+            } else {
+                
+                [self failureOfGetWmsProductZong:msg];
+            }
+        } else {
+            [self successOfGetWmsProductZong_NoData];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"请求%@失败:%@", kAPI_NAME, error);

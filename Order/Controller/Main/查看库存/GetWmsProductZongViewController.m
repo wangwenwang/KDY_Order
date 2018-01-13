@@ -10,6 +10,7 @@
 #import "GetWmsProductSumViewController.h"
 #import "GetWmsProductZongTableViewCell.h"
 #import "GetWmsProductZongService.h"
+#import "UITableView+NoDataPrompt.h"
 #import <MBProgressHUD.h>
 #import "AppDelegate.h"
 #import <MJRefresh.h>
@@ -31,7 +32,7 @@
 
 #define kPageCount 20
 
-#define kCellHeight 112
+#define kCellHeight 107
 
 #define kCellName @"GetWmsProductZongTableViewCell"
 
@@ -121,7 +122,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    CheckStockItemModel *m = _checkStockListM.checkStockItemModel[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -157,24 +159,49 @@
     [_tableView.mj_header endRefreshing];
     [_tableView.mj_footer endRefreshing];
     
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    CGFloat mulLine = 0;
+    for (CheckStockItemModel *m in _checkStockListM.checkStockItemModel) {
+        
+        mulLine = [Tools getHeightOfString:m.descr fontSize:14 andWidth:(ScreenWidth - 2 - 12 - 71.5 + 5 - 25 - 10 - 2)];
+        mulLine = mulLine ? mulLine : oneLine;
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+    }
+    [_tableView removeNoOrderPrompt];
     [_tableView reloadData];
 }
 
 
 - (void)successOfGetWmsProductZong_NoData {
     
-    _checkStockListM = nil;
     [_tableView.mj_header endRefreshing];
-    [_tableView.mj_footer endRefreshing];
     
+    if(_page == 1) { // 没有数据
+        
+        _checkStockListM = nil;
+        _tableView.mj_footer.hidden = YES;
+        [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    } else {  // 已加载完毕
+        
+        [_tableView.mj_footer endRefreshingWithNoMoreData];
+        [_tableView removeNoOrderPrompt];
+        [_tableView.mj_footer setCount_NoMoreData:_checkStockListM.checkStockItemModel.count];
+    }
     [_tableView reloadData];
 }
 
 
 - (void)failureOfGetWmsProductZong:(NSString *)msg {
     
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_tableView.mj_header endRefreshing];
+    [_tableView.mj_footer endRefreshing];
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败"];
+    _checkStockListM = nil;
+    if(_page == 1) {
+        
+        [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
+    }
+    [_tableView reloadData];
 }
 
 @end
