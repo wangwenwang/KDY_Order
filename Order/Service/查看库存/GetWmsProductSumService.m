@@ -16,7 +16,7 @@
 - (void)GetWmsProductSum:(nullable NSString *)BusinessCode andProductNo:(nullable NSString *)ProductNo andstrPage:(NSUInteger)strPage andstrPageCount:(NSUInteger)strPageCount {
     
     NSDictionary *parameters = @{
-                                 @"BusinessCode" : @"ZLG02",
+                                 @"BusinessCode" : BusinessCode,
                                  @"ProductNo" : ProductNo,
                                  @"strPage" : @(strPage),
                                  @"strPageCount" : @(strPageCount),

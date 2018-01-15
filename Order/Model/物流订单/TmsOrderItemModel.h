@@ -26,4 +26,6 @@
 
 -(NSDictionary *)toDictionary;
 
+@property (assign, nonatomic) CGFloat cellHeight;
+
 @end

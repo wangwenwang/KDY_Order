@@ -183,6 +183,14 @@
             }
         }
     }
+    
+//    // 查看库存功能 尚有bug
+//    for (NSDictionary *dic in _myCollectionDataArrM) {
+//        if([dic[@"title"] isEqualToString:@"查看库存"]) {
+//            [_myCollectionDataArrM removeObject:dic];
+//            break;
+//        }
+//    }
 }
 
 #pragma mark - UICollectionViewDelegate

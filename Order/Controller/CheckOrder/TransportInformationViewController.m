@@ -111,13 +111,21 @@
 // 填充数据
 - (void)fullData {
 
+    // 客户名称
     _customerNameLabel.text = [_tmsInformtions.ORD_TO_NAME isEqualToString:@""] ? @" " : _tmsInformtions.ORD_TO_NAME;
+    // 目的地址
     _toAddressLabel.text = [_tmsInformtions.ORD_TO_ADDRESS isEqualToString:@""] ? @" " : _tmsInformtions.ORD_TO_ADDRESS;
+    // 下单总量
     _orderTotalLabel.text = [NSString stringWithFormat:@"%.1f件", _tmsInformtions.ORD_QTY];
-    _sendGoodsTotalLabel.text = [NSString stringWithFormat:@"%.1f件", _tmsInformtions.TMS_QTY];
+    // 下单总重
     _orderTotalWeightLabel.text = [NSString stringWithFormat:@"%@吨", _tmsInformtions.ORD_WEIGHT];
-    _sendGoodsWeightLabel.text = [NSString stringWithFormat:@"%@吨", _tmsInformtions.TMS_WEIGHT];
+    // 下单体积
     _orderVolumeLabel.text = [NSString stringWithFormat:@"%@m³", _tmsInformtions.ORD_VOLUME];
+    // 发货总量
+    _sendGoodsTotalLabel.text = [NSString stringWithFormat:@"%.1f件", _tmsInformtions.TMS_QTY];
+    // 发货总重
+    _sendGoodsWeightLabel.text = [NSString stringWithFormat:@"%@吨", _tmsInformtions.TMS_WEIGHT];
+    // 发货体积
     _sendGoodsVolumeLabel.text = [NSString stringWithFormat:@"%@m³", _tmsInformtions.TMS_VOLUME];
 }
 

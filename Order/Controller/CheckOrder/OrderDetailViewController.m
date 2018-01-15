@@ -258,27 +258,41 @@
 
 // 填充数据
 - (void)fullData {
+    // 订单号
     _orderNoLabel.text = _order.ORD_NO;
+    // 创建时间
     _createTimeLabel.text = _order.ORD_DATE_ADD;
+    // 客户名称
     _customerNameLabel.text = _order.ORD_TO_NAME;
+    // 客户地址
     _customerAddressLabel.text = _order.ORD_TO_ADDRESS;
+    // 起始地点
     _beginAddressLabel.text = _order.ORD_FROM_NAME;
+    // 下单数量
     _orderNumberLabel.text = [NSString stringWithFormat:@"%.1f箱", _order.ORD_QTY];
+    // 下单总量
     _orderTotalWeigthLabel.text = [NSString stringWithFormat:@"%@吨", _order.ORD_WEIGHT];
+    // 下单体积
     _orderVolumeLabel.text = [NSString stringWithFormat:@"%@m³", _order.ORD_VOLUME];
+    // 订单流程
     _orderProcessLabel.text = _order.ORD_WORKFLOW;
+    // 订单状态
     _orderStatusLabel.text = [Tools getOrderStatus:_order.ORD_STATE];
+    // 付款方式
     _payMethodLabel.text = [Tools getPaymentType:_order.PAYMENT_TYPE];
+    // 现价
     _nowPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _order.ACT_PRICE];
-    
+    // 满减
     if(_order.MJ_REMARK == nil || [_order.MJ_REMARK isEqualToString:@""] || [_order.MJ_REMARK isEqualToString:@"+|+"]) {
         _OnSaleLabel.text = @"无";
+        // 付款价
         _payPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _order.ACT_PRICE];
-    }else {
+    } else {
         _OnSaleLabel.text = [NSString stringWithFormat:@"满减总计 - ￥%.f", _order.MJ_PRICE];
+        // 付款价
         _payPriceLabel.text = [NSString stringWithFormat:@"￥%.f", _order.ACT_PRICE - _order.MJ_PRICE];
     }
-    
+    // 备注
     _reMarkLabel.text = [_order.ORD_REMARK_CONSIGNEE isEqualToString:@""] ? @"无" : _order.ORD_REMARK_CONSIGNEE;
 }
 

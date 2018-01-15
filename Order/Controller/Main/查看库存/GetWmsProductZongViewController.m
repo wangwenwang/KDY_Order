@@ -26,7 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) CheckStockListModel *checkStockListM;
+// TableView数据
+@property (strong, nonatomic) NSMutableArray *orders;
 
 @end
 
@@ -48,6 +49,7 @@
         _app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _service = [[GetWmsProductZongService alloc] init];
         _service.delegate = self;
+        _orders = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -91,7 +93,7 @@
     if([Tools isConnectionAvailable]) {
         
         _page ++;
-        [_service GetWmsProductZong:_app.business.BUSINESS_CODE andProductNo:@"" andstrPage:1 andstrPageCount:20];
+        [_service GetWmsProductZong:_app.business.BUSINESS_CODE andProductNo:@"" andstrPage:_page andstrPageCount:kPageCount];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -104,7 +106,7 @@
     if([Tools isConnectionAvailable]) {
         
         _page = 1;
-        [_service GetWmsProductZong:_app.business.BUSINESS_CODE andProductNo:@"" andstrPage:1 andstrPageCount:20];
+        [_service GetWmsProductZong:_app.business.BUSINESS_CODE andProductNo:@"" andstrPage:_page andstrPageCount:kPageCount];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -116,13 +118,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _checkStockListM.checkStockItemModel.count;
+    return _orders.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CheckStockItemModel *m = _checkStockListM.checkStockItemModel[indexPath.row];
+    CheckStockItemModel *m = _orders[indexPath.row];
     return m.cellHeight;
 }
 
@@ -133,7 +135,7 @@
     static NSString *cellId = kCellName;
     GetWmsProductZongTableViewCell *cell = (GetWmsProductZongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
-    CheckStockItemModel *m = _checkStockListM.checkStockItemModel[indexPath.row];
+    CheckStockItemModel *m = _orders[indexPath.row];
     
     cell.checkStockItemM = m;
     
@@ -144,7 +146,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CheckStockItemModel *m = _checkStockListM.checkStockItemModel[indexPath.row];
+    CheckStockItemModel *m = _orders[indexPath.row];
     GetWmsProductSumViewController *vc = [[GetWmsProductSumViewController alloc] init];
     vc.checkStockItemM = m;
     [self.navigationController pushViewController:vc animated:YES];
@@ -155,15 +157,37 @@
 
 - (void)successOfGetWmsProductZong:(CheckStockListModel *)checkStockListM {
     
-    _checkStockListM = checkStockListM;
     [_tableView.mj_header endRefreshing];
     [_tableView.mj_footer endRefreshing];
     
+    // 页数处理
+    if(_page == 1) {
+        
+        _orders = [checkStockListM.checkStockItemModel mutableCopy];
+        
+        // 添加没订单提示
+        if(_orders.count == 0) {
+            
+            [_tableView noData:@"您还没有正在进行的订单" andImageName:LM_NoResult_noResult];
+        } else {
+            
+            [_tableView removeNoOrderPrompt];
+        }
+    } else {
+        
+        for(int i = 0; i < checkStockListM.checkStockItemModel.count; i++) {
+            
+            CheckStockItemModel *stockItem = checkStockListM.checkStockItemModel[i];
+            [_orders addObject:stockItem];
+        }
+    }
+    _tableView.mj_footer.hidden = NO;
+    
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
     CGFloat mulLine = 0;
-    for (CheckStockItemModel *m in _checkStockListM.checkStockItemModel) {
+    for (CheckStockItemModel *m in _orders) {
         
-        mulLine = [Tools getHeightOfString:m.descr fontSize:14 andWidth:(ScreenWidth - 2 - 12 - 71.5 + 5 - 25 - 10 - 2)];
+        mulLine = [Tools getHeightOfString:m.descr fontSize:14 andWidth:(ScreenWidth - 2 - 12 - 71.5 + 7 - 25 - 10 - 2)];
         mulLine = mulLine ? mulLine : oneLine;
         m.cellHeight = kCellHeight + (mulLine - oneLine);
     }
@@ -178,14 +202,14 @@
     
     if(_page == 1) { // 没有数据
         
-        _checkStockListM = nil;
+        [_orders removeAllObjects];
         _tableView.mj_footer.hidden = YES;
         [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
     } else {  // 已加载完毕
         
         [_tableView.mj_footer endRefreshingWithNoMoreData];
         [_tableView removeNoOrderPrompt];
-        [_tableView.mj_footer setCount_NoMoreData:_checkStockListM.checkStockItemModel.count];
+        [_tableView.mj_footer setCount_NoMoreData:_orders.count];
     }
     [_tableView reloadData];
 }
@@ -196,7 +220,6 @@
     [_tableView.mj_header endRefreshing];
     [_tableView.mj_footer endRefreshing];
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败"];
-    _checkStockListM = nil;
     if(_page == 1) {
         
         [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];

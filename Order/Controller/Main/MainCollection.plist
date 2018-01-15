@@ -60,7 +60,7 @@
 		<key>title</key>
 		<string>查看库存</string>
 		<key>imageName</key>
-		<string>LM_stock_enrolment</string>
+		<string>LM_stock_check</string>
 	</dict>
 </array>
 </plist>

@@ -19,11 +19,8 @@
 // 库存数
 @property (weak, nonatomic) IBOutlet UILabel *QTY;
 
-// 入数
-@property (weak, nonatomic) IBOutlet UILabel *Casecnt;
-
 // 可用数量
-@property (weak, nonatomic) IBOutlet UILabel *sku;
+@property (weak, nonatomic) IBOutlet UILabel *kesum;
 
 // 已分配数量
 @property (weak, nonatomic) IBOutlet UILabel *QTYALLOCATED;
@@ -51,8 +48,7 @@
     _Loc.text = checkStockDetailItemM.loc;
     _lottable04.text = checkStockDetailItemM.lottable04;
     _QTY.text = checkStockDetailItemM.qTY;
-    _Casecnt.text = checkStockDetailItemM.casecnt;
-    _sku.text = checkStockDetailItemM.sku;
+    _kesum.text = checkStockDetailItemM.kesum;
     _QTYALLOCATED.text = checkStockDetailItemM.qTYALLOCATED;
     _WeiQTYALLOCATED.text = checkStockDetailItemM.weiQTYALLOCATED;
 }

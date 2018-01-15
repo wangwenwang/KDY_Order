@@ -29,14 +29,14 @@
 // 库存数
 @property (weak, nonatomic) IBOutlet UILabel *QTY;
 
-// 单位
-@property (weak, nonatomic) IBOutlet UILabel *susr2;
-
 // 已分配数量
 @property (weak, nonatomic) IBOutlet UILabel *QTYALLOCATED;
 
 // 未配货需求
 @property (weak, nonatomic) IBOutlet UILabel *WeiQTYALLOCATED;
+
+// 入数
+@property (weak, nonatomic) IBOutlet UILabel *Casecnt;
 
 @property (strong, nonatomic) GetWmsProductSumService *service;
 
@@ -103,6 +103,16 @@
     _QTY.text = [NSString stringWithFormat:@"%@%@", _checkStockItemM.qTY, _checkStockItemM.susr2];
     _QTYALLOCATED.text = _checkStockItemM.qTYALLOCATED;
     _WeiQTYALLOCATED.text = _checkStockItemM.weiQTYALLOCATED;
+    _Casecnt.text = @"";
+}
+
+- (void)fullUI {
+    
+    // 入数
+    if(_checkStockDetailListM.checkStockDetailItemModel.count >= 1) {
+        CheckStockDetailItemModel *m = _checkStockDetailListM.checkStockDetailItemModel[0];
+        _Casecnt.text = m.casecnt;
+    }
 }
 
 // 注册Cell
@@ -147,9 +157,11 @@
     
     _checkStockDetailListM = checkStockDetailListM;
     
+    [self fullUI];
+    
     // 产品名称换行
     CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
-    CGFloat mulLine = [Tools getHeightOfString:_checkStockItemM.descr fontSize:14 andWidth:(ScreenWidth - 12 - 65 - 3)];
+    CGFloat mulLine = [Tools getHeightOfString:_checkStockItemM.descr fontSize:14 andWidth:(ScreenWidth - 12 - 71.5 + 5 - 3)];
     mulLine = mulLine ? mulLine : oneLine;
     _stockInfoViewHeight.constant += (mulLine - oneLine);
     

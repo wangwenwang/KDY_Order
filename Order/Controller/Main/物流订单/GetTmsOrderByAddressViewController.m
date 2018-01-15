@@ -39,7 +39,7 @@
 
 #define kPageCount 20
 
-#define kCellHeight 192
+#define kCellHeight 179
 
 #define kCellName @"GetTmsOrderByAddressTableViewCell"
 
@@ -175,7 +175,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kCellHeight;
+    TmsOrderItemModel *m = _orders[indexPath.row];
+    return m.cellHeight;
 }
 
 
@@ -235,7 +236,7 @@
     }
     
     // 是否隐藏上拉
-    if(_orders.count > 19) {
+    if(_orders.count >= kPageCount) {
         
         _tableView.mj_footer.hidden = NO;
     } else {
@@ -243,6 +244,19 @@
         _tableView.mj_footer.hidden = YES;
     }
     
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:14 andWidth:MAXFLOAT];
+    CGFloat mulLine = 0;
+    for (TmsOrderItemModel *m in _orders) {
+        
+        // 客户名称换行
+        mulLine = [Tools getHeightOfString:m.oRDTONAME fontSize:14 andWidth:(ScreenWidth - 12 - 71.5 + 5 - 3)];
+        mulLine = mulLine ? mulLine : oneLine;
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+        // 目标地址换行
+        mulLine = [Tools getHeightOfString:m.oRDTOADDRESS fontSize:14 andWidth:(ScreenWidth - 12 - 71.5 + 5 - 3)];
+        mulLine = mulLine ? mulLine : oneLine;
+        m.cellHeight = m.cellHeight + (mulLine - oneLine);
+    }
     [_tableView reloadData];
 }
 

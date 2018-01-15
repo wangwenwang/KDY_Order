@@ -67,16 +67,24 @@
     double totalPrice = m.ORDER_QTY * m.ACT_PRICE;
     
     NSString *imageURL = [NSString stringWithFormat:@"%@/%@", API_ServerAddress, m.PRODUCT_URL];
-    
-    _orderNoLabel.text = m.PRODUCT_NO;
-    _goodsNameLabel.text = m.PRODUCT_NAME;
-    _quantityLabel.text = m.ISSUE_QTY ? [NSString stringWithFormat:@"%.1f箱", m.ISSUE_QTY] : @"";
-    _weightLabel.text = [NSString stringWithFormat:@"%@吨", m.ORDER_WEIGHT];
-    _volumeLabel.text = [NSString stringWithFormat:@"%@m³", m.ORDER_VOLUME];
-    _originalPriceLabel.text = m.ORG_PRICE ? [NSString stringWithFormat:@"￥%.1f", m.ORG_PRICE] : @"￥0.0";
-    _payPriceLabel.text = m.ACT_PRICE ? [NSString stringWithFormat:@"￥%.1f", m.ACT_PRICE] : @"￥0.0";
-    _totalPriceLabel.text = totalPrice ? [NSString stringWithFormat:@"￥%.1f", totalPrice] : @"￥0.0";
+    // 产品图片
     [_goodsImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"ic_information_picture"]];
+    // 订单编号
+    _orderNoLabel.text = m.PRODUCT_NO;
+    // 货物名称
+    _goodsNameLabel.text = m.PRODUCT_NAME;
+    // 数量
+    _quantityLabel.text = m.ISSUE_QTY ? [NSString stringWithFormat:@"%.1f箱", m.ISSUE_QTY] : @"";
+    // 重量
+    _weightLabel.text = [NSString stringWithFormat:@"%@吨", m.ORDER_WEIGHT];
+    // 体积
+    _volumeLabel.text = [NSString stringWithFormat:@"%@m³", m.ORDER_VOLUME];
+    // 原价
+    _originalPriceLabel.text = m.ORG_PRICE ? [NSString stringWithFormat:@"￥%.1f", m.ORG_PRICE] : @"￥0.0";
+    // 付款价
+    _payPriceLabel.text = m.ACT_PRICE ? [NSString stringWithFormat:@"￥%.1f", m.ACT_PRICE] : @"￥0.0";
+    // 总价
+    _totalPriceLabel.text = totalPrice ? [NSString stringWithFormat:@"￥%.1f", totalPrice] : @"￥0.0";
 }
 
 @end
