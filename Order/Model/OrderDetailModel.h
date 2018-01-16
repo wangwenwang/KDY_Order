@@ -14,7 +14,7 @@
 /// 物料名称
 @property(copy, nonatomic)NSString *PRODUCT_NAME;
 @property(assign, nonatomic)double ORDER_QTY;
-@property(assign, nonatomic)double ORDER_UOM;
+@property(copy, nonatomic)NSString *ORDER_UOM;
 @property(copy, nonatomic)NSString *ORDER_WEIGHT;
 
 @property(copy, nonatomic)NSString *ORDER_VOLUME;

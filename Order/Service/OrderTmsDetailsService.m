@@ -37,7 +37,7 @@
                                 @"", @"strLicense",
                                 nil];
     
-    NSLog(@"获取物流信息详情:%@", parameters);
+    NSLog(@"物流详情信息:%@", parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

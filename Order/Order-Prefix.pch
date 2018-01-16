@@ -78,6 +78,15 @@
 
 #define mTagGetProductChartDataList @"mTagGetProductChartDataList"
 
+// 状态栏高度
+#define kStatusHeight  [[UIApplication sharedApplication] statusBarFrame].size.height
+
+// 导航栏高度
+#define kNavHeight  self.navigationController.navigationBar.frame.size.height
+
+// 底部宏
+#define SafeAreaBottomHeight (ScreenHeight == 812.0 ? 34 : 0)
+
 /// 固定值
 #define kENT_IDX 9008
 

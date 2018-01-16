@@ -305,6 +305,12 @@
     } else if([_app.business.BUSINESS_CODE rangeOfString:@"DK"].length > 0) {
         
         [[NSUserDefaults standardUserDefaults] setValue:@"DK" forKey:kWelcomeImageName];
+    } else if([_app.business.BUSINESS_CODE rangeOfString:@"MY"].length > 0) {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"MY" forKey:kWelcomeImageName];
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:kWelcomeImageName];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
     

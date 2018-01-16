@@ -92,7 +92,7 @@
     _myTableView.separatorStyle = NO;
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
-    [_myTableView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - 64 - CheckOrderViewControllerMenuHeight)];
+    [_myTableView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 49 - kStatusHeight - kNavHeight - CheckOrderViewControllerMenuHeight - SafeAreaBottomHeight)];
     
     [self registCell];
     

@@ -91,19 +91,33 @@
 
 - (void)fullData {
     
+    // 订单号为
     _orderNoLabel.text = _order.ORD_NO;
+    // 装运编号
     _zyNoLabel.text = _order.TMS_SHIPMENT_NO;
+    // 装运时间
     _zyDateLabel.text = _order.TMS_DATE_LOAD;
+    // 出库时间
     _orderIssueDateLabel.text = _order.TMS_DATE_ISSUE;
+    // 承运商名
     _fleetNameLabel.text = _order.TMS_FLEET_NAME;
-    _driverCarNumberLabel.text = _order.TMS_PLATE_NUMBER;
+    // 司机姓名
     _driverNameLabel.text = _order.TMS_DRIVER_NAME;
+    // 司机号码
     _driverPhoneNumLabel.text = _order.TMS_DRIVER_TEL;
+    // 车牌号码
+    _driverCarNumberLabel.text = _order.TMS_PLATE_NUMBER;
+    // 下单数量
     _orderQtyLabel.text = [NSString stringWithFormat:@"%.1f件", _order.ORD_ISSUE_QTY];
-    _orderFlowLabel.text = [Tools getOrderState:_order.ORD_WORKFLOW];
+    // 下单总重
     _orderWeightLabel.text = [NSString stringWithFormat:@"%@吨", _order.ORD_ISSUE_WEIGHT];
-    _orderStatusLabel.text = [Tools getOrderStatus:_order.ORD_STATE];
+    // 下单体积
     _orderVolLabel.text = [NSString stringWithFormat:@"%@m³", _order.ORD_ISSUE_VOLUME];
+    // 订单流程
+    _orderFlowLabel.text = [Tools getOrderState:_order.ORD_WORKFLOW];
+    // 订单状态
+    _orderStatusLabel.text = [Tools getOrderStatus:_order.ORD_STATE];
+    // 付款方式
     _payTypeLabel.text = [Tools getOrderStatus:_order.DRIVER_PAY];
 }
 
@@ -137,10 +151,15 @@
     static NSString *cellId = @"OrderTmsDetailsTableViewCell";
     OrderTmsDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     OrderDetailModel *m = _order.OrderDetails[indexPath.row];
+    // 产品名称
     cell.productNameLabel.text = m.PRODUCT_NAME;
+    // 产品编号
     cell.productNoLabel.text = m.PRODUCT_NO;
-    cell.productQtyLabel.text = [NSString stringWithFormat:@"%.1f箱", m.ISSUE_QTY + m.ORDER_UOM];
+    // 产品总重
     cell.productWeightLabel.text = [NSString stringWithFormat:@"%@吨", m.ISSUE_WEIGHT];
+    // 产品总量
+    cell.productQtyLabel.text = [NSString stringWithFormat:@"%.1f%@", m.ISSUE_QTY, m.ORDER_UOM];
+    // 产品体积
     cell.productVolLabel.text = [NSString stringWithFormat:@"%@m³", m.ISSUE_VOLUME];
     return cell;
 }

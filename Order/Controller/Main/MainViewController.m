@@ -129,9 +129,12 @@
     } else if([welcomeImageName isEqualToString:@"DK"]) {
         
         images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
+    } else if([welcomeImageName isEqualToString:@"MY"]) {
+        
+        images = [NSArray arrayWithObjects:@"ad_pic_21", nil];
     } else {
         
-        images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
+        images = [NSArray arrayWithObjects:@"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
     }
     
     // 本地加载图片的轮播器
@@ -238,19 +241,19 @@
     
     NSString *title =  _myCollectionDataArrM[indexPath.row][@"title"];
     
-    if(indexPath.row == 0) {
+    if([title isEqualToString:@"物流订单"]) {
         
         GetTmsOrderByAddressViewController *sopVC = [[GetTmsOrderByAddressViewController alloc] init];
         [self.navigationController pushViewController:sopVC animated:YES];
-    } else if(indexPath.row == 1) {
+    } else if([title isEqualToString:@"最新资讯"]) {
         
         NewsViewController *newsVC = [[NewsViewController alloc] init];
         [self.navigationController pushViewController:newsVC animated:YES];
-    } else if(indexPath.row == 2) {
+    } else if([title isEqualToString:@"热销产品"]) {
         
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];
         [self.navigationController pushViewController:hotVC animated:YES];
-    } else if(indexPath.row == 3) {
+    } else if([title isEqualToString:@"查看报表"]) {
         
         //        //客户报表   ,,  产品报表
         //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -258,10 +261,10 @@
         
         ChartViewController *vc = [[ChartViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-    } else if(indexPath.row == 4) {
+    } else if([title isEqualToString:@"查看订单"]) {
         
         self.tabBarController.selectedIndex = 2;
-    } else if(indexPath.row == 5) {
+    } else if([title isEqualToString:@"库存登记"]) {
         
         GetStockListViewController *vc = [[GetStockListViewController alloc] init];
         vc.title = title;
