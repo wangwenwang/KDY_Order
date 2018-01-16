@@ -58,6 +58,9 @@
         } else if([welcomeImageName isEqualToString:@"DK"]) {
             
             _welcomeImageView.image = [UIImage imageNamed:@"welcome2"];
+        } else if([welcomeImageName isEqualToString:@"MY"]) {
+            
+            _welcomeImageView.image = [UIImage imageNamed:@"welcome_default"];
         } else {
             
             [self skipAd];

@@ -15,7 +15,7 @@
         _PRODUCT_NO = @"";
         _PRODUCT_NAME = @"";
         _ORDER_QTY = 0;
-        _ORDER_UOM = 0;
+        _ORDER_UOM = @"";
         _ORDER_WEIGHT = @"";
         
         _ORDER_VOLUME = @"";
@@ -41,7 +41,7 @@
         _PRODUCT_NO = dict[@"PRODUCT_NO"] ? dict[@"PRODUCT_NO"] : @"";
         _PRODUCT_NAME = dict[@"PRODUCT_NAME"] ? dict[@"PRODUCT_NAME"] : @"";
         _ORDER_QTY = dict[@"ORDER_QTY"] ? [dict[@"ORDER_QTY"] doubleValue] : 0;
-        _ORDER_UOM = dict[@"ORDER_UOM"] ? [dict[@"ORDER_UOM"] doubleValue] : 0;
+        _ORDER_UOM = dict[@"ORDER_UOM"] ? dict[@"ORDER_UOM"] : @"";
         _ORDER_WEIGHT = dict[@"ORDER_WEIGHT"] ? dict[@"ORDER_WEIGHT"] : @"";
         
         _ORDER_VOLUME = dict[@"ORDER_VOLUME"] ? dict[@"ORDER_VOLUME"] : @"";
