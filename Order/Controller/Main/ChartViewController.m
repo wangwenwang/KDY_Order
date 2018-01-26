@@ -82,6 +82,9 @@
 //条形图可见区域大小
 @property (weak, nonatomic) IBOutlet UIView *barvisibleView;
 
+// 图表信息
+@property (strong, nonatomic) NSMutableArray *arrM;
+
 @end
 
 @implementation ChartViewController

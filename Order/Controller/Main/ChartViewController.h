@@ -10,8 +10,4 @@
 
 @interface ChartViewController : UIViewController
 
-
-/// 图表信息
-@property (strong, nonatomic) NSMutableArray *arrM;
-
 @end

@@ -64,15 +64,25 @@
 - (void)setAppStockM:(AppStockModel *)appStockM {
     
     _appStockM = appStockM;
+    // 产品代码
     _PRODUCT_NO.text = _appStockM.pRODUCTNO;
+    // 产品名称
     _PRODUCT_NAME.text = _appStockM.pRODUCTNAME;
+    // 生产日期
     _PRODUCTION_DATE.text = [Tools getDate_yyyy_mm_dd_hh_mm_ss:_appStockM.pRODUCTIONDATE];
+    // 到期日期
     _DAOQI.text = [Tools getDate_yyyy_mm_dd_hh_mm_ss:_appStockM.dAOQI];
+    // 数量
     _STOCK_QTY.text = _appStockM.sTOCKQTY;
+    // 保质期
     _EXPIRATION_DAY.text = [NSString stringWithFormat:@"%@个月", _appStockM.eXPIRATIONDAY];
+    // 产品货龄
     _HUO_LING.text = _appStockM.hUOLING;
+    // 填表时货龄
     _A_ZHUO_LING.text = _appStockM.aZHUOLING;
+    // 货龄状态
     _THUO_LING.text = _appStockM.tHUOLING;
+    // 填表货龄状态
     _A_ZTHUO_LING.text = _appStockM.aZTHUOLING;
     
     NSDateFormatter *_formatter_dd = [[NSDateFormatter alloc] init];

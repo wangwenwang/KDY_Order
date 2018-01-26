@@ -42,6 +42,8 @@
 
 @implementation MainViewController
 
+#pragma mark - 生命周期
+
 - (instancetype)init {
     if(self = [super init]) {
         self.title = @"首页";
@@ -69,24 +71,49 @@
     [self addNotification];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
+- (void)viewWillAppear:(BOOL)animated {
     
+    [super viewWillAppear:animated];
+    // 此类未初始化
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:kMainViewController_init] isEqualToString:@"NO"]) {
+        if([[[NSUserDefaults standardUserDefaults] objectForKey:k3DTouchType] isEqualToString:k3DTouchTypeMakeOrder]) {
+            
+            self.tabBarController.selectedIndex = 1;
+            self.navigationController.navigationBar.topItem.title = @"下单";
+        } else if([[[NSUserDefaults standardUserDefaults] objectForKey:k3DTouchType] isEqualToString:k3DTouchTypeCheckOrder]) {
+            
+            self.tabBarController.selectedIndex = 2;
+            self.navigationController.navigationBar.topItem.title = @"查单";
+        }
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:kMainViewController_init];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    
+    [super viewDidLayoutSubviews];
     //添加广告轮播
     [self addCycleScrollView];
 }
 
-
 - (void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"首页";
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:k3DTouchType];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
 
 - (void)dealloc {
     
@@ -99,19 +126,33 @@
 - (void)addNotification {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMsg:) name:kMainViewController_receiveMsg object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forceTouch:) name:kMainViewController_3DTouch object:nil];
 }
-
 
 - (void)removeNotification {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kMainViewController_receiveMsg object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMainViewController_3DTouch object:nil];
 }
-
 
 - (void)receiveMsg:(NSNotification *)aNotify{
     
     NSString *msg = aNotify.userInfo[@"msg"];
     [Tools showAlert:self.view andTitle:msg andTime:2.5];
+}
+
+- (void)forceTouch:(NSNotification *)aNotify{
+    
+    NSString *type = aNotify.userInfo[@"type"];
+    if([type isEqualToString:k3DTouchTypeMakeOrder]) {
+        
+        self.tabBarController.selectedIndex = 1;
+        self.navigationController.navigationBar.topItem.title = @"下单";
+    } else if([type isEqualToString:k3DTouchTypeCheckOrder]) {
+        
+        self.tabBarController.selectedIndex = 2;
+        self.navigationController.navigationBar.topItem.title = @"查单";
+    }
 }
 
 
@@ -120,7 +161,6 @@
 - (void)addCycleScrollView {
     
     NSArray *images = nil;
-    
     
     NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
     if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
@@ -142,20 +182,17 @@
     [self.view addSubview:_cycleScrollView1];
 }
 
-
 - (void)registerCell {
+    
     [self.myCollectionView registerNib:[UINib nibWithNibName:@"MainCollectionViewCell"bundle:nil]forCellWithReuseIdentifier:_cellID];
 }
-
 
 - (void)getPlistData {
     
     NSString *dataPath = [[NSBundle mainBundle]pathForResource:@"MainCollection.plist" ofType:nil];
     _myCollectionDataArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
     
-    
     // 怡宝才有 "库存登记"、"费用帐单"、"库存管理" 功能
-    
     if([_app.business.BUSINESS_CODE rangeOfString:@"YIB"].length == 0) {
         for (NSDictionary *dic in _myCollectionDataArrM) {
             if([dic[@"title"] isEqualToString:@"库存登记"]) {
@@ -186,15 +223,8 @@
             }
         }
     }
-    
-//    // 查看库存功能 尚有bug
-//    for (NSDictionary *dic in _myCollectionDataArrM) {
-//        if([dic[@"title"] isEqualToString:@"查看库存"]) {
-//            [_myCollectionDataArrM removeObject:dic];
-//            break;
-//        }
-//    }
 }
+
 
 #pragma mark - UICollectionViewDelegate
 
@@ -222,18 +252,15 @@
     return CGSizeMake(cellW, cellW * 0.9);
 }
 
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     return 1;
 }
 
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     return 1;
 }
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -254,10 +281,13 @@
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];
         [self.navigationController pushViewController:hotVC animated:YES];
     } else if([title isEqualToString:@"查看报表"]) {
+<<<<<<< HEAD
+=======
         
         //        //客户报表   ,,  产品报表
         //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         //        [_chartService getChartDataList:API_GET_CUSTOMER_CHART_DATA andTag:mTagGetCustomerChartDataList];
+>>>>>>> 18fc5ca53197b7237102b3a1ad1bf152f8146d81
         
         ChartViewController *vc = [[ChartViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
@@ -307,23 +337,5 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
-
-//#pragma mark - ChartServiceDelegate
-////获取客户报表回调
-//- (void)successOfChartServiceWithCustomer:(NSMutableArray *)customerChart {
-//
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    ChartViewController *vc = [[ChartViewController alloc] init];
-//    vc.arrM = customerChart;
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
-//
-//- (void)failureOfChartService:(NSString *)msg {
-//
-//    [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    [Tools showAlert:self.view andTitle:@"没有数据"];
-//}
-
-//获取产品报表回调
 
 @end

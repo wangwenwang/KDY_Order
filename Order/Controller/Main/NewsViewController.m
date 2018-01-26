@@ -18,8 +18,8 @@
 @implementation NewsViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     
+    [super viewDidLoad];
     self.title = @"最新资讯";
     
 }

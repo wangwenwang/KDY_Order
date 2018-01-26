@@ -108,10 +108,15 @@
 
 - (void)initUI {
     
+    // 业务名
     _BUSINESS_NAME.text = _stockM.bUSINESSNAME;
+    // 客户代码
     _PARTY_CODE.text = _stockM.pARTYCODE;
+    // 客户名称
     _PARTY_NAME.text = _stockM.pARTYNAME;
+    // 库存月份
     _STOCK_DATE.text = _stockM.sTOCKDATE;
+    // 填表日期
     _SUBMIT_DATE.text = _stockM.sUBMITDATE;
 }
 

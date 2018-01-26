@@ -36,6 +36,7 @@
                 <outlet property="reMarkLabel" destination="yrX-s5-4rS" id="S39-mk-9E2"/>
                 <outlet property="scrollViewHeight" destination="zgn-87-Xir" id="EDT-2P-641"/>
                 <outlet property="tailBtn" destination="qnG-l6-sT5" id="qQ9-xx-E51"/>
+                <outlet property="tailViewBottom" destination="hHJ-pg-pYr" id="hE0-fN-7d9"/>
                 <outlet property="tailViewHeight" destination="LvN-V7-FCk" id="iKs-9f-atl"/>
                 <outlet property="tailViewHeight_orderMsg" destination="sfI-kl-Xrn" id="uLu-DG-qaZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,7 +48,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mr-Z4-3ff">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="676"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="663"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTX-cT-gIg">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
@@ -439,7 +440,7 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Md-bH-lOM" userLabel="Tail View">
-                    <rect key="frame" x="0.0" y="676" width="320" height="45"/>
+                    <rect key="frame" x="0.0" y="663" width="320" height="45"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnG-l6-sT5">
                             <rect key="frame" x="107.5" y="8" width="105" height="29"/>
@@ -461,33 +462,23 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="qnG-l6-sT5" firstAttribute="centerY" secondItem="1Md-bH-lOM" secondAttribute="centerY" id="16B-ge-u4K"/>
                         <constraint firstItem="qnG-l6-sT5" firstAttribute="centerX" secondItem="1Md-bH-lOM" secondAttribute="centerX" id="bgW-B8-N6D"/>
                         <constraint firstAttribute="height" constant="45" id="sfI-kl-Xrn"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOq-ql-ioW" userLabel="右边边">
-                    <rect key="frame" x="315" y="0.0" width="5" height="721"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="5" id="woH-xn-YlV"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="1Md-bH-lOM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9KF-VJ-oSM"/>
-                <constraint firstAttribute="bottom" secondItem="KOq-ql-ioW" secondAttribute="bottom" id="BJU-gm-IrN"/>
                 <constraint firstItem="9mr-Z4-3ff" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cpu-wf-qxR"/>
                 <constraint firstItem="1Md-bH-lOM" firstAttribute="top" secondItem="9mr-Z4-3ff" secondAttribute="bottom" id="EAt-jU-nxV"/>
                 <constraint firstAttribute="trailing" secondItem="9mr-Z4-3ff" secondAttribute="trailing" id="EM6-7b-yDu"/>
-                <constraint firstItem="KOq-ql-ioW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="I4D-DJ-p0N"/>
-                <constraint firstAttribute="bottom" secondItem="1Md-bH-lOM" secondAttribute="bottom" id="hHJ-pg-pYr"/>
+                <constraint firstAttribute="bottom" secondItem="1Md-bH-lOM" secondAttribute="bottom" constant="13" id="hHJ-pg-pYr"/>
                 <constraint firstItem="9mr-Z4-3ff" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iLm-KO-oWc"/>
                 <constraint firstAttribute="trailing" secondItem="1Md-bH-lOM" secondAttribute="trailing" id="mLO-KB-idF"/>
-                <constraint firstAttribute="trailing" secondItem="KOq-ql-ioW" secondAttribute="trailing" id="oDr-IK-Vdi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="361" y="436.5"/>

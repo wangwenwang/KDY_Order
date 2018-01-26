@@ -308,9 +308,13 @@
         MakeOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
         
         PartyModel *m = _partysFilter[indexPath.row];
+        // 客户类型
         cell.customerTypeLabel.text = m.PARTY_TYPE;
+        // 客户代码
         cell.customerCodeLabel.text = m.PARTY_CODE;
+        // 客户城市
         cell.customerCityLabel.text = m.PARTY_CITY;
+        // 客户名称
         cell.customerNameLabel.text = m.PARTY_NAME;
         
         return cell;
@@ -320,9 +324,13 @@
         
         AddressModel *m = _address[indexPath.row];
         
+        // 联系人名
         cell.nameLabel.text = m.CONTACT_PERSON;
+        // 联系电话
         cell.telLabel.text = m.CONTACT_TEL;
+        // 地址代码
         cell.addressCodeLabel.text = m.ADDRESS_CODE;
+        // 地址详情
         cell.addressDetailLabel.text = m.ADDRESS_INFO;
         NSLog(@"%@", [NSValue valueWithCGRect:cell.addressDetailLabel.frame]);
         

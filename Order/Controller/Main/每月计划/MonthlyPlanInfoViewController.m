@@ -195,7 +195,8 @@
         
         MonthlyPlanItemModel *item = _monthlyPlanInfoM.monthlyPlanItemModel[i];
         CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
-        CGFloat mulLine = [Tools getHeightOfString:item.pRODUCTNAME fontSize:13 andWidth:ScreenWidth - 4 - 60 - 60 - 4];
+        CGFloat mulLine = [Tools getHeightOfString:item.pRODUCTNAME fontSize:13 andWidth:ScreenWidth - 4 - 6 - 60 - 60 - 4];
+        mulLine = mulLine ? mulLine : oneLine;
         item.cellHeight = kCellHeight + (mulLine - oneLine);
         tableViewHeight += item.cellHeight;
     }

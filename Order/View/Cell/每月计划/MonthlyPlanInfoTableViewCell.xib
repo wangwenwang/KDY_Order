@@ -228,7 +228,7 @@
                 <outlet property="goodsImageView" destination="V6F-ic-I71" id="t5p-9t-zzc"/>
                 <outlet property="totalPriceLabel" destination="DIC-4e-ryQ" id="umf-RE-ChM"/>
             </connections>
-            <point key="canvasLocation" x="1038" y="448"/>
+            <point key="canvasLocation" x="1037.5" y="448"/>
         </tableViewCell>
     </objects>
     <resources>

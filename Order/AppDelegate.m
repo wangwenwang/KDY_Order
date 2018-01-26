@@ -52,7 +52,42 @@
     
     [_window makeKeyAndVisible];
     
+    
+    
+    // 3D Touch
+    // 手动创建3D Touch选项
+    // 系统风格的icon
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeInvitation];
+    // 自定义风格的icon
+    UIApplicationShortcutIcon *customIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"menu_order_payed_unselected"];
+    
+    // 创建选项
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.makeOrder" localizedTitle:@"下单" localizedSubtitle:@"" icon:icon userInfo:nil];
+    UIApplicationShortcutItem *customItem = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.checkOrder" localizedTitle:@"查单" localizedSubtitle:@"" icon:customIcon userInfo:nil];
+    
+    // 添加到选项数组
+    [UIApplication sharedApplication].shortcutItems = @[customItem, item];
+    
+    // 清空3dTouchType
+    [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:k3DTouchType];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // 设置MainViewController未初始化
+    [[NSUserDefaults standardUserDefaults] setValue:@"NO" forKey:kMainViewController_init];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    
+    NSLog(@"aaaa:%@", shortcutItem.type);
+    
+    // 设置3dTouchType
+    [[NSUserDefaults standardUserDefaults] setValue:shortcutItem.type forKey:k3DTouchType];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMainViewController_3DTouch object:nil userInfo:@{@"type":shortcutItem.type}];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

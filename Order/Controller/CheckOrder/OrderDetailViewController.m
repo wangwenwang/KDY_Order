@@ -1,4 +1,4 @@
-//
+           //
 //  OrderDetailViewController.m
 //  Order
 //
@@ -114,6 +114,10 @@
 
 @property (strong, nonatomic) AppDelegate *app;
 
+// 底部视图距下
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tailViewBottom;
+
+
 @end
 
 
@@ -189,6 +193,8 @@
     
     // 总高度
     _scrollViewHeight.constant = _customerViewHeight.constant + 40 + _orderTableViewHeight.constant + 50 + _giftsTableViewHeight.constant + _tailViewHeight.constant;
+    
+    _tailViewBottom.constant = SafeAreaBottomHeight;
 }
 
 

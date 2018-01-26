@@ -71,6 +71,18 @@
 // 记住上次选择了哪个项目，例如：前海、怡宝。设置启动页图片用，默认怡宝
 #define kWelcomeImageName @"ListTimeSelectProduct"
 
+// 3D Touch 选择的类型
+#define k3DTouchType @"com.LM.3dTouchType"
+// 3D Touch 下单
+#define k3DTouchTypeMakeOrder @"com.LM.makeOrder"
+// 3D Touch 查单
+#define k3DTouchTypeCheckOrder @"com.LM.checkOrder"
+// 3D Touch 通知
+#define kMainViewController_3DTouch @"MainViewController_3DTouch"
+// 3D Touch MainViewController初始化
+#define kMainViewController_init @"MainViewController_init"
+
+
 //
 #define CheckOrderViewControllerMenuHeight 44
 

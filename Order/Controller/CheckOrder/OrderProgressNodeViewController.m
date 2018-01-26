@@ -56,10 +56,16 @@
     OrderProgressNodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     StateTackModel *m = _stateTacks[indexPath.row];
-    cell.statusLabel.text =[Tools getOrderState:m.ORDER_STATE];
+    cell.statusLabel.text = [Tools getOrderState:m.ORDER_STATE];
     cell.dateLabel.text = m.STATE_TIME;
     
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

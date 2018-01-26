@@ -24,10 +24,16 @@
 
 @end
 
+#define kCellName @"HotProductTableViewCell"
+
 @implementation HotProductViewController
 
+#pragma mark - 生命周期
+
 - (instancetype)init {
+    
     if(self = [super init]) {
+        
         _service = [[HotProductService alloc] init];
         _service.delegate = self;
     }
@@ -35,29 +41,33 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.title = @"热销产品";
-    
     [self registerCell];
-    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_service getHotProductData];
     
 }
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark -- 私有方法
+
+#pragma mark - 函数
+
 - (void)registerCell {
-    [_myTableView registerNib:[UINib nibWithNibName:@"HotProductTableViewCell" bundle:nil] forCellReuseIdentifier:@"HotProductTableViewCell"];
     
+    [_myTableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
     _myTableView.separatorStyle = NO;
 }
 
-#pragma mark -- UITableViewDelegate
+
+#pragma mark - UITableViewDelegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _products.count;
 }
@@ -68,7 +78,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //界面处理
-    static NSString *cellID = @"HotProductTableViewCell";
+    static NSString *cellID = kCellName;
     HotProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     //数据处理
@@ -108,17 +118,18 @@
     return cell;
 }
 
-#pragma mark -- HotProductServiceDelegate
+
+#pragma mark - HotProductServiceDelegate
+
 - (void)successOfHotProduct:(NSArray *)products {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
     _products = products;
-    
     [_myTableView reloadData];
 }
 
 - (void)failureOfHotProduct:(NSString *)msg {
+    
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取失败"];
 }

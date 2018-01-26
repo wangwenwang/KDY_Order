@@ -123,12 +123,15 @@
     
     [self registCell];
     
-    /// 下拉刷新
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
+    // 下拉刷新
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataDown)];
+    [header setTitle:@"下拉刷新" forState:MJRefreshStateIdle];
+    [header setTitle:@"松开刷新" forState:MJRefreshStatePulling];
+    [header setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
     header.lastUpdatedTimeLabel.hidden = YES;
     _myTableView.mj_header = header;
     
-    /// 上拉分页加载
+    // 上拉分页加载
     _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataUp)];
     _myTableView.mj_footer.hidden = YES;
     

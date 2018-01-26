@@ -99,7 +99,7 @@
 
 @end
 
-#define kSearchBar_Top 20
+#define kSearchBar_Top kStatusHeight
 
 #define kCellHeight 95.0
 
@@ -493,8 +493,8 @@
         label.text = @"请选择下单客户地址";
         CGFloat labelHeight = [Tools getHeightOfString:label.text fontSize:label.font.pointSize andWidth:MAXFLOAT];
         CGFloat label_top = 5;
-        CGFloat tableView_top = 5;
-        CGFloat btn_top = 20;
+        CGFloat tableView_top = 7;
+        CGFloat btn_top = 21;
         CGFloat btn_height = 35;
         CGFloat btn_bottom = 10;
         
@@ -506,8 +506,8 @@
         [_app.window addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.offset(0);
-            make.left.equalTo(@(20));
-            make.right.equalTo(@(-20));
+            make.left.equalTo(@(27));
+            make.right.equalTo(@(-27));
             
             CGFloat viewHeight = (allCellHeight + label_top + labelHeight + tableView_top + btn_top + btn_height + btn_bottom);
             if(_address.count <= 3) {

@@ -48,7 +48,9 @@
 @end
 
 @implementation CheckOrderPathViewController
-#pragma mark -- 生命周期
+
+#pragma mark - 生命周期
+
 - (instancetype)init {
     if(self = [super init]) {
         _orderIDX = @"";
@@ -102,7 +104,8 @@
 }
 
 #pragma mark - BMKMapViewDelegate
-/// 百度地图初始化完成
+
+// 百度地图初始化完成
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
     //判断连接状态
     if([Tools isConnectionAvailable]) {
@@ -206,9 +209,9 @@
                 _pathDistanceField.text = [NSString stringWithFormat:@"路线长度：%.1f公里 统计中...", distance];
             }
         }
-        //递归回调
+        // 递归回调
         [self searchDrivingPath];
-    }else {
+    } else {
         [Tools showAlert:self.view andTitle:@"获取线路失败！"];
     }
 }
@@ -240,14 +243,15 @@
         polylineView.strokeColor = [UIColor redColor];
         polylineView.lineWidth = 3;
         return polylineView;
-    }else {
+    } else {
         return nil;
     }
 }
 
+
 #pragma mark - 功能函数
 
-/// 根据polyline设置地图范围
+// 根据polyline设置地图范围
 - (void)mapViewFitPolyLine:(BMKPolyline *)polyline {
     if(polyline.pointCount < 1) {
         return;
@@ -474,8 +478,9 @@
     }
 }
 
-#pragma mark -- CheckPathServiceDelegate
-/// 获取订单线路位置集合成功
+#pragma mark - CheckPathServiceDelegate
+
+// 获取订单线路位置集合成功
 - (void)success {
     NSMutableArray *points = _service.orderLocations;
     
@@ -491,9 +496,8 @@
 }
 
 - (void)failure:(NSString *)msg {
+    
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取线路失败"];
 }
-
-
 
 @end
