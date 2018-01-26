@@ -281,13 +281,6 @@
         HotProductViewController *hotVC = [[HotProductViewController alloc] init];
         [self.navigationController pushViewController:hotVC animated:YES];
     } else if([title isEqualToString:@"查看报表"]) {
-<<<<<<< HEAD
-=======
-        
-        //        //客户报表   ,,  产品报表
-        //        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //        [_chartService getChartDataList:API_GET_CUSTOMER_CHART_DATA andTag:mTagGetCustomerChartDataList];
->>>>>>> 18fc5ca53197b7237102b3a1ad1bf152f8146d81
         
         ChartViewController *vc = [[ChartViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
