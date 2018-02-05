@@ -67,15 +67,9 @@
     _ORG_PRICE.text = [Tools TwoDecimal:inputItemM.pRICE];
     
     // 付款价
-//    CGFloat payPriceFlo = [getOupputItemM.oRGPRICE floatValue] - [inputItemM.pRICE floatValue] - [inputItemM.pRICE floatValue];
-//    NSString *payStr = [NSString stringWithFormat:@"%.2f", payPriceFlo];
-    
+    _payPriceLabel.text = [Tools TwoDecimal:inputItemM.pRICE];
     // 总价
-//    CGFloat floAll = payPriceFlo * [inputItemM.iNPUTQTY floatValue];
-//    NSString *floAllStr = [NSString stringWithFormat:@"%.2f", floAll];
-    
-//    _payPriceLabel.text = payStr;
-//    _totalPriceLabel.text = floAllStr;
+    _totalPriceLabel.text = [Tools TwoDecimal:inputItemM.sUM];
 }
 
 @end

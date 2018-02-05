@@ -65,8 +65,8 @@
     UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.makeOrder" localizedTitle:@"下单" localizedSubtitle:@"" icon:icon userInfo:nil];
     UIApplicationShortcutItem *customItem = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.checkOrder" localizedTitle:@"查单" localizedSubtitle:@"" icon:customIcon userInfo:nil];
     
-    // 添加到选项数组
-    [UIApplication sharedApplication].shortcutItems = @[customItem, item];
+    // 添加到选项数组，UIApplicationShortcutItem类iOS9.0才有
+    if(item && customItem) [UIApplication sharedApplication].shortcutItems = @[customItem, item];
     
     // 清空3dTouchType
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:k3DTouchType];
