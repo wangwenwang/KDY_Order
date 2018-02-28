@@ -216,9 +216,6 @@ typedef enum _CloseDatePicker {
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     
-    
-    
-    
     CGFloat giftTableViewHeight = 0;
     for (int i = 0; i < _selectedGifts.count; i++) {
         
@@ -309,6 +306,7 @@ typedef enum _CloseDatePicker {
 - (void)refreshGifts:(NSNotification *)aNotification {
     
     _selectedGifts = aNotification.userInfo[@"gifts"];
+    NSLog(@"");
 }
 
 
@@ -351,6 +349,9 @@ typedef enum _CloseDatePicker {
     
     [_orderTableView reloadData];
     [_giftTableView reloadData];
+    
+    // 解决iOS10以上添加赠品不显示问题
+    [self updateViewConstraints];
 }
 
 
