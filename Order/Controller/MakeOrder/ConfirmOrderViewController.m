@@ -49,6 +49,12 @@
 //添加赠品
 @property (weak, nonatomic) IBOutlet UIButton *addGiftButton;
 
+//指定赠品
+@property (strong, nonatomic) NSArray *assignGifts;
+
+//手动赠品
+@property (strong, nonatomic) NSArray *manualGifts;
+
 //已选择的赠品
 @property (strong, nonatomic) NSMutableArray *selectedGifts;
 
@@ -252,6 +258,15 @@ typedef enum _CloseDatePicker {
 }
 
 
+#pragma mark - SET方法
+
+- (void)setPromotionDetailGiftsOfServer:(NSMutableArray *)promotionDetailGiftsOfServer {
+    
+    _promotionDetailGiftsOfServer = promotionDetailGiftsOfServer;
+    _assignGifts = [_promotionDetailGiftsOfServer copy];
+}
+
+
 #pragma mark - 私有方法
 
 - (void)dealWithData {
@@ -305,48 +320,66 @@ typedef enum _CloseDatePicker {
 
 - (void)refreshGifts:(NSNotification *)aNotification {
     
-    _selectedGifts = aNotification.userInfo[@"gifts"];
+    _manualGifts = [aNotification.userInfo[@"gifts"] copy];
+    
+    // 清空赠品列表
+    [_selectedGifts removeAllObjects];
+    
+    // 添加指定赠品
+    for (int i = 0; i < _assignGifts.count; i++) {
+        
+        [_selectedGifts addObject:_assignGifts[i]];
+    }
+    
+    // 添加手选赠品
+    for (int i = 0; i < _manualGifts.count; i++) {
+
+        [_selectedGifts addObject:_manualGifts[i]];
+    }
     NSLog(@"");
 }
 
 
 - (void)initUI {
     
-    // 指定赠品
-    if(_promotionDetailGiftsOfServer.count > 0) {
-        
+    NSString *bussinessCode = _app.business.BUSINESS_CODE;
+    
+    // 既有指定赠品，也有手选赠品
+    if(_promotionDetailGiftsOfServer.count > 0 && ([bussinessCode rangeOfString:@"YIB"].length == 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"])) {
+        _customizePriceView.hidden = YES;
+        _coverView.hidden = YES;
         _selectedGifts = _promotionDetailGiftsOfServer;
         _noGiftPromptLabel.hidden = YES;
         _giftTableView.hidden = NO;
-        _customizePriceView.hidden = YES;
-        _coverView.hidden = YES;
-        _addGiftButton.hidden = YES;
-    }
-    
-    // 手选赠品或没有
-    else {
-        //没有赠品
-        _noGiftPromptLabel.hidden = _selectedGifts.count;
-        
-        _giftTableView.hidden = !_selectedGifts.count;
+        _addGiftButton.hidden = NO;
+    } else {
         
         _customizePriceView.hidden = YES;
         _coverView.hidden = YES;
-        
-        //设置添加赠品按钮是否可见
-        NSString *bussinessCode = _app.business.BUSINESS_CODE;
-        if([bussinessCode rangeOfString:@"YIB"].length == 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
-            //  if([bussinessName isEqualToString:@"凯东源前海项目"] && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
-            
-            _addGiftButton.hidden = NO;
-        } else {
-            
+        // 指定赠品
+        if(_promotionDetailGiftsOfServer.count > 0) {
+            _selectedGifts = _promotionDetailGiftsOfServer;
+            _noGiftPromptLabel.hidden = YES;
+            _giftTableView.hidden = NO;
             _addGiftButton.hidden = YES;
+        }
+        // 手选赠品或没有
+        else {
+            //没有赠品
+            _noGiftPromptLabel.hidden = _selectedGifts.count;
+            _giftTableView.hidden = !_selectedGifts.count;
+            //设置添加赠品按钮是否可见
+            if([bussinessCode rangeOfString:@"YIB"].length == 0 && [_promotionOrder.HAVE_GIFT isEqualToString:@"Y"]) {
+                _addGiftButton.hidden = NO;
+            } else {
+                _addGiftButton.hidden = YES;
+            }
         }
     }
     
-    [self refreshCollectDada];
     
+    
+    [self refreshCollectDada];
     [_orderTableView reloadData];
     [_giftTableView reloadData];
     
