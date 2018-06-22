@@ -22,4 +22,10 @@
 
 - (void)setDict:(NSDictionary *)dict;
 
+// 新增字段 CLASS_TYPE 1为满数量类型赠品 2为满数量赠品
+@property(copy, nonatomic)NSString *CLASS_TYPE;
+
+// 新增字段 PRODUCT_LIST， CLASS_TYPE为2时使用
+@property (strong, nonatomic) NSMutableArray *PRODUCT_LIST;
+
 @end

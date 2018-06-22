@@ -207,9 +207,18 @@ typedef enum _CloseDatePicker {
     
     [super viewWillAppear:animated];
     
-    [self initUI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self initUI];
+    });
     
     [self addNotification];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
 }
 
 
@@ -381,7 +390,18 @@ typedef enum _CloseDatePicker {
     
     [self refreshCollectDada];
     [_orderTableView reloadData];
+    
     [_giftTableView reloadData];
+    
+    // 解决 _giftTableView 没有刷新问题
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        usleep(200000);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_giftTableView reloadData];
+        });
+    });
     
     // 解决iOS10以上添加赠品不显示问题
     [self updateViewConstraints];
@@ -464,10 +484,37 @@ typedef enum _CloseDatePicker {
     if([_promotionOrder.HAVE_GIFT isEqualToString:@"Y"] && _promotionOrder.OrderDetails.count > 0) {
         if(_promotionOrder.GiftClasses.count > 0) {
             
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//
+//            OrderGiftModel *m = _promotionOrder.GiftClasses[0];
+//            [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyId andPartyAddressIdx:_orderAddressIdx andProductName:m.TYPE_NAME];
             
-            OrderGiftModel *m = _promotionOrder.GiftClasses[0];
-            [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyId andPartyAddressIdx:_orderAddressIdx andProductName:m.TYPE_NAME];
+            // 直接放行
+            //防止变量被下个控制器修改
+            NSMutableArray *giftsType = [[NSMutableArray alloc] init];
+            
+            for(int i = 0; i < _promotionOrder.GiftClasses.count; i++) {
+                
+                OrderGiftModel *m1 = [_promotionOrder.GiftClasses[i] copy];
+                [giftsType addObject:m1];
+            }
+            
+            if(giftsType.count > 0) {
+                
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                
+                AddGiftsViewController *vc = [[AddGiftsViewController alloc] init];
+                vc.partyId = _partyId;
+                vc.addressIdx = _orderAddressIdx;
+                vc.beginLine = [self getPromotionNumber];
+                vc.giftTypes = giftsType;
+                //    vc.orderDetails = _promotionOrder.OrderDetails;
+                vc.dictPromotionDetails = dict;
+                [self.navigationController pushViewController:vc animated:YES];
+            } else {
+                
+                [Tools showAlert:self.view andTitle:@"无赠品可添加"];
+            }
         } else {
             
             [Tools showAlert:self.view andTitle:@"没有可用产品类别"];

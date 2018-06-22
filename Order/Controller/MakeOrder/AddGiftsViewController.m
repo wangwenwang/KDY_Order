@@ -96,6 +96,14 @@
     [self initUI];
     
     _dictCopy = [_dictPromotionDetails mutableCopy];
+    
+    // 不加主线程会刷新不了界面（测试机 真机iPhoneX）
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [_typeTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        
+        [self tableView:_typeTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -235,11 +243,29 @@
         if([_dictPromotionDetails objectForKey:@(indexPath.row)]) {
             [_productTableView reloadData];
         } else {
+            
             OrderGiftModel *m = _giftTypes[indexPath.row];
             
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-            [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyId andPartyAddressIdx:_addressIdx andProductName:m.TYPE_NAME];
+            // CLASS_TYPE = 1，满数量类型赠品
+            if([m.CLASS_TYPE intValue] == 1) {
+                
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                
+                [_addGiftsService getAddGiftsData:_app.business.BUSINESS_IDX andPartyIdx:_partyId andPartyAddressIdx:_addressIdx andProductName:m.TYPE_NAME];
+            }
+            // CLASS_TYPE = 2，满数量赠品
+            else if([m.CLASS_TYPE intValue] == 2){
+                
+                NSMutableArray *arr = [[NSMutableArray alloc] init];
+                OrderGiftModel *m = _giftTypes[indexPath.row];
+                for (int i = 0; i < m.PRODUCT_LIST.count; i++) {
+                    
+                    [arr addObject:m.PRODUCT_LIST[i]];
+                }
+                NSMutableArray *promotionDetails = [Tools ChangeProductToPromotionDetailUtil:arr];
+                [_dictPromotionDetails setObject:promotionDetails forKey:@(_typeIndexRow)];
+                [_productTableView reloadData];
+            }
         }
         
     } else if(tableView.tag == 1002) {
@@ -426,6 +452,8 @@
 - (void)failureOfAddGifts:(NSString *)msg {
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_dictPromotionDetails removeAllObjects];
+    [_productTableView reloadData];
     [Tools showAlert:self.view andTitle:@"获取赠品失败"];
 }
 
