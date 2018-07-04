@@ -208,8 +208,8 @@
 #define API_GET_PRODUCT_CHART_DATA @"http://oms.kaidongyuan.com:8088/api/ProductCount"
 
 /// 请求产品策略
-#define API_GET_SUBMIT_ORDER @"http://oms.kaidongyuan.com:8088/api/SubmitOrder1"
-//#define API_GET_SUBMIT_ORDER @"https://tms.kaidongyuan.com/api/SubmitOrder1"
+//#define API_GET_SUBMIT_ORDER @"http://oms.kaidongyuan.com:8088/api/SubmitOrder1"
+#define API_GET_SUBMIT_ORDER @"https://tms.kaidongyuan.com/api/SubmitOrder1"
 
 /// 获取赠品品类详细信息
 #define API_GET_COMMODITY_DATA @"http://oms.kaidongyuan.com:8088/api/GetProductListType"

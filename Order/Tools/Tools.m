@@ -501,7 +501,7 @@ typedef void (^Animation)(void);
         PromotionDetailModel *p = [[PromotionDetailModel alloc] init];
         ProductModel *m = products[i];
         p.ENT_IDX = 9008;
-        p.PRODUCT_IDX = m.IDX;;
+        p.PRODUCT_IDX = m.IDX;
         p.PRODUCT_TYPE = @"GF";
         p.PRODUCT_NO = m.PRODUCT_NO;
         p.PRODUCT_NAME = m.PRODUCT_NAME;
@@ -516,6 +516,14 @@ typedef void (^Animation)(void);
         p.OPERATOR_IDX = [app.user.IDX longLongValue];
         p.LOTTABLE09 = m.ISINVENTORY;
         p.LOTTABLE11 = m.PRODUCT_INVENTORY;
+        // 是否算空瓶费，PRODUCT_TYPE_1 = "雪花瓶装啤酒" 时算空瓶费
+        p.PRODUCT_TYPE_1 = m.PRODUCT_TYPE;
+        p.PRODUCT_DESC = m.PRODUCT_DESC;
+        // 如果 PRODUCT_DESC = "空瓶费"，需要费用
+        if([p.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+            
+            p.ACT_PRICE = m.PRODUCT_PRICE;
+        }
         
         [arrReturn addObject:p];
     }

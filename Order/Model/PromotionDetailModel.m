@@ -47,6 +47,8 @@
         _ADD_DATE = @"";
         _EDIT_DATE = @"";
         _PRODUCT_URL = @"";
+        _PRODUCT_TYPE_1 = @"";
+        _PRODUCT_DESC = @"";
     }
     return self;
 }

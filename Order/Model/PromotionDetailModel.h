@@ -93,4 +93,10 @@
 /// Cell的高度
 @property (assign, nonatomic) CGFloat cellHeight;
 
+// 是否算空瓶费，PRODUCT_TYPE_1 = "雪花瓶装啤酒" 时算空瓶费
+@property (copy, nonatomic) NSString *PRODUCT_TYPE_1;
+
+// 雪花空瓶费时才有值，一般没值
+@property (copy, nonatomic) NSString *PRODUCT_DESC;
+
 @end

@@ -2025,15 +2025,15 @@
 				30061B311FD64F3100B4CA53 /* SelectGoodsViewController.h */,
 				30061B2F1FD64F3000B4CA53 /* SelectGoodsViewController.m */,
 				30061B301FD64F3000B4CA53 /* SelectGoodsViewController.xib */,
-				30F7B8D91DBFAD36004CD128 /* SelectedGiftsViewController.h */,
-				30F7B8DA1DBFAD36004CD128 /* SelectedGiftsViewController.m */,
-				30F7B8DB1DBFAD36004CD128 /* SelectedGiftsViewController.xib */,
 				30942A7C1F5006A4000095F3 /* ConfirmOrderViewController.h */,
 				30942A7B1F5006A4000095F3 /* ConfirmOrderViewController.m */,
 				30942A7A1F5006A4000095F3 /* ConfirmOrderViewController.xib */,
 				30078D1E1DBA73EA00429813 /* AddGiftsViewController.h */,
 				30078D1F1DBA73EA00429813 /* AddGiftsViewController.m */,
 				30078D201DBA73EA00429813 /* AddGiftsViewController.xib */,
+				30F7B8D91DBFAD36004CD128 /* SelectedGiftsViewController.h */,
+				30F7B8DA1DBFAD36004CD128 /* SelectedGiftsViewController.m */,
+				30F7B8DB1DBFAD36004CD128 /* SelectedGiftsViewController.xib */,
 			);
 			path = MakeOrder;
 			sourceTree = "<group>";

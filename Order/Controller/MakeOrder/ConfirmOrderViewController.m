@@ -413,11 +413,22 @@ typedef enum _CloseDatePicker {
     long long totalCount = 0;
     double orgPrice = 0;
     double actPrice = 0;
+    // 产品价格
     for(int i = 0; i < _promotionDetailsOfServer.count; i++) {
         PromotionDetailModel *m = _promotionDetailsOfServer[i];
         totalCount += m.PO_QTY;
         orgPrice += m.ORG_PRICE * m.PO_QTY;
         actPrice += m.ACT_PRICE * m.PO_QTY;
+    }
+    // 空瓶费，当 PRODUCT_TYPE_1 = "空瓶费" 时
+    for (int i = 0; i < _selectedGifts.count; i++) {
+        
+        PromotionDetailModel *m = _selectedGifts[i];
+        if([m.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+            
+            orgPrice += m.ACT_PRICE * m.PO_QTY;
+            actPrice += m.ACT_PRICE * m.PO_QTY;
+        }
     }
     _promotionOrder.ACT_PRICE = actPrice;
     for(int i = 0; i < _selectedGifts.count; i++) {

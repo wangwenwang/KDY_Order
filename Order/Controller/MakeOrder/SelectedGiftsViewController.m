@@ -72,14 +72,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -- 私有方法
+#pragma mark - 私有方法
 /// 注册Cell
 - (void)registerCell {
     [_myTableView registerNib:[UINib nibWithNibName:@"SelectedGiftsTableViewCell" bundle:nil] forCellReuseIdentifier:@"SelectedGiftsTableViewCell"];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-#pragma mark -- UITableViewDelegate
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 44;
@@ -107,9 +107,18 @@
 
 
 
-#pragma mark -- SelectedGiftsTableViewCellDelegate
+#pragma mark - SelectedGiftsTableViewCellDelegate
 - (void)delNumberOnclick:(NSInteger)indexRow {
+    
     PromotionDetailModel *m = _gifts[indexRow];
+    
+    // 空瓶费不能点击
+    if([m.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+        
+        [Tools showAlert:self.view andTitle:@"不可点击"];
+        return;
+    }
+    
     if(m.PO_QTY < 1) {
         return;
     }
@@ -127,6 +136,25 @@
         m.LOTTABLE11 ++;
     }
     
+    //如果 PRODUCT_TYPE == 雪花瓶装啤酒，算空瓶费
+    if([m.PRODUCT_TYPE_1 isEqualToString:@"雪花瓶装啤酒"]) {
+        
+        NSMutableArray *promotionDetails = _dictPromotionDetails[@(_typeIndexRow)];
+        for (int i = 0; i < promotionDetails.count; i++) {
+            
+            PromotionDetailModel *lm = _dictPromotionDetails[@(_typeIndexRow)][i];
+            if([lm.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+                
+                lm.PO_QTY --;
+                //删除已选的产品
+                if(lm.PO_QTY == 0) {
+                    [_gifts removeObject:lm];
+                }
+                break;
+            }
+        }
+    }
+    
     //删除已选的产品
     if(m.PO_QTY == 0) {
         [_gifts removeObject:m];
@@ -138,6 +166,14 @@
 - (void)addNumberOnclick:(NSInteger)indexRow {
     //库存不足
     PromotionDetailModel *m = _gifts[indexRow];
+    
+    // 空瓶费不能点击
+    if([m.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+        
+        [Tools showAlert:self.view andTitle:@"不可点击"];
+        return;
+    }
+    
     if([m.LOTTABLE09 isEqualToString:@"Y"] && m.LOTTABLE11 < 1) {
         [Tools showAlert:self.view andTitle:@"仓库剩余库存不足!"];
         return;
@@ -166,12 +202,43 @@
         m.LOTTABLE11 --;
     }
     
+    //如果 PRODUCT_TYPE == 雪花瓶装啤酒，算空瓶费
+    if([m.PRODUCT_TYPE_1 isEqualToString:@"雪花瓶装啤酒"]) {
+        
+        NSMutableArray *promotionDetails = _dictPromotionDetails[@(_typeIndexRow)];
+        for (int i = 0; i < promotionDetails.count; i++) {
+            
+            PromotionDetailModel *lm = _dictPromotionDetails[@(_typeIndexRow)][i];
+            if([lm.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+                
+                lm.PO_QTY ++;
+                //保存已选的产品，或刷新购物车数据
+                if([_gifts indexOfObject:lm] == NSNotFound) {
+                    [_gifts addObject:lm];
+                } else {
+                    //购物车与列表的Model用同一块内存，所以不用再次刷新
+                }
+                break;
+            }
+        }
+    }
+    
     m.PO_QTY ++;
     
     [_myTableView reloadData];
 }
 
 - (void)productNumberOnclick:(NSInteger)indexRow {
+    
+    PromotionDetailModel *m = _gifts[indexRow];
+    
+    // 空瓶费不能点击
+    if([m.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+        
+        [Tools showAlert:self.view andTitle:@"不可点击"];
+        return;
+    }
+    
     //处理输入框
     [_cusmotizeNumber becomeFirstResponder];
     _cusmotizeNumber.text = @"";
@@ -195,9 +262,11 @@
 
 
 
-#pragma mark -- 点击事件
+#pragma mark - 点击事件
 - (IBAction)confirmCustomizeNumberOnclick:(UIButton *)sender {
+    
     [self.view endEditing:YES];
+    
     _customizNumberView.hidden = YES;
     
     long long number = [_cusmotizeNumber.text longLongValue];
@@ -241,6 +310,31 @@
     //删除已选的产品
     if(m.PO_QTY == 0) {
         [_gifts removeObject:m];
+    }
+    
+    //如果 PRODUCT_TYPE == 雪花瓶装啤酒，算空瓶费
+    if([m.PRODUCT_TYPE_1 isEqualToString:@"雪花瓶装啤酒"]) {
+        
+        NSMutableArray *promotionDetails = _dictPromotionDetails[@(_typeIndexRow)];
+        for (int i = 0; i < promotionDetails.count; i++) {
+            
+            PromotionDetailModel *lm = _dictPromotionDetails[@(_typeIndexRow)][i];
+            if([lm.PRODUCT_DESC isEqualToString:@"空瓶费"]) {
+                
+                lm.PO_QTY += changeCount;
+                //保存已选的产品，或刷新购物车数据
+                if([_gifts indexOfObject:lm] == NSNotFound) {
+                    [_gifts addObject:lm];
+                } else {
+                    //购物车与列表的Model用同一块内存，所以不用再次刷新
+                }
+                //删除已选的产品
+                if(lm.PO_QTY == 0) {
+                    [_gifts removeObject:lm];
+                }
+                break;
+            }
+        }
     }
     
     [_myTableView reloadData];
