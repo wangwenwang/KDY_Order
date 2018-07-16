@@ -192,7 +192,7 @@
     }
 }
 
-
+// 切换帐号
 - (IBAction)changeAccountOnclick:(UIButton *)sender {
     LoginViewController *vc = [[LoginViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
