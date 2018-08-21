@@ -65,7 +65,7 @@ typedef enum : NSInteger {
 } CameraMoveDirection;
 
 
-@interface SelectGoodsViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, SelectGoodsServiceDelegate, OrderConfirmServiceDelegate, LMBlurredViewDelegate> {
+@interface SelectGoodsViewController () <UITableViewDelegate, UITableViewDataSource, SelectGoodsTableViewCellDelegate, ShoppingCartTableViewCellDelegate, SelectGoodsServiceDelegate, OrderConfirmServiceDelegate, LMBlurredViewDelegate, UISearchBarDelegate> {
     
     CameraMoveDirection direction;
     BOOL aniFlg;
@@ -288,6 +288,20 @@ typedef enum : NSInteger {
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 
+// 搜索功能
+// 产品信息列表数据(搜索过滤后的)
+@property (strong, nonatomic)NSMutableDictionary *productsFilter;
+
+// 遮罩上部分 有添加手势
+@property (strong, nonatomic) UIView *searchCoverTopView;
+
+// 遮罩下部分 有添加手势
+@property (strong, nonatomic) UIView *searchCoverBottomView;
+
+// 遮罩视觉部分 没手势
+@property (strong, nonatomic) CAShapeLayer *searchCoverCALayer;
+@property (strong, nonatomic) UIView *searchCoverView;
+
 @end
 
 @implementation SelectGoodsViewController
@@ -354,6 +368,8 @@ typedef enum : NSInteger {
     [self.view layoutIfNeeded];
     
     _otherMsg_top.constant = ScreenHeight / 2 - CGRectGetHeight(_otherMsgView.frame) / 2 - 64 - 20;
+    
+    [self addTableViewSearch];
     
     // 缓存机制
     // 保存已选的产品
@@ -460,6 +476,20 @@ typedef enum : NSInteger {
 
 
 #pragma mark - 功能函数
+
+- (void)addTableViewSearch {
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    searchBar.backgroundImage = [[UIImage alloc] init];
+    searchBar.barTintColor = [UIColor clearColor];
+    
+    UITextField *searchField = [searchBar valueForKey:@"_searchField"];
+    searchField.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    _myTableView.tableHeaderView = searchBar;
+    [searchBar setPlaceholder:@"按名称搜索"];
+    searchBar.delegate = self;
+}
 
 // 初始化其它信息视图
 - (void)initOtherMsgView:(BOOL)first {
@@ -686,7 +716,7 @@ typedef enum : NSInteger {
         // 下单总数量
         _currentMakeOrderTotalCount += modifyNumber;
         
-        ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
+        ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
         m.CHOICED_SIZE = number;
         
         _currentMakeOrderTotalPrice += _customsizeProductNumberPrice * modifyNumber;
@@ -696,7 +726,7 @@ typedef enum : NSInteger {
         _makeOrderTotalPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _currentMakeOrderTotalPrice];
         
         // 保存已选的产品
-        if([_selectedProducts indexOfObject:_dictProducts[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow]] == NSNotFound) {
+        if([_selectedProducts indexOfObject:_productsFilter[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow]] == NSNotFound) {
             
             [_selectedProducts addObject:m];
         }
@@ -723,7 +753,7 @@ typedef enum : NSInteger {
     
     if(tableView.tag == 1001) {
         
-        NSMutableArray *products = _dictProducts[@(_brandRow)][@(_currentSection)];
+        NSMutableArray *products = _productsFilter[@(_brandRow)][@(_currentSection)];
         return products.count;
     } else if(tableView.tag == 1002) {
         
@@ -747,7 +777,7 @@ typedef enum : NSInteger {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(tableView.tag == 1001) {
-        ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexPath.row];
+        ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][indexPath.row];
         
         // 产品基本信息高度69.0， 促销提示30.0， 促销信息44.0*条数
         if(m.PRODUCT_POLICY.count > 0) {
@@ -787,7 +817,7 @@ typedef enum : NSInteger {
     if(tableView.tag == 1001) {
         
         // 获取数据
-        ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][indexPath.row];
+        ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][indexPath.row];
         
         // 处理界面
         static NSString *cellId = @"SelectGoodsTableViewCell";
@@ -803,7 +833,8 @@ typedef enum : NSInteger {
         // 填充基本数据
         [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"ic_information_picture"] options:SDWebImageRefreshCached];
         cell.productNameLabel.text = [self getProductName:m.PRODUCT_NAME];
-        cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
+//        cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
+        cell.productFormatLabel.text = m.PRODUCT_DESC;
         cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
         cell.STOCK_QTY.text = @"";
@@ -1069,8 +1100,8 @@ typedef enum : NSInteger {
     _makeOrderTotalPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", _currentMakeOrderTotalPrice];
     
     // 保存已选的产品
-    if([_selectedProducts indexOfObject:_dictProducts[@(_brandRow)][@(section)][indexRow]] == NSNotFound) {
-        [_selectedProducts addObject:_dictProducts[@(_brandRow)][@(section)][indexRow]];
+    if([_selectedProducts indexOfObject:_productsFilter[@(_brandRow)][@(section)][indexRow]] == NSNotFound) {
+        [_selectedProducts addObject:_productsFilter[@(_brandRow)][@(section)][indexRow]];
     }
     
     [_shoppingCarTableView reloadData];
@@ -1349,6 +1380,8 @@ typedef enum : NSInteger {
     
     _dictProducts = dictProducts;
     
+    _productsFilter = [_dictProducts mutableCopy];
+    
     [self fd];
 }
 
@@ -1357,7 +1390,7 @@ typedef enum : NSInteger {
     
     /*************  计算产品名称换行  *************/
     
-    NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
+    NSMutableArray *array = _productsFilter[@(_brandRow)][@(_currentSection)];
     
     for(int j = 0; j < array.count; j++) {
         
@@ -1389,11 +1422,11 @@ typedef enum : NSInteger {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
-    [_dictProducts setObject:dict forKey:@(_brandRow)];
+    [_productsFilter setObject:dict forKey:@(_brandRow)];
     
     for (int i = 0; i < _selectedProducts.count; i++) {
         ProductModel *sm = _selectedProducts[i];
-        NSMutableArray *array = _dictProducts[@(_brandRow)][@(_currentSection)];
+        NSMutableArray *array = _productsFilter[@(_brandRow)][@(_currentSection)];
         for(int j = 0; j < array.count; j++) {
             ProductModel *am = array[j];
             if(sm.IDX == am.IDX) {
@@ -1818,6 +1851,63 @@ typedef enum : NSInteger {
     } cancelClickHandle:nil];
     
     return  NO;
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    NSLog(@"textDidChange : %@", searchText);
+    [_productsFilter removeAllObjects];
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    NSMutableArray *orgProducts = _dictProducts[@(_brandRow)][@(_currentSection)];
+    
+    if([[searchText trim] isEqualToString:@""]) {
+        
+        _productsFilter = [_dictProducts mutableCopy];
+    } else {
+        
+        for (int i = 0; i < orgProducts.count; i++) {
+            
+            ProductModel *m = _dictProducts[@(_brandRow)][@(_currentSection)][i];
+            
+            if([m.PRODUCT_NAME rangeOfString:searchText options:NSCaseInsensitiveSearch].length > 0) {
+                
+                [products addObject:m];
+                NSDictionary *dict = [NSDictionary dictionaryWithObject:products forKey:@(_currentSection)];
+                [_productsFilter setObject:dict forKey:@(_brandRow)];
+            } else {
+                
+            }
+        }
+    }
+    
+    [_myTableView reloadData];
+}
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    //    [self.searchCoverView setHidden:NO];
+    [self.view.window.layer addSublayer:self.searchCoverCALayer];
+    [self.searchCoverTopView setHidden:NO];
+    [self.searchCoverBottomView setHidden:NO];
+}
+
+
+- (void)searchCoverViewOnclick {
+    
+    [self.view endEditing:YES];
+    //    [self.searchCoverView setHidden:YES];
+    [_searchCoverCALayer removeFromSuperlayer];
+    [self.searchCoverTopView setHidden:YES];
+    [self.searchCoverBottomView setHidden:YES];
+}
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self searchCoverViewOnclick];
 }
 
 @end
