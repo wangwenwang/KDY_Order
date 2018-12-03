@@ -16,4 +16,8 @@
 // 功能名称
 @property (copy, nonatomic) NSString *functionName;
 
+// 拜访线路，拜访功能使用
+@property (strong, nonatomic) NSArray *lines;
+
+
 @end

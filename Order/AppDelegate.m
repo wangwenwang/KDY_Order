@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WelcomeViewController.h"
+#import "Tools.h"
 
 @interface AppDelegate ()<BMKGeneralDelegate>{
     BMKMapManager * _mapManager;
@@ -16,7 +17,6 @@
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     

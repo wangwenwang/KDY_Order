@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetPartyVisitListViewController">
+            <connections>
+                <outlet property="statusLabel" destination="EH3-f6-nNf" id="Zxg-f3-H8R"/>
+                <outlet property="tableView" destination="yh8-BY-krt" id="asf-nx-8lA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weekLabel" destination="2gs-9R-qlf" id="jsG-5e-ouZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtt-E6-726" userLabel="中部分">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-ts-6fF" userLabel="拜访线路">
+                            <rect key="frame" x="0.0" y="0.0" width="183.5" height="49.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拜访线路：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFV-3L-jV1">
+                                    <rect key="frame" x="10" y="16.5" width="71.5" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未设置" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gs-9R-qlf">
+                                    <rect key="frame" x="81.5" y="16.5" width="43" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UITableViewCellAccessoryDisclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="X0H-Cu-2MW">
+                                    <rect key="frame" x="150.5" y="12.5" width="25" height="25"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="2gs-9R-qlf" firstAttribute="top" secondItem="NFV-3L-jV1" secondAttribute="top" id="17J-xh-DE0"/>
+                                <constraint firstItem="NFV-3L-jV1" firstAttribute="leading" secondItem="HPu-ts-6fF" secondAttribute="leading" constant="10" id="3Ms-QW-3SZ"/>
+                                <constraint firstAttribute="trailing" secondItem="X0H-Cu-2MW" secondAttribute="trailing" constant="8" id="adu-DH-BH1"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2gs-9R-qlf" secondAttribute="trailing" constant="3" id="g7f-ce-usZ"/>
+                                <constraint firstItem="X0H-Cu-2MW" firstAttribute="centerY" secondItem="HPu-ts-6fF" secondAttribute="centerY" id="iRT-1R-wtl"/>
+                                <constraint firstItem="NFV-3L-jV1" firstAttribute="centerY" secondItem="HPu-ts-6fF" secondAttribute="centerY" id="uRU-Hu-RJe"/>
+                                <constraint firstItem="2gs-9R-qlf" firstAttribute="leading" secondItem="NFV-3L-jV1" secondAttribute="trailing" id="z6y-hL-H2S"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="Fj0-Ts-OaT" appends="YES" id="Dg0-7S-R9m"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOb-u3-vhH" userLabel="拜访状态">
+                            <rect key="frame" x="191.5" y="0.0" width="183.5" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拜访状态：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwG-3t-eHo">
+                                    <rect key="frame" x="10" y="16.5" width="71.5" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未设置" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EH3-f6-nNf">
+                                    <rect key="frame" x="81.5" y="16.5" width="43" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UITableViewCellAccessoryDisclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="dUC-cj-rPb">
+                                    <rect key="frame" x="150.5" y="12.5" width="25" height="25"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="dUC-cj-rPb" firstAttribute="centerY" secondItem="VOb-u3-vhH" secondAttribute="centerY" id="Cxa-93-G0d"/>
+                                <constraint firstAttribute="trailing" secondItem="dUC-cj-rPb" secondAttribute="trailing" constant="8" id="D5o-V5-zqg"/>
+                                <constraint firstItem="EH3-f6-nNf" firstAttribute="top" secondItem="FwG-3t-eHo" secondAttribute="top" id="EHa-D3-sp0"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EH3-f6-nNf" secondAttribute="trailing" constant="3" id="SQc-6S-JJN"/>
+                                <constraint firstItem="EH3-f6-nNf" firstAttribute="leading" secondItem="FwG-3t-eHo" secondAttribute="trailing" id="XDt-Ma-rB7"/>
+                                <constraint firstItem="FwG-3t-eHo" firstAttribute="centerY" secondItem="VOb-u3-vhH" secondAttribute="centerY" id="dx1-JY-3dJ"/>
+                                <constraint firstItem="FwG-3t-eHo" firstAttribute="leading" secondItem="VOb-u3-vhH" secondAttribute="leading" constant="10" id="qwL-8r-icG"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="cHh-lN-UTM" appends="YES" id="xPV-Y8-8Ga"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTw-kx-zoT" userLabel="边框">
+                            <rect key="frame" x="0.0" y="49" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.89019607840000003" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.29999999999999999" id="TE6-8i-OJf"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="VOb-u3-vhH" firstAttribute="leading" secondItem="HPu-ts-6fF" secondAttribute="trailing" constant="8" id="3gO-Tf-MnK"/>
+                        <constraint firstAttribute="height" constant="50" id="6KI-tO-uj1"/>
+                        <constraint firstItem="VOb-u3-vhH" firstAttribute="width" secondItem="HPu-ts-6fF" secondAttribute="width" id="77l-gl-Zh1"/>
+                        <constraint firstItem="HPu-ts-6fF" firstAttribute="leading" secondItem="gtt-E6-726" secondAttribute="leading" id="FEm-RB-N0J"/>
+                        <constraint firstItem="HPu-ts-6fF" firstAttribute="top" secondItem="gtt-E6-726" secondAttribute="top" id="S2s-Ja-V0E"/>
+                        <constraint firstAttribute="trailing" secondItem="VOb-u3-vhH" secondAttribute="trailing" id="cB5-3A-dbQ"/>
+                        <constraint firstAttribute="bottom" secondItem="VOb-u3-vhH" secondAttribute="bottom" id="dqg-zO-gKr"/>
+                        <constraint firstAttribute="trailing" secondItem="wTw-kx-zoT" secondAttribute="trailing" id="dr7-Vu-7k1"/>
+                        <constraint firstItem="wTw-kx-zoT" firstAttribute="leading" secondItem="gtt-E6-726" secondAttribute="leading" id="eAV-18-IBk"/>
+                        <constraint firstItem="VOb-u3-vhH" firstAttribute="top" secondItem="gtt-E6-726" secondAttribute="top" id="iDa-eR-jch"/>
+                        <constraint firstItem="wTw-kx-zoT" firstAttribute="top" secondItem="HPu-ts-6fF" secondAttribute="bottom" id="ivL-ul-rc9"/>
+                        <constraint firstAttribute="bottom" secondItem="wTw-kx-zoT" secondAttribute="bottom" id="s3n-1Y-TpY"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-BY-krt">
+                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="VI2-IP-7pe"/>
+                        <outlet property="delegate" destination="-1" id="mar-eu-35e"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yh8-BY-krt" secondAttribute="trailing" id="1Zh-Lk-h0T"/>
+                <constraint firstItem="gtt-E6-726" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Cf-SY-W6p"/>
+                <constraint firstAttribute="trailing" secondItem="gtt-E6-726" secondAttribute="trailing" id="HBm-dI-O0O"/>
+                <constraint firstAttribute="bottom" secondItem="yh8-BY-krt" secondAttribute="bottom" id="K0f-6G-e87"/>
+                <constraint firstItem="yh8-BY-krt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OHz-7C-cln"/>
+                <constraint firstItem="yh8-BY-krt" firstAttribute="top" secondItem="gtt-E6-726" secondAttribute="bottom" id="S8o-Gw-uns"/>
+                <constraint firstItem="gtt-E6-726" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cqF-ik-chd"/>
+            </constraints>
+            <point key="canvasLocation" x="27.5" y="0.5"/>
+        </view>
+        <tapGestureRecognizer id="Fj0-Ts-OaT" userLabel="拜访线路">
+            <connections>
+                <action selector="choiceLineOnclick" destination="-1" id="0hI-2D-RRP"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="cHh-lN-UTM" userLabel="拜访状态">
+            <connections>
+                <action selector="choiceStatusOnclick" destination="-1" id="8Wp-ky-JsP"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="UITableViewCellAccessoryDisclosureIndicator" width="25" height="25"/>
+    </resources>
+</document>

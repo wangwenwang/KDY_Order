@@ -22,6 +22,7 @@
 #import <Masonry.h>
 #import "LMPickerView.h"
 #import "StockManViewController.h"
+#import "GetVisitRecommendedOrderViewController.h"
 
 @interface StockOutConfirmViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, Store_StockOutConfirmServiceDelegate, LMPickerViewDelegate>
 
@@ -659,31 +660,63 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
     
     
     @try {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
-                              OUTPUT_TYPE, @"OUTPUT_TYPE",
-                              _addressM.IDX, @"ADDRESS_IDX",
-                              _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
-                              _partyM.PARTY_NAME, @"ADDRESS_NAME",
-                              _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
-                              @"", @"OUTPUT_NO",      // 出库单号未知
-                              @"", @"INPUT_NO",       // 原采购单号未知
-                              PARTY_CODE, @"PARTY_CODE",
-                              PARTY_NAME, @"PARTY_NAME",
-                              PARTY_INFO, @"PARTY_INFO",
-                              @(p.TOTAL_QTY), @"OUTPUT_QTY",
-                              actPrice, @"OUTPUT_SUM",
-                              orgPrice, @"PRICE",
-                              @"", @"OUTPUT_DATE",    // 出库时间未知
-                              @(OUTPUT_WEIGHT), @"OUTPUT_WEIGHT",
-                              @(OUTPUT_VOLUME), @"OUTPUT_VOLUME",
-                              _remarkTextV.text, @"PARTY_MARK",
-                              @"", @"ADUT_MARK",      // 审核备注未知
-                              _app.user.IDX, @"ADD_USER",
-                              [Tools getCurrentDate], @"ADD_DATE",
-                              _app.user.USER_NAME, @"OPER_USER",
-                              Result, @"Info",
-                              nil];
+        NSDictionary *dict;
+        if(_VISIT_IDX) {
+            dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                    _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
+                    _VISIT_IDX, @"VISIT_IDX",
+                    OUTPUT_TYPE, @"OUTPUT_TYPE",
+                    _addressM.IDX, @"ADDRESS_IDX",
+                    _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
+                    _partyM.PARTY_NAME, @"ADDRESS_NAME",
+                    _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
+                    @"", @"OUTPUT_NO",      // 出库单号未知
+                    @"", @"INPUT_NO",       // 原采购单号未知
+                    PARTY_CODE, @"PARTY_CODE",
+                    PARTY_NAME, @"PARTY_NAME",
+                    PARTY_INFO, @"PARTY_INFO",
+                    @(p.TOTAL_QTY), @"OUTPUT_QTY",
+                    actPrice, @"OUTPUT_SUM",
+                    orgPrice, @"PRICE",
+                    @"", @"OUTPUT_DATE",    // 出库时间未知
+                    @(OUTPUT_WEIGHT), @"OUTPUT_WEIGHT",
+                    @(OUTPUT_VOLUME), @"OUTPUT_VOLUME",
+                    _remarkTextV.text, @"PARTY_MARK",
+                    @"", @"ADUT_MARK",      // 审核备注未知
+                    _app.user.IDX, @"ADD_USER",
+                    [Tools getCurrentDate], @"ADD_DATE",
+                    _app.user.USER_NAME, @"OPER_USER",
+                    Result, @"Info",
+                    nil];
+            
+        }else {
+            dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                    _app.business.BUSINESS_IDX, @"BUSINESS_IDX",
+                    OUTPUT_TYPE, @"OUTPUT_TYPE",
+                    _addressM.IDX, @"ADDRESS_IDX",
+                    _addressM.ADDRESS_CODE, @"ADDRESS_CODE",
+                    _partyM.PARTY_NAME, @"ADDRESS_NAME",
+                    _addressM.ADDRESS_INFO, @"ADDRESS_INFO",
+                    @"", @"OUTPUT_NO",      // 出库单号未知
+                    @"", @"INPUT_NO",       // 原采购单号未知
+                    PARTY_CODE, @"PARTY_CODE",
+                    PARTY_NAME, @"PARTY_NAME",
+                    PARTY_INFO, @"PARTY_INFO",
+                    @(p.TOTAL_QTY), @"OUTPUT_QTY",
+                    actPrice, @"OUTPUT_SUM",
+                    orgPrice, @"PRICE",
+                    @"", @"OUTPUT_DATE",    // 出库时间未知
+                    @(OUTPUT_WEIGHT), @"OUTPUT_WEIGHT",
+                    @(OUTPUT_VOLUME), @"OUTPUT_VOLUME",
+                    _remarkTextV.text, @"PARTY_MARK",
+                    @"", @"ADUT_MARK",      // 审核备注未知
+                    _app.user.IDX, @"ADD_USER",
+                    [Tools getCurrentDate], @"ADD_DATE",
+                    _app.user.USER_NAME, @"OPER_USER",
+                    Result, @"Info",
+                    nil];
+        }
+        
         return dict;
     } @catch (NSException *exception) {
         
@@ -764,6 +797,16 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
                 UIViewController *vc = self.navigationController.viewControllers[i];
                 
                 if([vc isKindOfClass:[StockManViewController class]]) {
+                    
+                    [self.navigationController popToViewController:vc animated:YES];
+                }
+            }
+            // pop 回建议订单
+            for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+                
+                UIViewController *vc = self.navigationController.viewControllers[i];
+                
+                if([vc isKindOfClass:[GetVisitRecommendedOrderViewController class]]) {
                     
                     [self.navigationController popToViewController:vc animated:YES];
                 }

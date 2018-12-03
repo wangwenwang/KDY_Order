@@ -31,4 +31,7 @@
 
 - (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX;
 
+
+- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx;
+
 @end

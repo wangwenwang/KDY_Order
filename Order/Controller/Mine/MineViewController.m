@@ -98,21 +98,21 @@
     _myTableViewArrM = [NSMutableArray arrayWithContentsOfFile:dataPath];
     
     // 只有鼎葵宝山仓才有此功能
-    if(![_app.business.BUSINESS_CODE isEqualToString:@"DKI06"]) {
-        
-        NSUInteger count = _myTableViewArrM.count;
-        for (int i = 0; i < count; i++) {
-            
-            NSDictionary *dict = _myTableViewArrM[i];
-            NSString *title = dict[@"title"];
-            if([title isEqualToString:@"客户管理"]) {
-                
-                [_myTableViewArrM removeObjectAtIndex:i];
-                
-                break;
-            }
-        }
-    }
+//    if(![_app.business.BUSINESS_CODE isEqualToString:@"DKI06"]) {
+//
+//        NSUInteger count = _myTableViewArrM.count;
+//        for (int i = 0; i < count; i++) {
+//
+//            NSDictionary *dict = _myTableViewArrM[i];
+//            NSString *title = dict[@"title"];
+//            if([title isEqualToString:@"客户管理"]) {
+//
+//                [_myTableViewArrM removeObjectAtIndex:i];
+//
+//                break;
+//            }
+//        }
+//    }
 }
 
 

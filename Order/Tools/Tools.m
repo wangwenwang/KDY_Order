@@ -117,22 +117,22 @@
 + (void)showAlert:(UIView *)view andTitle:(NSString *)title {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.label.text = title;
+    hud.labelText = title;
     hud.margin = 15.0f;
     hud.removeFromSuperViewOnHide = YES;
     hud.userInteractionEnabled = NO;
-    [hud hideAnimated:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:1.5];
 }
 
 
 + (void)showAlert:(nullable UIView *)view andTitle:(nullable NSString *)title andTime:(NSTimeInterval)time {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.label.text = title;
+    hud.labelText = title;
     hud.margin = 15.0f;
     hud.removeFromSuperViewOnHide = YES;
     hud.userInteractionEnabled = NO;
-    [hud hideAnimated:YES afterDelay:time];
+    [hud hide:YES afterDelay:time];
 }
 
 + (BOOL)isConnectionAvailable {
@@ -643,6 +643,15 @@ typedef void (^Animation)(void);
 }
 
 
++ (nullable NSString *)getCurrentDate_yyyy_mm_dd {
+    NSDateFormatter *dateFormatter_yyyy_mm_dd = [[NSDateFormatter alloc] init];
+    [dateFormatter_yyyy_mm_dd setLocale:[NSLocale currentLocale]];
+    [dateFormatter_yyyy_mm_dd setDateFormat:@"yyyy-MM-dd"];
+    NSString *toDay_yyyy_mm_dd = [dateFormatter_yyyy_mm_dd stringFromDate:[NSDate date]];
+    return toDay_yyyy_mm_dd;
+}
+
+
 + (void)interactivePopGestureRecognizer:(nullable UINavigationController *)nav andEnable:(BOOL)enable {
     if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         nav.interactivePopGestureRecognizer.enabled = enable;
@@ -680,5 +689,70 @@ typedef void (^Animation)(void);
         return [NSString stringWithFormat:@"%.5f",f];
     }
 }
+
++ (BOOL)isEmpty:(nullable NSString *)uu {
+    
+    if(uu == nil || [uu isEqualToString:@""]) {
+        
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
+
++ (nullable NSDate *)dateFromString:(nullable NSString *)string {
+    
+    // 设置转换格式
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-ddHH:mm:ss"];
+    // NSString转NSDate
+    NSDate *date=[formatter dateFromString:string];
+    return date;
+}
+
+
++ (nullable NSString *)getCurrentWeekDay {
+    
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+    return [self getWeekDayFordate:interval];
+}
+
+
++ (nullable NSString *)getWeekDayFordate:(NSTimeInterval)data {
+    
+    NSArray *weekday = [NSArray arrayWithObjects: [NSNull null], @"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", nil];
+    NSDate *newDate = [NSDate dateWithTimeIntervalSince1970:data];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:newDate];
+    NSString *weekStr = [weekday objectAtIndex:components.weekday];
+    return weekStr;
+}
+
+
++ (nullable NSString *)changeImageToString:(nullable UIImage *)image {
+    if(image) {
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        if(imageData) {
+            return [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        }else {
+            return @"";
+        }
+    }else {
+        return @"";
+    }
+}
+
+
++ (nullable NSString *)getVISIT_STATES:(nullable NSString *)VISIT_STATES {
+    if([VISIT_STATES isEqualToString:@""]) {
+        return @"未拜访";
+    }else if([VISIT_STATES isEqualToString:@"离店"]) {
+        return @"已拜访";
+    }else {
+        return @"拜访中";
+    }
+}
+
 
 @end

@@ -38,6 +38,10 @@
 // 物流订单
 #import "GetTmsOrderByAddressViewController.h"
 
+// 客户拜访
+#import "GetPartyVisitListViewController.h"
+#import "AddPartyVisitViewController.h"
+
 @interface CustomerListViewController ()<MakeOrderServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, LMBlurredViewDelegate, UITableViewDataSource, UITableViewDelegate, SelectGoodsServiceDelegate> {
     
     CustomerListSearchResultsViewController *searchResultsViewController;
@@ -268,6 +272,17 @@
 }
 
 
+- (void)popGetPartyVisitVC {
+    
+    AddPartyVisitViewController *vc = [[AddPartyVisitViewController alloc] init];
+    vc.partyM = _currentParty;
+    vc.addressM = _currentAddress;
+    vc.lines = _lines;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -392,6 +407,16 @@
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [_service getPartygetAddressInfo:m.IDX];
         }
+        
+        // 客户拜访
+        else if([_vcClass isEqualToString:NSStringFromClass([GetPartyVisitListViewController class])]) {
+            
+            PartyModel *m = _partysFilter[indexPath.row];
+            _currentParty = m;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [_service getPartygetAddressInfo:m.IDX];
+        }
     }
     
     // 客户地址
@@ -418,6 +443,12 @@
         else if([_vcClass isEqualToString:NSStringFromClass([GetTmsOrderByAddressViewController class])]) {
             
             [self popGetTmsOrderVC];
+        }
+        
+        // 客户拜访
+        else if([_vcClass isEqualToString:NSStringFromClass([GetPartyVisitListViewController class])]) {
+            
+            [self popGetPartyVisitVC];
         }
     }
 }
@@ -612,6 +643,12 @@
         else if([_vcClass isEqualToString:NSStringFromClass([GetTmsOrderByAddressViewController class])]) {
             
             [self popGetTmsOrderVC];
+        }
+        
+        // 客户拜访
+        else if([_vcClass isEqualToString:NSStringFromClass([GetPartyVisitListViewController class])]) {
+            
+            [self popGetPartyVisitVC];
         }
     } else {
         

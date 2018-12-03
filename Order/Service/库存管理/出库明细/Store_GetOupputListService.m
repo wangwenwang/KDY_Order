@@ -102,4 +102,45 @@
     }
 }
 
+
+- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx {
+    
+    NSDictionary *parameters = @{
+                                 @"strVisitIdx": strVisitIdx,
+                                 @"strLicense": @""
+                                 };
+    
+    NSLog(@"请求出库列表参数：%@", parameters);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:API_GetVisitAppOrder parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求出库列表成功---%@", responseObject);
+        int _type = [responseObject[@"type"] intValue];
+        NSString *msg = responseObject[@"msg"];
+        
+        if(_type == 1) {
+            
+            GetOupputListModel *getOupputListM = [[GetOupputListModel alloc] initWithDictionary:responseObject[@"result"][0]];
+            
+            if(getOupputListM.getOupputModel.count > 0) {
+                
+                [self successOfGetOupputList:getOupputListM];
+            } else {
+                
+                [self successOfGetOupputList_NoData];
+            }
+        } else {
+            
+            [self failureOfGetOupputList:msg];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求出库列表失败:%@", error);
+        [self failureOfGetOupputList:nil];
+    }];
+}
+
 @end

@@ -425,10 +425,58 @@
 		30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F7B8E81DC36CA7004CD128 /* Default-568@2x.png */; };
 		30F93E121F31B3FF001904F1 /* LMBlurredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F93E0E1F31B3FF001904F1 /* LMBlurredView.m */; };
 		30F93E131F31B3FF001904F1 /* LMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F93E111F31B3FF001904F1 /* LMPickerView.m */; };
+		3B084FE921B07886006ECBF1 /* ACMediaImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FCD21B074B5006ECBF1 /* ACMediaImageCell.m */; };
+		3B084FEA21B07886006ECBF1 /* ACMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FCF21B074B5006ECBF1 /* ACMediaManager.m */; };
+		3B084FEB21B07886006ECBF1 /* ACMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FD121B074B5006ECBF1 /* ACMediaModel.m */; };
+		3B084FEC21B07886006ECBF1 /* ACSelectMediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FD321B074B5006ECBF1 /* ACSelectMediaView.m */; };
+		3B084FED21B07886006ECBF1 /* NSString+ACMediaExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FD621B074B5006ECBF1 /* NSString+ACMediaExt.m */; };
+		3B084FEE21B07886006ECBF1 /* UIImage+ACGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FD821B074B5006ECBF1 /* UIImage+ACGif.m */; };
+		3B084FEF21B07886006ECBF1 /* UIImageView+ACMediaExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FDA21B074B5006ECBF1 /* UIImageView+ACMediaExt.m */; };
+		3B084FF021B07886006ECBF1 /* UIView+ACMediaExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FDC21B074B5006ECBF1 /* UIView+ACMediaExt.m */; };
+		3B084FF121B07886006ECBF1 /* UIViewController+ACMediaExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FDE21B074B5006ECBF1 /* UIViewController+ACMediaExt.m */; };
+		3B084FF221B07A04006ECBF1 /* ACMediaFrame.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B084FC921B074B5006ECBF1 /* ACMediaFrame.bundle */; };
+		3B084FF921B10635006ECBF1 /* PartyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B084FF721B10634006ECBF1 /* PartyTableViewCell.m */; };
+		3B084FFA21B10635006ECBF1 /* PartyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B084FF821B10634006ECBF1 /* PartyTableViewCell.xib */; };
 		3B0DC1411F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13C1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m */; };
 		3B0DC1421F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */; };
 		3B0DC1431F72CCCE00D1E6AA /* OutputReturnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */; };
 		3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */; };
+		3B0DD00021A399A400F8DE8F /* GetVisitEnterShopService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DCFFF21A399A400F8DE8F /* GetVisitEnterShopService.m */; };
+		3B0DD00421A3A20600F8DE8F /* GetVisitEnterShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0DD00221A3A20600F8DE8F /* GetVisitEnterShopViewController.m */; };
+		3B0DD00521A3A20600F8DE8F /* GetVisitEnterShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0DD00321A3A20600F8DE8F /* GetVisitEnterShopViewController.xib */; };
+		3B20878121912BE0000C36A9 /* GetPartyVisitInsertService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B20878021912BE0000C36A9 /* GetPartyVisitInsertService.m */; };
+		3B2087842191FAD2000C36A9 /* GetPartyVisitUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2087832191FAD2000C36A9 /* GetPartyVisitUpdateService.m */; };
+		3B222FB221A467DB00FDB0CF /* KBShowStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B222FB021A467DB00FDB0CF /* KBShowStepViewController.m */; };
+		3B222FB321A467DB00FDB0CF /* KBShowStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B222FB121A467DB00FDB0CF /* KBShowStepViewController.xib */; };
+		3B4E152E21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E152C21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m */; };
+		3B4E152F21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4E152D21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib */; };
+		3B4E18F32189B4EE00297B88 /* GetPartyVisitCBXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E18F22189B4EE00297B88 /* GetPartyVisitCBXModel.m */; };
+		3B4E18F92189B91C00297B88 /* GetPartyVisitCBXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E18F82189B91C00297B88 /* GetPartyVisitCBXService.m */; };
+		3B4E18FF218A02B800297B88 /* GetPartyVisitCBXItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E18FE218A02B800297B88 /* GetPartyVisitCBXItemModel.m */; };
+		3B5ABDE92187FFFE00A1230D /* GetPartyVisitListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABDE72187FFFE00A1230D /* GetPartyVisitListViewController.m */; };
+		3B5ABDEA2187FFFE00A1230D /* GetPartyVisitListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABDE82187FFFE00A1230D /* GetPartyVisitListViewController.xib */; };
+		3B5ABDED2188022900A1230D /* GetPartyVisitListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABDEC2188022900A1230D /* GetPartyVisitListService.m */; };
+		3B5ABDF6218802AA00A1230D /* GetPartyVisitListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABDF4218802AA00A1230D /* GetPartyVisitListTableViewCell.m */; };
+		3B5ABDF7218802AA00A1230D /* GetPartyVisitListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABDF5218802AA00A1230D /* GetPartyVisitListTableViewCell.xib */; };
+		3B5ABDFB218807BE00A1230D /* AddPartyVisitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABDF9218807BE00A1230D /* AddPartyVisitViewController.m */; };
+		3B5ABDFC218807BE00A1230D /* AddPartyVisitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABDFA218807BE00A1230D /* AddPartyVisitViewController.xib */; };
+		3B5ABE03218837F100A1230D /* GetPartyVisitListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABE02218837F100A1230D /* GetPartyVisitListModel.m */; };
+		3B5ABE062188391D00A1230D /* GetPartyVisitItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABE052188391D00A1230D /* GetPartyVisitItemModel.m */; };
+		3B5ABE0A21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */; };
+		3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */; };
+		3B631A45219D7CD500081560 /* GetPartyVisitLineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */; };
+		3B813A8421AEF5A30096783C /* GetVisitVividDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */; };
+		3B813A8521AEF5A30096783C /* GetVisitVividDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */; };
+		3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813AE621AF2A0D0096783C /* LMDropDownMenuTableViewCell.m */; };
+		3B813AEC21AF2AA50096783C /* DataItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813AEB21AF2AA50096783C /* DataItemModel.m */; };
+		3B813AED21AF2C490096783C /* LMDropDownMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B813AE821AF2A0E0096783C /* LMDropDownMenuTableViewCell.xib */; };
+		3B813AF121AFB0440096783C /* GetVisitLeaveShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813AEF21AFB0430096783C /* GetVisitLeaveShopViewController.m */; };
+		3B813AF221AFB0440096783C /* GetVisitLeaveShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B813AF021AFB0430096783C /* GetVisitLeaveShopViewController.xib */; };
+		3BDABE8E21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDABE8C21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.m */; };
+		3BDABE8F21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDABE8D21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib */; };
+		3BDABE9321A4181100C0E72B /* GetVisitRecommendedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */; };
+		3BDABE9421A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */; };
+		3BDC8837218B4D960013CD81 /* AddPartyVisitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1157,12 +1205,96 @@
 		30F93E0E1F31B3FF001904F1 /* LMBlurredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMBlurredView.m; sourceTree = "<group>"; };
 		30F93E101F31B3FF001904F1 /* LMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPickerView.h; sourceTree = "<group>"; };
 		30F93E111F31B3FF001904F1 /* LMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPickerView.m; sourceTree = "<group>"; };
+		3B084FC921B074B5006ECBF1 /* ACMediaFrame.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ACMediaFrame.bundle; sourceTree = "<group>"; };
+		3B084FCA21B074B5006ECBF1 /* ACMediaFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMediaFrame.h; sourceTree = "<group>"; };
+		3B084FCB21B074B5006ECBF1 /* ACMediaFrameConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMediaFrameConst.h; sourceTree = "<group>"; };
+		3B084FCC21B074B5006ECBF1 /* ACMediaImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMediaImageCell.h; sourceTree = "<group>"; };
+		3B084FCD21B074B5006ECBF1 /* ACMediaImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACMediaImageCell.m; sourceTree = "<group>"; };
+		3B084FCE21B074B5006ECBF1 /* ACMediaManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMediaManager.h; sourceTree = "<group>"; };
+		3B084FCF21B074B5006ECBF1 /* ACMediaManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACMediaManager.m; sourceTree = "<group>"; };
+		3B084FD021B074B5006ECBF1 /* ACMediaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACMediaModel.h; sourceTree = "<group>"; };
+		3B084FD121B074B5006ECBF1 /* ACMediaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACMediaModel.m; sourceTree = "<group>"; };
+		3B084FD221B074B5006ECBF1 /* ACSelectMediaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACSelectMediaView.h; sourceTree = "<group>"; };
+		3B084FD321B074B5006ECBF1 /* ACSelectMediaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACSelectMediaView.m; sourceTree = "<group>"; };
+		3B084FD521B074B5006ECBF1 /* NSString+ACMediaExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ACMediaExt.h"; sourceTree = "<group>"; };
+		3B084FD621B074B5006ECBF1 /* NSString+ACMediaExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ACMediaExt.m"; sourceTree = "<group>"; };
+		3B084FD721B074B5006ECBF1 /* UIImage+ACGif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ACGif.h"; sourceTree = "<group>"; };
+		3B084FD821B074B5006ECBF1 /* UIImage+ACGif.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ACGif.m"; sourceTree = "<group>"; };
+		3B084FD921B074B5006ECBF1 /* UIImageView+ACMediaExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ACMediaExt.h"; sourceTree = "<group>"; };
+		3B084FDA21B074B5006ECBF1 /* UIImageView+ACMediaExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ACMediaExt.m"; sourceTree = "<group>"; };
+		3B084FDB21B074B5006ECBF1 /* UIView+ACMediaExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ACMediaExt.h"; sourceTree = "<group>"; };
+		3B084FDC21B074B5006ECBF1 /* UIView+ACMediaExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACMediaExt.m"; sourceTree = "<group>"; };
+		3B084FDD21B074B5006ECBF1 /* UIViewController+ACMediaExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ACMediaExt.h"; sourceTree = "<group>"; };
+		3B084FDE21B074B5006ECBF1 /* UIViewController+ACMediaExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ACMediaExt.m"; sourceTree = "<group>"; };
+		3B084FF621B10634006ECBF1 /* PartyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartyTableViewCell.h; sourceTree = "<group>"; };
+		3B084FF721B10634006ECBF1 /* PartyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyTableViewCell.m; sourceTree = "<group>"; };
+		3B084FF821B10634006ECBF1 /* PartyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartyTableViewCell.xib; sourceTree = "<group>"; };
 		3B0DC13B1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnConfirmViewController.h; sourceTree = "<group>"; };
 		3B0DC13C1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnConfirmViewController.m; sourceTree = "<group>"; };
 		3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnConfirmViewController.xib; sourceTree = "<group>"; };
 		3B0DC13E1F72CCCE00D1E6AA /* OutputReturnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputReturnViewController.h; sourceTree = "<group>"; };
 		3B0DC13F1F72CCCE00D1E6AA /* OutputReturnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputReturnViewController.m; sourceTree = "<group>"; };
 		3B0DC1401F72CCCE00D1E6AA /* OutputReturnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputReturnViewController.xib; sourceTree = "<group>"; };
+		3B0DCFFE21A399A400F8DE8F /* GetVisitEnterShopService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitEnterShopService.h; sourceTree = "<group>"; };
+		3B0DCFFF21A399A400F8DE8F /* GetVisitEnterShopService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitEnterShopService.m; sourceTree = "<group>"; };
+		3B0DD00121A3A20600F8DE8F /* GetVisitEnterShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitEnterShopViewController.h; sourceTree = "<group>"; };
+		3B0DD00221A3A20600F8DE8F /* GetVisitEnterShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitEnterShopViewController.m; sourceTree = "<group>"; };
+		3B0DD00321A3A20600F8DE8F /* GetVisitEnterShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitEnterShopViewController.xib; sourceTree = "<group>"; };
+		3B20877F21912BE0000C36A9 /* GetPartyVisitInsertService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitInsertService.h; sourceTree = "<group>"; };
+		3B20878021912BE0000C36A9 /* GetPartyVisitInsertService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitInsertService.m; sourceTree = "<group>"; };
+		3B2087822191FAD2000C36A9 /* GetPartyVisitUpdateService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitUpdateService.h; sourceTree = "<group>"; };
+		3B2087832191FAD2000C36A9 /* GetPartyVisitUpdateService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitUpdateService.m; sourceTree = "<group>"; };
+		3B222FAF21A467DB00FDB0CF /* KBShowStepViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBShowStepViewController.h; sourceTree = "<group>"; };
+		3B222FB021A467DB00FDB0CF /* KBShowStepViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBShowStepViewController.m; sourceTree = "<group>"; };
+		3B222FB121A467DB00FDB0CF /* KBShowStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBShowStepViewController.xib; sourceTree = "<group>"; };
+		3B4E152B21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitConfirmCustomerViewController.h; sourceTree = "<group>"; };
+		3B4E152C21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitConfirmCustomerViewController.m; sourceTree = "<group>"; };
+		3B4E152D21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitConfirmCustomerViewController.xib; sourceTree = "<group>"; };
+		3B4E18F12189B4EE00297B88 /* GetPartyVisitCBXModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitCBXModel.h; sourceTree = "<group>"; };
+		3B4E18F22189B4EE00297B88 /* GetPartyVisitCBXModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitCBXModel.m; sourceTree = "<group>"; };
+		3B4E18F72189B91C00297B88 /* GetPartyVisitCBXService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitCBXService.h; sourceTree = "<group>"; };
+		3B4E18F82189B91C00297B88 /* GetPartyVisitCBXService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitCBXService.m; sourceTree = "<group>"; };
+		3B4E18FD218A02B800297B88 /* GetPartyVisitCBXItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitCBXItemModel.h; sourceTree = "<group>"; };
+		3B4E18FE218A02B800297B88 /* GetPartyVisitCBXItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitCBXItemModel.m; sourceTree = "<group>"; };
+		3B5ABDE62187FFFE00A1230D /* GetPartyVisitListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitListViewController.h; sourceTree = "<group>"; };
+		3B5ABDE72187FFFE00A1230D /* GetPartyVisitListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitListViewController.m; sourceTree = "<group>"; };
+		3B5ABDE82187FFFE00A1230D /* GetPartyVisitListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetPartyVisitListViewController.xib; sourceTree = "<group>"; };
+		3B5ABDEB2188022900A1230D /* GetPartyVisitListService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitListService.h; sourceTree = "<group>"; };
+		3B5ABDEC2188022900A1230D /* GetPartyVisitListService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitListService.m; sourceTree = "<group>"; };
+		3B5ABDF3218802AA00A1230D /* GetPartyVisitListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitListTableViewCell.h; sourceTree = "<group>"; };
+		3B5ABDF4218802AA00A1230D /* GetPartyVisitListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitListTableViewCell.m; sourceTree = "<group>"; };
+		3B5ABDF5218802AA00A1230D /* GetPartyVisitListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetPartyVisitListTableViewCell.xib; sourceTree = "<group>"; };
+		3B5ABDF8218807BE00A1230D /* AddPartyVisitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPartyVisitViewController.h; sourceTree = "<group>"; };
+		3B5ABDF9218807BE00A1230D /* AddPartyVisitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPartyVisitViewController.m; sourceTree = "<group>"; };
+		3B5ABDFA218807BE00A1230D /* AddPartyVisitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPartyVisitViewController.xib; sourceTree = "<group>"; };
+		3B5ABE01218837F100A1230D /* GetPartyVisitListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitListModel.h; sourceTree = "<group>"; };
+		3B5ABE02218837F100A1230D /* GetPartyVisitListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitListModel.m; sourceTree = "<group>"; };
+		3B5ABE042188391D00A1230D /* GetPartyVisitItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitItemModel.h; sourceTree = "<group>"; };
+		3B5ABE052188391D00A1230D /* GetPartyVisitItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitItemModel.m; sourceTree = "<group>"; };
+		3B5ABE0721897A0300A1230D /* GetPartyVisitListSearchResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitListSearchResultsViewController.h; sourceTree = "<group>"; };
+		3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitListSearchResultsViewController.m; sourceTree = "<group>"; };
+		3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetPartyVisitListSearchResultsViewController.xib; sourceTree = "<group>"; };
+		3B631A43219D7CD500081560 /* GetPartyVisitLineService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitLineService.h; sourceTree = "<group>"; };
+		3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitLineService.m; sourceTree = "<group>"; };
+		3B813A8121AEF5A20096783C /* GetVisitVividDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitVividDisplayViewController.h; sourceTree = "<group>"; };
+		3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitVividDisplayViewController.m; sourceTree = "<group>"; };
+		3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitVividDisplayViewController.xib; sourceTree = "<group>"; };
+		3B813AE621AF2A0D0096783C /* LMDropDownMenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDropDownMenuTableViewCell.m; sourceTree = "<group>"; };
+		3B813AE721AF2A0D0096783C /* LMDropDownMenuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDropDownMenuTableViewCell.h; sourceTree = "<group>"; };
+		3B813AE821AF2A0E0096783C /* LMDropDownMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMDropDownMenuTableViewCell.xib; sourceTree = "<group>"; };
+		3B813AEA21AF2AA50096783C /* DataItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataItemModel.h; sourceTree = "<group>"; };
+		3B813AEB21AF2AA50096783C /* DataItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataItemModel.m; sourceTree = "<group>"; };
+		3B813AEE21AFB0430096783C /* GetVisitLeaveShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitLeaveShopViewController.h; sourceTree = "<group>"; };
+		3B813AEF21AFB0430096783C /* GetVisitLeaveShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitLeaveShopViewController.m; sourceTree = "<group>"; };
+		3B813AF021AFB0430096783C /* GetVisitLeaveShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitLeaveShopViewController.xib; sourceTree = "<group>"; };
+		3BDABE8B21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitCheckInventoryViewController.h; sourceTree = "<group>"; };
+		3BDABE8C21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitCheckInventoryViewController.m; sourceTree = "<group>"; };
+		3BDABE8D21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitCheckInventoryViewController.xib; sourceTree = "<group>"; };
+		3BDABE9021A4181100C0E72B /* GetVisitRecommendedOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitRecommendedOrderViewController.h; sourceTree = "<group>"; };
+		3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitRecommendedOrderViewController.m; sourceTree = "<group>"; };
+		3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitRecommendedOrderViewController.xib; sourceTree = "<group>"; };
+		3BDC8835218B4D960013CD81 /* AddPartyVisitLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPartyVisitLabel.h; sourceTree = "<group>"; };
+		3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPartyVisitLabel.m; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Order.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1562,6 +1694,8 @@
 				30B948E91EEA4B5500E4C3EC /* IB_UIView.m */,
 				300AF6FB1EE8DEC60037C660 /* TimeLabel.h */,
 				300AF6FC1EE8DEC60037C660 /* TimeLabel.m */,
+				3BDC8835218B4D960013CD81 /* AddPartyVisitLabel.h */,
+				3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */,
 				3021609A1F15BF650049374F /* LoginTextFieId.h */,
 				3021609B1F15BF650049374F /* LoginTextFieId.m */,
 				3021609D1F15C2390049374F /* LoginTextFieldSuperView.h */,
@@ -1879,6 +2013,7 @@
 				30BB2D971F459359002E51E7 /* 库存登记 */,
 				30201F131F1083760055BA6A /* 客户费用 */,
 				301D7DB41F5A3D8D00D83410 /* 费用帐单 */,
+				3B3F41192182A4F20068B3BB /* 客户拜访 */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1924,6 +2059,7 @@
 				30201F1D1F1083970055BA6A /* 客户费用 */,
 				30201EC81F1081370055BA6A /* 帐单列表 */,
 				3051DB671F1878570034629B /* 客户管理 */,
+				3B5ABDE22187FB0B00A1230D /* 客户拜访 */,
 				304FBAB71EF2635700FC3EFC /* OrderCancelService.h */,
 				304FBAB81EF2635700FC3EFC /* OrderCancelService.m */,
 			);
@@ -1981,6 +2117,7 @@
 				30201F211F1083AB0055BA6A /* 客户费用 */,
 				30201EF61F1082220055BA6A /* 帐单费用 */,
 				3051DB8E1F1898EF0034629B /* 客户管理 */,
+				3B5ABE00218837DE00A1230D /* 客户拜访 */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2140,6 +2277,7 @@
 				30201F171F1083860055BA6A /* 客户费用 */,
 				301D7DA91F5A3D2E00D83410 /* 费用帐单 */,
 				301D7DBF1F5A3E0400D83410 /* 客户管理 */,
+				3B5ABDDC2187EDA300A1230D /* 客户拜访 */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2375,6 +2513,7 @@
 		30CDC5B31D9907CD0035602F /* Thire */ = {
 			isa = PBXGroup;
 			children = (
+				3B084FC821B074B5006ECBF1 /* ACMediaFrame */,
 				3079885F1F6B79A80063DE2A /* JSDropDownMenu */,
 				30C476251F4D2EFA00A5FB93 /* TPKeyboardAvoiding */,
 				3009143C1F41A8700022E150 /* BackButtonHandler */,
@@ -2825,6 +2964,42 @@
 			path = LMPickerView;
 			sourceTree = "<group>";
 		};
+		3B084FC821B074B5006ECBF1 /* ACMediaFrame */ = {
+			isa = PBXGroup;
+			children = (
+				3B084FC921B074B5006ECBF1 /* ACMediaFrame.bundle */,
+				3B084FCA21B074B5006ECBF1 /* ACMediaFrame.h */,
+				3B084FCB21B074B5006ECBF1 /* ACMediaFrameConst.h */,
+				3B084FCC21B074B5006ECBF1 /* ACMediaImageCell.h */,
+				3B084FCD21B074B5006ECBF1 /* ACMediaImageCell.m */,
+				3B084FCE21B074B5006ECBF1 /* ACMediaManager.h */,
+				3B084FCF21B074B5006ECBF1 /* ACMediaManager.m */,
+				3B084FD021B074B5006ECBF1 /* ACMediaModel.h */,
+				3B084FD121B074B5006ECBF1 /* ACMediaModel.m */,
+				3B084FD221B074B5006ECBF1 /* ACSelectMediaView.h */,
+				3B084FD321B074B5006ECBF1 /* ACSelectMediaView.m */,
+				3B084FD421B074B5006ECBF1 /* Libraries */,
+			);
+			path = ACMediaFrame;
+			sourceTree = "<group>";
+		};
+		3B084FD421B074B5006ECBF1 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3B084FD521B074B5006ECBF1 /* NSString+ACMediaExt.h */,
+				3B084FD621B074B5006ECBF1 /* NSString+ACMediaExt.m */,
+				3B084FD721B074B5006ECBF1 /* UIImage+ACGif.h */,
+				3B084FD821B074B5006ECBF1 /* UIImage+ACGif.m */,
+				3B084FD921B074B5006ECBF1 /* UIImageView+ACMediaExt.h */,
+				3B084FDA21B074B5006ECBF1 /* UIImageView+ACMediaExt.m */,
+				3B084FDB21B074B5006ECBF1 /* UIView+ACMediaExt.h */,
+				3B084FDC21B074B5006ECBF1 /* UIView+ACMediaExt.m */,
+				3B084FDD21B074B5006ECBF1 /* UIViewController+ACMediaExt.h */,
+				3B084FDE21B074B5006ECBF1 /* UIViewController+ACMediaExt.m */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		3B0DC11C1F72BF3B00D1E6AA /* 出库退货 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2836,6 +3011,95 @@
 				3B0DC13D1F72CCCE00D1E6AA /* OutputReturnConfirmViewController.xib */,
 			);
 			path = "出库退货";
+			sourceTree = "<group>";
+		};
+		3B3F41192182A4F20068B3BB /* 客户拜访 */ = {
+			isa = PBXGroup;
+			children = (
+				3B5ABDE62187FFFE00A1230D /* GetPartyVisitListViewController.h */,
+				3B5ABDE72187FFFE00A1230D /* GetPartyVisitListViewController.m */,
+				3B5ABDE82187FFFE00A1230D /* GetPartyVisitListViewController.xib */,
+				3B5ABE0721897A0300A1230D /* GetPartyVisitListSearchResultsViewController.h */,
+				3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */,
+				3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */,
+				3B5ABDF8218807BE00A1230D /* AddPartyVisitViewController.h */,
+				3B5ABDF9218807BE00A1230D /* AddPartyVisitViewController.m */,
+				3B5ABDFA218807BE00A1230D /* AddPartyVisitViewController.xib */,
+				3B0DD00121A3A20600F8DE8F /* GetVisitEnterShopViewController.h */,
+				3B0DD00221A3A20600F8DE8F /* GetVisitEnterShopViewController.m */,
+				3B0DD00321A3A20600F8DE8F /* GetVisitEnterShopViewController.xib */,
+				3B4E152B21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.h */,
+				3B4E152C21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m */,
+				3B4E152D21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib */,
+				3BDABE8B21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.h */,
+				3BDABE8C21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.m */,
+				3BDABE8D21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib */,
+				3BDABE9021A4181100C0E72B /* GetVisitRecommendedOrderViewController.h */,
+				3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */,
+				3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */,
+				3B813A8121AEF5A20096783C /* GetVisitVividDisplayViewController.h */,
+				3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */,
+				3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */,
+				3B813AEE21AFB0430096783C /* GetVisitLeaveShopViewController.h */,
+				3B813AEF21AFB0430096783C /* GetVisitLeaveShopViewController.m */,
+				3B813AF021AFB0430096783C /* GetVisitLeaveShopViewController.xib */,
+				3B222FAF21A467DB00FDB0CF /* KBShowStepViewController.h */,
+				3B222FB021A467DB00FDB0CF /* KBShowStepViewController.m */,
+				3B222FB121A467DB00FDB0CF /* KBShowStepViewController.xib */,
+			);
+			path = "客户拜访";
+			sourceTree = "<group>";
+		};
+		3B5ABDDC2187EDA300A1230D /* 客户拜访 */ = {
+			isa = PBXGroup;
+			children = (
+				3B5ABDF3218802AA00A1230D /* GetPartyVisitListTableViewCell.h */,
+				3B5ABDF4218802AA00A1230D /* GetPartyVisitListTableViewCell.m */,
+				3B5ABDF5218802AA00A1230D /* GetPartyVisitListTableViewCell.xib */,
+				3B813AE721AF2A0D0096783C /* LMDropDownMenuTableViewCell.h */,
+				3B813AE621AF2A0D0096783C /* LMDropDownMenuTableViewCell.m */,
+				3B813AE821AF2A0E0096783C /* LMDropDownMenuTableViewCell.xib */,
+				3B084FF621B10634006ECBF1 /* PartyTableViewCell.h */,
+				3B084FF721B10634006ECBF1 /* PartyTableViewCell.m */,
+				3B084FF821B10634006ECBF1 /* PartyTableViewCell.xib */,
+			);
+			path = "客户拜访";
+			sourceTree = "<group>";
+		};
+		3B5ABDE22187FB0B00A1230D /* 客户拜访 */ = {
+			isa = PBXGroup;
+			children = (
+				3B5ABDEB2188022900A1230D /* GetPartyVisitListService.h */,
+				3B5ABDEC2188022900A1230D /* GetPartyVisitListService.m */,
+				3B4E18F72189B91C00297B88 /* GetPartyVisitCBXService.h */,
+				3B4E18F82189B91C00297B88 /* GetPartyVisitCBXService.m */,
+				3B20877F21912BE0000C36A9 /* GetPartyVisitInsertService.h */,
+				3B20878021912BE0000C36A9 /* GetPartyVisitInsertService.m */,
+				3B2087822191FAD2000C36A9 /* GetPartyVisitUpdateService.h */,
+				3B2087832191FAD2000C36A9 /* GetPartyVisitUpdateService.m */,
+				3B631A43219D7CD500081560 /* GetPartyVisitLineService.h */,
+				3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */,
+				3B0DCFFE21A399A400F8DE8F /* GetVisitEnterShopService.h */,
+				3B0DCFFF21A399A400F8DE8F /* GetVisitEnterShopService.m */,
+			);
+			path = "客户拜访";
+			sourceTree = "<group>";
+		};
+		3B5ABE00218837DE00A1230D /* 客户拜访 */ = {
+			isa = PBXGroup;
+			children = (
+				3B5ABE01218837F100A1230D /* GetPartyVisitListModel.h */,
+				3B5ABE02218837F100A1230D /* GetPartyVisitListModel.m */,
+				3B5ABE042188391D00A1230D /* GetPartyVisitItemModel.h */,
+				3B5ABE052188391D00A1230D /* GetPartyVisitItemModel.m */,
+				3B4E18F12189B4EE00297B88 /* GetPartyVisitCBXModel.h */,
+				3B4E18F22189B4EE00297B88 /* GetPartyVisitCBXModel.m */,
+				3B4E18FD218A02B800297B88 /* GetPartyVisitCBXItemModel.h */,
+				3B4E18FE218A02B800297B88 /* GetPartyVisitCBXItemModel.m */,
+				3B813AEA21AF2AA50096783C /* DataItemModel.h */,
+				3B813AEB21AF2AA50096783C /* DataItemModel.m */,
+			);
+			path = "客户拜访";
 			sourceTree = "<group>";
 		};
 		A5516C1ACE2CD89545D8610B /* Frameworks */ = {
@@ -2857,7 +3121,6 @@
 				3087837D1D98CD45002EED76 /* Sources */,
 				3087837E1D98CD45002EED76 /* Frameworks */,
 				3087837F1D98CD45002EED76 /* Resources */,
-				61C97D7BDA9CA47671E8F346 /* [CP] Embed Pods Frameworks */,
 				7DBFFCDE792D1F5E907AEC52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -2912,6 +3175,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B084FF221B07A04006ECBF1 /* ACMediaFrame.bundle in Resources */,
+				3B813AED21AF2C490096783C /* LMDropDownMenuTableViewCell.xib in Resources */,
+				3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */,
 				304A7ABC1DB716780039B0B2 /* payTypeTableViewCell.xib in Resources */,
 				3047D45A1DAC763900B48525 /* TransportInformationTableViewCell.xib in Resources */,
 				30201F1C1F1083860055BA6A /* GetFeeListCollectionViewCell.xib in Resources */,
@@ -2926,6 +3192,7 @@
 				30930B881FD67E9800D320F9 /* ConfirmMonthlyPlanViewController.xib in Resources */,
 				303566D71F70FF6A009E6EFB /* GetOupputInfoViewController.xib in Resources */,
 				303566D91F70FF6A009E6EFB /* GetOupputListViewController.xib in Resources */,
+				3B813A8521AEF5A30096783C /* GetVisitVividDisplayViewController.xib in Resources */,
 				30930BAB1FD6AC8C00D320F9 /* AddMonthlyPlanTableViewCell.xib in Resources */,
 				303567011F710384009E6EFB /* GetInputInfoTableViewCell.xib in Resources */,
 				30F7B8D01DBF0B15004CD128 /* AddGiftTypesTableViewCell.xib in Resources */,
@@ -2933,6 +3200,7 @@
 				303566B71F70F2AD009E6EFB /* InputReturnViewController.xib in Resources */,
 				30BBF1371F17612400496518 /* Add_AddressViewController.xib in Resources */,
 				301D7DC71F5A3E0400D83410 /* AddressListTableViewCell.xib in Resources */,
+				3B0DD00521A3A20600F8DE8F /* GetVisitEnterShopViewController.xib in Resources */,
 				3035669B1F70CD2B009E6EFB /* GetToAddressListViewController.xib in Resources */,
 				30F7B8E21DBFAE80004CD128 /* SelectedGiftsTableViewCell.xib in Resources */,
 				3035670B1F7103B0009E6EFB /* GetOupputInfoTableViewCell.xib in Resources */,
@@ -2940,6 +3208,7 @@
 				30BFCDAC1FD7F5EF00ED3469 /* MonthlyPlanInfoTableViewCell.xib in Resources */,
 				3051DB621F1868840034629B /* AddPartyViewController.xib in Resources */,
 				30061B331FD64F3100B4CA53 /* SelectGoodsViewController.xib in Resources */,
+				3B5ABDF7218802AA00A1230D /* GetPartyVisitListTableViewCell.xib in Resources */,
 				3056B56F2008988900B4704A /* GetWmsProductZongTableViewCell.xib in Resources */,
 				30BB2DCB1F459375002E51E7 /* ConfirmAddStockTableViewCell.xib in Resources */,
 				308783941D98CD45002EED76 /* LaunchScreen.storyboard in Resources */,
@@ -2961,6 +3230,7 @@
 				301D7DBE1F5A3D8D00D83410 /* GetAppBusinessFeeListViewController.xib in Resources */,
 				30EF59B71DAE06C5003F5729 /* OrderProgressNodeViewController.xib in Resources */,
 				30BB2DCF1F459375002E51E7 /* GetStockListTableViewCell.xib in Resources */,
+				3B813AF221AFB0440096783C /* GetVisitLeaveShopViewController.xib in Resources */,
 				30EAC8A31F78AFB200F9B6D4 /* StockOutTableViewCell.xib in Resources */,
 				30078D221DBA73EA00429813 /* AddGiftsViewController.xib in Resources */,
 				30CDC63B1D9907CD0035602F /* PB.bundle in Resources */,
@@ -2973,6 +3243,7 @@
 				30EF59CF1DAF5C6D003F5729 /* CustomerAddressTableViewCell.xib in Resources */,
 				302160901F15BD500049374F /* RegisterViewController.xib in Resources */,
 				301D7DB11F5A3D2E00D83410 /* GetAppBillFeeListTableViewCell.xib in Resources */,
+				3B5ABDEA2187FFFE00A1230D /* GetPartyVisitListViewController.xib in Resources */,
 				303566CC1F70FF57009E6EFB /* GetInputListViewController.xib in Resources */,
 				304A34171F0E071B0055D50C /* AreaProvinceViewController.xib in Resources */,
 				30BB2DC91F459375002E51E7 /* AddStockTableViewCell.xib in Resources */,
@@ -2981,6 +3252,7 @@
 				304A7AB71DB612180039B0B2 /* BrandTableViewCell.xib in Resources */,
 				30A3C30E1D9A101C00BBE0DA /* MakeOrderViewController.xib in Resources */,
 				301AD3A41F6A1EBD00CD13D0 /* StockNoListViewController.xib in Resources */,
+				3B5ABDFC218807BE00A1230D /* AddPartyVisitViewController.xib in Resources */,
 				304A34191F0E071B0055D50C /* AreaCityViewController.xib in Resources */,
 				304A7AC11DB85ED00039B0B2 /* CheckSignatureViewController.xib in Resources */,
 				30BFCDA71FD7F5CD00ED3469 /* OrderDetailTableViewCell.xib in Resources */,
@@ -2999,6 +3271,7 @@
 				308783911D98CD45002EED76 /* Assets.xcassets in Resources */,
 				30930B8E1FD6858700D320F9 /* MonthlyPlanTableViewCell.xib in Resources */,
 				3B0DC1441F72CCCE00D1E6AA /* OutputReturnViewController.xib in Resources */,
+				3B222FB321A467DB00FDB0CF /* KBShowStepViewController.xib in Resources */,
 				304A7AAA1DB4D3E10039B0B2 /* ShoppingCartTableViewCell.xib in Resources */,
 				304A341E1F0E10ED0055D50C /* ChinaArea.plist in Resources */,
 				30BB2DC71F459375002E51E7 /* AddStockCellTableViewCell.xib in Resources */,
@@ -3012,6 +3285,7 @@
 				30CDC65A1D9907CD0035602F /* CoreSDWebImage.bundle in Resources */,
 				30E9C0A61DA8E15A00A09182 /* HotProductViewController.xib in Resources */,
 				30E5A05E1D9BC16800D94F77 /* CheckOrderTableViewCell.xib in Resources */,
+				3B084FFA21B10635006ECBF1 /* PartyTableViewCell.xib in Resources */,
 				3035669F1F70CD2B009E6EFB /* StockOutViewController.xib in Resources */,
 				30061B291FD649CA00B4CA53 /* MonthlyPlanViewController.xib in Resources */,
 				301CFDC81FBAF22300C8CB39 /* StockNoListDetailViewController.xib in Resources */,
@@ -3020,9 +3294,12 @@
 				30EF59AF1DACDBC6003F5729 /* OrderTmsDetailsTableViewCell.xib in Resources */,
 				30A3C3211D9A6AD300BBE0DA /* MineTable.plist in Resources */,
 				303566BE1F70F898009E6EFB /* GetToAddressListTableViewCell.xib in Resources */,
+				3B4E152F21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib in Resources */,
 				30A3C31D1D9A501300BBE0DA /* MainCollectionViewCell.xib in Resources */,
+				3BDABE8F21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib in Resources */,
 				30F7B8E91DC36CA7004CD128 /* Default-568@2x.png in Resources */,
 				30930B831FD66BED00D320F9 /* AddMonthlyPlanViewController.xib in Resources */,
+				3BDABE9421A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib in Resources */,
 				3035670D1F7103B0009E6EFB /* GetOupputListTableViewCell.xib in Resources */,
 				30A3C2EE1D991E1000BBE0DA /* LoginViewController.xib in Resources */,
 				30942A7D1F5006A4000095F3 /* ConfirmOrderViewController.xib in Resources */,
@@ -3035,30 +3312,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		61C97D7BDA9CA47671E8F346 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Order/Pods-Order-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7DBFFCDE792D1F5E907AEC52 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Order/Pods-Order-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MWPhotoBrowser.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3071,13 +3342,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Order-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3087,6 +3361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B084FE921B07886006ECBF1 /* ACMediaImageCell.m in Sources */,
+				3B084FEA21B07886006ECBF1 /* ACMediaManager.m in Sources */,
+				3B084FEB21B07886006ECBF1 /* ACMediaModel.m in Sources */,
+				3B084FEC21B07886006ECBF1 /* ACSelectMediaView.m in Sources */,
+				3B084FED21B07886006ECBF1 /* NSString+ACMediaExt.m in Sources */,
+				3B084FEE21B07886006ECBF1 /* UIImage+ACGif.m in Sources */,
+				3B084FEF21B07886006ECBF1 /* UIImageView+ACMediaExt.m in Sources */,
+				3B084FF021B07886006ECBF1 /* UIView+ACMediaExt.m in Sources */,
+				3B084FF121B07886006ECBF1 /* UIViewController+ACMediaExt.m in Sources */,
 				3051DB951F18999A0034629B /* NormalAdressModel.m in Sources */,
 				304A7AE01DB91C2B0039B0B2 /* CustomerChartModel.m in Sources */,
 				301D7DB21F5A3D2E00D83410 /* GetAppBusinessFeeListTableViewCell.m in Sources */,
@@ -3130,6 +3413,7 @@
 				30BB2DDA1F459391002E51E7 /* CancelStockService.m in Sources */,
 				30CDC6541D9907CD0035602F /* UIImage+FixOrientation.m in Sources */,
 				3088D3061F4BDC49006031D9 /* GetOupputListModel.m in Sources */,
+				3B4E18F92189B91C00297B88 /* GetPartyVisitCBXService.m in Sources */,
 				3047D4551DAB964200B48525 /* OrderTmsModel.m in Sources */,
 				30EF59B61DAE06C5003F5729 /* OrderProgressNodeViewController.m in Sources */,
 				304A7AD91DB8BAE20039B0B2 /* ChartViewController.m in Sources */,
@@ -3137,6 +3421,7 @@
 				304A7AEA1DB925990039B0B2 /* MyPNPieChart.m in Sources */,
 				3056B5622008880C00B4704A /* GetWmsProductZongService.m in Sources */,
 				30BB2DE91F4593AD002E51E7 /* AppStockListModel.m in Sources */,
+				3B813AF121AFB0440096783C /* GetVisitLeaveShopViewController.m in Sources */,
 				309E10E61F6D1A0D008E1F49 /* InputInfoModel.m in Sources */,
 				3054D1131FFCCF5600E1D9B2 /* TmsOrderItemModel.m in Sources */,
 				302600921EE69F8B001F6C38 /* UIView+Uitls.m in Sources */,
@@ -3148,9 +3433,11 @@
 				30CDC63C1D9907CD0035602F /* PBBlurImageView.m in Sources */,
 				307988641F6B79A80063DE2A /* JSDropDownMenu.m in Sources */,
 				30240EC21FFE0C44007BC134 /* GetOrderTmsService.m in Sources */,
+				3B0DD00021A399A400F8DE8F /* GetVisitEnterShopService.m in Sources */,
 				3035670C1F7103B0009E6EFB /* GetOupputListTableViewCell.m in Sources */,
 				30A3C2ED1D991E1000BBE0DA /* LoginViewController.m in Sources */,
 				30CDC6471D9907CD0035602F /* CALayer+Anim.m in Sources */,
+				3B222FB221A467DB00FDB0CF /* KBShowStepViewController.m in Sources */,
 				3051DB6D1F1878570034629B /* AddPartyService.m in Sources */,
 				301D7DBD1F5A3D8D00D83410 /* GetAppBusinessFeeListViewController.m in Sources */,
 				30201F271F1083AB0055BA6A /* FeeModel.m in Sources */,
@@ -3176,10 +3463,13 @@
 				30E5A04D1D9B769000D94F77 /* CheckOrderService.m in Sources */,
 				30CDC6461D9907CD0035602F /* CoreArchive.m in Sources */,
 				304A7ADD1DB8BCFE0039B0B2 /* ChartService.m in Sources */,
+				3B2087842191FAD2000C36A9 /* GetPartyVisitUpdateService.m in Sources */,
 				302160931F15BEE40049374F /* RegisterService.m in Sources */,
+				3BDABE9321A4181100C0E72B /* GetVisitRecommendedOrderViewController.m in Sources */,
 				30930BAF1FD6B1B400D320F9 /* ImportToOrderPlanListService.m in Sources */,
 				30EF59AA1DACCA94003F5729 /* OrderTmsDetailsService.m in Sources */,
 				30CDC64D1D9907CD0035602F /* NSString+Password.m in Sources */,
+				3B5ABDED2188022900A1230D /* GetPartyVisitListService.m in Sources */,
 				30CDC6501D9907CD0035602F /* UIFont+Extend.m in Sources */,
 				3051DB921F1898EF0034629B /* NormalAdressListModel.m in Sources */,
 				3041D80E1FA3044D008F74F8 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -3205,6 +3495,7 @@
 				30BB2DFA1F46821B002E51E7 /* StockProductListModel.m in Sources */,
 				30BB2DCC1F459375002E51E7 /* GetAppStockListTableViewCell.m in Sources */,
 				30930B821FD66BED00D320F9 /* AddMonthlyPlanViewController.m in Sources */,
+				3B5ABE03218837F100A1230D /* GetPartyVisitListModel.m in Sources */,
 				30CDC6611D9907CD0035602F /* SVProgressHUD.m in Sources */,
 				30201F0A1F1082220055BA6A /* GetAppBillFeeListModel.m in Sources */,
 				301D7DB01F5A3D2E00D83410 /* GetAppBillFeeListTableViewCell.m in Sources */,
@@ -3224,6 +3515,7 @@
 				303567111F711BEB009E6EFB /* GetInputInfoViewController.m in Sources */,
 				30B1AE6C1F74986D00130A55 /* Store_GetOupputInfoService.m in Sources */,
 				3047D4591DAC763900B48525 /* TransportInformationTableViewCell.m in Sources */,
+				3B5ABE0A21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m in Sources */,
 				304A7AC01DB85ED00039B0B2 /* CheckSignatureViewController.m in Sources */,
 				30201F261F1083AB0055BA6A /* FeeListModel.m in Sources */,
 				30BB2E021F4697CD002E51E7 /* Store_GetOutProductListTableViewCell.m in Sources */,
@@ -3248,11 +3540,14 @@
 				301CFDD91FBB02A100C8CB39 /* StockNoItemModel.m in Sources */,
 				309E10E01F6D1979008E1F49 /* InputInfoListModel.m in Sources */,
 				303567021F710384009E6EFB /* GetInputListTableViewCell.m in Sources */,
+				3B5ABDF6218802AA00A1230D /* GetPartyVisitListTableViewCell.m in Sources */,
 				30201F071F1082220055BA6A /* AppBusinessFeeModel.m in Sources */,
 				30F7B8D41DBF0B33004CD128 /* AddGiftProductsTableViewCell.m in Sources */,
 				301CFDD81FBB02A100C8CB39 /* StockNoListModel.m in Sources */,
 				30078D2E1DBB2AA200429813 /* OrderGiftModel.m in Sources */,
+				3B5ABDFB218807BE00A1230D /* AddPartyVisitViewController.m in Sources */,
 				30CDC6401D9907CD0035602F /* PhotoImageView.m in Sources */,
+				3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */,
 				30F235C01FD7CC760056846C /* GetOrderPlanDetailService.m in Sources */,
 				30201F1B1F1083860055BA6A /* GetFeeListCollectionViewCell.m in Sources */,
 				30F235B11FD78D810056846C /* GetOrderPlanListService.m in Sources */,
@@ -3261,6 +3556,7 @@
 				30F7B8CF1DBF0B15004CD128 /* AddGiftTypesTableViewCell.m in Sources */,
 				30BB2DC81F459375002E51E7 /* AddStockTableViewCell.m in Sources */,
 				30CDC64C1D9907CD0035602F /* NSString+Extend.m in Sources */,
+				3BDC8837218B4D960013CD81 /* AddPartyVisitLabel.m in Sources */,
 				3056B5692008930B00B4704A /* CheckStockItemModel.m in Sources */,
 				301D7DDC1F5A3E5800D83410 /* NSDictionary+Extension.m in Sources */,
 				3000CA021DB20E2F00D8E731 /* ProductPolicyTableViewCell.m in Sources */,
@@ -3270,14 +3566,17 @@
 				30CDC6631D9907CD0035602F /* Reachability.m in Sources */,
 				30E9C0A01DA8E10300A09182 /* NewsViewController.m in Sources */,
 				30201F161F1083760055BA6A /* GetFeeListViewController.m in Sources */,
+				3B4E18FF218A02B800297B88 /* GetPartyVisitCBXItemModel.m in Sources */,
 				30930BA71FD6AC4700D320F9 /* SelectGoodsTableViewCell.m in Sources */,
 				304FBAB91EF2635700FC3EFC /* OrderCancelService.m in Sources */,
 				30A3C2FC1D9A011600BBE0DA /* UserModel.m in Sources */,
 				30BB2DCA1F459375002E51E7 /* ConfirmAddStockTableViewCell.m in Sources */,
 				3051DB6E1F1878570034629B /* DeleteAppUserPartyService.m in Sources */,
+				3B0DD00421A3A20600F8DE8F /* GetVisitEnterShopViewController.m in Sources */,
 				302A057A1DB0AF4C00972490 /* SelectGoodsService.m in Sources */,
 				30BB2DAE1F459359002E51E7 /* CustomerListSearchResultsViewController.m in Sources */,
 				30EAC8A21F78AFB200F9B6D4 /* StockOutTableViewCell.m in Sources */,
+				3B4E152E21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m in Sources */,
 				30BB2DEA1F4593AD002E51E7 /* AppStockModel.m in Sources */,
 				30EF59C01DAE2520003F5729 /* MakeOrderTableViewCell.m in Sources */,
 				302A05831DB0C9E700972490 /* ProductPolicyModel.m in Sources */,
@@ -3314,16 +3613,20 @@
 				302675DA1F72469B0098DEF1 /* InputToAddressModel.m in Sources */,
 				30EF59BB1DAE0F01003F5729 /* OrderProgressNodeTableViewCell.m in Sources */,
 				30240EC81FFE1BD1007BC134 /* TmsOrderInfoItemModel.m in Sources */,
+				3B084FF921B10635006ECBF1 /* PartyTableViewCell.m in Sources */,
 				30CDC6571D9907CD0035602F /* UIView+Extend.m in Sources */,
 				30CDC65C1D9907CD0035602F /* UIImageView+SD.m in Sources */,
+				3B5ABE062188391D00A1230D /* GetPartyVisitItemModel.m in Sources */,
 				30CDC67B1D990B430035602F /* Tools.m in Sources */,
 				303566D81F70FF6A009E6EFB /* GetOupputListViewController.m in Sources */,
 				3054D11B1FFCD29200E1D9B2 /* GetTmsOrderByAddressTableViewCell.m in Sources */,
 				301CFDCF1FBAF9FF00C8CB39 /* StockNoWaterInfoModel.m in Sources */,
 				303566B81F70F2AD009E6EFB /* InputReturnViewController.m in Sources */,
 				304A7AA91DB4D3E10039B0B2 /* ShoppingCartTableViewCell.m in Sources */,
+				3B20878121912BE0000C36A9 /* GetPartyVisitInsertService.m in Sources */,
 				30CDC6551D9907CD0035602F /* UIImage+Water.m in Sources */,
 				30078D2B1DBB1AE400429813 /* PromotionOrderModel.m in Sources */,
+				3B4E18F32189B4EE00297B88 /* GetPartyVisitCBXModel.m in Sources */,
 				301CFDC71FBAF22300C8CB39 /* StockNoListDetailViewController.m in Sources */,
 				30CDC64E1D9907CD0035602F /* UIColor+Extend.m in Sources */,
 				30EF59CA1DAF3457003F5729 /* AddressModel.m in Sources */,
@@ -3360,19 +3663,24 @@
 				3035669C1F70CD2B009E6EFB /* StockOutConfirmViewController.m in Sources */,
 				30240EC51FFE1BBE007BC134 /* TmsOrderInfoListModel.m in Sources */,
 				30A7506B1F18C46A00B46B93 /* LM_A_B_C_D.m in Sources */,
+				3B813A8421AEF5A30096783C /* GetVisitVividDisplayViewController.m in Sources */,
 				30F7B8E11DBFAE80004CD128 /* SelectedGiftsTableViewCell.m in Sources */,
 				30C4762E1F4D2EFA00A5FB93 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				3B5ABDE92187FFFE00A1230D /* GetPartyVisitListViewController.m in Sources */,
 				30DE405A1F6D11EA00845CBB /* InputModel.m in Sources */,
 				30CDC6491D9907CD0035602F /* NSArray+Extend.m in Sources */,
 				30078D281DBB148C00429813 /* PromotionDetailModel.m in Sources */,
 				30E5A0471D9B654F00D94F77 /* OrderFinishViewController.m in Sources */,
 				30E5A05D1D9BC16800D94F77 /* CheckOrderTableViewCell.m in Sources */,
+				3B813AEC21AF2AA50096783C /* DataItemModel.m in Sources */,
 				301D7DDD1F5A3E5800D83410 /* NSDictionary+MyLog.m in Sources */,
 				302600901EE69F8B001F6C38 /* README.md in Sources */,
+				3B631A45219D7CD500081560 /* GetPartyVisitLineService.m in Sources */,
 				300AF7091EE8FD630037C660 /* HooDatePicker.m in Sources */,
 				30C476311F4D2EFA00A5FB93 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				30F93E121F31B3FF001904F1 /* LMBlurredView.m in Sources */,
 				300AF6FD1EE8DEC60037C660 /* TimeLabel.m in Sources */,
+				3BDABE8E21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.m in Sources */,
 				302675E61F724BCA0098DEF1 /* Store_StockOutConfirmService.m in Sources */,
 				3009143F1F41A8700022E150 /* UIViewController+BackButtonHandler.m in Sources */,
 				30CDC6521D9907CD0035602F /* UIImage+Cut.m in Sources */,

@@ -62,5 +62,11 @@
 		<key>imageName</key>
 		<string>LM_stock_check</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>客户拜访</string>
+		<key>imageName</key>
+		<string>LM_visit_client</string>
+	</dict>
 </array>
 </plist>

@@ -36,5 +36,17 @@
 /// Cell高度
 @property (assign, nonatomic) CGFloat cellHeight;
 
+/// 客户等级
+@property(copy, nonatomic)NSString *PARTY_LEVEL;
+/// 客户状态码
+@property(copy, nonatomic)NSString *PARTY_STATES;
+/// 渠道
+@property(copy, nonatomic)NSString *CHANNEL;
+/// 拜访线路
+@property(copy, nonatomic)NSString *LINE;
+/// 每周拜访频率
+@property(copy, nonatomic)NSString *WEEKLY_VISIT_FREQUENCY;
+/// 单店销量/天
+@property(copy, nonatomic)NSString *SINGLE_STORE_SALES;
 
 @end

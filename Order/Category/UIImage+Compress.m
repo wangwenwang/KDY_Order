@@ -146,4 +146,25 @@ typedef enum {
     return waterMarkedImage;
 }
 
+- (NSData *)compressImage:(UIImage *)image andMaxLength:(int)maxLength andMaxWidthAndHeight:(CGFloat)maxWidthAndHeight {
+    
+    NSLog(@"-----1");
+    CGSize newSize = [self scaleImage:image andImageLength:maxWidthAndHeight];
+    NSLog(@"-----2");
+    UIImage *newImage = [self resizeImage:image andNewSize:newSize];
+    NSLog(@"-----3");
+    
+    CGFloat compress = 0.9;
+    NSData *data = UIImageJPEGRepresentation(newImage, compress);
+    NSLog(@"-----4");
+    
+    while(data.length > maxLength && compress > 0.1) {
+        compress -= 0.2;
+        data = UIImageJPEGRepresentation(newImage, compress);
+    }
+    NSLog(@"-----5");
+    
+    return data;
+}
+
 @end

@@ -22,6 +22,14 @@
         _PARTY_PROVINCE = @"";
         _PARTY_CITY = @"";
         _PARTY_REMARK = @"";
+        
+        _PARTY_LEVEL = @"";
+        _PARTY_STATES = @"";
+        _CHANNEL = @"";
+        _LINE = @"";
+        _WEEKLY_VISIT_FREQUENCY = @"";
+        
+        _SINGLE_STORE_SALES = @"";
     }
     return self;
 }
@@ -39,6 +47,12 @@
         _PARTY_PROVINCE = dict[@"PARTY_PROVINCE"] ? dict[@"PARTY_PROVINCE"] : @"";
         _PARTY_CITY = dict[@"PARTY_CITY"] ? dict[@"PARTY_CITY"] : @"";
         _PARTY_REMARK = dict[@"PARTY_REMARK"] ? dict[@"PARTY_REMARK"] : @"";
+        _PARTY_LEVEL = dict[@"PARTY_LEVEL"] ? dict[@"PARTY_LEVEL"] : @"";
+        _PARTY_STATES = dict[@"PARTY_STATES"] ? dict[@"PARTY_STATES"] : @"";
+        _CHANNEL = dict[@"CHANNEL"] ? dict[@"CHANNEL"] : @"";
+        _LINE = dict[@"LINE"] ? dict[@"LINE"] : @"";
+        _WEEKLY_VISIT_FREQUENCY = dict[@"WEEKLY_VISIT_FREQUENCY"] ? dict[@"WEEKLY_VISIT_FREQUENCY"] : @"";
+        _SINGLE_STORE_SALES = dict[@"SINGLE_STORE_SALES"] ? dict[@"SINGLE_STORE_SALES"] : @"";
         
     } @catch (NSException *exception) {
         

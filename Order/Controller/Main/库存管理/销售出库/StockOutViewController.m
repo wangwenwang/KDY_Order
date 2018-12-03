@@ -486,6 +486,18 @@ typedef enum : NSInteger {
 }
 
 
+- (void)setVisitPartyAndAddress:(GetToAddressModel *)visitPartyAndAddress {
+    
+    _visitPartyAndAddress = visitPartyAndAddress;
+    _getToAddressM = visitPartyAndAddress;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
+    });
+}
+
+
 #pragma mark - 功能函数
 
 // 初始化其它信息视图
@@ -704,10 +716,18 @@ typedef enum : NSInteger {
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
     _receiveLabel.text = @"收货信息:";
     [receiveView addSubview:_receiveLabel];
-    // 手势
-    UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
-    tap_receive.numberOfTouchesRequired = 1;
-    [receiveView addGestureRecognizer:tap_receive];
+    // 客户拜访进来不添加
+    if(!_visitPartyAndAddress) {
+        // 箭头
+        UIImageView *receiveImageView = [[UIImageView alloc] init];
+        [receiveImageView setImage:[UIImage imageNamed:@"cell_direction"]];
+        [receiveImageView setFrame:CGRectMake(CGRectGetWidth(receiveView.frame) - 30, (CGRectGetHeight(receiveView.frame) - 25) / 2, 25, 25)];
+        [receiveView addSubview:receiveImageView];
+        // 手势
+        UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
+        tap_receive.numberOfTouchesRequired = 1;
+        [receiveView addGestureRecognizer:tap_receive];
+    }
     [tableHeadView addSubview:receiveView];
 }
 
@@ -1690,6 +1710,7 @@ typedef enum : NSInteger {
     vc.partyM = _party;
     vc.getToAddressM = _getToAddressM;
     vc.didselectIndex = _didselectIndex;
+    vc.VISIT_IDX = _VISIT_IDX;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

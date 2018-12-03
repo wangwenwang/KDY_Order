@@ -40,4 +40,7 @@
 /// 点击事件下标
 @property (assign, nonatomic) NSInteger didselectIndex;
 
+// 拜访IDX，区分路线内订单
+@property (strong, nonatomic) NSString *VISIT_IDX;
+
 @end

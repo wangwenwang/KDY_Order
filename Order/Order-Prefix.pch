@@ -349,6 +349,63 @@
 #define API_GetWmsProductSum @"http://oms.kaidongyuan.com:8088/api/GetWmsProductSum"
 
 
+
+/*-------------------- 客户拜访功能 --------------------*/
+
+/// 获取客户拜访列表
+#define API_GetPartyVisitList @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitList"
+
+/// 获取下拉框数据
+#define API_GetPartyVisitCBX @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitCBX"
+
+/// 添加客户拜访
+#define API_GetPartyVisitInsert @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitInsert"
+
+/// 修改客户拜访
+#define API_GetPartyVisitUpdate @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitUpdate"
+
+// GetPartyVisitListViewController 拜访客户列表|接收消息并显示、同时刷新列表
+#define kGetPartyVisitListViewController_receiveMsg @"GetPartyVisitListViewController_receiveMsg"
+
+/// 客户拜访线路
+#define API_GetPartyVisitLine @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitLine"
+
+/// 客户拜访第一步：进店
+#define API_GetVisitEnterShop @"http://oms.kaidongyuan.com:8088/api/GetVisitEnterShop"
+
+/// 客户拜访第一步：进店 获取照片
+#define API_GetPictureByVisitIdx @"http://oms.kaidongyuan.com:8088/api/GetPictureByVisitIdx"
+
+/// 客户拜访第二步：确认客户资料信息
+#define API_GetVisitConfirmCustomer @"http://oms.kaidongyuan.com:8088/api/GetVisitConfirmCustomer"
+
+/// 客户拜访第三步：检查库存
+#define API_GetVisitCheckInventory @"http://oms.kaidongyuan.com:8088/api/GetVisitCheckInventory"
+
+/// 客户拜访第四步：建议订单
+#define API_GetVisitRecommendedOrder @"http://oms.kaidongyuan.com:8088/api/GetVisitRecommendedOrder"
+
+/// 客户拜访第五步：生动化陈列
+#define API_GetVisitVividDisplay @"http://oms.kaidongyuan.com:8088/api/GetVisitVividDisplay"
+
+/// 客户拜访第六步：离店
+#define API_GetVisitLeaveShop @"http://oms.kaidongyuan.com:8088/api/GetVisitLeaveShop"
+
+/// 客户拜访：获取渠道
+#define API_GetPartyVisitChannel @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitChannel"
+
+/// 客户拜访：获取生动化陈列
+#define API_VividDisplayCBX @"http://oms.kaidongyuan.com:8088/api/VividDisplayCBX"
+
+/// 获取客户拜访订单
+#define API_GetVisitAppOrder @"http://oms.kaidongyuan.com:8088/api/GetVisitAppOrder"
+
+/// 根据客户地址id，获取上级地址id
+#define API_GetFatherAddress @"http://oms.kaidongyuan.com:8088/api/GetFatherAddress"
+
+
+
+
 /*--------- 判断iOS版本 ---------*/
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue
 

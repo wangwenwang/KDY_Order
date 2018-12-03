@@ -17,12 +17,17 @@
 @implementation AddPartyService
 
 
-- (void)AddParty:(NSString *)strUserId andPARTY_NAME:(NSString *)PARTY_NAME andPARTY_CITY:(NSString *)PARTY_CITY andPARTY_REMARK:(NSString *)PARTY_REMARK {
+- (void)AddParty:(NSString *)strUserId andPARTY_NAME:(NSString *)PARTY_NAME andPARTY_CITY:(NSString *)PARTY_CITY andPARTY_REMARK:(NSString *)PARTY_REMARK andBUSINESS_IDX:(NSString *)BUSINESS_IDX andStrLINE:(NSString *)strLINE andStrCHANNEL:(NSString *)strCHANNEL andPARTY_CODE:(NSString *)PARTY_CODE andStrFatherPartyIDX:(NSString *)strFatherPartyIDX {
     
     strUserId = strUserId ? strUserId : @"";
     PARTY_NAME = PARTY_NAME ? PARTY_NAME : @"";
     PARTY_CITY = PARTY_CITY ? PARTY_CITY : @"";
     PARTY_REMARK = PARTY_REMARK ? PARTY_REMARK : @"";
+    BUSINESS_IDX = BUSINESS_IDX ? BUSINESS_IDX : @"";
+    strLINE = strLINE ? strLINE : @"";
+    strCHANNEL = strCHANNEL ? strCHANNEL : @"";
+    PARTY_CODE = PARTY_CODE ? PARTY_CODE : @"";
+    strFatherPartyIDX = strFatherPartyIDX ? strFatherPartyIDX : @"";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -31,6 +36,10 @@
                                  @"PARTY_NAME" : PARTY_NAME,
                                  @"PARTY_CITY" : PARTY_CITY,
                                  @"PARTY_REMARK" : PARTY_REMARK,
+                                 @"BUSINESS_IDX" : BUSINESS_IDX,
+                                 @"strLINE" : strLINE,
+                                 @"strCHANNEL" : strCHANNEL,
+                                 @"PARTY_CODE" : PARTY_CODE,
                                  @"strLicense" : @""
                                  };
     

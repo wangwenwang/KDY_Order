@@ -22,6 +22,7 @@
 #import "MonthlyPlanViewController.h"
 #import "GetTmsOrderByAddressViewController.h"
 #import "GetWmsProductZongViewController.h"
+#import "GetPartyVisitListViewController.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartServiceDelegate>
 
@@ -206,12 +207,12 @@
                 break;
             }
         }
-        for (NSDictionary *dic in _myCollectionDataArrM) {
-            if([dic[@"title"] isEqualToString:@"库存管理"]) {
-                [_myCollectionDataArrM removeObject:dic];
-                break;
-            }
-        }
+//        for (NSDictionary *dic in _myCollectionDataArrM) {
+//            if([dic[@"title"] isEqualToString:@"库存管理"]) {
+//                [_myCollectionDataArrM removeObject:dic];
+//                break;
+//            }
+//        }
     }
     
     // 上海才有 "查看库存" 功能
@@ -326,6 +327,11 @@
     } else if([title isEqualToString:@"查看库存"]) {
         
         GetWmsProductZongViewController *vc = [[GetWmsProductZongViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if([title isEqualToString:@"客户拜访"]) {
+        
+        GetPartyVisitListViewController *vc = [[GetPartyVisitListViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }

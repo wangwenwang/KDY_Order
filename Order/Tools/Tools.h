@@ -201,6 +201,13 @@
  */
 + (nullable NSString *)getCurrentDate_yyyy_mm;
 
+/**
+ 获取当前日期 例如：2018-11-27
+ 
+ @return yyyy-mm-dd
+ */
++ (nullable NSString *)getCurrentDate_yyyy_mm_dd;
+
 
 /**
  禁止边缘返回
@@ -242,5 +249,50 @@
  @return 已去掉小数点后的0
  */
 + (nullable NSString *)formatFloat:(float)f;
+
+
+
+/**
+ 判断字符串是否为nil或""
+
+ @param uu 字符串
+ @return 是否为nil或""
+ */
++ (BOOL)isEmpty:(nullable NSString *)uu;
+
+
+/**
+ NSString转NSDate
+
+ @param string 格式yyyy-MM-ddHH:mm:ss
+ @return 时间Date
+ */
++ (nullable NSDate *)dateFromString:(nullable NSString *)string;
+
+
+/**
+ 获取当前星期几
+
+ @return 星期日
+ */
++ (nullable NSString *)getCurrentWeekDay;
+
+
+/**
+ 照片转 base64
+
+ @param image 照片
+ @return base64字符串
+ */
++ (nullable NSString *)changeImageToString:(nullable UIImage *)image;
+
+
+/**
+ 拜访状态转义
+
+ @param VISIT_STATES 拜访状态原型：""，"新建"，"确认客户信息"，"检查库存"，"建议订单"，"生动化陈列"，"离店"
+ @return 转义后状态："未拜访"，"拜访中"，"已拜访"
+ */
++ (nullable NSString *)getVISIT_STATES:(nullable NSString *)VISIT_STATES;
 
 @end

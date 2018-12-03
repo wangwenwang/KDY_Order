@@ -274,7 +274,17 @@
     _OUTPUT_WEIGHT.text = [Tools TwoDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTWEIGHT];
     _OUTPUT_VOLUME.text = [Tools TwoDecimal:_getOupputDetailM.getOupputInfoModel.oUTPUTVOLUME];
     
+    // 起点地址换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:_ADDRESS_INFO.font.pointSize andWidth:MAXFLOAT];
+    CGFloat mulLine = [Tools getHeightOfString:_ADDRESS_INFO.text fontSize:_ADDRESS_INFO.font.pointSize andWidth:(ScreenWidth - 8 - 70 - 12)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _headerViewHeight.constant += (mulLine - oneLine);
+    // 目标地址换行
+    mulLine = [Tools getHeightOfString:_PARTY_INFO.text fontSize:_PARTY_INFO.font.pointSize andWidth:(ScreenWidth - 8 - 70 - 12)];
+    mulLine = mulLine ? mulLine : oneLine;
+    _headerViewHeight.constant += (mulLine - oneLine);
     
+
     CGFloat tableViewHeight = 0;
     for (GetOupputItemModel *m in _getOupputDetailM.getOupputItemModel) {
         
