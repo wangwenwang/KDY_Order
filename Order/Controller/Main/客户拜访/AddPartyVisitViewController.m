@@ -75,6 +75,9 @@
 // 达成情况placeholder
 @property (weak, nonatomic) IBOutlet UILabel *REACH_THE_SITUATION_PlaceholderLabel;
 
+// 修改客户信息按钮
+@property (weak, nonatomic) IBOutlet UIButton *modifyBtn;
+
 // 确认按钮
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
@@ -171,8 +174,14 @@
     _confirmBtn.layer.shadowOpacity = 0.5;
     _confirmBtn.layer.shadowColor =  [UIColor redColor].CGColor;
     
+    _modifyBtn.layer.cornerRadius = 20;
+    _modifyBtn.layer.shadowOffset =  CGSizeMake(0, 3);
+    _modifyBtn.layer.shadowOpacity = 0.5;
+    _modifyBtn.layer.shadowColor =  [UIColor redColor].CGColor;
+
+    
     [self initUI];
-    [self addRightBtn];
+//    [self addRightBtn];
     
     // 新建拜访
     self.title = @"新建拜访";
@@ -291,7 +300,7 @@
 
 
 // 跳转至步骤页面
-- (void)rightBtnOnclick {
+- (IBAction)rightBtnOnclick {
     
     [_PARTY_Modify_View setHidden:NO];
     self.navigationItem.rightBarButtonItem = nil;
@@ -304,7 +313,7 @@
 
 - (IBAction)cancelModityOnclick {
     
-    [self addRightBtn];
+//    [self addRightBtn];
     [self.view endEditing:YES];
     [_PARTY_Modify_View setHidden:YES];
 }
@@ -312,7 +321,7 @@
 
 - (IBAction)confirmModityOnclick {
     
-    [self addRightBtn];
+//    [self addRightBtn];
     [self.view endEditing:YES];
     [_PARTY_Modify_View setHidden:YES];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

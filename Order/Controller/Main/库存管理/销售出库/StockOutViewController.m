@@ -480,6 +480,14 @@ typedef enum : NSInteger {
 
 - (void)receiveMsg:(NSNotification *)aNotify {
     
+    for (UIView *view1 in _myTableView.tableHeaderView.subviews) {
+        for (UIView *view2 in view1.subviews) {
+            if(view2.tag == 10088) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+    
     _getToAddressM = aNotify.userInfo[@"msg"];
     
     _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
@@ -716,13 +724,27 @@ typedef enum : NSInteger {
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
     _receiveLabel.text = @"收货信息:";
     [receiveView addSubview:_receiveLabel];
-    // 客户拜访进来不添加
+    // 非客户拜访进来才添加
     if(!_visitPartyAndAddress) {
         // 箭头
         UIImageView *receiveImageView = [[UIImageView alloc] init];
         [receiveImageView setImage:[UIImage imageNamed:@"cell_direction"]];
         [receiveImageView setFrame:CGRectMake(CGRectGetWidth(receiveView.frame) - 30, (CGRectGetHeight(receiveView.frame) - 25) / 2, 25, 25)];
         [receiveView addSubview:receiveImageView];
+        // 提示按钮
+        UIButton *btn = [[UIButton alloc] init];
+        [receiveView addSubview:btn];
+        btn.tag = 10088;
+        [btn.layer setCornerRadius:15];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [btn setBackgroundColor:RGB(91, 134, 247)];
+        [btn setTitle:@"添加收货信息" forState:UIControlStateNormal];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(125);
+            make.height.mas_equalTo(30);
+            make.centerY.offset(0);
+            make.right.mas_equalTo(-10);
+        }];
         // 手势
         UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];
         tap_receive.numberOfTouchesRequired = 1;

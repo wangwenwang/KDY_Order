@@ -15,7 +15,7 @@
 
 @implementation AddAddressService
 
-- (void)AddAddress:(NSString *)strUserId andPARTY_IDX:(NSString *)PARTY_IDX andADDRESS_CODE:(NSString *)ADDRESS_CODE andADDRESS_PROVINCE:(NSString *)ADDRESS_PROVINCE andADDRESS_CITY:(NSString *)ADDRESS_CITY andADDRESS_AREA:(NSString *)ADDRESS_AREA andADDRESS_RURAL:(NSString *)ADDRESS_RURAL andADDRESS_ADDRESS:(NSString *)ADDRESS_ADDRESS andCONTACT_PERSON:(NSString *)CONTACT_PERSON andCONTACT_TEL:(NSString *)CONTACT_TEL andADDRESS_INFO:(NSString *)ADDRESS_INFO andADDRESS_CODE:(NSString *)ADDRESS_CODE andStrFatherPartyIDX:(NSString *)strFatherPartyIDX{
+- (void)AddAddress:(NSString *)strUserId andPARTY_IDX:(NSString *)PARTY_IDX andADDRESS_CODE:(NSString *)ADDRESS_CODE andADDRESS_PROVINCE:(NSString *)ADDRESS_PROVINCE andADDRESS_CITY:(NSString *)ADDRESS_CITY andADDRESS_AREA:(NSString *)ADDRESS_AREA andADDRESS_RURAL:(NSString *)ADDRESS_RURAL andADDRESS_ADDRESS:(NSString *)ADDRESS_ADDRESS andCONTACT_PERSON:(NSString *)CONTACT_PERSON andCONTACT_TEL:(NSString *)CONTACT_TEL andADDRESS_INFO:(NSString *)ADDRESS_INFO andADDRESS_CODE:(NSString *)ADDRESS_CODE andStrFatherPartyIDX:(NSString *)strFatherPartyIDX andLONGITUDE:(NSString *)LONGITUDE andLATITUDE:(NSString *)LATITUDE{
     
     strUserId = strUserId ? strUserId : @"";
     PARTY_IDX = PARTY_IDX ? PARTY_IDX : @"";
@@ -30,6 +30,8 @@
     ADDRESS_INFO = ADDRESS_INFO ? ADDRESS_INFO : @"";
     ADDRESS_CODE = ADDRESS_CODE ? ADDRESS_CODE : @"";
     strFatherPartyIDX = strFatherPartyIDX ? strFatherPartyIDX : @"";
+    LONGITUDE = LONGITUDE ? LONGITUDE : @"";
+    LATITUDE = LATITUDE ? LATITUDE : @"";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -47,10 +49,13 @@
                                  @"ADDRESS_INFO" : ADDRESS_INFO,
                                  @"ADDRESS_CODE" : ADDRESS_CODE,
                                  @"strFatherPartyIDX" : strFatherPartyIDX,
+                                 @"LONGITUDE" : LONGITUDE,
+                                 @"LATITUDE" : LATITUDE,
                                  @"strLicense" : @""
                                  };
     
-    LMLog(@"请求%@参数:%@", kAPIName, parameters);
+    
+    LMLog(@"接口:%@请求%@参数：%@", API_AddAddress, kAPIName, parameters);
     
     [manager POST:API_AddAddress parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;

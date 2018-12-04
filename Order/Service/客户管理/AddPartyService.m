@@ -43,7 +43,7 @@
                                  @"strLicense" : @""
                                  };
     
-    LMLog(@"请求%@参数:%@", kAPIName, parameters);
+    LMLog(@"接口:%@请求%@参数:%@", API_AddParty, kAPIName, parameters);
     
     [manager POST:API_AddParty parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
@@ -51,8 +51,12 @@
         LMLog(@"%@,请求成功,返回值:%@", kAPIName, responseObject);
         NSInteger type = [responseObject[@"type"] intValue];
         NSString *msg = responseObject[@"msg"];
-        AddPartyModel *m = [[AddPartyModel alloc] initWithDictionary:responseObject[@"result"]];
-        
+        AddPartyModel *m;
+        @try {
+            m = [[AddPartyModel alloc] initWithDictionary:responseObject[@"result"]];
+        }@catch (NSException *exception) {
+        }
+
         if(type == 1) {
             
             [self successOfAddParty:msg andAddPartyM:m];

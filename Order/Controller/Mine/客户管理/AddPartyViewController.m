@@ -34,6 +34,10 @@
 // 选择客户
 #define kCellName_PARTY @"PartyTableViewCell"
 
+// 微信发送位置
+#import "YBLocationPickerViewController.h"
+#import "YBShowLocationVC.h"
+
 @interface AddPartyViewController ()<AddPartyServiceDelegate, AddAddressServiceDelegate, ABPeoplePickerNavigationControllerDelegate, CNContactPickerDelegate, GetPartyVisitLineServiceDelegate, UITableViewDataSource, UITableViewDelegate, MakeOrderServiceDelegate>
 
 /************ 添加客户 ************/
@@ -139,6 +143,12 @@
 // 获取上级客户
 @property (strong, nonatomic) MakeOrderService *service_makeOrder;
 
+// 微信发送位置
+@property (weak, nonatomic) IBOutlet UILabel *addresslabel;
+@property (strong, nonatomic) NSDictionary *locationInfo;
+@property (strong, nonatomic) NSString *LONGITUDE; // 经度
+@property (strong, nonatomic) NSString *LATITUDE;  // 纬度
+
 @end
 
 
@@ -187,6 +197,23 @@
     
     // 拜访线路
     [_service_getParty GetPartyVisitLine];
+    
+    [self initWeSendLoc];
+}
+
+
+- (IBAction)selectAddressAction:(id)sender {
+    
+    YBLocationPickerViewController *picker = [[YBLocationPickerViewController alloc] init];
+    [self.navigationController pushViewController:picker animated:YES];
+    picker.locationSelectBlock = ^(id locationInfo, YBLocationPickerViewController *locationPickController) {
+        NSLog(@"%@",locationInfo);
+        //返回name address pt pt为坐标
+        _LONGITUDE = locationInfo[@"LONGITUDE"];
+        _LATITUDE = locationInfo[@"LATITUDE"];
+        self.addresslabel.text = [NSString stringWithFormat:@"%@（%@附近）",locationInfo[@"pt"], locationInfo[@"address"]];
+        self.locationInfo = locationInfo;
+    };
 }
 
 
@@ -244,6 +271,26 @@
 }
 
 
+// 微信发送位置
+- (void)initWeSendLoc {
+    
+    self.addresslabel.text = @"";
+    
+    if (@available(iOS 11, *)){
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    }
+    else{
+//        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+//        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:39/255.0f green:225/255.0f blue:25/255.0f alpha:1];
+//        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:17/255.0f green:16/255.0f blue:19/255.0f alpha:1]];
+        
+    }
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+
 - (void)saveAddress {
     
     NSString *a = [NSString stringWithFormat:@"%@%@%@%@%@", _a_b_c_d.A.iTEMNAME, _a_b_c_d.B.iTEMNAME, _a_b_c_d.C.iTEMNAME, _a_b_c_d.D.iTEMNAME, _detailAddressLabel.textTrim];
@@ -266,7 +313,7 @@
                             address_idx = m.IDX;
                         }
                         
-                        [_service_addAddress AddAddress:_app.user.IDX andPARTY_IDX:_AddPartyM.iDX andADDRESS_CODE:_AddPartyM.strPartyCode andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:_PARTY_CODE.text andStrFatherPartyIDX:address_idx];
+                        [_service_addAddress AddAddress:_app.user.IDX andPARTY_IDX:_AddPartyM.iDX andADDRESS_CODE:_AddPartyM.strPartyCode andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:_PARTY_CODE.text andStrFatherPartyIDX:address_idx andLONGITUDE:_LONGITUDE andLATITUDE:_LATITUDE];
                     } else {
                         
                         [Tools showAlert:self.view andTitle:@"所在地区不能为空"];
@@ -339,7 +386,7 @@
     _mulAlertBg = mulAlertBg;
     
     // 多选Alert
-    UIView *mulAlert = [[UIView alloc] init];
+    UIView *mulAlert = [[UIView alloc] init]; 
     [self.view.window addSubview:mulAlert];
     
     mulAlert.backgroundColor = [UIColor greenColor];
@@ -508,7 +555,7 @@
     [self.view.window addSubview:mulParty];
     [mulParty mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(290);
-        CGFloat height = _MultiArrParty.count * 64 + 80;
+        CGFloat height = _MultiArrParty.count * 64 + 110;
         CGFloat edge = 120;
         if(height > (ScreenHeight - edge)) {
             height = ScreenHeight - edge;
@@ -603,12 +650,27 @@
 
 - (IBAction)saveOnclick:(UIButton *)sender {
     
-    [_service_makeOrder getCustomerData];
-    return;
-    
     if([_PARTY_CODE.textTrim isEqualToString:@""]) {
         
         [Tools showAlert:self.view andTitle:@"客户代码不能为空"];
+        return;
+    }
+    
+    if([_CHANNEL_NO.text isEqualToString:@""]) {
+        
+        [Tools showAlert:self.view andTitle:@"渠道不能为空"];
+        return;
+    }
+    
+    if([_LINE.text isEqualToString:@""]) {
+        
+        [Tools showAlert:self.view andTitle:@"拜访线路不能为空"];
+        return;
+    }
+    
+    if([self.addresslabel.text isEqualToString:@""]) {
+        
+        [Tools showAlert:self.view andTitle:@"经纬坐标不能为空"];
         return;
     }
     
@@ -821,12 +883,12 @@
     // 有当前星期就设置默认当前星期，没有就默认返回的第一条数据
     if(hasCurrWeek == YES) {
         
-        _LINE.text = currWeek;
+//        _LINE.text = currWeek;
     }else {
        
         if(_lines.count > 0) {
             
-            _LINE.text = [_lines firstObject];
+//            _LINE.text = [_lines firstObject];
         }
     }
 
@@ -846,7 +908,7 @@
     _channel = arr;
     if(_channel.count > 0) {
         
-        _CHANNEL_NO.text = [_channel firstObject];
+//        _CHANNEL_NO.text = [_channel firstObject];
     }
 }
 

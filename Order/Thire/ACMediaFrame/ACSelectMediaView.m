@@ -390,7 +390,7 @@
     if ([UIImagePickerController isSourceTypeAvailable: sourceType]){
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        //        picker.allowsEditing = YES;
+        picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         [[self currentViewController] presentViewController:picker animated:YES completion:nil];
     }else{

@@ -208,7 +208,7 @@
                             
                             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                             
-                            [_service AddAddress:_app.user.IDX andPARTY_IDX:_party.IDX andADDRESS_CODE:_party.PARTY_CODE andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:@"" andStrFatherPartyIDX:@""];
+                            [_service AddAddress:_app.user.IDX andPARTY_IDX:_party.IDX andADDRESS_CODE:_party.PARTY_CODE andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:@"" andStrFatherPartyIDX:@"" andLONGITUDE:@"" andLATITUDE:@""];
                         } else {
                             
                             [Tools showAlert:self.view andTitle:@"所在地区不能为空"];

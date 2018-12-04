@@ -249,7 +249,21 @@
             NSLog(@"区/县:%@", rgcData.district);
             NSLog(@"街道:%@", rgcData.street);
             NSLog(@"门牌号:%@", rgcData.streetNumber);
-            weakSelf.ACTUAL_VISITING_ADDRESS.text = displayLabel;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                weakSelf.ACTUAL_VISITING_ADDRESS.text = displayLabel;
+            });
+            
+            if(!rgcData.province && !rgcData.city && !rgcData.district) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [Tools showAlert:weakSelf.view andTitle:@"鉴权失败，重新定位"];
+                    // 执行定位
+                    [weakSelf reGeocodeAction];
+                });
+            }
         }
         NSLog(@"netstate = %d",state);
     };

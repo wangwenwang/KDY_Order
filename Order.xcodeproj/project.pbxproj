@@ -370,7 +370,7 @@
 		30E5A0591D9BB88300D94F77 /* BusinessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0581D9BB88300D94F77 /* BusinessModel.m */; };
 		30E5A05D1D9BC16800D94F77 /* CheckOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A05B1D9BC16800D94F77 /* CheckOrderTableViewCell.m */; };
 		30E5A05E1D9BC16800D94F77 /* CheckOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A05C1D9BC16800D94F77 /* CheckOrderTableViewCell.xib */; };
-		30E5A0661D9CF91300D94F77 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0651D9CF91300D94F77 /* AboutViewController.m */; };
+		30E5A0661D9CF91300D94F77 /* AboutViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0651D9CF91300D94F77 /* AboutViewController.mm */; };
 		30E5A06A1D9D0ADD00D94F77 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A0681D9D0ADD00D94F77 /* ChangePasswordViewController.m */; };
 		30E5A06B1D9D0ADD00D94F77 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E5A0691D9D0ADD00D94F77 /* ChangePasswordViewController.xib */; };
 		30E5A06E1D9D138900D94F77 /* ChangePasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E5A06D1D9D138900D94F77 /* ChangePasswordService.m */; };
@@ -465,6 +465,14 @@
 		3B5ABE0A21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */; };
 		3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */; };
 		3B631A45219D7CD500081560 /* GetPartyVisitLineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */; };
+		3B765A2621B60FDE00684CF4 /* BMKLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */; };
+		3B765A2821B6111900684CF4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2721B6111900684CF4 /* CoreLocation.framework */; };
+		3B765A2A21B6112300684CF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2921B6112300684CF4 /* SystemConfiguration.framework */; };
+		3B765A2C21B6113300684CF4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2B21B6113200684CF4 /* Security.framework */; };
+		3B765A2E21B6113A00684CF4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2D21B6113A00684CF4 /* libsqlite3.0.tbd */; };
+		3B765A3021B6114400684CF4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2F21B6114400684CF4 /* CoreTelephony.framework */; };
+		3B765A3221B6115400684CF4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A3121B6115400684CF4 /* libc++.tbd */; };
+		3B765A3421B6115D00684CF4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A3321B6115D00684CF4 /* AdSupport.framework */; };
 		3B813A8421AEF5A30096783C /* GetVisitVividDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */; };
 		3B813A8521AEF5A30096783C /* GetVisitVividDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */; };
 		3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813AE621AF2A0D0096783C /* LMDropDownMenuTableViewCell.m */; };
@@ -477,6 +485,17 @@
 		3BDABE9321A4181100C0E72B /* GetVisitRecommendedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */; };
 		3BDABE9421A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */; };
 		3BDC8837218B4D960013CD81 /* AddPartyVisitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */; };
+		3BE8F91E21B659800072090C /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91C21B659800072090C /* CustomNavigationController.m */; };
+		3BE8F91F21B65A7F0072090C /* YBCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F90921B658C60072090C /* YBCurrentLocationCell.m */; };
+		3BE8F92021B65A7F0072090C /* YBNeighborLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F90C21B658C60072090C /* YBNeighborLocationCell.m */; };
+		3BE8F92121B65A7F0072090C /* YBLocationPickerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91021B658C60072090C /* YBLocationPickerViewController.mm */; };
+		3BE8F92221B65A7F0072090C /* YBLocationSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91221B658C60072090C /* YBLocationSearchResultViewController.m */; };
+		3BE8F92321B65A7F0072090C /* YBShowLocationVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91421B658C60072090C /* YBShowLocationVC.mm */; };
+		3BE8F92421B65A7F0072090C /* YBShowPanoranaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91721B658C60072090C /* YBShowPanoranaVC.m */; };
+		3BE8F92521B65A950072090C /* BaiduPanoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE8F91A21B658C60072090C /* BaiduPanoSDK.framework */; };
+		3BE8F92621B65AE90072090C /* YBCurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE8F90A21B658C60072090C /* YBCurrentLocationCell.xib */; };
+		3BE8F92721B65AE90072090C /* YBNeighborLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE8F90D21B658C60072090C /* YBNeighborLocationCell.xib */; };
+		3BE8F92821B65AE90072090C /* YBShowLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE8F91521B658C60072090C /* YBShowLocationVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1115,7 +1134,7 @@
 		30E5A05B1D9BC16800D94F77 /* CheckOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckOrderTableViewCell.m; sourceTree = "<group>"; };
 		30E5A05C1D9BC16800D94F77 /* CheckOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckOrderTableViewCell.xib; sourceTree = "<group>"; };
 		30E5A0641D9CF91300D94F77 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		30E5A0651D9CF91300D94F77 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		30E5A0651D9CF91300D94F77 /* AboutViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AboutViewController.mm; sourceTree = "<group>"; };
 		30E5A0671D9D0ADD00D94F77 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		30E5A0681D9D0ADD00D94F77 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		30E5A0691D9D0ADD00D94F77 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
@@ -1276,6 +1295,14 @@
 		3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetPartyVisitListSearchResultsViewController.xib; sourceTree = "<group>"; };
 		3B631A43219D7CD500081560 /* GetPartyVisitLineService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitLineService.h; sourceTree = "<group>"; };
 		3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitLineService.m; sourceTree = "<group>"; };
+		3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMKLocationKit.framework; sourceTree = "<group>"; };
+		3B765A2721B6111900684CF4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3B765A2921B6112300684CF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3B765A2B21B6113200684CF4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B765A2D21B6113A00684CF4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3B765A2F21B6114400684CF4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		3B765A3121B6115400684CF4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		3B765A3321B6115D00684CF4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		3B813A8121AEF5A20096783C /* GetVisitVividDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitVividDisplayViewController.h; sourceTree = "<group>"; };
 		3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitVividDisplayViewController.m; sourceTree = "<group>"; };
 		3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitVividDisplayViewController.xib; sourceTree = "<group>"; };
@@ -1295,6 +1322,24 @@
 		3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitRecommendedOrderViewController.xib; sourceTree = "<group>"; };
 		3BDC8835218B4D960013CD81 /* AddPartyVisitLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPartyVisitLabel.h; sourceTree = "<group>"; };
 		3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPartyVisitLabel.m; sourceTree = "<group>"; };
+		3BE8F90821B658C60072090C /* YBCurrentLocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBCurrentLocationCell.h; sourceTree = "<group>"; };
+		3BE8F90921B658C60072090C /* YBCurrentLocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBCurrentLocationCell.m; sourceTree = "<group>"; };
+		3BE8F90A21B658C60072090C /* YBCurrentLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YBCurrentLocationCell.xib; sourceTree = "<group>"; };
+		3BE8F90B21B658C60072090C /* YBNeighborLocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBNeighborLocationCell.h; sourceTree = "<group>"; };
+		3BE8F90C21B658C60072090C /* YBNeighborLocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBNeighborLocationCell.m; sourceTree = "<group>"; };
+		3BE8F90D21B658C60072090C /* YBNeighborLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YBNeighborLocationCell.xib; sourceTree = "<group>"; };
+		3BE8F90F21B658C60072090C /* YBLocationPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBLocationPickerViewController.h; sourceTree = "<group>"; };
+		3BE8F91021B658C60072090C /* YBLocationPickerViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = YBLocationPickerViewController.mm; sourceTree = "<group>"; };
+		3BE8F91121B658C60072090C /* YBLocationSearchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBLocationSearchResultViewController.h; sourceTree = "<group>"; };
+		3BE8F91221B658C60072090C /* YBLocationSearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBLocationSearchResultViewController.m; sourceTree = "<group>"; };
+		3BE8F91321B658C60072090C /* YBShowLocationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBShowLocationVC.h; sourceTree = "<group>"; };
+		3BE8F91421B658C60072090C /* YBShowLocationVC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = YBShowLocationVC.mm; sourceTree = "<group>"; };
+		3BE8F91521B658C60072090C /* YBShowLocationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YBShowLocationVC.xib; sourceTree = "<group>"; };
+		3BE8F91621B658C60072090C /* YBShowPanoranaVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBShowPanoranaVC.h; sourceTree = "<group>"; };
+		3BE8F91721B658C60072090C /* YBShowPanoranaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBShowPanoranaVC.m; sourceTree = "<group>"; };
+		3BE8F91A21B658C60072090C /* BaiduPanoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduPanoSDK.framework; sourceTree = "<group>"; };
+		3BE8F91C21B659800072090C /* CustomNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		3BE8F91D21B659800072090C /* CustomNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		8632758C8A4785EDD0DF8722 /* Pods-Order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Order/Pods-Order.debug.xcconfig"; sourceTree = "<group>"; };
 		E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Order.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1304,6 +1349,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE8F92521B65A950072090C /* BaiduPanoSDK.framework in Frameworks */,
+				3B765A3421B6115D00684CF4 /* AdSupport.framework in Frameworks */,
+				3B765A3221B6115400684CF4 /* libc++.tbd in Frameworks */,
+				3B765A3021B6114400684CF4 /* CoreTelephony.framework in Frameworks */,
+				3B765A2E21B6113A00684CF4 /* libsqlite3.0.tbd in Frameworks */,
+				3B765A2C21B6113300684CF4 /* Security.framework in Frameworks */,
+				3B765A2A21B6112300684CF4 /* SystemConfiguration.framework in Frameworks */,
+				3B765A2821B6111900684CF4 /* CoreLocation.framework in Frameworks */,
+				3B765A2621B60FDE00684CF4 /* BMKLocationKit.framework in Frameworks */,
 				0775A27A2559A018F431136C /* libPods-Order.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1907,6 +1961,7 @@
 				304A7AE41DB925990039B0B2 /* Custum */,
 				30CDC6681D990B420035602F /* Tools */,
 				30CDC5B31D9907CD0035602F /* Thire */,
+				3B765A2421B60FA900684CF4 /* libs */,
 				308783871D98CD45002EED76 /* AppDelegate.h */,
 				308783881D98CD45002EED76 /* AppDelegate.m */,
 				308783901D98CD45002EED76 /* Assets.xcassets */,
@@ -2186,7 +2241,7 @@
 				30E5A0681D9D0ADD00D94F77 /* ChangePasswordViewController.m */,
 				30E5A0691D9D0ADD00D94F77 /* ChangePasswordViewController.xib */,
 				30E5A0641D9CF91300D94F77 /* AboutViewController.h */,
-				30E5A0651D9CF91300D94F77 /* AboutViewController.m */,
+				30E5A0651D9CF91300D94F77 /* AboutViewController.mm */,
 				30A3C3201D9A6AD300BBE0DA /* MineTable.plist */,
 			);
 			path = Mine;
@@ -2475,6 +2530,8 @@
 				3051DB5E1F1868840034629B /* AddPartyViewController.h */,
 				3051DB5F1F1868840034629B /* AddPartyViewController.m */,
 				3051DB601F1868840034629B /* AddPartyViewController.xib */,
+				3BE8F91D21B659800072090C /* CustomNavigationController.h */,
+				3BE8F91C21B659800072090C /* CustomNavigationController.m */,
 			);
 			path = "客户管理";
 			sourceTree = "<group>";
@@ -2525,6 +2582,7 @@
 				3026007B1EE5726F001F6C38 /* LLNavigationBar */,
 				30CDC5B41D9907CD0035602F /* CorePhotoBroswerVC */,
 				30CDC62B1D9907CD0035602F /* Reachability */,
+				3BE8F90521B658C60072090C /* WeChatSendLocation */,
 			);
 			path = Thire;
 			sourceTree = "<group>";
@@ -3102,9 +3160,87 @@
 			path = "客户拜访";
 			sourceTree = "<group>";
 		};
+		3B765A2421B60FA900684CF4 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		3BE8F90521B658C60072090C /* WeChatSendLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F90621B658C60072090C /* LocationModule */,
+				3BE8F91821B658C60072090C /* Vender */,
+			);
+			path = WeChatSendLocation;
+			sourceTree = "<group>";
+		};
+		3BE8F90621B658C60072090C /* LocationModule */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F90721B658C60072090C /* Cell */,
+				3BE8F90E21B658C60072090C /* ViewController */,
+			);
+			path = LocationModule;
+			sourceTree = "<group>";
+		};
+		3BE8F90721B658C60072090C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F90821B658C60072090C /* YBCurrentLocationCell.h */,
+				3BE8F90921B658C60072090C /* YBCurrentLocationCell.m */,
+				3BE8F90A21B658C60072090C /* YBCurrentLocationCell.xib */,
+				3BE8F90B21B658C60072090C /* YBNeighborLocationCell.h */,
+				3BE8F90C21B658C60072090C /* YBNeighborLocationCell.m */,
+				3BE8F90D21B658C60072090C /* YBNeighborLocationCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3BE8F90E21B658C60072090C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F90F21B658C60072090C /* YBLocationPickerViewController.h */,
+				3BE8F91021B658C60072090C /* YBLocationPickerViewController.mm */,
+				3BE8F91121B658C60072090C /* YBLocationSearchResultViewController.h */,
+				3BE8F91221B658C60072090C /* YBLocationSearchResultViewController.m */,
+				3BE8F91321B658C60072090C /* YBShowLocationVC.h */,
+				3BE8F91421B658C60072090C /* YBShowLocationVC.mm */,
+				3BE8F91521B658C60072090C /* YBShowLocationVC.xib */,
+				3BE8F91621B658C60072090C /* YBShowPanoranaVC.h */,
+				3BE8F91721B658C60072090C /* YBShowPanoranaVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3BE8F91821B658C60072090C /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F91921B658C60072090C /* baiduPanorama */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		3BE8F91921B658C60072090C /* baiduPanorama */ = {
+			isa = PBXGroup;
+			children = (
+				3BE8F91A21B658C60072090C /* BaiduPanoSDK.framework */,
+			);
+			path = baiduPanorama;
+			sourceTree = "<group>";
+		};
 		A5516C1ACE2CD89545D8610B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B765A3321B6115D00684CF4 /* AdSupport.framework */,
+				3B765A3121B6115400684CF4 /* libc++.tbd */,
+				3B765A2F21B6114400684CF4 /* CoreTelephony.framework */,
+				3B765A2D21B6113A00684CF4 /* libsqlite3.0.tbd */,
+				3B765A2B21B6113200684CF4 /* Security.framework */,
+				3B765A2921B6112300684CF4 /* SystemConfiguration.framework */,
+				3B765A2721B6111900684CF4 /* CoreLocation.framework */,
 				E1C50C09B8AE2AB012816CA7 /* libPods-Order.a */,
 			);
 			name = Frameworks;
@@ -3175,6 +3311,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE8F92621B65AE90072090C /* YBCurrentLocationCell.xib in Resources */,
+				3BE8F92721B65AE90072090C /* YBNeighborLocationCell.xib in Resources */,
+				3BE8F92821B65AE90072090C /* YBShowLocationVC.xib in Resources */,
 				3B084FF221B07A04006ECBF1 /* ACMediaFrame.bundle in Resources */,
 				3B813AED21AF2C490096783C /* LMDropDownMenuTableViewCell.xib in Resources */,
 				3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */,
@@ -3361,6 +3500,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE8F91F21B65A7F0072090C /* YBCurrentLocationCell.m in Sources */,
+				3BE8F92021B65A7F0072090C /* YBNeighborLocationCell.m in Sources */,
+				3BE8F92121B65A7F0072090C /* YBLocationPickerViewController.mm in Sources */,
+				3BE8F92221B65A7F0072090C /* YBLocationSearchResultViewController.m in Sources */,
+				3BE8F92321B65A7F0072090C /* YBShowLocationVC.mm in Sources */,
+				3BE8F92421B65A7F0072090C /* YBShowPanoranaVC.m in Sources */,
 				3B084FE921B07886006ECBF1 /* ACMediaImageCell.m in Sources */,
 				3B084FEA21B07886006ECBF1 /* ACMediaManager.m in Sources */,
 				3B084FEB21B07886006ECBF1 /* ACMediaModel.m in Sources */,
@@ -3476,7 +3621,7 @@
 				30CDC6581D9907CD0035602F /* UIWindow+Launch.m in Sources */,
 				301D7DDE1F5A3E5800D83410 /* NSString+Trim.m in Sources */,
 				3056B5752008AAF300B4704A /* CheckStockDetailItemModel.m in Sources */,
-				30E5A0661D9CF91300D94F77 /* AboutViewController.m in Sources */,
+				30E5A0661D9CF91300D94F77 /* AboutViewController.mm in Sources */,
 				30EF59AE1DACDBC6003F5729 /* OrderTmsDetailsTableViewCell.m in Sources */,
 				3056B56E2008988900B4704A /* GetWmsProductZongTableViewCell.m in Sources */,
 				30CDC64F1D9907CD0035602F /* UIDevice+Extend.m in Sources */,
@@ -3545,6 +3690,7 @@
 				30F7B8D41DBF0B33004CD128 /* AddGiftProductsTableViewCell.m in Sources */,
 				301CFDD81FBB02A100C8CB39 /* StockNoListModel.m in Sources */,
 				30078D2E1DBB2AA200429813 /* OrderGiftModel.m in Sources */,
+				3BE8F91E21B659800072090C /* CustomNavigationController.m in Sources */,
 				3B5ABDFB218807BE00A1230D /* AddPartyVisitViewController.m in Sources */,
 				30CDC6401D9907CD0035602F /* PhotoImageView.m in Sources */,
 				3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */,
@@ -3811,6 +3957,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = AP5995A5FC;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Order/libs",
+					"$(PROJECT_DIR)/Order/Thire/WeChatSendLocation/Vender/baiduPanorama",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Order/Order-Prefix.pch";
 				INFOPLIST_FILE = Order/Info.plist;
@@ -3830,6 +3981,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = AP5995A5FC;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Order/libs",
+					"$(PROJECT_DIR)/Order/Thire/WeChatSendLocation/Vender/baiduPanorama",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Order/Order-Prefix.pch";
 				INFOPLIST_FILE = Order/Info.plist;
