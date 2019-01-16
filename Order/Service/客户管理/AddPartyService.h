@@ -17,6 +17,9 @@
 @optional
 - (void)failureOfAddParty:(NSString *)msg;
 
+@optional
+- (void)successOfObtainPartyCode:(NSString *)partyCode;
+
 @end
 
 @interface AddPartyService : NSObject
@@ -24,6 +27,9 @@
 @property (weak, nonatomic) id <AddPartyServiceDelegate> delegate;
 
 
-- (void)AddParty:(NSString *)strUserId andPARTY_NAME:(NSString *)PARTY_NAME andPARTY_CITY:(NSString *)PARTY_CITY andPARTY_REMARK:(NSString *)PARTY_REMARK andBUSINESS_IDX:(NSString *)BUSINESS_IDX andStrLINE:(NSString *)strLINE andStrCHANNEL:(NSString *)strCHANNEL andPARTY_CODE:(NSString *)PARTY_CODE andStrFatherPartyIDX:(NSString *)strFatherPartyIDX;
+- (void)AddParty:(NSString *)strUserId andPARTY_NAME:(NSString *)PARTY_NAME andPARTY_CITY:(NSString *)PARTY_CITY andPARTY_REMARK:(NSString *)PARTY_REMARK andBUSINESS_IDX:(NSString *)BUSINESS_IDX andStrLINE:(NSString *)strLINE andStrCHANNEL:(NSString *)strCHANNEL andPARTY_CODE:(NSString *)PARTY_CODE;
+
+
+- (void)ObtainPartyCode:(NSString *)strBusinessCode andStrBusinessIDX:(NSString *)strBusinessIDX;
 
 @end

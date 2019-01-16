@@ -19,13 +19,13 @@
  * @return 返回JSON字符串
  */
 + (NSString *)JsonStringWithDictonary:(NSDictionary *)dict {
-//    NSString *jsonString = @"";
-//    if ([NSJSONSerialization isValidJSONObject:dict]){
-//        NSError *error;
-//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-//        jsonString =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    }
-//    return jsonString;
+    //    NSString *jsonString = @"";
+    //    if ([NSJSONSerialization isValidJSONObject:dict]){
+    //        NSError *error;
+    //        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    //        jsonString =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //    }
+    //    return jsonString;
     
     
     
@@ -44,8 +44,8 @@
     
     NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
     
-//    NSRange range = {0,jsonString.length};
-//    [mutStr replaceOccurrencesOfString:@" "withString:@""options:NSLiteralSearch range:range];
+    //    NSRange range = {0,jsonString.length};
+    //    [mutStr replaceOccurrencesOfString:@" "withString:@""options:NSLiteralSearch range:range];
     
     NSRange range2 = {0,mutStr.length};
     [mutStr replaceOccurrencesOfString:@"\n"withString:@""options:NSLiteralSearch range:range2];
@@ -406,42 +406,42 @@ typedef void (^Animation)(void);
 
 + (NSDictionary *)setPromotionDetailModel:(PromotionDetailModel *)m; {
     
-//    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-//                          @(m.IDX), @"IDX",
-//                          @(m.ENT_IDX), @"ENT_IDX",
-//                          @(m.ORDER_IDX), @"ORDER_IDX",
-//                          m.PRODUCT_TYPE, @"PRODUCT_TYPE",
-//                          @(m.PRODUCT_IDX), @"PRODUCT_IDX",
-//                          m.PRODUCT_NO, @"PRODUCT_NO",
-//                          m.PRODUCT_NAME, @"PRODUCT_NAME",
-//                          @(m.LINE_NO), @"LINE_NO",
-//                          @(m.PO_QTY), @"PO_QTY",
-//                          m.PO_UOM, @"PO_UOM",
-//                          @(m.PO_WEIGHT), @"PO_WEIGHT",
-//                          @(m.PO_VOLUME), @"PO_VOLUME",
-//                          @(m.ORG_PRICE), @"ORG_PRICE",
-//                          @(m.ACT_PRICE), @"ACT_PRICE",
-//                          m.SALE_REMARK, @"SALE_REMARK",
-//                          m.MJ_REMARK, @"MJ_REMARK",
-//                          @(m.MJ_PRICE), @"MJ_PRICE",
-//                          m.LOTTABLE01, @"LOTTABLE01",
-//                          m.LOTTABLE02, @"LOTTABLE02",
-//                          m.LOTTABLE03, @"LOTTABLE03",
-//                          m.LOTTABLE04, @"LOTTABLE04",
-//                          m.LOTTABLE05, @"LOTTABLE05",
-//                          m.LOTTABLE06, @"LOTTABLE06",
-//                          m.LOTTABLE07, @"LOTTABLE07",
-//                          m.LOTTABLE08, @"LOTTABLE08",
-//                          m.LOTTABLE09, @"LOTTABLE09",
-//                          m.LOTTABLE10, @"LOTTABLE10",
-//                          @(m.LOTTABLE11), @"LOTTABLE11",
-//                          @(m.LOTTABLE12), @"LOTTABLE12",
-//                          @(m.LOTTABLE13), @"LOTTABLE13",
-//                          @(m.OPERATOR_IDX), @"OPERATOR_IDX",
-//                          m.ADD_DATE, @"ADD_DATE",
-//                          m.EDIT_DATE, @"EDIT_DATE",
-//                          m.PRODUCT_URL, @"PRODUCT_URL",
-//                          nil];
+    //    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+    //                          @(m.IDX), @"IDX",
+    //                          @(m.ENT_IDX), @"ENT_IDX",
+    //                          @(m.ORDER_IDX), @"ORDER_IDX",
+    //                          m.PRODUCT_TYPE, @"PRODUCT_TYPE",
+    //                          @(m.PRODUCT_IDX), @"PRODUCT_IDX",
+    //                          m.PRODUCT_NO, @"PRODUCT_NO",
+    //                          m.PRODUCT_NAME, @"PRODUCT_NAME",
+    //                          @(m.LINE_NO), @"LINE_NO",
+    //                          @(m.PO_QTY), @"PO_QTY",
+    //                          m.PO_UOM, @"PO_UOM",
+    //                          @(m.PO_WEIGHT), @"PO_WEIGHT",
+    //                          @(m.PO_VOLUME), @"PO_VOLUME",
+    //                          @(m.ORG_PRICE), @"ORG_PRICE",
+    //                          @(m.ACT_PRICE), @"ACT_PRICE",
+    //                          m.SALE_REMARK, @"SALE_REMARK",
+    //                          m.MJ_REMARK, @"MJ_REMARK",
+    //                          @(m.MJ_PRICE), @"MJ_PRICE",
+    //                          m.LOTTABLE01, @"LOTTABLE01",
+    //                          m.LOTTABLE02, @"LOTTABLE02",
+    //                          m.LOTTABLE03, @"LOTTABLE03",
+    //                          m.LOTTABLE04, @"LOTTABLE04",
+    //                          m.LOTTABLE05, @"LOTTABLE05",
+    //                          m.LOTTABLE06, @"LOTTABLE06",
+    //                          m.LOTTABLE07, @"LOTTABLE07",
+    //                          m.LOTTABLE08, @"LOTTABLE08",
+    //                          m.LOTTABLE09, @"LOTTABLE09",
+    //                          m.LOTTABLE10, @"LOTTABLE10",
+    //                          @(m.LOTTABLE11), @"LOTTABLE11",
+    //                          @(m.LOTTABLE12), @"LOTTABLE12",
+    //                          @(m.LOTTABLE13), @"LOTTABLE13",
+    //                          @(m.OPERATOR_IDX), @"OPERATOR_IDX",
+    //                          m.ADD_DATE, @"ADD_DATE",
+    //                          m.EDIT_DATE, @"EDIT_DATE",
+    //                          m.PRODUCT_URL, @"PRODUCT_URL",
+    //                          nil];
     
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -754,5 +754,28 @@ typedef void (^Animation)(void);
     }
 }
 
+
++ (nullable NSString *)ToDBC:(nullable NSString *)input {
+    NSString *result = @"";
+    for (int i = 0; i < input.length; i++) {
+        int c = [input characterAtIndex:i];
+        int cTemp = c;
+        if (c == 12288) {
+            cTemp = (char)32;
+            continue;
+        }
+        if (c > 65280 && c < 65375)
+            cTemp = (char)(c - 65248);
+        NSString *string = @"";
+        if(cTemp == c) {
+            NSRange ran = NSMakeRange(i, 1);
+            string = [input substringWithRange:ran];
+        }else {
+            string =[NSString stringWithFormat:@"%c",cTemp];
+        }
+        result =  [NSString stringWithFormat:@"%@%@", result, string];
+    }
+    return result;
+}
 
 @end

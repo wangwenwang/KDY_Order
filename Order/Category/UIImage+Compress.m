@@ -37,8 +37,6 @@
  */
 - (CGSize)scaleImage:(UIImage *)image andImageLength:(CGFloat)imageLength {
     
-    CGFloat newWidth = 0.0;
-    CGFloat newHeight = 0.0;
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
     
@@ -46,22 +44,22 @@
         
         if (width > height) {
             
-            newWidth = imageLength;
-            newHeight = newWidth * height / width;
+            width = imageLength;
+            height = width * height / width;
             
         }else if(height > width){
             
-            newHeight = imageLength;
-            newWidth = newHeight * width / height;
+            height = imageLength;
+            width = height * width / height;
             
         }else{
             
-            newWidth = imageLength;
-            newHeight = imageLength;
+            width = imageLength;
+            height = imageLength;
         }
         
     }
-    return CGSizeMake(newWidth, newHeight);
+    return CGSizeMake(height, height);
 }
 
 /**
@@ -148,21 +146,22 @@ typedef enum {
 
 - (NSData *)compressImage:(UIImage *)image andMaxLength:(int)maxLength andMaxWidthAndHeight:(CGFloat)maxWidthAndHeight {
     
-    NSLog(@"-----1");
+    NSLog(@"函数compressImage作用：处理图片大小。  预期图片最大质量%dk、图片最大宽/高%d", maxLength / 1000,  maxLength);;
+    
+    NSLog(@"-----1 图片宽度：%f * %f", image.size.width, image.size.height);
     CGSize newSize = [self scaleImage:image andImageLength:maxWidthAndHeight];
-    NSLog(@"-----2");
+    NSLog(@"-----2 新的宽度：%f * %f", newSize.width, newSize.height);
     UIImage *newImage = [self resizeImage:image andNewSize:newSize];
-    NSLog(@"-----3");
     
     CGFloat compress = 0.9;
     NSData *data = UIImageJPEGRepresentation(newImage, compress);
-    NSLog(@"-----4");
-    
+    int k = 0;
     while(data.length > maxLength && compress > 0.1) {
         compress -= 0.2;
+        NSLog(@"-----3 压缩第%d次，压缩率为%f", k, compress);
         data = UIImageJPEGRepresentation(newImage, compress);
     }
-    NSLog(@"-----5");
+    NSLog(@"-----4 函数处理完成，%f * %f  %fk", image.size.width, image.size.height, data.length / 1000.0);
     
     return data;
 }

@@ -42,7 +42,9 @@
 //        "VISIT_IDX":"",
 //        "ADDRESS_IDX":"",
 //        "ADDRESS_CODE":"",
-//        "PARTY_TYPE":""
+//        "PARTY_TYPE":"",
+//        "FARTHER_PARTY_ID":"",
+//        "FARTHER_ADDRESS_ID":""
 //    }]
 //}
 @interface GetPartyVisitListModel : NSObject

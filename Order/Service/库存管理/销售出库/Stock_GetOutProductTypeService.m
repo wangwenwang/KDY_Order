@@ -34,7 +34,7 @@
                                 @"", @"strLicense",
                                 nil];
     
-    NSLog(@"请求出库产品类型参数:%@", parameters);
+    NSLog(@"请求出库产品类型|%@|参数:%@", API_GetOutProductType, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

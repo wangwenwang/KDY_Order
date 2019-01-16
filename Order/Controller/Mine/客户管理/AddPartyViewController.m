@@ -42,6 +42,9 @@
 
 /************ 添加客户 ************/
 
+// 经销商名称
+@property (weak, nonatomic) IBOutlet UILabel *fatherNameLabel;
+
 // 客户名称
 @property (weak, nonatomic) IBOutlet UITextField *PARTY_NAME;
 
@@ -199,6 +202,25 @@
     [_service_getParty GetPartyVisitLine];
     
     [self initWeSendLoc];
+    
+    [_service ObtainPartyCode:_app.business.BUSINESS_CODE andStrBusinessIDX:_app.business.BUSINESS_IDX];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear: animated];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:RGB(35, 35, 35) forKey:NSForegroundColorAttributeName]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:RGB(52, 120, 246)];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [_app setUINavigationBar];
 }
 
 
@@ -268,6 +290,7 @@
 - (void)initUI {
     
     _areaLabel.text = @"";
+    _fatherNameLabel.text = _fatherName;
 }
 
 
@@ -307,13 +330,7 @@
                         
                         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                         
-                        NSString *address_idx = @"";
-                        if(_MultiArrPartyAddress.count > 0) {
-                            AddressModel *m =_MultiArrPartyAddress[0];
-                            address_idx = m.IDX;
-                        }
-                        
-                        [_service_addAddress AddAddress:_app.user.IDX andPARTY_IDX:_AddPartyM.iDX andADDRESS_CODE:_AddPartyM.strPartyCode andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:_PARTY_CODE.text andStrFatherPartyIDX:address_idx andLONGITUDE:_LONGITUDE andLATITUDE:_LATITUDE];
+                        [_service_addAddress AddAddress:_app.user.IDX andPARTY_IDX:_AddPartyM.iDX andADDRESS_CODE:_AddPartyM.strPartyCode andADDRESS_PROVINCE:_a_b_c_d.A.iTEMIDX andADDRESS_CITY:_a_b_c_d.B.iTEMIDX andADDRESS_AREA:_a_b_c_d.C.iTEMIDX andADDRESS_RURAL:_a_b_c_d.D.iTEMIDX andADDRESS_ADDRESS:_detailAddressLabel.textTrim andCONTACT_PERSON:_nameF.textTrim andCONTACT_TEL:_telF.textTrim andADDRESS_INFO:a andADDRESS_CODE:_PARTY_CODE.text andStrFatherPartyIDX:_fatherAddressID andLONGITUDE:_LONGITUDE andLATITUDE:_LATITUDE];
                     } else {
                         
                         [Tools showAlert:self.view andTitle:@"所在地区不能为空"];
@@ -687,9 +704,25 @@
                         if(_a_b_c_d) {
                             
                             [self.view endEditing:YES];
+                           
+                            // 拜访线路用英文逗号隔开，例如：星期二,星期四
+                            NSString *weekArray = @"";
+                            int k = 0;
+                            for (int i = 0; i < _MultiArrListTem.count; i++) {
+                                DataItemModel *m = _MultiArrListTem[i];
+                                if(m.selected) {
+                                    if(k == 0) {
+                                        weekArray = m.title;
+                                    }else {
+                                        weekArray = [NSString stringWithFormat:@"%@,%@", weekArray, m.title];
+                                    }
+                                    k++;
+                                }
+                            }
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                             
-                            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                            [_service_makeOrder getCustomerData];
+                            [_service AddParty:_app.user.IDX andPARTY_NAME:_PARTY_NAME.textTrim andPARTY_CITY:@" " andPARTY_REMARK:_PARTY_REMARK.textTrim andBUSINESS_IDX:_app.business.BUSINESS_IDX andStrLINE:weekArray andStrCHANNEL:_CHANNEL_NO.text andPARTY_CODE:_PARTY_CODE.text];
+                            
                         } else {
                             
                             [Tools showAlert:self.view andTitle:@"所在地区不能为空"];
@@ -831,6 +864,14 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [Tools showAlert:self.view andTitle:msg];
+}
+
+
+- (void)successOfObtainPartyCode:(NSString *)partyCode {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _PARTY_CODE.text = partyCode;
+    });
 }
 
 
@@ -1048,7 +1089,7 @@
         
         AddressModel *addressM = address[0];
         
-        [_service AddParty:_app.user.IDX andPARTY_NAME:_PARTY_NAME.textTrim andPARTY_CITY:@" " andPARTY_REMARK:_PARTY_REMARK.textTrim andBUSINESS_IDX:_app.business.BUSINESS_IDX andStrLINE:weekArray andStrCHANNEL:_CHANNEL_NO.text andPARTY_CODE:_PARTY_CODE.text andStrFatherPartyIDX:addressM.IDX];
+        [_service AddParty:_app.user.IDX andPARTY_NAME:_PARTY_NAME.textTrim andPARTY_CITY:@" " andPARTY_REMARK:_PARTY_REMARK.textTrim andBUSINESS_IDX:_app.business.BUSINESS_IDX andStrLINE:weekArray andStrCHANNEL:_CHANNEL_NO.text andPARTY_CODE:_PARTY_CODE.text];
     }else {
         
         [Tools showAlert:self.view andTitle:@"找不到地址"];

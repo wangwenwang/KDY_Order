@@ -38,7 +38,7 @@ PODS:
 DEPENDENCIES:
   - ACAlertController
   - AFNetworking (~> 3.0)
-  - BaiduMapKit (~> 3.3.2)
+  - BaiduMapKit
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -81,6 +81,6 @@ SPEC CHECKSUMS:
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   WMPageController: 088ab96e271f12878eff084b3851620b701826c6
 
-PODFILE CHECKSUM: 7a4a8a99b0ad8a8cc295c2b361a757c6a488dd83
+PODFILE CHECKSUM: 887213b5c4532608eeb1833f91bb89ff2626faa7
 
 COCOAPODS: 1.5.3

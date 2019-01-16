@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetPartyVisitListViewController">
             <connections>
+                <outlet property="firstPartLabel" destination="8NZ-F6-eWd" id="eQc-N1-k7m"/>
+                <outlet property="routePlanBtn" destination="it7-Sm-USC" id="qF6-4n-5kH"/>
                 <outlet property="statusLabel" destination="EH3-f6-nNf" id="Zxg-f3-H8R"/>
                 <outlet property="tableView" destination="yh8-BY-krt" id="asf-nx-8lA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,8 +24,66 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtt-E6-726" userLabel="中部分">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94x-ka-oJJ" userLabel="上部分">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-XR-Hgw" userLabel="拜访线路">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经销商名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-yH-Olq">
+                                    <rect key="frame" x="10" y="17" width="86" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未设置" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NZ-F6-eWd" customClass="IDLabel">
+                                    <rect key="frame" x="96" y="17" width="43" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UITableViewCellAccessoryDisclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="QPP-BC-Q2V">
+                                    <rect key="frame" x="342" y="13" width="25" height="25"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="dOv-yH-Olq" firstAttribute="leading" secondItem="GIT-XR-Hgw" secondAttribute="leading" constant="10" id="BCN-g3-GI1"/>
+                                <constraint firstAttribute="trailing" secondItem="QPP-BC-Q2V" secondAttribute="trailing" constant="8" id="BsJ-IC-mKC"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8NZ-F6-eWd" secondAttribute="trailing" constant="3" id="Jwg-Xi-5an"/>
+                                <constraint firstItem="QPP-BC-Q2V" firstAttribute="centerY" secondItem="GIT-XR-Hgw" secondAttribute="centerY" id="LSg-BX-iGn"/>
+                                <constraint firstItem="8NZ-F6-eWd" firstAttribute="top" secondItem="dOv-yH-Olq" secondAttribute="top" id="cCf-eT-9b1"/>
+                                <constraint firstItem="8NZ-F6-eWd" firstAttribute="leading" secondItem="dOv-yH-Olq" secondAttribute="trailing" id="cDH-CT-5N3"/>
+                                <constraint firstItem="dOv-yH-Olq" firstAttribute="centerY" secondItem="GIT-XR-Hgw" secondAttribute="centerY" id="ehm-NU-dUr"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPZ-nG-ZfO" userLabel="边框">
+                            <rect key="frame" x="0.0" y="49.5" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.89019607840000003" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.29999999999999999" id="mU7-wU-YFh"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="GIT-XR-Hgw" firstAttribute="leading" secondItem="94x-ka-oJJ" secondAttribute="leading" id="9MR-mf-okU"/>
+                        <constraint firstItem="JPZ-nG-ZfO" firstAttribute="leading" secondItem="94x-ka-oJJ" secondAttribute="leading" id="AQM-Zu-8Ui"/>
+                        <constraint firstAttribute="trailing" secondItem="JPZ-nG-ZfO" secondAttribute="trailing" id="IRx-Fy-b2q"/>
+                        <constraint firstItem="GIT-XR-Hgw" firstAttribute="top" secondItem="94x-ka-oJJ" secondAttribute="top" id="JjW-aU-ij3"/>
+                        <constraint firstAttribute="height" constant="50" id="Ssu-ug-oqN"/>
+                        <constraint firstItem="JPZ-nG-ZfO" firstAttribute="top" secondItem="GIT-XR-Hgw" secondAttribute="bottom" id="bt4-kf-tzn"/>
+                        <constraint firstAttribute="trailing" secondItem="GIT-XR-Hgw" secondAttribute="trailing" id="jXZ-BQ-xxB"/>
+                        <constraint firstAttribute="bottom" secondItem="JPZ-nG-ZfO" secondAttribute="bottom" id="ouY-bI-aVK"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="fxr-qs-u9l" appends="YES" id="dlX-uR-wfP"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtt-E6-726" userLabel="中部分">
+                    <rect key="frame" x="0.0" y="58" width="375" height="50"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-ts-6fF" userLabel="拜访线路">
                             <rect key="frame" x="0.0" y="0.0" width="183.5" height="49.5"/>
@@ -119,26 +179,56 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-BY-krt">
-                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="VI2-IP-7pe"/>
                         <outlet property="delegate" destination="-1" id="mar-eu-35e"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it7-Sm-USC">
+                    <rect key="frame" x="112" y="577" width="150" height="40"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="JfD-db-fXZ"/>
+                        <constraint firstAttribute="height" constant="40" id="ffh-OL-rao"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="推荐线路">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="routePlanOnclick" destination="-1" eventType="touchUpInside" id="DEW-pW-M8f"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="it7-Sm-USC" secondAttribute="bottom" constant="50" id="17E-W8-eWp"/>
                 <constraint firstAttribute="trailing" secondItem="yh8-BY-krt" secondAttribute="trailing" id="1Zh-Lk-h0T"/>
-                <constraint firstItem="gtt-E6-726" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Cf-SY-W6p"/>
+                <constraint firstItem="94x-ka-oJJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CUl-4g-IU9"/>
                 <constraint firstAttribute="trailing" secondItem="gtt-E6-726" secondAttribute="trailing" id="HBm-dI-O0O"/>
+                <constraint firstAttribute="trailing" secondItem="94x-ka-oJJ" secondAttribute="trailing" id="Ibc-J2-hO0"/>
                 <constraint firstAttribute="bottom" secondItem="yh8-BY-krt" secondAttribute="bottom" id="K0f-6G-e87"/>
                 <constraint firstItem="yh8-BY-krt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OHz-7C-cln"/>
+                <constraint firstItem="94x-ka-oJJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="P6Q-BD-v8C"/>
                 <constraint firstItem="yh8-BY-krt" firstAttribute="top" secondItem="gtt-E6-726" secondAttribute="bottom" id="S8o-Gw-uns"/>
+                <constraint firstItem="gtt-E6-726" firstAttribute="top" secondItem="94x-ka-oJJ" secondAttribute="bottom" constant="8" id="Wtf-lW-zkD"/>
                 <constraint firstItem="gtt-E6-726" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cqF-ik-chd"/>
+                <constraint firstItem="it7-Sm-USC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jCd-dS-sGa"/>
             </constraints>
             <point key="canvasLocation" x="27.5" y="0.5"/>
         </view>
+        <tapGestureRecognizer id="fxr-qs-u9l" userLabel="经销商名称">
+            <connections>
+                <action selector="choiceFirstParty" destination="-1" id="NNK-49-OTe"/>
+            </connections>
+        </tapGestureRecognizer>
         <tapGestureRecognizer id="Fj0-Ts-OaT" userLabel="拜访线路">
             <connections>
                 <action selector="choiceLineOnclick" destination="-1" id="0hI-2D-RRP"/>

@@ -75,7 +75,7 @@
         } else {
             
             [self failureOfAddAddress:msg];
-            LMLog(@"%@成功，msg:%@", kAPIName, msg);
+            LMLog(@"%@失败，msg:%@", kAPIName, msg);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

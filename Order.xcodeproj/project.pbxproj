@@ -448,6 +448,10 @@
 		3B2087842191FAD2000C36A9 /* GetPartyVisitUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2087832191FAD2000C36A9 /* GetPartyVisitUpdateService.m */; };
 		3B222FB221A467DB00FDB0CF /* KBShowStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B222FB021A467DB00FDB0CF /* KBShowStepViewController.m */; };
 		3B222FB321A467DB00FDB0CF /* KBShowStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B222FB121A467DB00FDB0CF /* KBShowStepViewController.xib */; };
+		3B3036AE21E5D6FF0041C9AE /* CARTotalOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3036AC21E5D6FF0041C9AE /* CARTotalOrderViewController.m */; };
+		3B3036AF21E5D6FF0041C9AE /* CARTotalOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3036AD21E5D6FF0041C9AE /* CARTotalOrderViewController.xib */; };
+		3B3036B321E5D73E0041C9AE /* CARListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3036B121E5D73E0041C9AE /* CARListViewController.m */; };
+		3B3036B421E5D73E0041C9AE /* CARListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3036B221E5D73E0041C9AE /* CARListViewController.xib */; };
 		3B4E152E21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E152C21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m */; };
 		3B4E152F21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B4E152D21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib */; };
 		3B4E18F32189B4EE00297B88 /* GetPartyVisitCBXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E18F22189B4EE00297B88 /* GetPartyVisitCBXModel.m */; };
@@ -465,6 +469,14 @@
 		3B5ABE0A21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */; };
 		3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */; };
 		3B631A45219D7CD500081560 /* GetPartyVisitLineService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */; };
+		3B6C3F7D21E7556E00C28334 /* VisitRoutePlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C3F7B21E7556E00C28334 /* VisitRoutePlanViewController.m */; };
+		3B6C3F7E21E7556E00C28334 /* VisitRoutePlanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6C3F7C21E7556E00C28334 /* VisitRoutePlanViewController.xib */; };
+		3B6C3F8121E7C15A00C28334 /* LatLng.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C3F8021E7C15A00C28334 /* LatLng.m */; };
+		3B6C3F8421E7ECBA00C28334 /* LMBMKPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C3F8321E7ECBA00C28334 /* LMBMKPinAnnotationView.m */; };
+		3B6E898521E5DFD80007E833 /* CARListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E898321E5DFD80007E833 /* CARListTableViewCell.m */; };
+		3B6E898621E5DFD80007E833 /* CARListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E898421E5DFD80007E833 /* CARListTableViewCell.xib */; };
+		3B6E898A21E5F16C0007E833 /* CARTotalOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6E898821E5F16C0007E833 /* CARTotalOrderTableViewCell.m */; };
+		3B6E898B21E5F16C0007E833 /* CARTotalOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E898921E5F16C0007E833 /* CARTotalOrderTableViewCell.xib */; };
 		3B765A2621B60FDE00684CF4 /* BMKLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */; };
 		3B765A2821B6111900684CF4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2721B6111900684CF4 /* CoreLocation.framework */; };
 		3B765A2A21B6112300684CF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2921B6112300684CF4 /* SystemConfiguration.framework */; };
@@ -473,6 +485,8 @@
 		3B765A3021B6114400684CF4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A2F21B6114400684CF4 /* CoreTelephony.framework */; };
 		3B765A3221B6115400684CF4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A3121B6115400684CF4 /* libc++.tbd */; };
 		3B765A3421B6115D00684CF4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765A3321B6115D00684CF4 /* AdSupport.framework */; };
+		3B78D6B521E5FC160074ADD0 /* CARTotalOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B78D6B421E5FC160074ADD0 /* CARTotalOrderListModel.m */; };
+		3B78D6B821E5FC3A0074ADD0 /* CARTotalOrderItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B78D6B721E5FC3A0074ADD0 /* CARTotalOrderItemModel.m */; };
 		3B813A8421AEF5A30096783C /* GetVisitVividDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */; };
 		3B813A8521AEF5A30096783C /* GetVisitVividDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */; };
 		3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B813AE621AF2A0D0096783C /* LMDropDownMenuTableViewCell.m */; };
@@ -484,7 +498,7 @@
 		3BDABE8F21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDABE8D21A40C3F00C0E72B /* GetVisitCheckInventoryViewController.xib */; };
 		3BDABE9321A4181100C0E72B /* GetVisitRecommendedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */; };
 		3BDABE9421A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */; };
-		3BDC8837218B4D960013CD81 /* AddPartyVisitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */; };
+		3BDC8837218B4D960013CD81 /* IDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC8836218B4D960013CD81 /* IDLabel.m */; };
 		3BE8F91E21B659800072090C /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F91C21B659800072090C /* CustomNavigationController.m */; };
 		3BE8F91F21B65A7F0072090C /* YBCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F90921B658C60072090C /* YBCurrentLocationCell.m */; };
 		3BE8F92021B65A7F0072090C /* YBNeighborLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8F90C21B658C60072090C /* YBNeighborLocationCell.m */; };
@@ -1266,6 +1280,12 @@
 		3B222FAF21A467DB00FDB0CF /* KBShowStepViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBShowStepViewController.h; sourceTree = "<group>"; };
 		3B222FB021A467DB00FDB0CF /* KBShowStepViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBShowStepViewController.m; sourceTree = "<group>"; };
 		3B222FB121A467DB00FDB0CF /* KBShowStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBShowStepViewController.xib; sourceTree = "<group>"; };
+		3B3036AB21E5D6FF0041C9AE /* CARTotalOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTotalOrderViewController.h; sourceTree = "<group>"; };
+		3B3036AC21E5D6FF0041C9AE /* CARTotalOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTotalOrderViewController.m; sourceTree = "<group>"; };
+		3B3036AD21E5D6FF0041C9AE /* CARTotalOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CARTotalOrderViewController.xib; sourceTree = "<group>"; };
+		3B3036B021E5D73E0041C9AE /* CARListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARListViewController.h; sourceTree = "<group>"; };
+		3B3036B121E5D73E0041C9AE /* CARListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARListViewController.m; sourceTree = "<group>"; };
+		3B3036B221E5D73E0041C9AE /* CARListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CARListViewController.xib; sourceTree = "<group>"; };
 		3B4E152B21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitConfirmCustomerViewController.h; sourceTree = "<group>"; };
 		3B4E152C21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitConfirmCustomerViewController.m; sourceTree = "<group>"; };
 		3B4E152D21A3E81800CA96B9 /* GetVisitConfirmCustomerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitConfirmCustomerViewController.xib; sourceTree = "<group>"; };
@@ -1295,6 +1315,19 @@
 		3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetPartyVisitListSearchResultsViewController.xib; sourceTree = "<group>"; };
 		3B631A43219D7CD500081560 /* GetPartyVisitLineService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartyVisitLineService.h; sourceTree = "<group>"; };
 		3B631A44219D7CD500081560 /* GetPartyVisitLineService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartyVisitLineService.m; sourceTree = "<group>"; };
+		3B6C3F7A21E7556E00C28334 /* VisitRoutePlanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisitRoutePlanViewController.h; sourceTree = "<group>"; };
+		3B6C3F7B21E7556E00C28334 /* VisitRoutePlanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisitRoutePlanViewController.m; sourceTree = "<group>"; };
+		3B6C3F7C21E7556E00C28334 /* VisitRoutePlanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitRoutePlanViewController.xib; sourceTree = "<group>"; };
+		3B6C3F7F21E7C15A00C28334 /* LatLng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatLng.h; sourceTree = "<group>"; };
+		3B6C3F8021E7C15A00C28334 /* LatLng.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatLng.m; sourceTree = "<group>"; };
+		3B6C3F8221E7ECBA00C28334 /* LMBMKPinAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMBMKPinAnnotationView.h; sourceTree = "<group>"; };
+		3B6C3F8321E7ECBA00C28334 /* LMBMKPinAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMBMKPinAnnotationView.m; sourceTree = "<group>"; };
+		3B6E898221E5DFD80007E833 /* CARListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARListTableViewCell.h; sourceTree = "<group>"; };
+		3B6E898321E5DFD80007E833 /* CARListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARListTableViewCell.m; sourceTree = "<group>"; };
+		3B6E898421E5DFD80007E833 /* CARListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CARListTableViewCell.xib; sourceTree = "<group>"; };
+		3B6E898721E5F16C0007E833 /* CARTotalOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTotalOrderTableViewCell.h; sourceTree = "<group>"; };
+		3B6E898821E5F16C0007E833 /* CARTotalOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTotalOrderTableViewCell.m; sourceTree = "<group>"; };
+		3B6E898921E5F16C0007E833 /* CARTotalOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CARTotalOrderTableViewCell.xib; sourceTree = "<group>"; };
 		3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMKLocationKit.framework; sourceTree = "<group>"; };
 		3B765A2721B6111900684CF4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3B765A2921B6112300684CF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1303,6 +1336,10 @@
 		3B765A2F21B6114400684CF4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3B765A3121B6115400684CF4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		3B765A3321B6115D00684CF4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3B78D6B321E5FC160074ADD0 /* CARTotalOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTotalOrderListModel.h; sourceTree = "<group>"; };
+		3B78D6B421E5FC160074ADD0 /* CARTotalOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTotalOrderListModel.m; sourceTree = "<group>"; };
+		3B78D6B621E5FC3A0074ADD0 /* CARTotalOrderItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CARTotalOrderItemModel.h; sourceTree = "<group>"; };
+		3B78D6B721E5FC3A0074ADD0 /* CARTotalOrderItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CARTotalOrderItemModel.m; sourceTree = "<group>"; };
 		3B813A8121AEF5A20096783C /* GetVisitVividDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitVividDisplayViewController.h; sourceTree = "<group>"; };
 		3B813A8221AEF5A20096783C /* GetVisitVividDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitVividDisplayViewController.m; sourceTree = "<group>"; };
 		3B813A8321AEF5A20096783C /* GetVisitVividDisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitVividDisplayViewController.xib; sourceTree = "<group>"; };
@@ -1320,8 +1357,8 @@
 		3BDABE9021A4181100C0E72B /* GetVisitRecommendedOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetVisitRecommendedOrderViewController.h; sourceTree = "<group>"; };
 		3BDABE9121A4181100C0E72B /* GetVisitRecommendedOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetVisitRecommendedOrderViewController.m; sourceTree = "<group>"; };
 		3BDABE9221A4181100C0E72B /* GetVisitRecommendedOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetVisitRecommendedOrderViewController.xib; sourceTree = "<group>"; };
-		3BDC8835218B4D960013CD81 /* AddPartyVisitLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPartyVisitLabel.h; sourceTree = "<group>"; };
-		3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPartyVisitLabel.m; sourceTree = "<group>"; };
+		3BDC8835218B4D960013CD81 /* IDLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDLabel.h; sourceTree = "<group>"; };
+		3BDC8836218B4D960013CD81 /* IDLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDLabel.m; sourceTree = "<group>"; };
 		3BE8F90821B658C60072090C /* YBCurrentLocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBCurrentLocationCell.h; sourceTree = "<group>"; };
 		3BE8F90921B658C60072090C /* YBCurrentLocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBCurrentLocationCell.m; sourceTree = "<group>"; };
 		3BE8F90A21B658C60072090C /* YBCurrentLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YBCurrentLocationCell.xib; sourceTree = "<group>"; };
@@ -1743,13 +1780,15 @@
 			children = (
 				30A967D11FDA2C060049B956 /* LMDropDownMenu_TitleView */,
 				301D7DE61F5A3ECE00D83410 /* IB_UIButton.h */,
+				3B6C3F8221E7ECBA00C28334 /* LMBMKPinAnnotationView.h */,
+				3B6C3F8321E7ECBA00C28334 /* LMBMKPinAnnotationView.m */,
 				301D7DE71F5A3ECE00D83410 /* IB_UIButton.m */,
 				30B948E81EEA4B5500E4C3EC /* IB_UIView.h */,
 				30B948E91EEA4B5500E4C3EC /* IB_UIView.m */,
 				300AF6FB1EE8DEC60037C660 /* TimeLabel.h */,
 				300AF6FC1EE8DEC60037C660 /* TimeLabel.m */,
-				3BDC8835218B4D960013CD81 /* AddPartyVisitLabel.h */,
-				3BDC8836218B4D960013CD81 /* AddPartyVisitLabel.m */,
+				3BDC8835218B4D960013CD81 /* IDLabel.h */,
+				3BDC8836218B4D960013CD81 /* IDLabel.m */,
 				3021609A1F15BF650049374F /* LoginTextFieId.h */,
 				3021609B1F15BF650049374F /* LoginTextFieId.m */,
 				3021609D1F15C2390049374F /* LoginTextFieldSuperView.h */,
@@ -1761,6 +1800,8 @@
 				304A341D1F0E10ED0055D50C /* ChinaArea.plist */,
 				301D7DE91F5A3F5400D83410 /* RouteAnnotation.h */,
 				301D7DEA1F5A3F5400D83410 /* RouteAnnotation.m */,
+				3B6C3F7F21E7C15A00C28334 /* LatLng.h */,
+				3B6C3F8021E7C15A00C28334 /* LatLng.m */,
 				304A34101F0E071B0055D50C /* AreaProvinceViewController.h */,
 				304A34111F0E071B0055D50C /* AreaProvinceViewController.m */,
 				304A34121F0E071B0055D50C /* AreaProvinceViewController.xib */,
@@ -2058,9 +2099,7 @@
 				30E9C0A21DA8E15A00A09182 /* HotProductViewController.h */,
 				30E9C0A31DA8E15A00A09182 /* HotProductViewController.m */,
 				30E9C0A41DA8E15A00A09182 /* HotProductViewController.xib */,
-				304A7AD61DB8BAE20039B0B2 /* ChartViewController.h */,
-				304A7AD71DB8BAE20039B0B2 /* ChartViewController.m */,
-				304A7AD81DB8BAE20039B0B2 /* ChartViewController.xib */,
+				3B3036AA21E5D62B0041C9AE /* 查看报表 */,
 				3056B547200713A800B4704A /* 查看库存 */,
 				3054D1031FFCC71F00E1D9B2 /* 物流订单 */,
 				30061B241FD649B500B4CA53 /* 每月计划 */,
@@ -2098,14 +2137,13 @@
 				304A7AC81DB868080039B0B2 /* CheckSignatureService.m */,
 				304A7ACD1DB8B04B0039B0B2 /* CheckPathService.h */,
 				304A7ACE1DB8B04B0039B0B2 /* CheckPathService.m */,
-				304A7ADB1DB8BCFE0039B0B2 /* ChartService.h */,
-				304A7ADC1DB8BCFE0039B0B2 /* ChartService.m */,
 				30078D231DBB11B200429813 /* OrderConfirmService.h */,
 				30078D241DBB11B200429813 /* OrderConfirmService.m */,
 				30F7B8D61DBF37FC004CD128 /* AddGiftsService.h */,
 				30F7B8D71DBF37FC004CD128 /* AddGiftsService.m */,
 				302160911F15BEE40049374F /* RegisterService.h */,
 				302160921F15BEE40049374F /* RegisterService.m */,
+				3B6E898C21E5F55D0007E833 /* 查看报表 */,
 				3056B5572007176500B4704A /* 查看库存 */,
 				3054D1091FFCC8F800E1D9B2 /* 物流订单 */,
 				30061B231FD6490500B4CA53 /* 每月计划 */,
@@ -2164,6 +2202,7 @@
 				30078D2A1DBB1AE400429813 /* PromotionOrderModel.m */,
 				30078D2C1DBB2AA200429813 /* OrderGiftModel.h */,
 				30078D2D1DBB2AA200429813 /* OrderGiftModel.m */,
+				3B78D6B221E5FC070074ADD0 /* 查看报表 */,
 				3056B5632008929A00B4704A /* 查看库存 */,
 				3054D10D1FFCCF1900E1D9B2 /* 物流订单 */,
 				30F235B21FD7BCDC0056846C /* 每月计划 */,
@@ -2324,6 +2363,7 @@
 				30BE65001EE6BE5B00BD6978 /* ProductManListTableViewCell.h */,
 				30BE65011EE6BE5B00BD6978 /* ProductManListTableViewCell.m */,
 				30BE65021EE6BE5B00BD6978 /* ProductManListTableViewCell.xib */,
+				3B6E897C21E5DF8A0007E833 /* 查看报表 */,
 				3056B56A2008986E00B4704A /* 查看库存 */,
 				3054D1141FFCD25000E1D9B2 /* 物流订单 */,
 				30930B891FD6852800D320F9 /* 每月计划 */,
@@ -3071,12 +3111,31 @@
 			path = "出库退货";
 			sourceTree = "<group>";
 		};
+		3B3036AA21E5D62B0041C9AE /* 查看报表 */ = {
+			isa = PBXGroup;
+			children = (
+				3B3036B021E5D73E0041C9AE /* CARListViewController.h */,
+				3B3036B121E5D73E0041C9AE /* CARListViewController.m */,
+				3B3036B221E5D73E0041C9AE /* CARListViewController.xib */,
+				304A7AD61DB8BAE20039B0B2 /* ChartViewController.h */,
+				304A7AD71DB8BAE20039B0B2 /* ChartViewController.m */,
+				304A7AD81DB8BAE20039B0B2 /* ChartViewController.xib */,
+				3B3036AB21E5D6FF0041C9AE /* CARTotalOrderViewController.h */,
+				3B3036AC21E5D6FF0041C9AE /* CARTotalOrderViewController.m */,
+				3B3036AD21E5D6FF0041C9AE /* CARTotalOrderViewController.xib */,
+			);
+			path = "查看报表";
+			sourceTree = "<group>";
+		};
 		3B3F41192182A4F20068B3BB /* 客户拜访 */ = {
 			isa = PBXGroup;
 			children = (
 				3B5ABDE62187FFFE00A1230D /* GetPartyVisitListViewController.h */,
 				3B5ABDE72187FFFE00A1230D /* GetPartyVisitListViewController.m */,
 				3B5ABDE82187FFFE00A1230D /* GetPartyVisitListViewController.xib */,
+				3B6C3F7A21E7556E00C28334 /* VisitRoutePlanViewController.h */,
+				3B6C3F7B21E7556E00C28334 /* VisitRoutePlanViewController.m */,
+				3B6C3F7C21E7556E00C28334 /* VisitRoutePlanViewController.xib */,
 				3B5ABE0721897A0300A1230D /* GetPartyVisitListSearchResultsViewController.h */,
 				3B5ABE0821897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m */,
 				3B5ABE0921897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib */,
@@ -3160,12 +3219,45 @@
 			path = "客户拜访";
 			sourceTree = "<group>";
 		};
+		3B6E897C21E5DF8A0007E833 /* 查看报表 */ = {
+			isa = PBXGroup;
+			children = (
+				3B6E898221E5DFD80007E833 /* CARListTableViewCell.h */,
+				3B6E898321E5DFD80007E833 /* CARListTableViewCell.m */,
+				3B6E898421E5DFD80007E833 /* CARListTableViewCell.xib */,
+				3B6E898721E5F16C0007E833 /* CARTotalOrderTableViewCell.h */,
+				3B6E898821E5F16C0007E833 /* CARTotalOrderTableViewCell.m */,
+				3B6E898921E5F16C0007E833 /* CARTotalOrderTableViewCell.xib */,
+			);
+			path = "查看报表";
+			sourceTree = "<group>";
+		};
+		3B6E898C21E5F55D0007E833 /* 查看报表 */ = {
+			isa = PBXGroup;
+			children = (
+				304A7ADB1DB8BCFE0039B0B2 /* ChartService.h */,
+				304A7ADC1DB8BCFE0039B0B2 /* ChartService.m */,
+			);
+			path = "查看报表";
+			sourceTree = "<group>";
+		};
 		3B765A2421B60FA900684CF4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
 				3B765A2521B60FA900684CF4 /* BMKLocationKit.framework */,
 			);
 			path = libs;
+			sourceTree = "<group>";
+		};
+		3B78D6B221E5FC070074ADD0 /* 查看报表 */ = {
+			isa = PBXGroup;
+			children = (
+				3B78D6B321E5FC160074ADD0 /* CARTotalOrderListModel.h */,
+				3B78D6B421E5FC160074ADD0 /* CARTotalOrderListModel.m */,
+				3B78D6B621E5FC3A0074ADD0 /* CARTotalOrderItemModel.h */,
+				3B78D6B721E5FC3A0074ADD0 /* CARTotalOrderItemModel.m */,
+			);
+			path = "查看报表";
 			sourceTree = "<group>";
 		};
 		3BE8F90521B658C60072090C /* WeChatSendLocation */ = {
@@ -3319,6 +3411,7 @@
 				3B5ABE0B21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.xib in Resources */,
 				304A7ABC1DB716780039B0B2 /* payTypeTableViewCell.xib in Resources */,
 				3047D45A1DAC763900B48525 /* TransportInformationTableViewCell.xib in Resources */,
+				3B6C3F7E21E7556E00C28334 /* VisitRoutePlanViewController.xib in Resources */,
 				30201F1C1F1083860055BA6A /* GetFeeListCollectionViewCell.xib in Resources */,
 				304A7AAF1DB5F72C0039B0B2 /* ProductTypeTableViewCell.xib in Resources */,
 				307988631F6B79A80063DE2A /* ico_make.png in Resources */,
@@ -3351,6 +3444,7 @@
 				3056B56F2008988900B4704A /* GetWmsProductZongTableViewCell.xib in Resources */,
 				30BB2DCB1F459375002E51E7 /* ConfirmAddStockTableViewCell.xib in Resources */,
 				308783941D98CD45002EED76 /* LaunchScreen.storyboard in Resources */,
+				3B6E898B21E5F16C0007E833 /* CARTotalOrderTableViewCell.xib in Resources */,
 				30E9C0AB1DA8E22500A09182 /* HotProductTableViewCell.xib in Resources */,
 				30BB2DAB1F459359002E51E7 /* AddStockViewController.xib in Resources */,
 				30BBF1431F17695B00496518 /* GetPartyListViewController.xib in Resources */,
@@ -3377,6 +3471,7 @@
 				30BB2DF21F459485002E51E7 /* StockManViewController.xib in Resources */,
 				3035669D1F70CD2B009E6EFB /* StockOutConfirmViewController.xib in Resources */,
 				303567031F710384009E6EFB /* GetInputListTableViewCell.xib in Resources */,
+				3B6E898621E5DFD80007E833 /* CARListTableViewCell.xib in Resources */,
 				3054D1081FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.xib in Resources */,
 				30E5A07B1D9E075800D94F77 /* OrderDetailViewController.xib in Resources */,
 				30EF59CF1DAF5C6D003F5729 /* CustomerAddressTableViewCell.xib in Resources */,
@@ -3386,6 +3481,7 @@
 				303566CC1F70FF57009E6EFB /* GetInputListViewController.xib in Resources */,
 				304A34171F0E071B0055D50C /* AreaProvinceViewController.xib in Resources */,
 				30BB2DC91F459375002E51E7 /* AddStockTableViewCell.xib in Resources */,
+				3B3036B421E5D73E0041C9AE /* CARListViewController.xib in Resources */,
 				301D7DB31F5A3D2E00D83410 /* GetAppBusinessFeeListTableViewCell.xib in Resources */,
 				30F7B8D51DBF0B33004CD128 /* AddGiftProductsTableViewCell.xib in Resources */,
 				304A7AB71DB612180039B0B2 /* BrandTableViewCell.xib in Resources */,
@@ -3416,6 +3512,7 @@
 				30BB2DC71F459375002E51E7 /* AddStockCellTableViewCell.xib in Resources */,
 				30A967D71FDA2C060049B956 /* ico_make.png in Resources */,
 				30BB2DB51F459359002E51E7 /* GetStockListViewController.xib in Resources */,
+				3B3036AF21E5D6FF0041C9AE /* CARTotalOrderViewController.xib in Resources */,
 				303567121F711BEB009E6EFB /* GetInputInfoViewController.xib in Resources */,
 				3056B55F200887DF00B4704A /* GetWmsProductZongViewController.xib in Resources */,
 				30BBF1391F17612400496518 /* AddressListViewController.xib in Resources */,
@@ -3533,7 +3630,9 @@
 				301D7DC81F5A3E0400D83410 /* GetPartyListTableViewCell.m in Sources */,
 				30CDC64A1D9907CD0035602F /* NSDate+Extend.m in Sources */,
 				30CDC63A1D9907CD0035602F /* PhotoModel.m in Sources */,
+				3B6C3F8421E7ECBA00C28334 /* LMBMKPinAnnotationView.m in Sources */,
 				30CDC6431D9907CD0035602F /* PhotoBroswerVC.m in Sources */,
+				3B78D6B821E5FC3A0074ADD0 /* CARTotalOrderItemModel.m in Sources */,
 				304A7AB61DB612180039B0B2 /* BrandTableViewCell.m in Sources */,
 				30BB2DCE1F459375002E51E7 /* GetStockListTableViewCell.m in Sources */,
 				3035669A1F70CD2B009E6EFB /* GetToAddressListViewController.m in Sources */,
@@ -3578,6 +3677,7 @@
 				30CDC63C1D9907CD0035602F /* PBBlurImageView.m in Sources */,
 				307988641F6B79A80063DE2A /* JSDropDownMenu.m in Sources */,
 				30240EC21FFE0C44007BC134 /* GetOrderTmsService.m in Sources */,
+				3B6C3F8121E7C15A00C28334 /* LatLng.m in Sources */,
 				3B0DD00021A399A400F8DE8F /* GetVisitEnterShopService.m in Sources */,
 				3035670C1F7103B0009E6EFB /* GetOupputListTableViewCell.m in Sources */,
 				30A3C2ED1D991E1000BBE0DA /* LoginViewController.m in Sources */,
@@ -3617,6 +3717,7 @@
 				3B5ABDED2188022900A1230D /* GetPartyVisitListService.m in Sources */,
 				30CDC6501D9907CD0035602F /* UIFont+Extend.m in Sources */,
 				3051DB921F1898EF0034629B /* NormalAdressListModel.m in Sources */,
+				3B3036B321E5D73E0041C9AE /* CARListViewController.m in Sources */,
 				3041D80E1FA3044D008F74F8 /* UIViewController+BackButtonHandler.m in Sources */,
 				30CDC6581D9907CD0035602F /* UIWindow+Launch.m in Sources */,
 				301D7DDE1F5A3E5800D83410 /* NSString+Trim.m in Sources */,
@@ -3635,6 +3736,7 @@
 				30E5A06E1D9D138900D94F77 /* ChangePasswordService.m in Sources */,
 				30F235B51FD7BD040056846C /* MonthlyPlanListModel.m in Sources */,
 				30078D211DBA73EA00429813 /* AddGiftsViewController.m in Sources */,
+				3B3036AE21E5D6FF0041C9AE /* CARTotalOrderViewController.m in Sources */,
 				30E616E91F28771B0039D73D /* ANBlurredImageView.m in Sources */,
 				3054D1071FFCC76100E1D9B2 /* GetTmsOrderByAddressViewController.m in Sources */,
 				30BB2DFA1F46821B002E51E7 /* StockProductListModel.m in Sources */,
@@ -3660,6 +3762,7 @@
 				303567111F711BEB009E6EFB /* GetInputInfoViewController.m in Sources */,
 				30B1AE6C1F74986D00130A55 /* Store_GetOupputInfoService.m in Sources */,
 				3047D4591DAC763900B48525 /* TransportInformationTableViewCell.m in Sources */,
+				3B6E898521E5DFD80007E833 /* CARListTableViewCell.m in Sources */,
 				3B5ABE0A21897A0300A1230D /* GetPartyVisitListSearchResultsViewController.m in Sources */,
 				304A7AC01DB85ED00039B0B2 /* CheckSignatureViewController.m in Sources */,
 				30201F261F1083AB0055BA6A /* FeeListModel.m in Sources */,
@@ -3694,6 +3797,7 @@
 				3B5ABDFB218807BE00A1230D /* AddPartyVisitViewController.m in Sources */,
 				30CDC6401D9907CD0035602F /* PhotoImageView.m in Sources */,
 				3B813AE921AF2A0E0096783C /* LMDropDownMenuTableViewCell.m in Sources */,
+				3B6E898A21E5F16C0007E833 /* CARTotalOrderTableViewCell.m in Sources */,
 				30F235C01FD7CC760056846C /* GetOrderPlanDetailService.m in Sources */,
 				30201F1B1F1083860055BA6A /* GetFeeListCollectionViewCell.m in Sources */,
 				30F235B11FD78D810056846C /* GetOrderPlanListService.m in Sources */,
@@ -3702,7 +3806,7 @@
 				30F7B8CF1DBF0B15004CD128 /* AddGiftTypesTableViewCell.m in Sources */,
 				30BB2DC81F459375002E51E7 /* AddStockTableViewCell.m in Sources */,
 				30CDC64C1D9907CD0035602F /* NSString+Extend.m in Sources */,
-				3BDC8837218B4D960013CD81 /* AddPartyVisitLabel.m in Sources */,
+				3BDC8837218B4D960013CD81 /* IDLabel.m in Sources */,
 				3056B5692008930B00B4704A /* CheckStockItemModel.m in Sources */,
 				301D7DDC1F5A3E5800D83410 /* NSDictionary+Extension.m in Sources */,
 				3000CA021DB20E2F00D8E731 /* ProductPolicyTableViewCell.m in Sources */,
@@ -3752,6 +3856,7 @@
 				304A7AD21DB8B0A10039B0B2 /* LocationModel.m in Sources */,
 				30F7B8D81DBF37FC004CD128 /* AddGiftsService.m in Sources */,
 				30201F051F1082220055BA6A /* AppBillFeeModel.m in Sources */,
+				3B6C3F7D21E7556E00C28334 /* VisitRoutePlanViewController.m in Sources */,
 				30061B321FD64F3100B4CA53 /* SelectGoodsViewController.m in Sources */,
 				3051DB771F1893C80034629B /* NormalAdressListService.m in Sources */,
 				30CDC6621D9907CD0035602F /* LFRoundProgressView.m in Sources */,
@@ -3760,6 +3865,7 @@
 				30EF59BB1DAE0F01003F5729 /* OrderProgressNodeTableViewCell.m in Sources */,
 				30240EC81FFE1BD1007BC134 /* TmsOrderInfoItemModel.m in Sources */,
 				3B084FF921B10635006ECBF1 /* PartyTableViewCell.m in Sources */,
+				3B78D6B521E5FC160074ADD0 /* CARTotalOrderListModel.m in Sources */,
 				30CDC6571D9907CD0035602F /* UIView+Extend.m in Sources */,
 				30CDC65C1D9907CD0035602F /* UIImageView+SD.m in Sources */,
 				3B5ABE062188391D00A1230D /* GetPartyVisitItemModel.m in Sources */,

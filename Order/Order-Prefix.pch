@@ -352,6 +352,9 @@
 
 /*-------------------- 客户拜访功能 --------------------*/
 
+/// 获取经销商客户列表
+#define API_GetFirstPartyList @"http://oms.kaidongyuan.com:8088/api/GetFirstPartyList"
+
 /// 获取客户拜访列表
 #define API_GetPartyVisitList @"http://oms.kaidongyuan.com:8088/api/GetPartyVisitList"
 
@@ -402,6 +405,12 @@
 
 /// 根据客户地址id，获取上级地址id
 #define API_GetFatherAddress @"http://oms.kaidongyuan.com:8088/api/GetFatherAddress"
+
+/// 根据客户id，获取订单汇总报表
+#define API_TotalOrderStatement @"http://oms.kaidongyuan.com:8088/api/TotalOrderStatement"
+
+/// 根据业务代码，获取客户编号
+#define API_ObtainPartyCode @"http://oms.kaidongyuan.com:8088/api/ObtainPartyCode"
 
 
 

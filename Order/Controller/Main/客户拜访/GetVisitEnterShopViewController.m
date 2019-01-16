@@ -125,8 +125,9 @@
     
     for (ACMediaModel *m in _imageArr) {
         
-        if(m.uploadType != nil) {
-            UIImage *image = [UIImage imageWithData:m.uploadType];
+        if(m.image != nil) {
+            UIImage *image = m.image;
+            
             NSData *data = [image compressImage:image andMaxLength:maxLenth andMaxWidthAndHeight:maxWidthAndHeight];
             if(data != nil) {
                 image = [UIImage imageWithData:data];

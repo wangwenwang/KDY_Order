@@ -19,6 +19,8 @@ NSString *const kGetPartyVisitItemModelCHECKINVENTORY = @"CHECK_INVENTORY";
 NSString *const kGetPartyVisitItemModelCONTACTS = @"CONTACTS";
 NSString *const kGetPartyVisitItemModelCONTACTSTEL = @"CONTACTS_TEL";
 NSString *const kGetPartyVisitItemModelEDITDATE = @"EDIT_DATE";
+NSString *const kGetPartyVisitItemModelFARTHERADDRESSID = @"FARTHER_ADDRESS_ID";
+NSString *const kGetPartyVisitItemModelFARTHERPARTYID = @"FARTHER_PARTY_ID";
 NSString *const kGetPartyVisitItemModelIDX = @"IDX";
 NSString *const kGetPartyVisitItemModelLINE = @"LINE";
 NSString *const kGetPartyVisitItemModelNECESSARYSKU = @"NECESSARY_SKU";
@@ -81,6 +83,12 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     }
     if(![dictionary[kGetPartyVisitItemModelEDITDATE] isKindOfClass:[NSNull class]]){
         self.eDITDATE = dictionary[kGetPartyVisitItemModelEDITDATE];
+    }
+    if(![dictionary[kGetPartyVisitItemModelFARTHERADDRESSID] isKindOfClass:[NSNull class]]){
+        self.fARTHERADDRESSID = dictionary[kGetPartyVisitItemModelFARTHERADDRESSID];
+    }
+    if(![dictionary[kGetPartyVisitItemModelFARTHERPARTYID] isKindOfClass:[NSNull class]]){
+        self.fARTHERPARTYID = dictionary[kGetPartyVisitItemModelFARTHERPARTYID];
     }
     if(![dictionary[kGetPartyVisitItemModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kGetPartyVisitItemModelIDX];
@@ -181,6 +189,12 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     }
     if(self.eDITDATE != nil){
         dictionary[kGetPartyVisitItemModelEDITDATE] = self.eDITDATE;
+    }
+    if(self.fARTHERADDRESSID != nil){
+        dictionary[kGetPartyVisitItemModelFARTHERADDRESSID] = self.fARTHERADDRESSID;
+    }
+    if(self.fARTHERPARTYID != nil){
+        dictionary[kGetPartyVisitItemModelFARTHERPARTYID] = self.fARTHERPARTYID;
     }
     if(self.iDX != nil){
         dictionary[kGetPartyVisitItemModelIDX] = self.iDX;
@@ -284,6 +298,12 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     if(self.eDITDATE != nil){
         [aCoder encodeObject:self.eDITDATE forKey:kGetPartyVisitItemModelEDITDATE];
     }
+    if(self.fARTHERADDRESSID != nil){
+        [aCoder encodeObject:self.fARTHERADDRESSID forKey:kGetPartyVisitItemModelFARTHERADDRESSID];
+    }
+    if(self.fARTHERPARTYID != nil){
+        [aCoder encodeObject:self.fARTHERPARTYID forKey:kGetPartyVisitItemModelFARTHERPARTYID];
+    }
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kGetPartyVisitItemModelIDX];
     }
@@ -363,6 +383,8 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     self.cONTACTS = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelCONTACTS];
     self.cONTACTSTEL = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelCONTACTSTEL];
     self.eDITDATE = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelEDITDATE];
+    self.fARTHERADDRESSID = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelFARTHERADDRESSID];
+    self.fARTHERPARTYID = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelFARTHERPARTYID];
     self.iDX = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelIDX];
     self.lINE = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelLINE];
     self.nECESSARYSKU = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelNECESSARYSKU];
@@ -404,6 +426,8 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     copy.cONTACTS = [self.cONTACTS copy];
     copy.cONTACTSTEL = [self.cONTACTSTEL copy];
     copy.eDITDATE = [self.eDITDATE copy];
+    copy.fARTHERADDRESSID = [self.fARTHERADDRESSID copy];
+    copy.fARTHERPARTYID = [self.fARTHERPARTYID copy];
     copy.iDX = [self.iDX copy];
     copy.lINE = [self.lINE copy];
     copy.nECESSARYSKU = [self.nECESSARYSKU copy];

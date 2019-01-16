@@ -12,7 +12,7 @@
 @interface KBShowStepViewController : UIViewController
 
 // 列表信息
-@property (strong, nonatomic) GetPartyVisitItemModel * pvItemM;
+@property (strong, nonatomic) GetPartyVisitItemModel *pvItemM;
 
 @property (strong, nonatomic) UIViewController *pushVc;
 

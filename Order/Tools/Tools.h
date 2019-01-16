@@ -295,4 +295,12 @@
  */
 + (nullable NSString *)getVISIT_STATES:(nullable NSString *)VISIT_STATES;
 
+
+/// 转半角的函数(DBC case)
+/// 任意字符串
+/// 半角字符串
+/// 全角空格为12288，半角空格为32
+/// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
++ (nullable NSString *)ToDBC:(nullable NSString *)input;
+
 @end

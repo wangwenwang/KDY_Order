@@ -24,6 +24,8 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 - (void)saveContext;
 
+// 设置默认主题
+- (void)setUINavigationBar;
 
 @end
 

@@ -12,7 +12,7 @@
 #import "NewsViewController.h"
 #import "HotProductViewController.h"
 #import "ChartService.h"
-#import "ChartViewController.h"
+#import "CARListViewController.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
 #import "GetStockListViewController.h"
@@ -283,7 +283,7 @@
         [self.navigationController pushViewController:hotVC animated:YES];
     } else if([title isEqualToString:@"查看报表"]) {
         
-        ChartViewController *vc = [[ChartViewController alloc] init];
+        CARListViewController *vc = [[CARListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     } else if([title isEqualToString:@"查看订单"]) {
         

@@ -11,6 +11,8 @@
 #import "Tools.h"
 // 微信发送位置
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
+#import "VisitRoutePlanViewController.h"
+#import "LatLng.h"
 
 @interface AppDelegate ()<BMKGeneralDelegate>{
     BMKMapManager * _mapManager;
@@ -19,6 +21,15 @@
 @end
 
 @implementation AppDelegate
+
+- (void)setUINavigationBar {
+    
+    [UINavigationBar appearance].translucent = NO;
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
+    [[UINavigationBar appearance] setBarTintColor:YBGreen];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -37,16 +48,19 @@
         NSLog(@"百度地图加载成功！");
     }
     
+    [self setUINavigationBar];
     
-    [UINavigationBar appearance].translucent = NO;
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
-    [[UINavigationBar appearance] setBarTintColor:YBGreen];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
     //界面生成
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _window.backgroundColor = [UIColor whiteColor];
+    
+    BMKMapPoint point0 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(22.629332, 114.046654));
+    BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(22.615688, 114.052156));
+    BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(22.633247, 114.027483));
+    CLLocationDistance distance1 = BMKMetersBetweenMapPoints(point0,point1);
+    CLLocationDistance distance2 = BMKMetersBetweenMapPoints(point0,point2);
+    
     
     //设置根控制器
     WelcomeViewController *welcomeVC = [[WelcomeViewController alloc] init];

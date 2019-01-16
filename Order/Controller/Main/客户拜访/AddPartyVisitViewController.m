@@ -12,7 +12,6 @@
 #import "TimeLabel.h"
 #import "Tools.h"
 #import "LM_alert.h"
-#import "AddPartyVisitLabel.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import <BMKLocationkit/BMKLocationAuth.h>
 #import "GetPartyVisitInsertService.h"

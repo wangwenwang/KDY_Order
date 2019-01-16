@@ -211,7 +211,9 @@
         
         GetPartyVisitListService *s = [[GetPartyVisitListService alloc] init];
         s.delegate = self;
-        [s GetPartyVisitList:1 andstrPageCount:99 andStrSearch:@"" andStrLine:@"全部" andStatus:@"全部" andStrUserID:_app.user.IDX];
+        
+        //改 填充strFartherPartyID
+        [s GetPartyVisitList:1 andstrPageCount:99 andStrSearch:@"" andStrLine:@"全部" andStatus:@"全部" andStrUserID:_app.user.IDX andStrFartherPartyID:_pvItemM.fARTHERADDRESSID];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             

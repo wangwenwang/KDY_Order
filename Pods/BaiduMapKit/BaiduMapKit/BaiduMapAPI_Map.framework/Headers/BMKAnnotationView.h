@@ -39,6 +39,15 @@ typedef NSUInteger BMKAnnotationViewDragState;
     CGPoint startPoint;
 }
 
+///// 纬度
+//@property (assign, nonatomic) double lat;
+//
+///// 经度
+//@property (assign, nonatomic) double lng;
+//
+///// 地址
+//@property (copy, nonatomic) NSString *address;
+
 /**
  *初始化并返回一个annotation view
  *@param annotation 关联的annotation对象

@@ -10,7 +10,6 @@
 
 @interface GetPartyVisitItemModel : NSObject
 
-
 @property (nonatomic, strong) NSString * aCTUALVISITINGADDRESS;
 @property (nonatomic, strong) NSString * aDDRESSCODE;
 @property (nonatomic, strong) NSString * aDDRESSIDX;
@@ -21,6 +20,8 @@
 @property (nonatomic, strong) NSString * cONTACTS;
 @property (nonatomic, strong) NSString * cONTACTSTEL;
 @property (nonatomic, strong) NSString * eDITDATE;
+@property (nonatomic, strong) NSString * fARTHERADDRESSID;
+@property (nonatomic, strong) NSString * fARTHERPARTYID;
 @property (nonatomic, strong) NSString * iDX;
 @property (nonatomic, strong) NSString * lINE;
 @property (nonatomic, strong) NSString * nECESSARYSKU;

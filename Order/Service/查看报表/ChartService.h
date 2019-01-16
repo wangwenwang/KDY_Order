@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CARTotalOrderListModel.h"
 
 @protocol ChartServiceDelegate <NSObject>
 
@@ -25,6 +26,9 @@
 @optional
 - (void)failureOfChartService:(NSString *)msg;
 
+@optional
+- (void)successOfCARTotalOrderList:(CARTotalOrderListModel *)CARTotalOrderListM;
+
 @end
 
 @interface ChartService : NSObject
@@ -40,5 +44,14 @@
  * @return 发送请求是否成功
  */
 - (void)getChartDataList:(NSString *)url andTag:(NSString *)tag;
+
+
+/**
+ * * 获取订单汇总报表数据
+ *
+ * @param strUserId 用户ID
+ * @return 订单汇总报表信息
+ */
+- (void)TotalOrderStatement:(nullable NSString *)strUserId;
 
 @end

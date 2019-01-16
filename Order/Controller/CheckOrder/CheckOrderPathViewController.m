@@ -449,35 +449,6 @@
     }
 }
 
-/// 获取订单线路长度
-- (void)getOrderPathDiatance {
-    NSMutableArray *points = _service.orderLocations;
-    if(_pointIdex > (points.count - 2)) {
-        NSLog(@"路线长度：%f公里", _orderPathDistance / 1000.0);
-        return;
-    }
-    LocationModel *startPoint = points[_pointIdex];
-    LocationModel *endPoint = points[_pointIdex + 1];
-    BMKRidingRoutePlanOption *ridingRouteSearchOption = [[BMKRidingRoutePlanOption alloc] init];
-    
-    BMKPlanNode *from = [[BMKPlanNode alloc] init];
-    CLLocationCoordinate2D fromCoordinated = CLLocationCoordinate2DMake(startPoint.CORDINATEY, startPoint.CORDINATEX);
-    from.pt = fromCoordinated;
-    
-    BMKPlanNode *to = [[BMKPlanNode alloc] init];
-    CLLocationCoordinate2D toCoordinated = CLLocationCoordinate2DMake(endPoint.CORDINATEY, endPoint.CORDINATEX);
-    to.pt = toCoordinated;
-    
-    ridingRouteSearchOption.from = from;
-    ridingRouteSearchOption.to = to;
-    BOOL ridingFlag = [_routeSearch ridingSearch:ridingRouteSearchOption];
-    if(ridingFlag) {
-        NSLog(@"骑行检索发送成功");
-    }else {
-        NSLog(@"骑行检索发送失败");
-    }
-}
-
 #pragma mark - CheckPathServiceDelegate
 
 // 获取订单线路位置集合成功

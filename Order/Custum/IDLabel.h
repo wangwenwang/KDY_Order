@@ -1,5 +1,5 @@
 //
-//  AddPartyVisitLabel.h
+//  IDLabel.h
 //  Order
 //
 //  Created by wenwang wang on 2018/11/1.
@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddPartyVisitLabel : UILabel
+@interface IDLabel : UILabel
 
 @property (copy, nonatomic) NSString *IDX;
+
+// 地址ID
+@property (copy, nonatomic) NSString *ADDRESS_IDX;
 
 @end

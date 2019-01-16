@@ -11,6 +11,9 @@
 #import <AFNetworking.h>
 #import "CustomerChartModel.h"
 #import "ProductChartModel.h"
+// 订单汇总
+
+#define kAPI_NAME_TotalOrderStatement @"获取订单汇总报表"
 
 @interface ChartService ()
 
@@ -109,6 +112,43 @@
     if([_delegate respondsToSelector:@selector(failureOfChartService:)]) {
         [_delegate failureOfChartService:msg];
     }
+}
+
+- (void)TotalOrderStatement:(nullable NSString *)strUserId {
+    
+    NSDictionary *parameters = @{
+                                 @"strUserId" : strUserId,
+                                 @"strLicense" : @""
+                                 };
+    
+    NSLog(@"接口:%@请求%@参数：%@", API_TotalOrderStatement, kAPI_NAME_TotalOrderStatement, parameters);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:API_TotalOrderStatement parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@|请求成功---%@", kAPI_NAME_TotalOrderStatement, responseObject);
+        
+        int type = [responseObject[@"type"] intValue];
+        NSString *msg = responseObject[@"msg"];
+        
+        if([responseObject isKindOfClass:[NSDictionary class]]) {
+            CARTotalOrderListModel *CARTotalOrderListM = [[CARTotalOrderListModel alloc] initWithDictionary:responseObject];
+            
+            if([_delegate respondsToSelector:@selector(successOfCARTotalOrderList:)]) {
+                
+                [_delegate successOfCARTotalOrderList:CARTotalOrderListM];
+            }
+        } else {
+
+            [self failureOfChartService:msg];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@|请求失败:%@", kAPI_NAME_TotalOrderStatement, error);
+        [self failureOfChartService:[NSString stringWithFormat:@"%@|请求失败:%@", kAPI_NAME_TotalOrderStatement, error]];
+    }];
 }
 
 @end

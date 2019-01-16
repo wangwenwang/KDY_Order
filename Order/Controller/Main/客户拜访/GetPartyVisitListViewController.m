@@ -20,6 +20,9 @@
 #import "GetPartyVisitLineService.h"
 #import "LM_alert.h"
 #import "AddPartyViewController.h"
+#import "IDLabel.h"
+#import "VisitRoutePlanViewController.h"
+#import "LatLng.h"
 
 // 步骤
 #import "GetVisitEnterShopViewController.h"
@@ -42,6 +45,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+// 经销商数据
+@property (strong, nonatomic) GetPartyVisitListModel *getFirstPartyListM;
+
 // TableView数据
 @property (strong, nonatomic) NSMutableArray *visits;
 
@@ -62,11 +68,19 @@
 
 @property (nonatomic, strong) NSArray *lineArr;
 
+@property (nonatomic, strong) NSArray *firstPartyArr;
+
+// 经销商
+@property (weak, nonatomic) IBOutlet IDLabel *firstPartLabel;
+
 // 拜访路线
 @property (weak, nonatomic) IBOutlet UILabel *weekLabel;
 
 // 拜访状态
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+// 线路规划
+@property (weak, nonatomic) IBOutlet UIButton *routePlanBtn;
 
 @end
 
@@ -102,8 +116,17 @@
     
     [super viewWillAppear:animated];
     
-    // 请求列表数据
-    [self requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text];
+    // 没有经销商地址IDX，允许请求经销商
+    if(!_firstPartLabel.ADDRESS_IDX) {
+        
+        // 请求经销商
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [_service GetFirstPartyList:_app.user.IDX andStrBusinessId:_app.business.BUSINESS_IDX];
+    }else {
+        
+        // 根据已选经销商，请求拜访列表
+        [self requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text andStrFartherPartyID:_firstPartLabel.IDX];
+    }
 }
 
 - (void)viewDidLoad {
@@ -111,6 +134,12 @@
     [super viewDidLoad];
     
     self.title = @"客户拜访";
+    
+    _routePlanBtn.layer.cornerRadius = 20;
+    _routePlanBtn.layer.shadowOffset =  CGSizeMake(0, 3);
+    _routePlanBtn.layer.shadowOpacity = 0.5;
+    _routePlanBtn.layer.shadowColor =  [UIColor redColor].CGColor;
+    
     [_weekLabel setText:[Tools getCurrentWeekDay]];
     [_statusLabel setText:@"未拜访"];
     [self addRightBtn];
@@ -168,7 +197,7 @@
         [Tools showAlert:_app.window andTitle:msg andTime:3.0];
     });
     
-    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text andStatus:_statusLabel.text andStrUserID:_app.user.IDX];
+    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
 }
 
 
@@ -261,7 +290,7 @@
     if (_searchInputCount == [count integerValue]) {
         
         // 执行网络请求
-        [_service GetPartyVisitList:1 andstrPageCount:kPageCount andStrSearch:_searchInputText andStrLine:_weekLabel.text   andStatus:_statusLabel.text andStrUserID:_app.user.IDX];
+        [_service GetPartyVisitList:1 andstrPageCount:kPageCount andStrSearch:_searchInputText andStrLine:_weekLabel.text   andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
         NSLog(@"执行网络请求：%@",  _searchInputText);
     }
 }
@@ -277,11 +306,11 @@
 }
 
 // 请求第一页数据
-- (void)requestFirstPageList:(NSString *)line andStatus:(NSString *)status {
+- (void)requestFirstPageList:(NSString *)line andStatus:(NSString *)status andStrFartherPartyID:(NSString *)strFartherPartyID{
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _page = 1;
-    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:line andStatus:status andStrUserID:_app.user.IDX];
+    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:line andStatus:status andStrUserID:_app.user.IDX andStrFartherPartyID:strFartherPartyID];
 }
 
 // 上拉刷新
@@ -290,11 +319,39 @@
     if([Tools isConnectionAvailable]) {
         
         _page ++;
-        [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text  andStatus:_statusLabel.text andStrUserID:_app.user.IDX];
+        [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text  andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
     }
+}
+
+// 弹出选择经销商
+- (void)showFirstParty:(NSArray *)arr {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        __weak __typeof(self)weakSelf = self;
+        [LM_alert showLMAlertViewWithTitle:@"请选择经销商" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:arr clickHandle:^(NSInteger index) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSLog(@"%ld", (long)index);
+                NSString *title = @"";
+                if(index == 0) {
+                    
+                }else {
+                    
+                    title = arr[index - 1];
+                    GetPartyVisitItemModel *m = _getFirstPartyListM.getPartyVisitItemModel[index - 1];
+                    _firstPartLabel.IDX = m.iDX;
+                    _firstPartLabel.ADDRESS_IDX = m.aDDRESSIDX;
+                    [weakSelf.firstPartLabel setText:title];
+                    [weakSelf requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text andStrFartherPartyID:_firstPartLabel.IDX];
+                }
+            });
+        }];
+    });
 }
 
 // 弹出选择拜访路线
@@ -315,7 +372,7 @@
                     
                     title = arr[index - 1];
                     [weakSelf.weekLabel setText:title];
-                    [weakSelf requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text];
+                    [weakSelf requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text andStrFartherPartyID:_firstPartLabel.IDX];
                 }
             });
         }];
@@ -342,7 +399,7 @@
                         
                         status = @"";
                     }
-                    [weakSelf requestFirstPageList:_weekLabel.text andStatus:status];
+                    [weakSelf requestFirstPageList:_weekLabel.text andStatus:status andStrFartherPartyID:_firstPartLabel.IDX];
                 }
             });
         }];
@@ -359,8 +416,16 @@
 
 - (void)rightBtnOnclick {
     
-    AddPartyViewController *vc = [[AddPartyViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if([_firstPartLabel.ADDRESS_IDX isEqualToString:@""] ||_firstPartLabel.ADDRESS_IDX == nil) {
+        
+        [Tools showAlert:self.view andTitle:@"请选择经销商"];
+    }else {
+        
+        AddPartyViewController *vc = [[AddPartyViewController alloc] init];
+        vc.fatherName = _firstPartLabel.text;
+        vc.fatherAddressID = _firstPartLabel.ADDRESS_IDX;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
@@ -385,7 +450,7 @@
     GetPartyVisitItemModel *_pvItemM = _visitsFilter[row];
     
     if([_pvItemM.vISITSTATES isEqualToString:@""]||[_pvItemM.vISITSTATES isEqualToString:@""]) {
-        
+
         AddPartyVisitViewController *vc = [[AddPartyVisitViewController alloc] init];
         vc.partyM = partyM;
         vc.addressM = addressM;
@@ -396,32 +461,32 @@
         GetVisitEnterShopViewController *vc = [[GetVisitEnterShopViewController alloc] init];
         vc.pvItemM = _pvItemM;
         [self.navigationController pushViewController:vc animated:YES];
-        
+
     } else if([_pvItemM.vISITSTATES isEqualToString:@"进店"]){
-        
+
         GetVisitCheckInventoryViewController *vc = [[GetVisitCheckInventoryViewController alloc] init];
         vc.pvItemM = _pvItemM;
         [self.navigationController pushViewController:vc animated:YES];
     } else if([_pvItemM.vISITSTATES isEqualToString:@"检查库存"]){
-        
+
         GetVisitRecommendedOrderViewController *vc = [[GetVisitRecommendedOrderViewController alloc] init];
         vc.pvItemM = _pvItemM;
         [self.navigationController pushViewController:vc animated:YES];
     } else if([_pvItemM.vISITSTATES isEqualToString:@"建议订单"]){
-        
+
         GetVisitVividDisplayViewController *vc = [[GetVisitVividDisplayViewController alloc] init];
         vc.pvItemM = _pvItemM;
         [self.navigationController pushViewController:vc animated:YES];
     } else if([_pvItemM.vISITSTATES isEqualToString:@"生动化陈列"]){
-        
+
         KBShowStepViewController *vc = [[KBShowStepViewController alloc] init];
         vc.pvItemM = _pvItemM;
         vc.isShowConfirmBtn = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else if([_pvItemM.vISITSTATES isEqualToString:@"离店"]){
-        
+
     }
-    
+
     NSLog(@"%lu", (unsigned long)row);
 }
 
@@ -495,14 +560,36 @@
 
 #pragma mark - 事件
 
+// 选择经销商
+- (IBAction)choiceFirstParty {
+    
+    [self showFirstParty:_firstPartyArr];
+}
+
+// 选择线路
 - (IBAction)choiceLineOnclick {
     
     [self showLine:_lineArr];
 }
 
+// 选择状态
 - (IBAction)choiceStatusOnclick {
     
     [self showStatus];
+}
+
+// 路线规划
+- (IBAction)routePlanOnclick {
+    
+    if(_visitsFilter.count > 0) {
+        
+        VisitRoutePlanViewController *vc = [[VisitRoutePlanViewController alloc] init];
+        vc.visitList = _visitsFilter;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        
+        [Tools showAlert:self.view andTitle:@"列表里没有客户哦"];
+    }
 }
 
 #pragma mark - GetPartyVisitListTableViewCellDelegate
@@ -670,13 +757,49 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [_tableView.mj_footer endRefreshing];
-    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败"];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败，服务器无返回错误信息"];
     if(_page == 1) {
         
         [_tableView noData:kPrompt andImageName:LM_NoResult_noOrder];
     }
     [_tableView reloadData];
 }
+
+- (void)successOfGetFirstPartyList:(GetPartyVisitListModel *)getFirstPartyListM {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    _getFirstPartyListM = getFirstPartyListM;
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (GetPartyVisitItemModel *m in _getFirstPartyListM.getPartyVisitItemModel) {
+        
+        [arr addObject:m.pARTYNAME];
+    }
+    _firstPartyArr = [arr copy];
+    
+    if(_firstPartyArr.count > 0) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            _firstPartLabel.text = [_firstPartyArr firstObject];
+            GetPartyVisitItemModel *m = [_getFirstPartyListM.getPartyVisitItemModel firstObject];
+            _firstPartLabel.IDX = m.iDX;
+            _firstPartLabel.ADDRESS_IDX = m.aDDRESSIDX;
+            [self requestFirstPageList:_weekLabel.text andStatus:_statusLabel.text andStrFartherPartyID:_firstPartLabel.IDX];
+        });
+    }else {
+        
+        [Tools showAlert:self.view andTitle:@"找不到经销商，请联系管理员"];
+    }
+}
+
+- (void)failureOfGetFirstPartyList:(NSString *)msg {
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败，服务器无返回错误信息"];
+}
+
 
 #pragma mark - GetPartyVisitLineServiceDelegate
 
@@ -696,7 +819,8 @@
 
 - (void)failureOfGetPartyVisitLine:(NSString *)msg {
     
-    [Tools showAlert:self.view andTitle:msg];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败，服务器无返回错误信息"];
 }
 
 @end
