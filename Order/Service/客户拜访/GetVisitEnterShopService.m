@@ -80,19 +80,19 @@
                     [_delegate successOfGetPictureByVisitIdx:array andType:strStep];
                 }
             }else {
-                if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:)]) {
-                    [_delegate failureOfGetPictureByVisitIdx:@"没有图片"];
+                if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:andType:)]) {
+                    [_delegate failureOfGetPictureByVisitIdx:@"没有图片" andType:strStep];
                 }
             }
         }else {
-            if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:)]) {
-                [_delegate failureOfGetPictureByVisitIdx:msg];
+            if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:andType:)]) {
+                [_delegate failureOfGetPictureByVisitIdx:msg andType:strStep];
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@|请求失败:%@", kAPI_NAME_GetPictureByVisitIdx, error);
-        if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:)]) {
-            [_delegate failureOfGetPictureByVisitIdx:[NSString stringWithFormat:@"%@|请求失败", kAPI_NAME_GetPictureByVisitIdx]];
+        if([_delegate respondsToSelector:@selector(failureOfGetPictureByVisitIdx:andType:)]) {
+            [_delegate failureOfGetPictureByVisitIdx:[NSString stringWithFormat:@"%@|请求失败", kAPI_NAME_GetPictureByVisitIdx] andType:strStep];
         }
     }];
 }
@@ -324,40 +324,6 @@
         }
     }];
 }
-
-
-- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx {
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSDictionary *parameters = @{
-                                 @"strVisitIdx": strVisitIdx,
-                                 @"strLicense": @""
-                                 };
-    NSLog(@"接口:%@请求%@参数：%@", API_GetVisitAppOrder, kAPI_NAME_GetVisitAppOrder, parameters);
-    [manager POST:API_GetVisitAppOrder parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-        nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@|请求成功---%@", kAPI_NAME_GetVisitAppOrder, responseObject);
-        int _type = [responseObject[@"type"] intValue];
-        NSString *msg = responseObject[@"msg"];
-        if(_type == 1) {
-            if([_delegate respondsToSelector:@selector(successOfGetVisitAppOrder:)]) {
-                [_delegate successOfGetVisitAppOrder:msg];
-            }
-        }else {
-            if([_delegate respondsToSelector:@selector(failureOfVividDisplayCBX:)]) {
-                [_delegate failureOfVividDisplayCBX:msg];
-            }
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@|请求失败:%@", kAPI_NAME_GetVisitAppOrder, error);
-        if([_delegate respondsToSelector:@selector(failureOfGetVisitAppOrder:)]) {
-            [_delegate failureOfGetVisitAppOrder:[NSString stringWithFormat:@"%@|请求失败", kAPI_NAME_GetVisitAppOrder]];
-        }
-    }];
-}
-
 
 
 - (void)GetFatherAddress:(nullable NSString *)strAddressIdx {

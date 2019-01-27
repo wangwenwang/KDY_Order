@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CARTotalOrderListModel.h"
+#import "CARTotalOrderDetailListModel.h"
 
 @protocol ChartServiceDelegate <NSObject>
 
@@ -26,8 +27,13 @@
 @optional
 - (void)failureOfChartService:(NSString *)msg;
 
+/// 客户订单总计报表
 @optional
 - (void)successOfCARTotalOrderList:(CARTotalOrderListModel *)CARTotalOrderListM;
+
+/// 客户订单总计详情报表
+@optional
+- (void)successOfCARTotalOrderDetailList:(CARTotalOrderDetailListModel *)CARTotalOrderDetailListM;
 
 @end
 
@@ -50,8 +56,21 @@
  * * 获取订单汇总报表数据
  *
  * @param strUserId 用户ID
+ * @param strType   OUT|出库、INPUT|入库
+ * @param strTime   本周，本月，本季，本年，全部
  * @return 订单汇总报表信息
  */
-- (void)TotalOrderStatement:(nullable NSString *)strUserId;
+- (void)TotalOrderStatement:(nullable NSString *)strUserId andStrType:(nullable NSString *)strType andStrTime:(nullable NSString *)strTime;
+
+
+/**
+ * * 获取订单汇总报表数据
+ *
+ * @param strUserId 用户ID
+ * @param strType   OUT|出库、INPUT|入库
+ * @param strTime   本周，本月，本季，本年，全部
+ * @return 订单汇总报表信息
+ */
+- (void)TotalOrderDetailStatement:(nullable NSString *)strUserId andStrType:(nullable NSString *)strType andStrTime:(nullable NSString *)strTime andStrBusinessIdx:(nullable NSString *)strBusinessIdx andStrPartyCode:(nullable NSString *)strPartyCode;
 
 @end

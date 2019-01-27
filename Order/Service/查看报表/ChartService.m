@@ -15,6 +15,8 @@
 
 #define kAPI_NAME_TotalOrderStatement @"获取订单汇总报表"
 
+#define kAPI_NAME_TotalOrderDetailStatement @"获取订单总计报表信息(产品明细)"
+
 @interface ChartService ()
 
 @property (strong, nonatomic) AppDelegate *app;
@@ -114,10 +116,14 @@
     }
 }
 
-- (void)TotalOrderStatement:(nullable NSString *)strUserId {
+
+
+- (void)TotalOrderStatement:(nullable NSString *)strUserId andStrType:(nullable NSString *)strType andStrTime:(nullable NSString *)strTime {
     
     NSDictionary *parameters = @{
                                  @"strUserId" : strUserId,
+                                 @"strType" : strType,
+                                 @"strTime" : strTime,
                                  @"strLicense" : @""
                                  };
     
@@ -141,13 +147,55 @@
                 [_delegate successOfCARTotalOrderList:CARTotalOrderListM];
             }
         } else {
-
+            
             [self failureOfChartService:msg];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"%@|请求失败:%@", kAPI_NAME_TotalOrderStatement, error);
         [self failureOfChartService:[NSString stringWithFormat:@"%@|请求失败:%@", kAPI_NAME_TotalOrderStatement, error]];
+    }];
+}
+
+
+- (void)TotalOrderDetailStatement:(nullable NSString *)strUserId andStrType:(nullable NSString *)strType andStrTime:(nullable NSString *)strTime andStrBusinessIdx:(nullable NSString *)strBusinessIdx andStrPartyCode:(nullable NSString *)strPartyCode {
+    
+    NSDictionary *parameters = @{
+                                 @"strUserId" : strUserId,
+                                 @"strType" : strType,
+                                 @"strTime" : strTime,
+                                 @"strBusinessIdx" : strBusinessIdx,
+                                 @"strPartyCode" : strPartyCode,
+                                 @"strLicense" : @""
+                                 };
+    
+    NSLog(@"接口:%@请求%@参数：%@", API_TotalOrderDetailStatement, kAPI_NAME_TotalOrderDetailStatement, parameters);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:API_TotalOrderDetailStatement parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@|请求成功---%@", kAPI_NAME_TotalOrderDetailStatement, responseObject);
+        
+        int type = [responseObject[@"type"] intValue];
+        NSString *msg = responseObject[@"msg"];
+        
+        if([responseObject isKindOfClass:[NSDictionary class]]) {
+            CARTotalOrderDetailListModel *CARTotalOrderDetailListM = [[CARTotalOrderDetailListModel alloc] initWithDictionary:responseObject];
+            
+            if([_delegate respondsToSelector:@selector(successOfCARTotalOrderDetailList:)]) {
+                
+                [_delegate successOfCARTotalOrderDetailList:CARTotalOrderDetailListM];
+            }
+        } else {
+            
+            [self failureOfChartService:msg];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@|请求失败:%@", kAPI_NAME_TotalOrderDetailStatement, error);
+        [self failureOfChartService:[NSString stringWithFormat:@"%@|请求失败:%@", kAPI_NAME_TotalOrderDetailStatement, error]];
     }];
 }
 

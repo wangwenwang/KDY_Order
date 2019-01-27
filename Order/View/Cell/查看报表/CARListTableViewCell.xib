@@ -34,13 +34,18 @@
                                     <constraint firstAttribute="height" constant="0.29999999999999999" id="S1z-PJ-uCf"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UITableViewCellAccessoryDisclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="epd-KU-KNv">
+                                <rect key="frame" x="285" y="10" width="25" height="25"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YSz-2D-T6p" firstAttribute="top" secondItem="nei-o1-gkD" secondAttribute="top" id="0BI-fu-D6N"/>
                             <constraint firstItem="MFE-0K-iS6" firstAttribute="leading" secondItem="nei-o1-gkD" secondAttribute="leading" constant="12" id="J9W-FF-8Hh"/>
+                            <constraint firstAttribute="trailing" secondItem="epd-KU-KNv" secondAttribute="trailing" constant="10" id="NyI-Li-1FQ"/>
                             <constraint firstAttribute="trailing" secondItem="YSz-2D-T6p" secondAttribute="trailing" id="RBE-x6-dJT"/>
                             <constraint firstItem="MFE-0K-iS6" firstAttribute="centerY" secondItem="nei-o1-gkD" secondAttribute="centerY" id="Sdd-Rf-3lh"/>
+                            <constraint firstItem="epd-KU-KNv" firstAttribute="centerY" secondItem="nei-o1-gkD" secondAttribute="centerY" id="UlE-yq-KYJ"/>
                             <constraint firstItem="YSz-2D-T6p" firstAttribute="leading" secondItem="nei-o1-gkD" secondAttribute="leading" id="na7-Vb-bo3"/>
                         </constraints>
                     </view>
@@ -59,4 +64,7 @@
             <point key="canvasLocation" x="34" y="3.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="UITableViewCellAccessoryDisclosureIndicator" width="25" height="25"/>
+    </resources>
 </document>

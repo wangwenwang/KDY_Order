@@ -34,6 +34,7 @@ PODS:
   - TZImagePickerController (2.0.1)
   - UICountingLabel (1.2.0)
   - WMPageController (1.9.0)
+  - YCXMenu (0.0.11)
 
 DEPENDENCIES:
   - ACAlertController
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.64)
   - TZImagePickerController
   - WMPageController
+  - YCXMenu (~> 0.0.11)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -64,6 +66,7 @@ SPEC REPOS:
     - TZImagePickerController
     - UICountingLabel
     - WMPageController
+    - YCXMenu
 
 SPEC CHECKSUMS:
   ACAlertController: 10f0455c3e1691a6197b5cd0d96d6f9a03c82763
@@ -80,7 +83,8 @@ SPEC CHECKSUMS:
   TZImagePickerController: 34ecb53af8c349964394407e42b6e54e22589ebe
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   WMPageController: 088ab96e271f12878eff084b3851620b701826c6
+  YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
 
-PODFILE CHECKSUM: 887213b5c4532608eeb1833f91bb89ff2626faa7
+PODFILE CHECKSUM: 27e30ebb113b688a158691377f1c32e53d212a72
 
 COCOAPODS: 1.5.3

@@ -294,6 +294,12 @@ typedef enum : NSInteger {
 // 收货人地址
 @property (strong, nonatomic) UILabel *receiveLabel;
 
+// 收货信息
+@property (weak, nonatomic) IBOutlet UILabel *receive_PARTY_NAME;
+@property (weak, nonatomic) IBOutlet UILabel *receive_PERSION;
+@property (weak, nonatomic) IBOutlet UILabel *receive_TEL;
+@property (weak, nonatomic) IBOutlet UILabel *receive_ADDRESS;
+
 @end
 
 @implementation StockOutViewController
@@ -491,6 +497,11 @@ typedef enum : NSInteger {
     _getToAddressM = aNotify.userInfo[@"msg"];
     
     _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
+    
+    _receive_PARTY_NAME.text = _getToAddressM.pARTYNAME;
+    _receive_PERSION.text = _getToAddressM.cONTACTPERSON;
+    _receive_TEL.text = _getToAddressM.cONTACTTEL;
+    _receive_ADDRESS.text = _getToAddressM.aDDRESSINFO;
 }
 
 
@@ -532,6 +543,11 @@ typedef enum : NSInteger {
     _coverView.alpha = 0;
     _coverMainView.alpha = 0;
     _otherMsgView.alpha = 0;
+    
+    _receive_PARTY_NAME.text = @"";
+    _receive_PERSION.text = @"";
+    _receive_TEL.text = @"";
+    _receive_ADDRESS.text = @"";
 }
 
 
@@ -739,6 +755,7 @@ typedef enum : NSInteger {
         [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [btn setBackgroundColor:RGB(91, 134, 247)];
         [btn setTitle:@"添加收货信息" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(receiveOnclick) forControlEvents:UIControlEventTouchUpInside];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(125);
             make.height.mas_equalTo(30);

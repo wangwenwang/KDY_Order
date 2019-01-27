@@ -222,17 +222,7 @@
     }
     
     
-    if(
-       image1 != nil &&
-       image2 != nil &&
-       image3 != nil &&
-       image4 != nil &&
-       image5 != nil &&
-       image6 != nil &&
-       image7 != nil &&
-       image8 != nil &&
-       image9 != nil
-       ) {
+    if(![image1 isEqualToString:@""]) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [_service GetVisitVividDisplay:_pvItemM.vISITIDX andStrVividDisplayCbx:@"" andStrVividDisplayText:_VividDisplayText.text andPictureFile1:image1 andPictureFile2:image2 andPictureFile3:image3 andPictureFile4:image4 andPictureFile5:image5 andPictureFile6:image6 andPictureFile7:image7 andPictureFile8:image8 andPictureFile9:image9];

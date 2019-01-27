@@ -118,14 +118,14 @@
 
                 if(getPartyVisitListM.getPartyVisitItemModel.count < 1) {
 
-                     [self successOfGetPartyVisitList_NoData];
+                     [self successOfGetPartyVisitList_NoData:strSearch];
                 } else {
 
-                    [self successOfGetPartyVisitList:getPartyVisitListM];
+                    [self successOfGetPartyVisitList:getPartyVisitListM andsStrSearch:strSearch];
                 }
             } else if(type == -2) {
 
-                [self successOfGetPartyVisitList_NoData];
+                [self successOfGetPartyVisitList_NoData:strSearch];
             } else {
 
                 [self failureOfGetPartyVisitList:msg];
@@ -143,21 +143,21 @@
 
 
 // 成功
-- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)checkStockListM {
+- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)checkStockListM andsStrSearch:(nullable NSString *)strSearch {
     
-    if([_delegate respondsToSelector:@selector(successOfGetPartyVisitList:)]) {
+    if([_delegate respondsToSelector:@selector(successOfGetPartyVisitList:andsStrSearch:)]) {
         
-        [_delegate successOfGetPartyVisitList:checkStockListM];
+        [_delegate successOfGetPartyVisitList:checkStockListM andsStrSearch:strSearch];
     }
 }
 
 
 // 没有数据
-- (void)successOfGetPartyVisitList_NoData {
+- (void)successOfGetPartyVisitList_NoData:(nullable NSString *)strSearch {
     
-    if([_delegate respondsToSelector:@selector(successOfGetPartyVisitList_NoData)]) {
+    if([_delegate respondsToSelector:@selector(successOfGetPartyVisitList_NoData:)]) {
         
-        [_delegate successOfGetPartyVisitList_NoData];
+        [_delegate successOfGetPartyVisitList_NoData:strSearch];
     }
 }
 

@@ -32,9 +32,9 @@
 #import "GetVisitVividDisplayViewController.h"
 #import "KBShowStepViewController.h"
 
-@interface GetPartyVisitListViewController ()<GetPartyVisitListServiceDelegate, UISearchResultsUpdating, UISearchControllerDelegate, GetPartyVisitListTableViewCellDelegate, GetPartyVisitLineServiceDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface GetPartyVisitListViewController ()<GetPartyVisitListServiceDelegate, GetPartyVisitListTableViewCellDelegate, GetPartyVisitLineServiceDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
     
-    GetPartyVisitListSearchResultsViewController *searchResultsViewController;
+//    GetPartyVisitListSearchResultsViewController *searchResultsViewController;
 }
 
 // 网络层
@@ -49,7 +49,7 @@
 @property (strong, nonatomic) GetPartyVisitListModel *getFirstPartyListM;
 
 // TableView数据
-@property (strong, nonatomic) NSMutableArray *visits;
+@property (strong, nonatomic) NSArray *visits;
 
 // 过滤后的TableView数据
 @property (strong, nonatomic) NSMutableArray *visitsFilter;
@@ -82,6 +82,8 @@
 // 线路规划
 @property (weak, nonatomic) IBOutlet UIButton *routePlanBtn;
 
+@property (strong, nonatomic) UIView *searchBarView;
+
 @end
 
 #define kPageCount 20
@@ -108,6 +110,8 @@
         _service_week.delegate = self;
         
         _visitsFilter = [[NSMutableArray alloc] init];
+        
+        _searchInputText = @"";
     }
     return self;
 }
@@ -148,12 +152,7 @@
     
     [self registerCell];
     
-    // UISearchController，并且把searchBar置为tableHeaderView
-    self.tableView.tableHeaderView = self.searchController.searchBar;
-    self.searchController.searchResultsUpdater = self;
-    self.searchController.delegate = self;
-    self.searchController.dimsBackgroundDuringPresentation = YES;
-    self.definesPresentationContext = YES;
+    [self addTableViewSearch];
     
     // 上拉分页加载
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataUp)];
@@ -171,6 +170,23 @@
     
     NSLog(@"GetPartyVisitListViewController");
     [self removeNotification];
+}
+
+- (void)addTableViewSearch {
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame))];
+    searchBar.backgroundImage = [[UIImage alloc] init];
+    searchBar.barTintColor = [UIColor clearColor];
+    
+    UITextField *searchField = [searchBar valueForKey:@"_searchField"];
+    searchField.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    [view addSubview:searchBar];
+    _tableView.tableHeaderView = view;
+    [searchBar setPlaceholder:@"按客户名称搜索"];
+    searchBar.delegate = self;
 }
 
 #pragma mark - 通知
@@ -197,7 +213,7 @@
         [Tools showAlert:_app.window andTitle:msg andTime:3.0];
     });
     
-    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
+    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:_searchInputText andStrLine:_weekLabel.text andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
 }
 
 
@@ -219,7 +235,6 @@
 - (void)willDismissSearchController:(UISearchController *)searchController {
     
     self.navigationController.navigationBar.translucent = NO;
-    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -228,25 +243,36 @@
 /**
  懒加载搜索框控制器
  */
-- (UISearchController *)searchController {
-    if (!_searchController) {
-        
-        searchResultsViewController = [[GetPartyVisitListSearchResultsViewController alloc] init];
-        //        searchResultsViewController.vcClass = _vcClass;
-        //        searchResultsViewController.functionName = _functionName;
-        //        searchResultsViewController.currentParty = _currentParty;
-        searchResultsViewController.nav = self.navigationController;
-        
-        _searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsViewController];
-        //        searchResultsViewController.superVC = _searchController;
-        
-        //  接下来都是定义searchBar的样式
-        _searchController.searchBar.frame = CGRectMake(0, 0, 0, 40);
-        _searchController.searchBar.placeholder = @"客户名称搜索";
-        return _searchController;
-    }
-    return _searchController;
-}
+//- (UISearchController *)searchController {
+//
+//    if (!_searchController) {
+//
+//        searchResultsViewController = [[GetPartyVisitListSearchResultsViewController alloc] init];
+//        searchResultsViewController.nav = self.navigationController;
+//
+//        _searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsViewController];
+//
+//        // 定义样式
+//        if ([[UIDevice currentDevice] systemVersion].doubleValue >= 11.0) {
+//
+//            [_searchController.searchBar setFrame:CGRectMake(0, 0, ScreenWidth, 56)];
+////            _searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false;
+//            [_searchController.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+//        }else {
+//
+//            [_searchController.searchBar setFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+//        }
+//        [_searchController.searchBar setPlaceholder:@"客户名称搜索"];
+//        [_searchController.searchBar sizeToFit];
+//        [_searchController.searchBar setBackgroundImage:[Tools createImageWithColor:[UIColor groupTableViewBackgroundColor]]];
+//        _searchController.searchBar.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, 0);
+//
+//        _searchController.searchResultsUpdater = self;
+//        _searchController.delegate = self;
+//        _searchController.dimsBackgroundDuringPresentation = YES;
+//    }
+//    return _searchController;
+//}
 
 
 /**
@@ -310,7 +336,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _page = 1;
-    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:line andStatus:status andStrUserID:_app.user.IDX andStrFartherPartyID:strFartherPartyID];
+    [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:_searchInputText andStrLine:line andStatus:status andStrUserID:_app.user.IDX andStrFartherPartyID:strFartherPartyID];
 }
 
 // 上拉刷新
@@ -319,7 +345,7 @@
     if([Tools isConnectionAvailable]) {
         
         _page ++;
-        [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:@"" andStrLine:_weekLabel.text  andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
+        [_service GetPartyVisitList:_page andstrPageCount:kPageCount andStrSearch:_searchInputText andStrLine:_weekLabel.text  andStatus:_statusLabel.text andStrUserID:_app.user.IDX andStrFartherPartyID:_firstPartLabel.IDX];
     } else {
         
         [Tools showAlert:self.view andTitle:@"网络连接不可用"];
@@ -491,6 +517,21 @@
 }
 
 
+// 列表Cell数据换行处理
+- (void)dealTableviewCellHeight {
+    
+    // 处理换行
+    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
+    CGFloat mulLine = 0;
+    for (GetPartyVisitItemModel *m in _visitsFilter) {
+        
+        mulLine = [Tools getHeightOfString:m.pARTYADDRESS fontSize:13 andWidth:(ScreenWidth - 10 - 8)];
+        mulLine = mulLine ? mulLine : oneLine;
+        m.cellHeight = kCellHeight + (mulLine - oneLine);
+    }
+}
+
+
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -564,6 +605,7 @@
 - (IBAction)choiceFirstParty {
     
     [self showFirstParty:_firstPartyArr];
+    
 }
 
 // 选择线路
@@ -590,6 +632,12 @@
         
         [Tools showAlert:self.view andTitle:@"列表里没有客户哦"];
     }
+}
+
+// 点击屏幕，收回键盘
+- (IBAction)screenOnclick {
+    
+    [self.view endEditing:YES];
 }
 
 #pragma mark - GetPartyVisitListTableViewCellDelegate
@@ -665,25 +713,12 @@
 
 #pragma mark - GetPartyVisitListServiceDelegate
 
-- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)getPartyVisitListM {
+- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)getPartyVisitListM andsStrSearch:(nullable NSString *)strSearch {
     
-    // 搜索的返回值
-    if(![_searchInputText isEqualToString:@""] && _searchInputText != nil) {
+    // 不搜索时，把结果存起来
+    if([strSearch isEqualToString:@""]) {
         
-        NSMutableArray *tempArr = [getPartyVisitListM.getPartyVisitItemModel mutableCopy];
-        
-        // 处理换行
-        CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
-        CGFloat mulLine = 0;
-        for (GetPartyVisitItemModel *m in tempArr) {
-            
-            mulLine = [Tools getHeightOfString:m.pARTYADDRESS fontSize:13 andWidth:(ScreenWidth - 10 - 8)];
-            mulLine = mulLine ? mulLine : oneLine;
-            m.cellHeight = kCellHeight + (mulLine - oneLine);
-        }
-        searchResultsViewController.visitsFilter = tempArr;
-        [searchResultsViewController.tableView reloadData];
-        return;
+         _visits = getPartyVisitListM.getPartyVisitItemModel;
     }
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -694,6 +729,10 @@
     if(_page == 1) {
         
         _visitsFilter = [getPartyVisitListM.getPartyVisitItemModel mutableCopy];
+        if(_visitsFilter.count < kPageCount) {
+            
+            [_tableView.mj_footer setCount_NoMoreData:_visitsFilter.count];
+        }
     } else {
         
         for(int i = 0; i < getPartyVisitListM.getPartyVisitItemModel.count; i++) {
@@ -703,28 +742,27 @@
         }
     }
     
-    // 处理换行
-    CGFloat oneLine = [Tools getHeightOfString:@"fds" fontSize:13 andWidth:MAXFLOAT];
-    CGFloat mulLine = 0;
-    for (GetPartyVisitItemModel *m in _visitsFilter) {
-        
-        mulLine = [Tools getHeightOfString:m.pARTYADDRESS fontSize:13 andWidth:(ScreenWidth - 10 - 8)];
-        mulLine = mulLine ? mulLine : oneLine;
-        m.cellHeight = kCellHeight + (mulLine - oneLine);
-    }
+    // 处理Cell高度
+    [self dealTableviewCellHeight];
     [_tableView reloadData];
     [_tableView removeNoOrderPrompt];
 }
 
 
-- (void)successOfGetPartyVisitList_NoData {
+- (void)successOfGetPartyVisitList_NoData:(NSString *)strSearch {
     
-    // 搜索的返回值
-    if(![_searchInputText isEqualToString:@""] && _searchInputText != nil) {
+    // _searchInputText为空表示用户不搜索了。strSearch有值表示用户网络不好，刚刚的搜索结果才回来
+    if([_searchInputText isEqualToString:@""] && ![strSearch isEqualToString:@""]) {
         
-        searchResultsViewController.visitsFilter = [[NSMutableArray alloc] init];
-        [searchResultsViewController.tableView reloadData];
         return;
+    }
+    
+    // 不搜索时，把结果存起来
+    if([strSearch isEqualToString:@""]) {
+        
+        if(_page == 1) {
+            _visits = nil;
+        }
     }
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -745,14 +783,6 @@
 }
 
 - (void)failureOfGetPartyVisitList:(NSString *)msg {
-    
-    // 搜索的返回值
-    if(![_searchInputText isEqualToString:@""] && _searchInputText != nil) {
-        
-        searchResultsViewController.visitsFilter = [[NSMutableArray alloc] init];
-        [searchResultsViewController.tableView reloadData];
-        return;
-    }
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
@@ -821,6 +851,53 @@
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [Tools showAlert:self.view andTitle:msg ? msg : @"获取信息失败，服务器无返回错误信息"];
+}
+
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    NSLog(@"当前文字：%@", searchText);
+    _searchInputText = searchText;
+    
+    // 用户停止输入1秒后搜索
+    _searchInputCount ++;
+    [self performSelector:@selector(requestKeyWorld:) withObject:@(_searchInputCount) afterDelay:1.0f];
+    
+    if([_searchInputText isEqualToString:@""]) {
+        
+        _visitsFilter = [_visits mutableCopy];
+        // 重新计算记录数
+        if(_visitsFilter.count > 0) {
+            [_tableView.mj_footer setCount_NoMoreData:_visitsFilter.count];
+            [_tableView removeNoOrderPrompt];
+        }
+    }else {
+        
+        // 清空搜索Tableview
+        [_visitsFilter removeAllObjects];
+    }
+    // 处理Cell高度
+    [self dealTableviewCellHeight];
+    [_tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self.view endEditing:YES];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    // 输出点击的view的类名
+    NSLog(@"%@", NSStringFromClass([touch.view class]));
+    
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UIView"]) {
+        return NO;
+    }
+    return  YES;
 }
 
 @end

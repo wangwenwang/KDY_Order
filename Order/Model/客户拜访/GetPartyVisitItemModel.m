@@ -21,6 +21,7 @@ NSString *const kGetPartyVisitItemModelCONTACTSTEL = @"CONTACTS_TEL";
 NSString *const kGetPartyVisitItemModelEDITDATE = @"EDIT_DATE";
 NSString *const kGetPartyVisitItemModelFARTHERADDRESSID = @"FARTHER_ADDRESS_ID";
 NSString *const kGetPartyVisitItemModelFARTHERPARTYID = @"FARTHER_PARTY_ID";
+NSString *const kGetPartyVisitItemModelGRADE = @"GRADE";
 NSString *const kGetPartyVisitItemModelIDX = @"IDX";
 NSString *const kGetPartyVisitItemModelLINE = @"LINE";
 NSString *const kGetPartyVisitItemModelNECESSARYSKU = @"NECESSARY_SKU";
@@ -89,6 +90,9 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     }
     if(![dictionary[kGetPartyVisitItemModelFARTHERPARTYID] isKindOfClass:[NSNull class]]){
         self.fARTHERPARTYID = dictionary[kGetPartyVisitItemModelFARTHERPARTYID];
+    }
+    if(![dictionary[kGetPartyVisitItemModelGRADE] isKindOfClass:[NSNull class]]){
+        self.gRADE = dictionary[kGetPartyVisitItemModelGRADE];
     }
     if(![dictionary[kGetPartyVisitItemModelIDX] isKindOfClass:[NSNull class]]){
         self.iDX = dictionary[kGetPartyVisitItemModelIDX];
@@ -195,6 +199,9 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     }
     if(self.fARTHERPARTYID != nil){
         dictionary[kGetPartyVisitItemModelFARTHERPARTYID] = self.fARTHERPARTYID;
+    }
+    if(self.gRADE != nil){
+        dictionary[kGetPartyVisitItemModelGRADE] = self.gRADE;
     }
     if(self.iDX != nil){
         dictionary[kGetPartyVisitItemModelIDX] = self.iDX;
@@ -304,6 +311,9 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     if(self.fARTHERPARTYID != nil){
         [aCoder encodeObject:self.fARTHERPARTYID forKey:kGetPartyVisitItemModelFARTHERPARTYID];
     }
+    if(self.gRADE != nil){
+        [aCoder encodeObject:self.gRADE forKey:kGetPartyVisitItemModelGRADE];
+    }
     if(self.iDX != nil){
         [aCoder encodeObject:self.iDX forKey:kGetPartyVisitItemModelIDX];
     }
@@ -385,6 +395,7 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     self.eDITDATE = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelEDITDATE];
     self.fARTHERADDRESSID = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelFARTHERADDRESSID];
     self.fARTHERPARTYID = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelFARTHERPARTYID];
+    self.gRADE = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelGRADE];
     self.iDX = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelIDX];
     self.lINE = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelLINE];
     self.nECESSARYSKU = [aDecoder decodeObjectForKey:kGetPartyVisitItemModelNECESSARYSKU];
@@ -428,6 +439,7 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     copy.eDITDATE = [self.eDITDATE copy];
     copy.fARTHERADDRESSID = [self.fARTHERADDRESSID copy];
     copy.fARTHERPARTYID = [self.fARTHERPARTYID copy];
+    copy.gRADE = [self.gRADE copy];
     copy.iDX = [self.iDX copy];
     copy.lINE = [self.lINE copy];
     copy.nECESSARYSKU = [self.nECESSARYSKU copy];
@@ -451,5 +463,6 @@ NSString *const kGetPartyVisitItemModelWEEKLYVISITFREQUENCY = @"WEEKLY_VISIT_FRE
     
     return copy;
 }
+
 
 @end

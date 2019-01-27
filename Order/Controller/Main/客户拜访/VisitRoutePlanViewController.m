@@ -56,8 +56,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mapViewContainerView;
 
-// 总公里数
-//@property (weak, nonatomic) IBOutlet UILabel *pathDistanceField;
+// 是否有拜访完成
+@property (assign, nonatomic) BOOL isHasVisitComplete;
 
 @end
 
@@ -460,7 +460,13 @@
             
             distanceDidLabel.textColor = RGB(87, 169, 55);
             distanceDidLabel.textAlignment = NSTextAlignmentCenter;
-            distanceDidLabel.text = [NSString stringWithFormat:@"已行驶："];
+            if(_isHasVisitComplete == YES) {
+                
+                distanceDidLabel.text = [NSString stringWithFormat:@"已行驶："];
+            }else {
+                
+                distanceDidLabel.text = [NSString stringWithFormat:@"已行驶：0公里"];
+            }
             distanceDidLabel.font = [UIFont systemFontOfSize:15];
             [distanceDidLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(0);
@@ -543,7 +549,7 @@
     // 先关闭显示的定位图层
     _mapView.showsUserLocation = NO;
     // 设置定位的状态
-//    _mapView.userTrackingMode = BMKUserTrackingModeFollow;
+    //    _mapView.userTrackingMode = BMKUserTrackingModeFollow;
     // 显示定位图层
     _mapView.showsUserLocation = YES;
     // 设置定位精度
@@ -650,7 +656,8 @@
         _mapView.mapScaleBarPosition = CGPointMake(13, _mapView.frame.size.height - 215); //比例尺的位置
     }];
     
-//    [_shopInfoContainerView removeFromSuperview];
+    [_shopInfoContainerView removeFromSuperview];
+    _shopInfoContainerView = nil;
     if(!_shopInfoContainerView) {
         
         _shopInfoContainerView = [[UIView alloc] init];
@@ -901,7 +908,7 @@
                 BMKDrivingRoutePlanOption *drivingRoutePlanOption_did = [[BMKDrivingRoutePlanOption alloc] init];
                 drivingRoutePlanOption_did.from = start;
                 LatLng *latlng_last_did;
-                int k = 0;
+                int k = -1;
                 for(int j = 0; j < _latlngArray.count; j++) {
                     LatLng *latlng = _latlngArray[j];
                     // 找到最后一个『已拜访』坐标
@@ -912,27 +919,34 @@
                 }
                 // k != 0，有『已拜访』坐标
                 NSMutableArray * wayPointsArray_did = [[NSMutableArray alloc] init];
-                if(k != 0) {
-                    for(int m = 0; m < k; m++) {
+                if(k != -1) {
+                    
+                    _isHasVisitComplete = YES;
+                    for(int m = 0; m <= k; m++) {
                         LatLng *latlng = _latlngArray[m];
                         BMKPlanNode* wayPointItem = [[BMKPlanNode alloc]init];
                         wayPointItem.pt = CLLocationCoordinate2DMake(latlng.lat, latlng.lng);
                         [wayPointsArray_did addObject:wayPointItem];
                         NSLog(@"途经点_已行驶 %f %f", wayPointItem.pt.latitude, wayPointItem.pt.longitude);
                     }
-                }
-                drivingRoutePlanOption.wayPointsArray = wayPointsArray_did;
-                end.pt = CLLocationCoordinate2DMake(latlng_last_did.lat, latlng_last_did.lng);
-                drivingRoutePlanOption_did.to = end;
-                //初始化BMKRouteSearch实例
-                drivingRouteSearch_did = [[BMKRouteSearch alloc]init];
-                //设置驾车路径的规划
-                drivingRouteSearch_did.delegate = self;
-                BOOL flag1 = [drivingRouteSearch_did drivingSearch: drivingRoutePlanOption];
-                if(flag1) {
-                    NSLog(@"驾车检索成功_已行驶");
-                } else {
-                    NSLog(@"驾车检索失败_已行驶");
+                    
+                    drivingRoutePlanOption_did.wayPointsArray = wayPointsArray_did;
+                    end.pt = CLLocationCoordinate2DMake(latlng_last_did.lat, latlng_last_did.lng);
+                    drivingRoutePlanOption_did.to = end;
+                    //初始化BMKRouteSearch实例
+                    drivingRouteSearch_did = [[BMKRouteSearch alloc]init];
+                    //设置驾车路径的规划
+                    drivingRouteSearch_did.delegate = self;
+                    BOOL flag1 = [drivingRouteSearch_did drivingSearch: drivingRoutePlanOption];
+                    if(flag1) {
+                        NSLog(@"驾车检索成功_已行驶");
+                    } else {
+                        NSLog(@"驾车检索失败_已行驶");
+                    }
+                    
+                }else {
+                    
+                    _isHasVisitComplete = NO;
                 }
                 
                 

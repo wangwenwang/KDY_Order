@@ -24,6 +24,11 @@
 #import "GetPartyVisitListViewController.h"
 #import "GetPartyVisitListService.h"
 
+// 查看经销商入库单
+#import "CheckAgentOrderTableViewCell.h"
+#import "OrderDetailService.h"
+#import "OrderDetailViewController.h"
+
 @interface KBShowStepViewController ()<GetVisitEnterShopServiceDelegate, Store_GetOupputListServiceDelegate, GetPartyVisitListServiceDelegate>
 
 // 全局变量
@@ -81,12 +86,18 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *step6ViewHeight;
 
 
+// 订单列表数据
+@property (strong, nonatomic) CheckOrderListModel *CheckOrderListM;
+
+
 
 @end
 
 #define kCellHeight 103
 
-#define kCellName @"GetOupputListTableViewCell"
+#define kCellNameGetOupputList @"GetOupputListTableViewCell"
+
+#define kCellNameCheckAgentOrder @"CheckAgentOrderTableViewCell"
 
 @implementation KBShowStepViewController
 
@@ -117,8 +128,20 @@
     
     [_service GetPictureByVisitIdx:_pvItemM.vISITIDX andStrStep:@"Visit"];
     [_service GetPictureByVisitIdx:_pvItemM.vISITIDX andStrStep:@"VisitVividDisplay"];
-    [_service_visitOrder GetVisitAppOrder:_pvItemM.vISITIDX];
     
+    if([_pvItemM.gRADE isEqualToString:@"0"]) {
+        
+        [Tools showAlert:self.view andTitle:@"当前被拜访的客户为供货商，无出库单"];
+    }else if([_pvItemM.gRADE isEqualToString:@"1"]) {
+        
+        [_service_visitOrder GetVisitAppOrde_AGENT:_pvItemM.vISITIDX andStrType:@"AppOrder"];
+    }else if([_pvItemM.gRADE isEqualToString:@"2"]) {
+        
+        [_service_visitOrder GetVisitAppOrder:_pvItemM.vISITIDX andStrType:@"OutPut"];
+    }else {
+        
+        [Tools showAlert:self.view andTitle:@"未知客户类型，字段GRADE"];
+    }
 }
 
 - (void)updateViewConstraints {
@@ -144,7 +167,8 @@
 // 注册Cell
 - (void)registerCell {
     
-    [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
+    [_tableView registerNib:[UINib nibWithNibName:kCellNameGetOupputList bundle:nil] forCellReuseIdentifier:kCellNameGetOupputList];
+    [_tableView registerNib:[UINib nibWithNibName:kCellNameCheckAgentOrder bundle:nil] forCellReuseIdentifier:kCellNameCheckAgentOrder];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
@@ -153,29 +177,61 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _getOupputListM.getOupputModel.count;
+    //『供货商』对『经销商』的入库单
+    if(_CheckOrderListM) {
+        
+        return _CheckOrderListM.checkOrderItemModel.count;
+    }
+    //『经销商』对『门店』的出库单
+    else {
+        
+        return _getOupputListM.getOupputModel.count;
+    }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    GetOupputModel *getOupputM = _getOupputListM.getOupputModel[indexPath.row];
-    
-    return getOupputM.cellHeight;
+    //『供货商』对『经销商』的入库单
+    if(_CheckOrderListM) {
+        
+        return kCellHeight;
+    }
+    //『经销商』对『门店』的出库单
+    else {
+        
+        GetOupputModel *getOupputM = _getOupputListM.getOupputModel[indexPath.row];
+        return getOupputM.cellHeight;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // 处理界面
-    static NSString *cellId = kCellName;
-    GetOupputListTableViewCell *cell = (GetOupputListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    
-    GetOupputModel *getOupputM = _getOupputListM.getOupputModel[indexPath.row];
-    
-    cell.getOupputM = getOupputM;
-    
-    return cell;
+    //『供货商』对『经销商』的入库单
+    if(_CheckOrderListM) {
+        
+        static NSString *cellID = kCellNameCheckAgentOrder;
+        CheckAgentOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+        
+        CheckOrderItemModel *CheckOrderItemM = _CheckOrderListM.checkOrderItemModel[indexPath.row];
+        
+        cell.CheckOrderItemM = CheckOrderItemM;
+        
+        return cell;
+    }
+    //『经销商』对『门店』的出库单
+    else {
+        
+        static NSString *cellId = kCellNameGetOupputList;
+        GetOupputListTableViewCell *cell = (GetOupputListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+        
+        GetOupputModel *getOupputM = _getOupputListM.getOupputModel[indexPath.row];
+        
+        cell.getOupputM = getOupputM;
+        
+        return cell;
+    }
 }
 
 
@@ -183,11 +239,26 @@
     
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    GetOupputModel *m = _getOupputListM.getOupputModel[indexPath.row];
-    
-    GetOupputInfoViewController *vc = [[GetOupputInfoViewController alloc] init];
-    vc.oupputM = m;
-    [self.navigationController pushViewController:vc animated:YES];
+    //『供货商』对『经销商』的入库单
+    if(_CheckOrderListM) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        CheckOrderItemModel *m = _CheckOrderListM.checkOrderItemModel[indexPath.row];
+        OrderDetailService *service = [[OrderDetailService alloc] init];
+        service.delegate = self;
+        [service getOrderDetailsData:m.iDX];
+    }
+    //『经销商』对『门店』的出库单
+    else {
+        
+        [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        GetOupputModel *m = _getOupputListM.getOupputModel[indexPath.row];
+        
+        GetOupputInfoViewController *vc = [[GetOupputInfoViewController alloc] init];
+        vc.oupputM = m;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
@@ -234,7 +305,7 @@
                 make.width.mas_equalTo(150);
                 make.height.mas_equalTo(40);
                 make.top.mas_equalTo(CGRectGetHeight(self.view.frame) - 80);
-//                make.bottom.mas_equalTo(kStatusHeight + kNavHeight + 50);
+                //                make.bottom.mas_equalTo(kStatusHeight + kNavHeight + 50);
                 make.centerX.offset(0);
             }];
         });
@@ -260,7 +331,7 @@
         NSString *url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, dict[@"PRODUCT_URL"]];
         [urlArrM addObject:url];
     }
-
+    
     if([type isEqualToString:@"Visit"]) {
         
         ACSelectMediaView *mediaView = [[ACSelectMediaView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 1)];
@@ -282,10 +353,21 @@
     
 }
 
-- (void)failureOfGetPictureByVisitIdx:(NSString *)msg {
+- (void)failureOfGetPictureByVisitIdx:(NSString *)msg andType:(nullable NSString *)type {
     
     [MBProgressHUD hideHUDForView:self.stepView1 animated:YES];
-    [Tools showAlert:self.view andTitle:msg];
+    
+    // 加载进店图片没数据，但还没到此步骤不提示错误
+    if([type isEqualToString:@"Visit"] && (_pvItemM.vISITSTATES)) {
+        
+    }
+    // 加载生陈列动画图片没数据，但还没到此步骤不提示错误
+    else if([type isEqualToString:@"VisitVividDisplay"]) {
+        
+    }else {
+        
+        [Tools showAlert:self.view andTitle:msg];
+    }
 }
 
 - (void)successOfGetVisitLeaveShop:(NSString *)msg {
@@ -360,9 +442,21 @@
 }
 
 
+- (void)successOfGetOupputList_CheckOrder:(CheckOrderListModel *)CheckOrderListM {
+    
+    _CheckOrderListM = CheckOrderListM;
+    
+    _step4ViewHeight.constant = 30 + kCellHeight + 30;
+    [self updateViewConstraints];
+    
+    [_tableView removeNoOrderPrompt];
+    [_tableView reloadData];
+}
+
+
 #pragma mark - GetPartyVisitListServiceDelegate
 
-- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)getPartyVisitListM {
+- (void)successOfGetPartyVisitList:(GetPartyVisitListModel *)getPartyVisitListM andsStrSearch:(nullable NSString *)strSearch{
     
     for (GetPartyVisitItemModel *m in getPartyVisitListM.getPartyVisitItemModel) {
         if([m.vISITIDX isEqualToString:_pvItemM.vISITIDX]) {
@@ -384,6 +478,22 @@
         _VIVID_DISPLAY_TEXT.text = _pvItemM.vIVIDDISPLAYTEXT;
         _LeaveTheStore.text = _pvItemM.vISITSTATES;
     });
+}
+
+#pragma mark - OrderDetailServiceDelegate
+
+- (void)successOfOrderDetail:(OrderModel *)order {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    OrderDetailViewController *vc = [[OrderDetailViewController alloc] init];
+    vc.order = order;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)failureOfOrderDetail:(NSString *)msg {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [Tools showAlert:self.view andTitle:msg ? msg : @"获取失败"];
 }
 
 @end

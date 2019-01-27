@@ -29,7 +29,7 @@
 }
 
 
-- (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX {
+- (void)GetOupputList:(nullable NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(nullable NSString *)BUSINESS_IDX {
     
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 addressIDX, @"ADD_USER",
@@ -74,7 +74,7 @@
 
 
 // 成功
-- (void)successOfGetOupputList:(GetOupputListModel *)getOupputListM {
+- (void)successOfGetOupputList:(nullable GetOupputListModel *)getOupputListM {
     
     if([_delegate respondsToSelector:@selector(successOfGetOupputList:)]) {
         
@@ -94,7 +94,7 @@
 
 
 // 失败
-- (void)failureOfGetOupputList:(NSString *)msg {
+- (void)failureOfGetOupputList:(nullable NSString *)msg {
     
     if([_delegate respondsToSelector:@selector(failureOfGetOupputList:)]) {
         
@@ -103,10 +103,11 @@
 }
 
 
-- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx {
+- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx andStrType:(nullable NSString *)strType {
     
     NSDictionary *parameters = @{
                                  @"strVisitIdx": strVisitIdx,
+                                 @"strType" : strType,
                                  @"strLicense": @""
                                  };
     
@@ -128,6 +129,50 @@
             if(getOupputListM.getOupputModel.count > 0) {
                 
                 [self successOfGetOupputList:getOupputListM];
+            } else {
+                
+                [self successOfGetOupputList_NoData];
+            }
+        } else {
+            
+            [self failureOfGetOupputList:msg];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"请求出库列表失败:%@", error);
+        [self failureOfGetOupputList:nil];
+    }];
+}
+
+- (void)GetVisitAppOrde_AGENT:(nullable NSString *)strVisitIdx andStrType:(nullable NSString *)strType {
+    
+    NSDictionary *parameters = @{
+                                 @"strVisitIdx": strVisitIdx,
+                                 @"strType" : strType,
+                                 @"strLicense": @""
+                                 };
+    
+    NSLog(@"请求出库列表参数：%@", parameters);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager POST:API_GetVisitAppOrder parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        nil;
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"请求出库列表成功---%@", responseObject);
+        int _type = [responseObject[@"type"] intValue];
+        NSString *msg = responseObject[@"msg"];
+        
+        if(_type == 1) {
+            
+            CheckOrderListModel *CheckOrderListM = [[CheckOrderListModel alloc] initWithDictionary:responseObject[@"result"][0]];
+            
+            if(CheckOrderListM.checkOrderItemModel.count > 0) {
+                
+                if([_delegate respondsToSelector:@selector(successOfGetOupputList_CheckOrder:)]) {
+                    
+                    [_delegate successOfGetOupputList_CheckOrder:CheckOrderListM];
+                }
             } else {
                 
                 [self successOfGetOupputList_NoData];

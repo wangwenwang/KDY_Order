@@ -644,6 +644,15 @@
     //        }
     //    }
     
+    //测试，寻找要考虑折算率
+    for (int i = 0; i < products.count; i++) {
+        ProductModel *m = products[i];
+        if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
+            NSLog(@"折算率----- %d", m.BASE_RATE);
+        }
+        NSLog(@"折算率 %d", m.BASE_RATE);
+    }
+    
     [MBProgressHUD hideHUDForView:_app.window animated:YES];
     
     SelectGoodsViewController *vc = [[SelectGoodsViewController alloc] init];
@@ -662,13 +671,13 @@
         NSMutableDictionary *dictP = [NSMutableDictionary dictionaryWithObject:dict forKey:@(0)];
         vc.dictProducts = dictP;
         
-        NSMutableDictionary *dictAddress = _temp_Party[@(_currentParty_Index)];
-        if(!dictAddress) {
-           dictAddress = [[NSMutableDictionary alloc] init];
-        }
-        
-        [dictAddress addEntriesFromDictionary:@{@(_currentAddress_Index) : dictP}];
-        [_temp_Party addEntriesFromDictionary:@{@(_currentParty_Index) : dictAddress}];
+//        NSMutableDictionary *dictAddress = _temp_Party[@(_currentParty_Index)];
+//        if(!dictAddress) {
+//           dictAddress = [[NSMutableDictionary alloc] init];
+//        }
+//        
+//        [dictAddress addEntriesFromDictionary:@{@(_currentAddress_Index) : dictP}];
+//        [_temp_Party addEntriesFromDictionary:@{@(_currentParty_Index) : dictAddress}];
 //    }
     
     [self.navigationController pushViewController:vc animated:YES];

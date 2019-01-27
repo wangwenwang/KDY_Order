@@ -34,4 +34,7 @@
 /// 用户id
 @property (copy, nonatomic) NSString *partyId;
 
+/// 拜访id 『拜访功能』用的
+@property (assign, nonatomic) NSString * VISIT_IDX;
+
 @end

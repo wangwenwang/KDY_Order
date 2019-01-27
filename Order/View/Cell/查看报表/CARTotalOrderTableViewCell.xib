@@ -76,6 +76,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UITableViewCellAccessoryDisclosureIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="nTr-oY-Y2n">
+                                <rect key="frame" x="285" y="44" width="25" height="25"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -94,7 +97,9 @@
                             <constraint firstItem="NR8-2P-a2V" firstAttribute="centerY" secondItem="rCS-rx-aY2" secondAttribute="centerY" id="acy-C5-bVk"/>
                             <constraint firstItem="gug-Jp-IrC" firstAttribute="top" secondItem="gzk-Gv-bh9" secondAttribute="bottom" constant="12" id="bbk-rf-sU2"/>
                             <constraint firstItem="gug-Jp-IrC" firstAttribute="leading" secondItem="0Ed-b0-CKK" secondAttribute="leading" constant="12" id="fSC-Nf-rUO"/>
+                            <constraint firstItem="nTr-oY-Y2n" firstAttribute="centerY" secondItem="0Ed-b0-CKK" secondAttribute="centerY" id="l6p-SS-Ab6"/>
                             <constraint firstItem="ndp-KG-YqX" firstAttribute="leading" secondItem="gug-Jp-IrC" secondAttribute="leading" id="oKu-NM-OHP"/>
+                            <constraint firstAttribute="trailing" secondItem="nTr-oY-Y2n" secondAttribute="trailing" constant="10" id="p5g-vQ-RJu"/>
                             <constraint firstItem="rCS-rx-aY2" firstAttribute="top" secondItem="gug-Jp-IrC" secondAttribute="bottom" constant="6" id="rru-gb-Suv"/>
                             <constraint firstItem="S3z-6K-4rH" firstAttribute="leading" secondItem="gug-Jp-IrC" secondAttribute="trailing" id="x4f-XQ-i4K"/>
                             <constraint firstItem="26j-HU-8di" firstAttribute="centerY" secondItem="ndp-KG-YqX" secondAttribute="centerY" id="yBE-6U-SrR"/>
@@ -118,4 +123,7 @@
             <point key="canvasLocation" x="34" y="94"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="UITableViewCellAccessoryDisclosureIndicator" width="25" height="25"/>
+    </resources>
 </document>

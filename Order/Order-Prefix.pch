@@ -409,6 +409,9 @@
 /// 根据客户id，获取订单汇总报表
 #define API_TotalOrderStatement @"http://oms.kaidongyuan.com:8088/api/TotalOrderStatement"
 
+/// 获取订单总计报表信息(产品明细)
+#define API_TotalOrderDetailStatement @"http://oms.kaidongyuan.com:8088/api/TotalOrderDetailStatement"
+
 /// 根据业务代码，获取客户编号
 #define API_ObtainPartyCode @"http://oms.kaidongyuan.com:8088/api/ObtainPartyCode"
 
@@ -421,6 +424,11 @@
 /*--------- 屏幕尺寸 ---------*/
 #define ScreenHeight [UIScreen mainScreen] .bounds.size.height
 #define ScreenWidth [UIScreen mainScreen] .bounds.size.width
+
+
+/*--------- 全局字符串 ---------*/
+#define kINPUTName @"入库"
+#define kOUTName @"出库"
 
 
 

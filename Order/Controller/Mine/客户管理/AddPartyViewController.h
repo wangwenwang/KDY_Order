@@ -13,7 +13,7 @@
 /// 经销商地址ID
 @property (strong, nonatomic) NSString *fatherAddressID;
 
-/// 经销商名称
+/// 供货商名称
 @property (strong, nonatomic) NSString *fatherName;
 
 @end

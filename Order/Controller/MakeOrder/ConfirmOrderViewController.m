@@ -21,6 +21,7 @@
 #import "OrderConfirmService.h"
 #import <Masonry.h>
 #import "LMPickerView.h"
+#import "GetVisitRecommendedOrderViewController.h"
 
 @interface ConfirmOrderViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, OrderConfirmServiceDelegate, LMPickerViewDelegate>
 
@@ -619,6 +620,7 @@ typedef enum _CloseDatePicker {
     
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              _VISIT_IDX, @"VISIT_IDX", // 拜访id 『拜访功能』用的
                               @(p.ACT_PRICE), @"ACT_PRICE",
                               p.ADD_DATE, @"ADD_DATE",
                               p.BUSINESS_IDX, @"BUSINESS_IDX",
@@ -802,7 +804,24 @@ typedef enum _CloseDatePicker {
         sleep(2);
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            int k = 0;
+            // pop 回建议订单
+            for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+                
+                UIViewController *vc = self.navigationController.viewControllers[i];
+                
+                if([vc isKindOfClass:[GetVisitRecommendedOrderViewController class]]) {
+                    
+                    [self.navigationController popToViewController:vc animated:YES];
+                    k ++;
+                }
+            }
+            
+            // 找不到『建议订单』，pop回『查单』
+            if(k == 0) {
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
         });
     });
 }

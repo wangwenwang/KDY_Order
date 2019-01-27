@@ -113,7 +113,7 @@
     return result;
 }
 
-/// 提示  参数:View    NSString
+
 + (void)showAlert:(UIView *)view andTitle:(NSString *)title {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeText;
@@ -122,6 +122,18 @@
     hud.removeFromSuperViewOnHide = YES;
     hud.userInteractionEnabled = NO;
     [hud hide:YES afterDelay:1.5];
+}
+
+
++ (void)showAlertMulLineText:(UIView *)view andTitle:(NSString *)title {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabelFont = [UIFont systemFontOfSize:16.0];
+    hud.detailsLabelText = title;
+    hud.margin = 15.0f;
+    hud.removeFromSuperViewOnHide = YES;
+    hud.userInteractionEnabled = NO;
+    [hud hide:YES afterDelay:2.5];
 }
 
 
@@ -776,6 +788,18 @@ typedef void (^Animation)(void);
         result =  [NSString stringWithFormat:@"%@%@", result, string];
     }
     return result;
+}
+
+
++ (UIImage *)createImageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 @end

@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "GetOupputListModel.h"
+#import "CheckOrderListModel.h"
 
 @protocol Store_GetOupputListServiceDelegate <NSObject>
 
 /// 出库列表 成功
 @optional
-- (void)successOfGetOupputList:(GetOupputListModel *)getOupputListM;
+- (void)successOfGetOupputList:(nullable GetOupputListModel *)getOupputListM;
 
 /// 出库列表 没有数据
 @optional
@@ -21,7 +22,11 @@
 
 /// 出库列表 失败
 @optional
-- (void)failureOfGetOupputList:(NSString *)msg;
+- (void)failureOfGetOupputList:(nullable NSString *)msg;
+
+/// 出库列表 成功（经销商的，与下单里的列表数据一致）
+@optional
+- (void)successOfGetOupputList_CheckOrder:(nullable CheckOrderListModel *)CheckOrderListM;
 
 @end
 
@@ -29,9 +34,12 @@
 
 @property (weak, nonatomic)id <Store_GetOupputListServiceDelegate> delegate;
 
-- (void)GetOupputList:(NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(NSString *)BUSINESS_IDX;
+- (void)GetOupputList:(nullable NSString *)addressIDX andstrPage:(NSInteger)strPage andstrPageCount:(NSInteger)strPageCount andBUSINESS_IDX:(nullable NSString *)BUSINESS_IDX;
 
+// 获取门店出库单
+- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx andStrType:(nullable NSString *)strType;
 
-- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx;
+// 获取经销商出库单
+- (void)GetVisitAppOrde_AGENT:(nullable NSString *)strVisitIdx andStrType:(nullable NSString *)strType;
 
 @end

@@ -30,7 +30,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-XR-Hgw" userLabel="拜访线路">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经销商名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-yH-Olq">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供货商名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-yH-Olq">
                                     <rect key="frame" x="10" y="17" width="86" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
@@ -184,6 +184,7 @@
                     <connections>
                         <outlet property="dataSource" destination="-1" id="VI2-IP-7pe"/>
                         <outlet property="delegate" destination="-1" id="mar-eu-35e"/>
+                        <outletCollection property="gestureRecognizers" destination="a2S-rF-v8I" appends="YES" id="zUb-6A-sya"/>
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it7-Sm-USC">
@@ -224,7 +225,7 @@
             </constraints>
             <point key="canvasLocation" x="27.5" y="0.5"/>
         </view>
-        <tapGestureRecognizer id="fxr-qs-u9l" userLabel="经销商名称">
+        <tapGestureRecognizer id="fxr-qs-u9l" userLabel="供货商名称">
             <connections>
                 <action selector="choiceFirstParty" destination="-1" id="NNK-49-OTe"/>
             </connections>
@@ -237,6 +238,12 @@
         <tapGestureRecognizer id="cHh-lN-UTM" userLabel="拜访状态">
             <connections>
                 <action selector="choiceStatusOnclick" destination="-1" id="8Wp-ky-JsP"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="a2S-rF-v8I" userLabel="收回键盘">
+            <connections>
+                <action selector="screenOnclick" destination="-1" id="oLg-b4-cV5"/>
+                <outlet property="delegate" destination="-1" id="akj-82-VPi"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

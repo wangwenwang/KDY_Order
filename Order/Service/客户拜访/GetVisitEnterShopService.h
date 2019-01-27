@@ -28,7 +28,7 @@
 - (void)successOfGetPictureByVisitIdx:(nullable NSArray *)arrayUrl andType:(nullable NSString *)type;
 
 @optional
-- (void)failureOfGetPictureByVisitIdx:(nullable NSString *)msg;
+- (void)failureOfGetPictureByVisitIdx:(nullable NSString *)msg andType:(nullable NSString *)type;
 
 // 第二步，确认客户资料信息
 @optional
@@ -180,13 +180,6 @@
  获取生动化陈列
  */
 - (void)VividDisplayCBX;
-
-
-/**
- 
- 获取客户拜访订单
- */
-- (void)GetVisitAppOrder:(nullable NSString *)strVisitIdx;
 
 
 /**

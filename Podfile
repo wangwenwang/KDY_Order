@@ -14,4 +14,7 @@ pod 'Masonry'
 pod 'TZImagePickerController'
 pod 'MWPhotoBrowser','~> 2.1.2'
 pod 'ACAlertController'
+
+pod 'YCXMenu', '~> 0.0.11'
+
 end

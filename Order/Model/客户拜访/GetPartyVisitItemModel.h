@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString * eDITDATE;
 @property (nonatomic, strong) NSString * fARTHERADDRESSID;
 @property (nonatomic, strong) NSString * fARTHERPARTYID;
+@property (nonatomic, strong) NSString * gRADE;
 @property (nonatomic, strong) NSString * iDX;
 @property (nonatomic, strong) NSString * lINE;
 @property (nonatomic, strong) NSString * nECESSARYSKU;

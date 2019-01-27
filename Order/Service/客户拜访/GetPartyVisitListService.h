@@ -20,10 +20,10 @@
 
 /// 获取客户拜访列表
 @optional
-- (void)successOfGetPartyVisitList:(nullable GetPartyVisitListModel *)getPartyVisitListM;
+- (void)successOfGetPartyVisitList:(nullable GetPartyVisitListModel *)getPartyVisitListM andsStrSearch:(nullable NSString *)strSearch;
 
 @optional
-- (void)successOfGetPartyVisitList_NoData;
+- (void)successOfGetPartyVisitList_NoData:(nullable NSString *)strSearch;
 
 @optional
 - (void)failureOfGetPartyVisitList:(nullable NSString *)msg;

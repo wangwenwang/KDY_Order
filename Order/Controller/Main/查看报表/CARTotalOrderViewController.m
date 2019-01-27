@@ -13,8 +13,11 @@
 #import "CARTotalOrderListModel.h"
 #import <MBProgressHUD.h>
 #import "Tools.h"
+#import "LMTitleView.h"
+#import "LM_alert.h"
+#import "CARTotalOrderDetailViewController.h"
 
-@interface CARTotalOrderViewController ()<ChartServiceDelegate>
+@interface CARTotalOrderViewController ()<ChartServiceDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property ChartService *service;
 
@@ -23,6 +26,16 @@
 @property (strong, nonatomic) AppDelegate *app;
 
 @property (strong, nonatomic) CARTotalOrderListModel *CARTotalOrderListM;
+
+// 出库、入库
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
+@property (strong, nonatomic) NSArray *types;
+
+// 日期    本周，本月，本季，本年，全部    5个选项
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@property (strong, nonatomic) NSArray *dates;
 
 @end
 
@@ -47,17 +60,52 @@
     
     [super viewDidLoad];
     
-    self.title = @"订单汇总报表";
+    self.title = @"客户订单总计";
     
     [self registerCell];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_service TotalOrderStatement:_app.user.IDX];
+    _types = @[kOUTName, kINPUTName];
+//    _dates = @[@"今天", @"本周", @"本月", @"本季", @"本年", @"全部"];
+    _dates = @[@"全部", @"今天", @"本周", @"本月", @"本季", @"本年"];
+    _typeLabel.text = [_types firstObject];
+    _dateLabel.text = [_dates firstObject];
+    
+    [self requstData];
 }
 
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - 手势
+
+// 类型，出库、入库
+- (IBAction)typeOnclick {
+    
+    [self.view endEditing:YES];
+    [LM_alert showLMAlertViewWithTitle:@"类型" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:_types clickHandle:^(NSInteger index) {
+        
+        if(index >= 1) {
+            
+            _typeLabel.text = _types[index - 1];
+            [self requstData];
+        }
+    }];
+}
+
+// 日期，本周、本月、本季、本年、全部
+- (IBAction)dateOnclick {
+    
+    [self.view endEditing:YES];
+    [LM_alert showLMAlertViewWithTitle:@"日期" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:_dates clickHandle:^(NSInteger index) {
+        
+        if(index >= 1) {
+            
+            _dateLabel.text = _dates[index - 1];
+            [self requstData];
+        }
+    }];
 }
 
 #pragma mark - 功能函数
@@ -67,6 +115,18 @@
     
     [_tableView registerNib:[UINib nibWithNibName:kCellName bundle:nil] forCellReuseIdentifier:kCellName];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)requstData {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if([_typeLabel.text isEqualToString:kOUTName]) {
+        
+        [_service TotalOrderStatement:_app.user.IDX andStrType:@"OUT" andStrTime:_dateLabel.text];
+    }else if([_typeLabel.text isEqualToString:kINPUTName]) {
+        
+        [_service TotalOrderStatement:_app.user.IDX andStrType:@"INPUT" andStrTime:_dateLabel.text];
+    }
 }
 
 
@@ -94,6 +154,19 @@
     cell.CARTotalOrderItemM = m;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CARTotalOrderItemModel *m = _CARTotalOrderListM.cARTotalOrderItemModel[indexPath.row];
+    
+    CARTotalOrderDetailViewController *vc = [[CARTotalOrderDetailViewController alloc] init];
+    vc.TYPE = _typeLabel.text;
+    vc.DATE = _dateLabel.text;
+    vc.PARTY_CODE = m.pARTYCODE;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

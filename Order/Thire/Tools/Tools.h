@@ -34,10 +34,21 @@
  */
 + (NSString *)JsonStringWithDictonary:(NSDictionary *)dict;
 
-/// 提示  参数:View    NSString
+/**
+ 提示，单行
+ 
+ @param view  父窗口
+ @param title 标题
+ */
 + (void)showAlert:(NSObject *)view andTitle:(NSString *)title;
 
-
+/**
+ 提示，多行
+ 
+ @param view  父窗口
+ @param title 标题
+ */
++ (void)showAlertMulLineText:(UIView *)view andTitle:(NSString *)title;
 
 /**
  提示带时间参数
@@ -302,5 +313,7 @@
 /// 全角空格为12288，半角空格为32
 /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
 + (nullable NSString *)ToDBC:(nullable NSString *)input;
+
++ (UIImage *)createImageWithColor:(UIColor *)color;
 
 @end

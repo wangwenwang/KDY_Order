@@ -33,7 +33,7 @@
                   submitString, @"strOrderInfo",
                   @"", @"strLicense",
                   nil];
-    NSLog(@"%@", parameters);
+    NSLog(@"接口：%@，参数：%@", API_GET_SUBMIT_ORDER, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

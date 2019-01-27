@@ -154,7 +154,7 @@
         
         image2Str = [Tools changeImageToString:[imageM lastObject]];
     }
-    if(image1Str != nil) {
+    if(![image1Str isEqualToString:@""]) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [_service GetVisitEnterShopService:_pvItemM.vISITIDX andPictureFile1:image1Str andPictureFile2:image2Str andstrAddress:_ACTUAL_VISITING_ADDRESS.text];

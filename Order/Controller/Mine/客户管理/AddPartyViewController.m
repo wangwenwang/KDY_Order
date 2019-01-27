@@ -42,7 +42,7 @@
 
 /************ 添加客户 ************/
 
-// 经销商名称
+// 供货商名称
 @property (weak, nonatomic) IBOutlet UILabel *fatherNameLabel;
 
 // 客户名称

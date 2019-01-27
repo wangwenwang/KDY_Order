@@ -188,7 +188,7 @@
                                 orderBrand, @"strProductClass",
                                 nil];
     
-    NSLog(@"请求产品参数：%@", parameters);
+    NSLog(@"请求产品接口：%@|参数：%@", API_GET_PRDUCT_LIST_TYPE, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

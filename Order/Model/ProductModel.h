@@ -39,6 +39,8 @@
 
 @property(strong, nonatomic)NSMutableArray *PRODUCT_POLICY;
 
+@property(assign, nonatomic)int BASE_RATE;
+
 /// 是否考虑库存情况
 @property(copy, nonatomic)NSString *ISINVENTORY;
 

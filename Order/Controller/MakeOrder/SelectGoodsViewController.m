@@ -681,6 +681,18 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
+        // 当折算率不为0或1时，产品数量必须是折算率的位数
+        for (int i = 0; i < _selectedProducts.count; i++) {
+            ProductModel *m =  _selectedProducts[i];
+            if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
+                if((m.CHOICED_SIZE % m.BASE_RATE) != 0) {
+                    
+                    [Tools showAlertMulLineText:self.view andTitle:[NSString stringWithFormat:@"产品：%@\n数量必须要%d的倍数",  [self getProductName:m.PRODUCT_NAME], m.BASE_RATE]];
+                    return;
+                }
+            }
+        }
+        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self setProductCurrentPrice];
         [_orderConfirmService getPromotionData:[self getSubitString:_selectedProducts]];
@@ -835,7 +847,45 @@ typedef enum : NSInteger {
         cell.productNameLabel.text = [self getProductName:m.PRODUCT_NAME];
 //        cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         cell.productFormatLabel.text = m.PRODUCT_DESC;
-        cell.productPriceLabel.text = [NSString stringWithFormat:@"￥%.1f", m.PRODUCT_PRICE];
+        
+        NSString *productText = @"";
+        // 小单位（瓶），价格保留两位小数
+        if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
+    
+            // 没单位
+            if([m.PRODUCT_UOM isEqualToString:@""]) {
+                productText = [NSString stringWithFormat:@"￥%.2f%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
+            }
+            // 有单位
+            else {
+                productText = [NSString stringWithFormat:@"￥%.2f/%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
+            }
+        }
+        // 大单位（箱），价格保留一位小数
+        else {
+            
+            // 没单位
+            if([m.PRODUCT_UOM isEqualToString:@""]) {
+                productText = [NSString stringWithFormat:@"￥%.1f%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
+            }
+            // 有单位
+            else {
+                productText = [NSString stringWithFormat:@"￥%.1f/%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
+            }
+        }
+        cell.productPriceLabel.text = productText;
+        
+//            // 当折算率不为0或1时，产品数量必须是折算率的位数
+//            for (int i = 0; i < _selectedProducts.count; i++) {
+//                ProductModel *m =  _selectedProducts[i];
+//                if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
+//                    if((m.CHOICED_SIZE % m.BASE_RATE) != 0) {
+//
+//                        [Tools showAlertMulLineText:self.view andTitle:[NSString stringWithFormat:@"产品：%@\n数量必须要%d的倍数",  [self getProductName:m.PRODUCT_NAME], m.BASE_RATE]];
+//                        return;
+//                    }
+//                }
+//            }
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
         cell.STOCK_QTY.text = @"";
         cell.STOCK_QTY_Label.text = @"";
@@ -1652,6 +1702,7 @@ typedef enum : NSInteger {
     vc.orderPayType = _currentPayType.Key;
     vc.orderAddressIdx = _address.IDX;
     vc.partyId = _party.IDX;
+    vc.VISIT_IDX = _VISIT_IDX;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
