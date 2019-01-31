@@ -44,10 +44,10 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-eX-gjQ" userLabel="ContentView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-qw-hKQ" userLabel="经销商信息提示">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-qw-hKQ" userLabel="供货商信息提示">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经销商信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTo-cB-vl0">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供货商信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTo-cB-vl0">
                                             <rect key="frame" x="10" y="6.5" width="71.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.14901960780000001" alpha="1" colorSpace="deviceRGB"/>
@@ -61,7 +61,7 @@
                                         <constraint firstItem="iTo-cB-vl0" firstAttribute="centerY" secondItem="MDa-qw-hKQ" secondAttribute="centerY" id="ke6-NX-heR"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fO3-lo-yTx" userLabel="经销商信息">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fO3-lo-yTx" userLabel="供货商信息">
                                     <rect key="frame" x="0.0" y="30" width="375" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="供货商名称: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmu-Pt-HNC">
@@ -731,7 +731,7 @@
         </tapGestureRecognizer>
         <tapGestureRecognizer id="EVi-Qu-6em" userLabel="拜访线路">
             <connections>
-                <action selector="alert" destination="-1" id="z3L-Kd-qH1"/>
+                <action selector="lineOnclick" destination="-1" id="63j-Ta-xRh"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="ViM-aE-tZD" userLabel="选联系人">
@@ -746,7 +746,7 @@
         </tapGestureRecognizer>
         <tapGestureRecognizer id="en2-c9-vJp" userLabel="经纬坐标">
             <connections>
-                <action selector="selectAddressAction:" destination="-1" id="ax5-Wr-MdA"/>
+                <action selector="latlngAction" destination="-1" id="VVa-oK-SRc"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

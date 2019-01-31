@@ -49,6 +49,8 @@
         _PRODUCT_URL = @"";
         _PRODUCT_TYPE_1 = @"";
         _PRODUCT_DESC = @"";
+        _BASE_RATE = 0;
+        _PACK_UOM = @"";
     }
     return self;
 }

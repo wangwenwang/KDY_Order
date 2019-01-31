@@ -20,4 +20,5 @@ typedef void(^locationSelectBlock)(id locationInfo,YBLocationPickerViewControlle
 
 @property (weak, nonatomic) id<YBLocationPickerViewControllerDelegate> delegate;
 @property (copy, nonatomic) locationSelectBlock locationSelectBlock;
+@property (copy, nonatomic) NSString *keyword;
 @end

@@ -372,15 +372,28 @@ static NSString *const kCurrentlocationCellId = @"kCurrentlocationCellId";
     }
     return _tableView;
 }
-- (UISearchController *)searchController{
+- (UISearchController *)searchController {
     if (!_searchController) {
         _searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchResultController];
         _searchController.searchBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1];
         _searchController.searchBar.placeholder = @"搜索地点";
+        _searchController.searchBar.text = _keyword;
         _searchController.searchBar.subviews.firstObject.subviews.firstObject.layer.borderColor = [UIColor colorWithRed:198/255.0f green:198/255.0f blue:198/255.0f alpha:1].CGColor;
         _searchController.searchBar.subviews.firstObject.subviews.firstObject.layer.borderWidth = .5;
         _searchController.searchResultsUpdater = self;
         _searchController.delegate = self;
+        [self updateSearchResultsForSearchController:_searchController];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+
+            usleep(700000);
+            dispatch_async(dispatch_get_main_queue(), ^{
+        
+                if(_keyword.length) {
+                    
+                    [_searchController.searchBar becomeFirstResponder];
+                }
+            });
+        });
     }
     return _searchController;
 }
@@ -393,5 +406,11 @@ static NSString *const kCurrentlocationCellId = @"kCurrentlocationCellId";
     return _searchResultController;
 }
 #pragma mark - Setter
+
+- (void)setKeyword:(NSString *)keyword {
+    
+    _keyword = keyword;
+//    self.searchKeyword = keyword;
+}
 
 @end

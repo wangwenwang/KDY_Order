@@ -19,14 +19,16 @@
 
 @property (strong, nonatomic) NSMutableDictionary *dictProducts;
 
+// 发货地址
 @property (strong, nonatomic) AddressModel *address;
 
+// 发货客户
 @property (strong, nonatomic) PartyModel *party;
 
 /// 点击事件下标
 @property (assign, nonatomic) NSInteger didselectIndex;
 
-// 拜访订单用
+// 拜访订单用（收货地址）
 @property (strong, nonatomic) GetToAddressModel *visitPartyAndAddress;
 // 拜访IDX，区分路线内订单
 @property (strong, nonatomic) NSString *VISIT_IDX;

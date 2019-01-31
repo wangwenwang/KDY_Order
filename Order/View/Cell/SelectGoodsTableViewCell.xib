@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,9 +54,8 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-Vt-gto">
-                                                <rect key="frame" x="37" y="7.5" width="396" height="47"/>
-                                                <string key="text">咖啡fjsdkljfklsdjf;ldksjfkds;fjsdkfsdfsdfdsfsdafasdfsadl;jfsdfsdfsdffkdsjfkdsl;fjjsdkljfsdl;kfjsdlk;fjsdlkfjds;lfjs;ldfjsdk;lffjdkfjsdlk;fjkfjskldjfds;f</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ksjfkds;fjsdkfsdksjfkds;fjsdkfsdksjfkds;fjsdkfsdksjfkds;fjsdkfsdsjfkds;f" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Tke-Vt-gto">
+                                                <rect key="frame" x="37" y="7.5" width="393" height="31.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -149,6 +148,12 @@
                                                     <action selector="productNumberOnclick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c2l-lj-Wl9"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykh-O2-XkP">
+                                                <rect key="frame" x="42" y="69.5" width="31" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -160,8 +165,10 @@
                                             <constraint firstAttribute="width" constant="105" id="OOJ-fD-y3M"/>
                                             <constraint firstItem="VkS-ho-1TS" firstAttribute="top" secondItem="COC-ih-C0b" secondAttribute="top" id="Of0-kf-0r6"/>
                                             <constraint firstItem="VkS-ho-1TS" firstAttribute="centerY" secondItem="9KI-1j-mgx" secondAttribute="centerY" id="RO4-Jd-Sgj"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ykh-O2-XkP" secondAttribute="bottom" constant="5" id="Vfo-Tb-c3Q"/>
                                             <constraint firstItem="9KI-1j-mgx" firstAttribute="centerY" secondItem="COC-ih-C0b" secondAttribute="centerY" id="bYB-XZ-R0b"/>
                                             <constraint firstAttribute="trailing" secondItem="VkS-ho-1TS" secondAttribute="trailing" id="icn-4h-lEQ"/>
+                                            <constraint firstItem="Ykh-O2-XkP" firstAttribute="centerX" secondItem="2xM-tG-UK8" secondAttribute="centerX" id="pa7-OO-sdi"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -286,6 +293,7 @@
                 <outlet property="PolicyPromptImageView" destination="Bxf-x7-pGZ" id="hKg-m1-n0d"/>
                 <outlet property="STOCK_QTY" destination="UeU-r1-MMw" id="alj-PL-z6E"/>
                 <outlet property="STOCK_QTY_Label" destination="rJ6-3p-Thg" id="lpH-tM-Wj0"/>
+                <outlet property="big_UOM_qty" destination="Ykh-O2-XkP" id="ga3-gp-s6z"/>
                 <outlet property="inventoryLabel" destination="dlq-iG-d54" id="ES9-TA-cob"/>
                 <outlet property="myTableView" destination="0AH-lO-dh0" id="IaA-z9-MX2"/>
                 <outlet property="policyPromptView" destination="fSV-gJ-NZk" id="vhy-WR-gho"/>

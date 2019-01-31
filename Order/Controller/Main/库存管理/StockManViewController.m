@@ -396,7 +396,7 @@
     if(_didselectItemIndex == 1004) {
         [_store_GetOutProductListService getProductsData:_partyM.IDX andOrderAddressIdx:_addressM.IDX andProductTypeIndex:0 andProductType:@"" andOrderBrand:@""];
     } else {
-    [_store_GetOutProductListService GetOutProductList:@"" andstrProductClass:@"" andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:999];
+        [_store_GetOutProductListService GetOutProductList:@"" andstrProductClass:@"" andstrPartyAddressIdx:[_addressM.IDX integerValue] andstrPage:1 andstrPageCount:999];
     }
 }
 

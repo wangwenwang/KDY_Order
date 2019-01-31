@@ -37,6 +37,7 @@
         _PRODUCT_UOM = @"";
         _PRODUCT_STOCK_QTY = @"";
         _BASE_RATE = 0;
+        _PACK_UOM = @"";
     }
     return self;
 }
@@ -78,6 +79,7 @@
         _PRODUCT_UOM = dict[@"PRODUCT_UOM"] ? dict[@"PRODUCT_UOM"] : _PRODUCT_UOM;
         _PRODUCT_STOCK_QTY = dict[@"STOCK_QTY"] ? dict[@"STOCK_QTY"] : _PRODUCT_STOCK_QTY;
         _BASE_RATE = dict[@"BASE_RATE"] ? [dict[@"BASE_RATE"] intValue] : _BASE_RATE;
+        _PACK_UOM = dict[@"PACK_UOM"] ? dict[@"PACK_UOM"] : _PACK_UOM;
         
     } @catch (NSException *exception) {
         

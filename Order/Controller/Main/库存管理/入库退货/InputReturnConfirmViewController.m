@@ -46,9 +46,9 @@
 
 
 
-#pragma mark - 发货信息
+#pragma mark - 发货方
 
-// 发货信息高度
+// 发货方高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendViewHeight;
 
 // 客户名称
@@ -65,9 +65,9 @@
 
 
 
-#pragma mark - 收货信息
+#pragma mark - 收货方
 
-// 收货信息高度
+// 收货方高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *receiveViewHeight;
 
 // 联系人名
@@ -392,24 +392,24 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
     
     if(_didselectIndex == 1004) {
         
-        // 发货信息
+        // 发货方
         _PARTY_NAME.text = @"";
         _CONTACT_PERSON.text = _inputToAddressM.cONTACTPERSON;
         _CONTACT_TEL.text = _inputToAddressM.cONTACTTEL;
         _ADDRESS_INFO.text = _inputToAddressM.aDDRESSINFO;
         
-        // 收货信息
+        // 收货方
         _CONTACT_PERSON_receive.text = _addressM.CONTACT_PERSON;
         _CONTACT_TEL_receive.text = _addressM.CONTACT_TEL;
         _ADDRESS_INFO_receive.text = _addressM.ADDRESS_INFO;
     } else {
-    // 发货信息
+    // 发货方
     _PARTY_NAME.text = _partyM.PARTY_NAME;
     _CONTACT_PERSON.text = _addressM.CONTACT_PERSON;
     _CONTACT_TEL.text = _addressM.CONTACT_TEL;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
     
-    // 收货信息
+    // 收货方
     _CONTACT_PERSON_receive.text = _inputToAddressM.cONTACTPERSON;
     _CONTACT_TEL_receive.text = _inputToAddressM.cONTACTTEL;
     _ADDRESS_INFO_receive.text =  _inputToAddressM.aDDRESSINFO;
@@ -860,6 +860,7 @@ static CGFloat g_sumInfoSuperViewHeight_a = 0;
             cell.delButtonWidth.constant = 0;
             cell.nowPriceButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         }
+        cell.big_UOM_qty.text = @"";
         
         // 返回Cell
         return cell;

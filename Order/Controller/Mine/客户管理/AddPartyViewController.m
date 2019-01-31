@@ -224,21 +224,6 @@
 }
 
 
-- (IBAction)selectAddressAction:(id)sender {
-    
-    YBLocationPickerViewController *picker = [[YBLocationPickerViewController alloc] init];
-    [self.navigationController pushViewController:picker animated:YES];
-    picker.locationSelectBlock = ^(id locationInfo, YBLocationPickerViewController *locationPickController) {
-        NSLog(@"%@",locationInfo);
-        //返回name address pt pt为坐标
-        _LONGITUDE = locationInfo[@"LONGITUDE"];
-        _LATITUDE = locationInfo[@"LATITUDE"];
-        self.addresslabel.text = [NSString stringWithFormat:@"%@（%@附近）",locationInfo[@"pt"], locationInfo[@"address"]];
-        self.locationInfo = locationInfo;
-    };
-}
-
-
 - (void)updateViewConstraints {
     
     [super updateViewConstraints];
@@ -536,12 +521,6 @@
     }
 }
 
-- (IBAction)alert {
-    
-    [self.view endEditing:YES];
-    [self createAlert];
-}
-
 
 #pragma mark - 多客户选择筛选
 
@@ -752,19 +731,25 @@
 
 #pragma mark - 手势
 
-- (IBAction)areaOnclick:(UITapGestureRecognizer *)sender {
-    
-    //    AreaProvinceViewController *vc = [[AreaProvinceViewController alloc] init];
-    //
-    //    //nav导航
-    //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    //    [self presentViewController:nav animated:YES completion:nil];
+
+// 渠道
+- (IBAction)channelOnclick {
     
     [self.view endEditing:YES];
-    NormalAdressListViewController *vc = [[NormalAdressListViewController alloc] init];
-    vc.LM_CODE = @"A";
-    vc.strPrentCode = @"0";
-    [self.navigationController pushViewController:vc animated:YES];
+    [LM_alert showLMAlertViewWithTitle:@"渠道" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:_channel clickHandle:^(NSInteger index) {
+        
+        if(index >= 1) {
+            
+            _CHANNEL_NO.text = _channel[index - 1];
+        }
+    }];
+}
+
+// 路线
+- (IBAction)lineOnclick {
+    
+    [self.view endEditing:YES];
+    [self createAlert];
 }
 
 
@@ -790,18 +775,36 @@
     }
 }
 
-
-// 渠道
-- (IBAction)channelOnclick {
+- (IBAction)areaOnclick:(UITapGestureRecognizer *)sender {
+    
+    //    AreaProvinceViewController *vc = [[AreaProvinceViewController alloc] init];
+    //
+    //    //nav导航
+    //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    //    [self presentViewController:nav animated:YES completion:nil];
     
     [self.view endEditing:YES];
-    [LM_alert showLMAlertViewWithTitle:@"渠道" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:_channel clickHandle:^(NSInteger index) {
-        
-        if(index >= 1) {
-            
-            _CHANNEL_NO.text = _channel[index - 1];
-        }
-    }];
+    NormalAdressListViewController *vc = [[NormalAdressListViewController alloc] init];
+    vc.LM_CODE = @"A";
+    vc.strPrentCode = @"0";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+// 坐标
+- (IBAction)latlngAction {
+    
+    YBLocationPickerViewController *picker = [[YBLocationPickerViewController alloc] init];
+    picker.keyword = [NSString stringWithFormat:@"%@%@", _areaLabel.text, _detailAddressLabel.text];
+    [self.navigationController pushViewController:picker animated:YES];
+    picker.locationSelectBlock = ^(id locationInfo, YBLocationPickerViewController *locationPickController) {
+        NSLog(@"%@",locationInfo);
+        //返回name address pt pt为坐标
+        _LONGITUDE = locationInfo[@"LONGITUDE"];
+        _LATITUDE = locationInfo[@"LATITUDE"];
+        self.addresslabel.text = [NSString stringWithFormat:@"%@（%@附近）",locationInfo[@"pt"], locationInfo[@"address"]];
+        self.locationInfo = locationInfo;
+    };
 }
 
 

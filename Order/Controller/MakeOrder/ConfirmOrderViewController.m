@@ -25,7 +25,7 @@
 
 @interface ConfirmOrderViewController ()<UITableViewDelegate, UITableViewDataSource, ConfirmOrderTableViewCellDelegate, AddGiftsServiceDelegate, OrderConfirmServiceDelegate, LMPickerViewDelegate>
 
-#define ProductTableViewCellHeight 69
+#define ProductTableViewCellHeight 70
 #define GiftTableViewCellHeight 69
 
 //  虚化值 0 - 10
@@ -201,6 +201,8 @@ typedef enum _CloseDatePicker {
     [self registerCell];
     
     [self dealWithData];
+    
+    [self setBaseRateAndPackUom];
 }
 
 
@@ -489,6 +491,22 @@ typedef enum _CloseDatePicker {
 }
 
 
+// 把ProductModel模型的转换率和大单位赋值到PromotionDetailModel模型
+- (void)setBaseRateAndPackUom {
+    for (ProductModel *p in _productsOfLocal) {
+        for (PromotionDetailModel *pt in _promotionDetailsOfServer) {
+            if(pt.PRODUCT_IDX == p.IDX) {
+                pt.BASE_RATE = p.BASE_RATE;
+                pt.PACK_UOM = p.PACK_UOM;
+                pt.PRODUCT_UOM = p.PRODUCT_UOM;
+                break;
+            }
+        }
+    }
+    [_orderTableView reloadData];
+}
+
+
 #pragma mark - 点击事件
 
 - (IBAction)addGiftOnclick:(UIButton *)sender {
@@ -620,7 +638,7 @@ typedef enum _CloseDatePicker {
     
     @try {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              _VISIT_IDX, @"VISIT_IDX", // 拜访id 『拜访功能』用的
+                              _VISIT_IDX ? _VISIT_IDX : @"", @"VISIT_IDX", // 拜访id 『拜访功能』用的
                               @(p.ACT_PRICE), @"ACT_PRICE",
                               p.ADD_DATE, @"ADD_DATE",
                               p.BUSINESS_IDX, @"BUSINESS_IDX",
@@ -885,9 +903,18 @@ typedef enum _CloseDatePicker {
         // 填充数据
         cell.nameLabel.text = m.PRODUCT_NAME;
         cell.promotionNameLabel.text = [m.SALE_REMARK isEqualToString:@""] ? nil : m.SALE_REMARK;
-        cell.originalPriceLabel.text = [NSString stringWithFormat:@"%.1f", m.ORG_PRICE];
+        
+        // 考虑有折算率的情况
+        if([Tools hasBASE_RATE:m.BASE_RATE]) {
+            
+            cell.big_UOM_qty.text = [NSString stringWithFormat:@"%lld%@", m.PO_QTY / m.BASE_RATE, m.PACK_UOM];
+        }else {
+            
+            cell.big_UOM_qty.text = @"";
+        }
+        cell.numberLabel.text = [NSString stringWithFormat:@"%lld%@", m.PO_QTY, m.PRODUCT_UOM];
         [cell.nowPriceButton setTitle:[NSString stringWithFormat:@"%.1f", m.ACT_PRICE] forState:UIControlStateNormal];
-        cell.numberLabel.text = [NSString stringWithFormat:@"%lld", m.PO_QTY];
+        cell.originalPriceLabel.text = [NSString stringWithFormat:@"%.1f", m.ORG_PRICE];
         if([m.LOTTABLE06 isEqualToString:@"Y"]) {
             
             cell.addButtonWidth.constant = 30;

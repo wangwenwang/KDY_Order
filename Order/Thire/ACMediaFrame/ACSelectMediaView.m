@@ -289,12 +289,12 @@
                 break;
             default:
             {
-                [LM_alert showLMAlertViewWithTitle:@"上传照片" message:@"" cancleButtonTitle:@"取消" okButtonTitle:@"拍照" okClickHandle:^{
-                    
+//                [LM_alert showLMAlertViewWithTitle:@"上传照片" message:@"" cancleButtonTitle:@"取消" okButtonTitle:@"拍照" okClickHandle:^{
+                
                     [weakSelf openCamera];
-                } cancelClickHandle:^{
-                    
-                }];
+//                } cancelClickHandle:^{
+//
+//                }];
             }
                 break;
         }

@@ -358,7 +358,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         __weak __typeof(self)weakSelf = self;
-        [LM_alert showLMAlertViewWithTitle:@"请选择经销商" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:arr clickHandle:^(NSInteger index) {
+        [LM_alert showLMAlertViewWithTitle:@"请选择供货商" message:@"" cancleButtonTitle:@"取消" okButtonTitle:nil otherButtonTitleArray:arr clickHandle:^(NSInteger index) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -444,7 +444,7 @@
     
     if([_firstPartLabel.ADDRESS_IDX isEqualToString:@""] ||_firstPartLabel.ADDRESS_IDX == nil) {
         
-        [Tools showAlert:self.view andTitle:@"请选择经销商"];
+        [Tools showAlert:self.view andTitle:@"请选择供货商"];
     }else {
         
         AddPartyViewController *vc = [[AddPartyViewController alloc] init];
@@ -820,7 +820,7 @@
         });
     }else {
         
-        [Tools showAlert:self.view andTitle:@"找不到经销商，请联系管理员"];
+        [Tools showAlert:self.view andTitle:@"找不到供货商，请联系管理员"];
     }
 }
 

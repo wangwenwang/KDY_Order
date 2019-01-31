@@ -74,8 +74,11 @@
 /// Cell 高度
 @property (assign, nonatomic) NSUInteger cellHeight;
 
-/// 产品单位
+/// 产品单位（可能是箱，可能是瓶或支等）
 @property (copy, nonatomic) NSString *PRODUCT_UOM;
+
+/// 产品单位（大单位。如果PRODUCT_UOM是小单位瓶，PACK_UOM应该是它的大单位箱。如果PRODUCT_UOM是大单位箱，PACK_UOM = PRODUCT_UOM）
+@property (copy, nonatomic) NSString *PACK_UOM;
 
 /// 库存数量
 @property (copy, nonatomic) NSString *PRODUCT_STOCK_QTY;

@@ -109,7 +109,7 @@
 
 - (instancetype)init {
     if(self = [super init]) {
-        self.title = @"下单";
+        self.title = @"采购订单";
         self.tabBarItem.image = [UIImage imageNamed:@"menu_order_unpay_unselected"];
         
         _service = [[MakeOrderService alloc] init];
@@ -150,7 +150,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.topItem.title = @"下单";
+    self.navigationController.navigationBar.topItem.title = @"采购订单";
 }
 
 
@@ -648,9 +648,8 @@
     for (int i = 0; i < products.count; i++) {
         ProductModel *m = products[i];
         if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
-            NSLog(@"折算率----- %d", m.BASE_RATE);
+            
         }
-        NSLog(@"折算率 %d", m.BASE_RATE);
     }
     
     [MBProgressHUD hideHUDForView:_app.window animated:YES];

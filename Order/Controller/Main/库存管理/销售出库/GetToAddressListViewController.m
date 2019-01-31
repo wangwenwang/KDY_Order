@@ -52,7 +52,7 @@
     
     [super viewDidLoad];
     
-    self.title = @"收货信息";
+    self.title = @"收货方";
     
     // 注册Cell
     [self registerCell];

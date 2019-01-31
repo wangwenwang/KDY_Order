@@ -79,7 +79,7 @@
     UIApplicationShortcutIcon *customIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"menu_order_payed_unselected"];
     
     // 创建选项
-    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.makeOrder" localizedTitle:@"下单" localizedSubtitle:@"" icon:icon userInfo:nil];
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.makeOrder" localizedTitle:@"采购订单" localizedSubtitle:@"" icon:icon userInfo:nil];
     UIApplicationShortcutItem *customItem = [[UIApplicationShortcutItem alloc] initWithType:@"com.LM.checkOrder" localizedTitle:@"查单" localizedSubtitle:@"" icon:customIcon userInfo:nil];
     
     // 添加到选项数组，UIApplicationShortcutItem类iOS9.0才有

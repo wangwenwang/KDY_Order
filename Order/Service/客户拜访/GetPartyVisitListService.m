@@ -10,7 +10,7 @@
 
 #import <AFNetworking.h>
 
-#define kAPI_NAME_GetFirstPartyList @"获取经销商客户列表"
+#define kAPI_NAME_GetFirstPartyList @"获取供货商客户列表"
 
 #define kAPI_NAME_GetPartyVisitList @"获取客户拜访列表"
 
@@ -43,14 +43,14 @@
                 
                 if(getPartyVisitListM.getPartyVisitItemModel.count < 1) {
                     
-                    [self failureOfGetFirstPartyList:@"找不到经销商，请联系管理员"];
+                    [self failureOfGetFirstPartyList:@"找不到供货商，请联系管理员"];
                 } else {
                     
                     [self successOfGetFirstPartyList:getPartyVisitListM];
                 }
             } else if(type == -2) {
                 
-                [self failureOfGetFirstPartyList:@"找不到经销商，请联系管理员"];
+                [self failureOfGetFirstPartyList:@"找不到供货商，请联系管理员"];
             } else {
                 
                 [self failureOfGetFirstPartyList:msg];

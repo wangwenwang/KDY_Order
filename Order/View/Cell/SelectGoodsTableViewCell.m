@@ -9,6 +9,7 @@
 #import "SelectGoodsTableViewCell.h"
 #import "ProductPolicyTableViewCell.h"
 #import "ProductPolicyModel.h"
+#import "Tools.h"
 
 @interface SelectGoodsTableViewCell ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -75,13 +76,31 @@
 
 - (IBAction)delNumberOnclick:(UIButton *)sender {
     
-    if(_product.CHOICED_SIZE > 0) {
-        _product.CHOICED_SIZE --;
-        NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
+    if([Tools hasBASE_RATE:_product.BASE_RATE]) {
         
-        [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
-        if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:)]) {
-            [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+        if(_product.CHOICED_SIZE >= _product.BASE_RATE) {
+            _product.CHOICED_SIZE -= _product.BASE_RATE;
+            NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
+            [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
+            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:)]) {
+                [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+            }
+        }
+        if(_product.CHOICED_SIZE > 0) {
+            _big_UOM_qty.text = [NSString stringWithFormat:@"%lld%@", _product.CHOICED_SIZE / _product.BASE_RATE, _product.PACK_UOM];
+        }else {
+            _big_UOM_qty.text = @"";
+        }
+    }else {
+        
+        if(_product.CHOICED_SIZE > 0) {
+            _product.CHOICED_SIZE --;
+            NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
+            
+            [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
+            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:)]) {
+                [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+            }
         }
     }
 }
@@ -103,7 +122,12 @@
 }
 
 - (void)add {
-    _product.CHOICED_SIZE ++;
+    if([Tools hasBASE_RATE:_product.BASE_RATE]) {
+        _product.CHOICED_SIZE += _product.BASE_RATE;
+        _big_UOM_qty.text = [NSString stringWithFormat:@"%lld%@", _product.CHOICED_SIZE / _product.BASE_RATE, _product.PACK_UOM];
+    }else{
+        _product.CHOICED_SIZE ++;
+    }
     NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
     [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
     if([_delegate respondsToSelector:@selector(addNumberOnclick:andIndexRow:andSection:)]) {

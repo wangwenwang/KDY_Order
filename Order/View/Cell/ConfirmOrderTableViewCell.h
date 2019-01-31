@@ -58,4 +58,7 @@
 ///// 增加0.1元
 //- (IBAction)addOnclick:(UIButton *)sender;
 
+// 小单位数量
+@property (weak, nonatomic) IBOutlet UILabel *big_UOM_qty;
+
 @end

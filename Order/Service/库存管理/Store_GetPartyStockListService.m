@@ -21,7 +21,7 @@
                                  @"strLicense" : @"",
                                  };
     
-    NSLog(@"获取库存列表：%@", parameters);
+    NSLog(@"获取库存列表接口：%@|参数：%@", API_GetPartyStockList, parameters);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

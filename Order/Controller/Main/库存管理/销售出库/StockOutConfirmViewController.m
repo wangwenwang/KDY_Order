@@ -47,9 +47,9 @@
 
 
 
-#pragma mark - 发货信息
+#pragma mark - 发货方
 
-// 发货信息高度
+// 发货方高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendViewHeight;
 
 // 客户名称
@@ -66,9 +66,9 @@
 
 
 
-#pragma mark - 收货信息
+#pragma mark - 收货方
 
-// 收货信息高度
+// 收货方高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *receiveViewHeight;
 
 // 门店名称
@@ -398,7 +398,7 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
     _CONTACT_TEL.text = _addressM.CONTACT_TEL;
     _ADDRESS_INFO.text = _addressM.ADDRESS_INFO;
     
-    // 收货信息
+    // 收货方
     _PARTY_NAME_receive.text = _getToAddressM.pARTYNAME;
     _CONTACT_PERSON_receive.text = _getToAddressM.cONTACTPERSON;
     _CONTACT_TEL_receive.text = _getToAddressM.cONTACTTEL;
@@ -889,6 +889,7 @@ static CGFloat g_sumInfoSuperViewHeight_c = 0;
             cell.delButtonWidth.constant = 0;
             cell.nowPriceButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         }
+        cell.big_UOM_qty.text = @"";
         
         // 返回Cell
         return cell;

@@ -294,7 +294,7 @@ typedef enum : NSInteger {
 // 收货人地址
 @property (strong, nonatomic) UILabel *receiveLabel;
 
-// 收货信息
+// 收货方
 @property (weak, nonatomic) IBOutlet UILabel *receive_PARTY_NAME;
 @property (weak, nonatomic) IBOutlet UILabel *receive_PERSION;
 @property (weak, nonatomic) IBOutlet UILabel *receive_TEL;
@@ -496,7 +496,7 @@ typedef enum : NSInteger {
     
     _getToAddressM = aNotify.userInfo[@"msg"];
     
-    _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
+    _receiveLabel.text = [NSString stringWithFormat:@"收货方: %@", _getToAddressM.pARTYNAME];
     
     _receive_PARTY_NAME.text = _getToAddressM.pARTYNAME;
     _receive_PERSION.text = _getToAddressM.cONTACTPERSON;
@@ -512,7 +512,7 @@ typedef enum : NSInteger {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        _receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _getToAddressM.pARTYNAME];
+        _receiveLabel.text = [NSString stringWithFormat:@"收货方: %@", _getToAddressM.pARTYNAME];
     });
 }
 
@@ -544,10 +544,10 @@ typedef enum : NSInteger {
     _coverMainView.alpha = 0;
     _otherMsgView.alpha = 0;
     
-    _receive_PARTY_NAME.text = @"";
-    _receive_PERSION.text = @"";
-    _receive_TEL.text = @"";
-    _receive_ADDRESS.text = @"";
+    _receive_PARTY_NAME.text = _visitPartyAndAddress.pARTYNAME;
+    _receive_PERSION.text = _visitPartyAndAddress.cONTACTPERSON;
+    _receive_TEL.text = _visitPartyAndAddress.cONTACTTEL;
+    _receive_ADDRESS.text = _visitPartyAndAddress.aDDRESSINFO;
 }
 
 
@@ -714,7 +714,7 @@ typedef enum : NSInteger {
     [tableHeadView setFrame:CGRectMake(0, 0, ScreenWidth, 97)];
     _myTableView.tableHeaderView = tableHeadView;
     
-    // 发货信息
+    // 发货方
     UIView *sendView = [[UIView alloc] init];
     [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
     sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -722,7 +722,7 @@ typedef enum : NSInteger {
     UILabel *sendLabel = [[UILabel alloc] init];
     [sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [sendLabel setFont:[UIFont systemFontOfSize:14]];
-    sendLabel.text = [NSString stringWithFormat:@"发货信息: %@", _address.ADDRESS_INFO];
+    sendLabel.text = [NSString stringWithFormat:@"发货方: %@", _party.PARTY_NAME];
     [sendView addSubview:sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -730,7 +730,7 @@ typedef enum : NSInteger {
     [sendView addGestureRecognizer:tap_send];
     [tableHeadView addSubview:sendView];
     
-    // 收货信息
+    // 收货方
     UIView *receiveView = [[UIView alloc] init];
     [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -738,7 +738,7 @@ typedef enum : NSInteger {
     _receiveLabel = [[UILabel alloc] init];
     [_receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [_receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    _receiveLabel.text = @"收货信息:";
+    _receiveLabel.text = @"收货方:";
     [receiveView addSubview:_receiveLabel];
     // 非客户拜访进来才添加
     if(!_visitPartyAndAddress) {

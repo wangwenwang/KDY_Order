@@ -32,7 +32,7 @@
 #import "OrderDetailService.h"
 #import "OrderDetailViewController.h"
 
-@interface GetVisitRecommendedOrderViewController ()<GetVisitEnterShopServiceDelegate, SelectGoodsServiceDelegate, GetOutProductTypeServiceDelegate, Store_GetOutProductListServiceDelegate, Store_GetOupputListServiceDelegate, MakeOrderServiceDelegate>
+@interface GetVisitRecommendedOrderViewController ()<GetVisitEnterShopServiceDelegate, SelectGoodsServiceDelegate, GetOutProductTypeServiceDelegate, Store_GetOutProductListServiceDelegate, Store_GetOupputListServiceDelegate, MakeOrderServiceDelegate, OrderDetailServiceDelegate>
 
 // 建议订单
 @property (weak, nonatomic) IBOutlet UITextView *strRecommendedOrder;
@@ -300,24 +300,10 @@
 
 - (IBAction)nextOnclick {
     
-    NSString *msgTitle = @"";
-    NSString *cancleTitle = @"";
-    if(_getOupputListM.getOupputModel.count > 0) {
-        
-        msgTitle = @"确定订单无误？";
-        cancleTitle = @"再看看";
-    }else {
-        
-        msgTitle = @"确定门店不需要补货吗？";
-        cancleTitle = @"再想想";
-    }
-    [LM_alert showLMAlertViewWithTitle:msgTitle message:@"" cancleButtonTitle:cancleTitle okButtonTitle:@"确定" okClickHandle:^{
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        GetVisitEnterShopService *s = [[GetVisitEnterShopService alloc] init];
-        s.delegate = self;
-        [s GetVisitRecommendedOrder:_pvItemM.vISITIDX andStrRecommendedOrder:_strRecommendedOrder.text];
-    } cancelClickHandle:nil];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    GetVisitEnterShopService *s = [[GetVisitEnterShopService alloc] init];
+    s.delegate = self;
+    [s GetVisitRecommendedOrder:_pvItemM.vISITIDX andStrRecommendedOrder:_strRecommendedOrder.text];
 }
 
 - (void)successOfGetVisitRecommendedOrder:(NSString *)msg {

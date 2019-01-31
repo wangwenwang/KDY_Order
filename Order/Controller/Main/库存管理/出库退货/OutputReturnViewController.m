@@ -477,7 +477,7 @@ typedef enum : NSInteger {
     
     _getToAddressM = aNotify.userInfo[@"msg"];
     
-    _sendLabel.text = [NSString stringWithFormat:@"发货信息: %@", _getToAddressM.pARTYNAME];
+    _sendLabel.text = [NSString stringWithFormat:@"发货方: %@", _getToAddressM.pARTYNAME];
 }
 
 
@@ -673,7 +673,7 @@ typedef enum : NSInteger {
     [tableHeadView setFrame:CGRectMake(0, 0, ScreenWidth, 97)];
     _myTableView.tableHeaderView = tableHeadView;
     
-    // 发货信息
+    // 发货方
     UIView *sendView = [[UIView alloc] init];
     [sendView setFrame:CGRectMake(0, 3, ScreenWidth, 44)];
     sendView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -681,7 +681,7 @@ typedef enum : NSInteger {
     _sendLabel = [[UILabel alloc] init];
     [_sendLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(sendView.frame) - 20, CGRectGetHeight(sendView.frame))];
     [_sendLabel setFont:[UIFont systemFontOfSize:14]];
-    _sendLabel.text = @"发货信息: ";
+    _sendLabel.text = @"发货方: ";
     [sendView addSubview:_sendLabel];
     // 手势
     UITapGestureRecognizer *tap_send = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendOnclick)];
@@ -689,7 +689,7 @@ typedef enum : NSInteger {
     [sendView addGestureRecognizer:tap_send];
     [tableHeadView addSubview:sendView];
     
-    // 收货信息
+    // 收货方
     UIView *receiveView = [[UIView alloc] init];
     [receiveView setFrame:CGRectMake(0, CGRectGetMaxY(sendView.frame) + 3, ScreenWidth, 44)];
     receiveView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -697,7 +697,7 @@ typedef enum : NSInteger {
     UILabel *receiveLabel = [[UILabel alloc] init];
     [receiveLabel setFrame:CGRectMake(8, 0, CGRectGetWidth(receiveView.frame) - 20, CGRectGetHeight(receiveView.frame))];
     [receiveLabel setFont:[UIFont systemFontOfSize:14]];
-    receiveLabel.text = [NSString stringWithFormat:@"收货信息: %@", _address.ADDRESS_INFO];
+    receiveLabel.text = [NSString stringWithFormat:@"收货方: %@", _address.ADDRESS_INFO];
     [receiveView addSubview:receiveLabel];
     // 手势
     UITapGestureRecognizer *tap_receive = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveOnclick)];

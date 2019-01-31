@@ -314,6 +314,16 @@
 /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
 + (nullable NSString *)ToDBC:(nullable NSString *)input;
 
-+ (UIImage *)createImageWithColor:(UIColor *)color;
++ (nullable UIImage *)createImageWithColor:(nullable UIColor *)color;
+
+
+
+/**
+ 判断产品是否有折算率 BASE_RATE != 0 且 BASE_RATE != 1，就有
+
+ @param BASE_RATE 折算率
+ @return 是否有折算率
+ */
++ (BOOL)hasBASE_RATE:(int)BASE_RATE;
 
 @end

@@ -791,7 +791,7 @@ typedef void (^Animation)(void);
 }
 
 
-+ (UIImage *)createImageWithColor:(UIColor *)color {
++ (nullable UIImage *)createImageWithColor:(nullable UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -800,6 +800,14 @@ typedef void (^Animation)(void);
     UIImage *theImage=UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return theImage;
+}
+
++ (BOOL)hasBASE_RATE:(int)BASE_RATE {
+    if(BASE_RATE != 0 && BASE_RATE != 1) {
+        return YES;
+    }else {
+        return NO;
+    }
 }
 
 @end

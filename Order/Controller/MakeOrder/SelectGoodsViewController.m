@@ -231,6 +231,9 @@ typedef enum : NSInteger {
 // 自定义下单产品数量输入框
 @property (strong, nonatomic) UITextField *customsizeProductNumberF;
 
+// 自定义下单产品单位输入框
+@property (strong, nonatomic) UILabel *customsizeProductUomLabel;
+
 // 自定义下单数据的Cell indexRow
 @property (assign, nonatomic) int customsizeProductNumberIndexRow;
 
@@ -681,17 +684,17 @@ typedef enum : NSInteger {
     
     if(_selectedProducts.count > 0) {
         
-        // 当折算率不为0或1时，产品数量必须是折算率的位数
-        for (int i = 0; i < _selectedProducts.count; i++) {
-            ProductModel *m =  _selectedProducts[i];
-            if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
-                if((m.CHOICED_SIZE % m.BASE_RATE) != 0) {
-                    
-                    [Tools showAlertMulLineText:self.view andTitle:[NSString stringWithFormat:@"产品：%@\n数量必须要%d的倍数",  [self getProductName:m.PRODUCT_NAME], m.BASE_RATE]];
-                    return;
-                }
-            }
-        }
+//        // 当折算率不为0或1时，产品数量必须是折算率的位数
+//        for (int i = 0; i < _selectedProducts.count; i++) {
+//            ProductModel *m =  _selectedProducts[i];
+//            if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
+//                if((m.CHOICED_SIZE % m.BASE_RATE) != 0) {
+//
+//                    [Tools showAlertMulLineText:self.view andTitle:[NSString stringWithFormat:@"产品：%@\n数量必须要%d的倍数",  [self getProductName:m.PRODUCT_NAME], m.BASE_RATE]];
+//                    return;
+//                }
+//            }
+//        }
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self setProductCurrentPrice];
@@ -716,8 +719,19 @@ typedef enum : NSInteger {
     
     long long number = [_customsizeProductNumberF.text longLongValue];
     
+    if(number < 0) {
+        [Tools showAlert:_app.window andTitle:@"请输入正整数"];
+        return;
+    }
+    
+    ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
+    
     // 改变的单一产品下单数量，有可能是负数
-    long long modifyNumber = number - _selectedProductNumber;
+    long long modifyNumber = 0;
+    if([Tools hasBASE_RATE:m.BASE_RATE]) {
+        number = number * m.BASE_RATE;
+    }
+     modifyNumber = number - _selectedProductNumber;
     
     // 如果填写后的数量与填写前的一样，则不操作
     if(modifyNumber == 0) {
@@ -728,7 +742,6 @@ typedef enum : NSInteger {
         // 下单总数量
         _currentMakeOrderTotalCount += modifyNumber;
         
-        ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
         m.CHOICED_SIZE = number;
         
         _currentMakeOrderTotalPrice += _customsizeProductNumberPrice * modifyNumber;
@@ -755,6 +768,8 @@ typedef enum : NSInteger {
         [self LMBlurredViewClear];
         
         [_blurredView clear];
+        
+        [_myTableView reloadData];
     }
 }
 
@@ -850,8 +865,8 @@ typedef enum : NSInteger {
         
         NSString *productText = @"";
         // 小单位（瓶），价格保留两位小数
-        if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
-    
+        if([Tools hasBASE_RATE:m.BASE_RATE]) {
+
             // 没单位
             if([m.PRODUCT_UOM isEqualToString:@""]) {
                 productText = [NSString stringWithFormat:@"￥%.2f%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
@@ -860,10 +875,15 @@ typedef enum : NSInteger {
             else {
                 productText = [NSString stringWithFormat:@"￥%.2f/%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
             }
+            if(m.CHOICED_SIZE > 0) {
+                cell.big_UOM_qty.text = [NSString stringWithFormat:@"%lld%@", m.CHOICED_SIZE / m.BASE_RATE, m.PACK_UOM];
+            }else {
+                cell.big_UOM_qty.text = @"";
+            }
         }
         // 大单位（箱），价格保留一位小数
         else {
-            
+
             // 没单位
             if([m.PRODUCT_UOM isEqualToString:@""]) {
                 productText = [NSString stringWithFormat:@"￥%.1f%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
@@ -872,20 +892,13 @@ typedef enum : NSInteger {
             else {
                 productText = [NSString stringWithFormat:@"￥%.1f/%@", m.PRODUCT_PRICE, m.PRODUCT_UOM];
             }
+             cell.big_UOM_qty.text = @"";
         }
         cell.productPriceLabel.text = productText;
         
-//            // 当折算率不为0或1时，产品数量必须是折算率的位数
-//            for (int i = 0; i < _selectedProducts.count; i++) {
-//                ProductModel *m =  _selectedProducts[i];
-//                if(m.BASE_RATE != 1 && m.BASE_RATE != 0) {
-//                    if((m.CHOICED_SIZE % m.BASE_RATE) != 0) {
-//
-//                        [Tools showAlertMulLineText:self.view andTitle:[NSString stringWithFormat:@"产品：%@\n数量必须要%d的倍数",  [self getProductName:m.PRODUCT_NAME], m.BASE_RATE]];
-//                        return;
-//                    }
-//                }
-//            }
+        
+        
+        
         [cell.productNumberButton setTitle:[NSString stringWithFormat:@"%lld", m.CHOICED_SIZE] forState:UIControlStateNormal];
         cell.STOCK_QTY.text = @"";
         cell.STOCK_QTY_Label.text = @"";
@@ -1786,18 +1799,44 @@ typedef enum : NSInteger {
         make.centerX.offset(0);
     }];
     
-    // 输入框
-    UITextField *textF = [[UITextField alloc] init];
-    textF.borderStyle = UITextBorderStyleRoundedRect;
-    textF.keyboardType = UIKeyboardTypeNumberPad;
-    [_enterNumView addSubview:textF];
-    [textF mas_makeConstraints:^(MASConstraintMaker *make) {
+    // 输入框容器
+    UIView *textFSup = [[UIView alloc] init];
+    [_enterNumView addSubview:textFSup];
+    [textFSup mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(label.mas_bottom).offset(15);
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(33);
     }];
+    
+    // 输入框
+    UITextField *textF = [[UITextField alloc] init];
+    textF.borderStyle = UITextBorderStyleRoundedRect;
+    textF.textAlignment = NSTextAlignmentCenter;
+    textF.keyboardType = UIKeyboardTypeNumberPad;
+    [textFSup addSubview:textF];
+    [textF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
     _customsizeProductNumberF = textF;
+    
+    // 单位
+    UILabel *textFUOM = [[UILabel alloc] init];
+    textFUOM.text = @"fds";
+    [textFSup addSubview:textFUOM];
+    [textFUOM mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(0);
+        make.right.mas_equalTo(-3);
+    }];
+    ProductModel *m = _productsFilter[@(_brandRow)][@(_currentSection)][_customsizeProductNumberIndexRow];
+    if([Tools hasBASE_RATE:m.BASE_RATE]) {
+        textFUOM.text = m.PACK_UOM;
+    }else {
+        textFUOM.text = m.PRODUCT_UOM;
+    }
     
     // 声明取消按钮
     UIButton *btnCancel = [[UIButton alloc] init];
@@ -1811,7 +1850,7 @@ typedef enum : NSInteger {
     [btnComplete setTitle:@"确定" forState:UIControlStateNormal];
     [_enterNumView addSubview:btnComplete];
     [btnComplete mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(textF.mas_bottom).offset(25);
+        make.top.mas_equalTo(textFSup.mas_bottom).offset(25);
         make.left.mas_equalTo(btnCancel.mas_right).offset(30);
         make.right.mas_equalTo(-30);
         make.height.mas_equalTo(32);

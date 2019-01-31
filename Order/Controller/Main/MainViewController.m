@@ -80,7 +80,7 @@
         if([[[NSUserDefaults standardUserDefaults] objectForKey:k3DTouchType] isEqualToString:k3DTouchTypeMakeOrder]) {
             
             self.tabBarController.selectedIndex = 1;
-            self.navigationController.navigationBar.topItem.title = @"下单";
+            self.navigationController.navigationBar.topItem.title = @"采购订单";
         } else if([[[NSUserDefaults standardUserDefaults] objectForKey:k3DTouchType] isEqualToString:k3DTouchTypeCheckOrder]) {
             
             self.tabBarController.selectedIndex = 2;
@@ -148,7 +148,7 @@
     if([type isEqualToString:k3DTouchTypeMakeOrder]) {
         
         self.tabBarController.selectedIndex = 1;
-        self.navigationController.navigationBar.topItem.title = @"下单";
+        self.navigationController.navigationBar.topItem.title = @"采购订单";
     } else if([type isEqualToString:k3DTouchTypeCheckOrder]) {
         
         self.tabBarController.selectedIndex = 2;

@@ -99,4 +99,18 @@
 // 雪花空瓶费时才有值，一般没值
 @property (copy, nonatomic) NSString *PRODUCT_DESC;
 
+// 产品单位（可能是箱，可能是瓶或支等）
+@property (copy, nonatomic) NSString *PRODUCT_UOM;
+
+// 产品单位（大单位。如果PRODUCT_UOM是小单位瓶，PACK_UOM应该是它的大单位箱。如果PRODUCT_UOM是大单位箱，PACK_UOM = PRODUCT_UOM）
+// 由产品ProductModel模型赋值过来
+@property (copy, nonatomic) NSString *PACK_UOM;
+
+// 折算率，BASE_RATE != 0 且 BASE_RATE != 1 时， 表示产品有小单位
+// 由产品ProductModel模型赋值过来
+@property (assign, nonatomic) int BASE_RATE;
+
+
+
+
 @end
