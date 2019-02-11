@@ -82,8 +82,8 @@
             _product.CHOICED_SIZE -= _product.BASE_RATE;
             NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
             [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
-            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:)]) {
-                [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:andQty:)]) {
+                [_delegate delNumberOnclick:_product.PRODUCT_PRICE * _product.BASE_RATE andIndexRow:(int)self.tag andSection:self.section andQty:_product.BASE_RATE];
             }
         }
         if(_product.CHOICED_SIZE > 0) {
@@ -98,8 +98,8 @@
             NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
             
             [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
-            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:)]) {
-                [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+            if([_delegate respondsToSelector:@selector(delNumberOnclick:andIndexRow:andSection:andQty:)]) {
+                [_delegate delNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section andQty:1];
             }
         }
     }
@@ -122,16 +122,24 @@
 }
 
 - (void)add {
+    // 传出去的价格
+    double price = 0;
+    // 传出去的数量
+    int qty = 0;
     if([Tools hasBASE_RATE:_product.BASE_RATE]) {
         _product.CHOICED_SIZE += _product.BASE_RATE;
         _big_UOM_qty.text = [NSString stringWithFormat:@"%lld%@", _product.CHOICED_SIZE / _product.BASE_RATE, _product.PACK_UOM];
+        price = _product.PRODUCT_PRICE * _product.BASE_RATE;
+        qty = _product.BASE_RATE;
     }else{
         _product.CHOICED_SIZE ++;
+        price = _product.PRODUCT_PRICE;
+        qty = 1;
     }
     NSString *productNumberStr = [NSString stringWithFormat:@"%lld", _product.CHOICED_SIZE];
     [_productNumberButton setTitle:productNumberStr forState:UIControlStateNormal];
-    if([_delegate respondsToSelector:@selector(addNumberOnclick:andIndexRow:andSection:)]) {
-        [_delegate addNumberOnclick:_product.PRODUCT_PRICE andIndexRow:(int)self.tag andSection:self.section];
+    if([_delegate respondsToSelector:@selector(addNumberOnclick:andIndexRow:andSection:andQty:)]) {
+        [_delegate addNumberOnclick:price andIndexRow:(int)self.tag andSection:self.section andQty:qty];
     }
 }
 

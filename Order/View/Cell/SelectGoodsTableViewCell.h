@@ -12,10 +12,10 @@
 @protocol SelectGoodsTableViewCellDelegate <NSObject>
 
 @optional
-- (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section;
+- (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section andQty:(int)qty;
 
 @optional
-- (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section;
+- (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section andQty:(int)qty;
 
 @optional
 - (void)productNumberOnclick:(double)price andIndexRow:(int)indexRow andSelectedNumber:(long long)selectedNumber andSection:(NSInteger)section;

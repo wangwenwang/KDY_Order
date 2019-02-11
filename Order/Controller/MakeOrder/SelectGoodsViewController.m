@@ -1126,9 +1126,9 @@ typedef enum : NSInteger {
 #pragma mark - SelectGoodsTableViewCellDelegate
 
 // 在产品列表里删除产品回调
-- (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
+- (void)delNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section andQty:(int)qty {
     
-    _currentMakeOrderTotalCount -= 1;
+    _currentMakeOrderTotalCount -= qty;
     _currentMakeOrderTotalPrice -= price;
     
     _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
@@ -1153,9 +1153,9 @@ typedef enum : NSInteger {
 
 
 // 在产品列表里添加产品回调
-- (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section {
+- (void)addNumberOnclick:(double)price andIndexRow:(int)indexRow andSection:(NSInteger)section andQty:(int)qty {
     
-    _currentMakeOrderTotalCount += 1;
+    _currentMakeOrderTotalCount += qty;
     _currentMakeOrderTotalPrice += price;
     
     _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
@@ -1190,9 +1190,9 @@ typedef enum : NSInteger {
 #pragma mark - ShoppingCartTableViewCellDelegate
 
 // 在购物车列表里删除产品回调
-- (void)delOnclickOfShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow {
+- (void)delOnclickOfShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow andQty:(int)qty {
     
-    _currentMakeOrderTotalCount -= 1;
+    _currentMakeOrderTotalCount -= qty;
     _currentMakeOrderTotalPrice -= price;
     
     _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
@@ -1218,9 +1218,9 @@ typedef enum : NSInteger {
 
 
 // 在购物车列表里添加产品回调
-- (void)addOnclickShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow {
+- (void)addOnclickShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow andQty:(int)qty{
     
-    _currentMakeOrderTotalCount += 1;
+    _currentMakeOrderTotalCount += qty;
     _currentMakeOrderTotalPrice += price;
     
     _makeOrderTotalNumber.text = [NSString stringWithFormat:@"%ld", _currentMakeOrderTotalCount];
@@ -1825,7 +1825,7 @@ typedef enum : NSInteger {
     
     // 单位
     UILabel *textFUOM = [[UILabel alloc] init];
-    textFUOM.text = @"fds";
+    textFUOM.text = @"未设置";
     [textFSup addSubview:textFUOM];
     [textFUOM mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);

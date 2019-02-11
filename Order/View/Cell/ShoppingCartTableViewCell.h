@@ -13,10 +13,10 @@
 @protocol ShoppingCartTableViewCellDelegate <NSObject>
 
 @optional
-- (void)delOnclickOfShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow;
+- (void)delOnclickOfShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow andQty:(int)qty;
 
 @optional
-- (void)addOnclickShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow;
+- (void)addOnclickShoppingCartTableViewCell:(double)price andIndexRow:(int)indexRow andQty:(int)qty;;
 
 @optional
 - (void)noStockOfShoppingCartTableViewCell;
