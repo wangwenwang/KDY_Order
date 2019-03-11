@@ -166,7 +166,7 @@
     NSString *welcomeImageName = [[NSUserDefaults standardUserDefaults] objectForKey:kWelcomeImageName];
     if([welcomeImageName isEqualToString:@"YIB"] || [welcomeImageName isEqualToString:@"QH"]) {
         
-        images = [NSArray arrayWithObjects:@"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
+        images = [NSArray arrayWithObjects:@"ad_pic_5.png", @"ad_pic_6.png", @"ad_pic_0.jpg", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
     } else if([welcomeImageName isEqualToString:@"DK"]) {
         
         images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
@@ -175,7 +175,7 @@
         images = [NSArray arrayWithObjects:@"ad_pic_21", nil];
     } else {
         
-        images = [NSArray arrayWithObjects:@"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
+        images = [NSArray arrayWithObjects:@"ad_pic_5.png", @"ad_pic_6.png", @"ad_pic_1.jpg", @"ad_pic_2.jpg", @"ad_pic_3.jpg", nil];
     }
     
     // 本地加载图片的轮播器
