@@ -172,6 +172,7 @@
         images = [NSArray arrayWithObjects:@"ad_pic_20", @"ad_pic_21", @"ad_pic_22", @"ad_pic_23", nil];
     } else if([welcomeImageName isEqualToString:@"MY"]) {
         
+        // 
         if([_app.business.BUSINESS_CODE rangeOfString:@"MYI02"].length > 0 ||
            [_app.business.BUSINESS_CODE rangeOfString:@"MYI03"].length > 0 ||
            [_app.business.BUSINESS_CODE rangeOfString:@"MYI04"].length > 0) {
