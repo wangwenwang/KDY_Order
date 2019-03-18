@@ -177,7 +177,7 @@
            [_app.business.BUSINESS_CODE rangeOfString:@"MYI03"].length > 0 ||
            [_app.business.BUSINESS_CODE rangeOfString:@"MYI04"].length > 0) {
             
-            images = [NSArray arrayWithObjects:@"ad_pic_24", @"ad_pic_21", nil];
+            images = [NSArray arrayWithObjects:@"ad_pic_24", nil];
         }else {
             
             images = [NSArray arrayWithObjects:@"ad_pic_21", nil];
