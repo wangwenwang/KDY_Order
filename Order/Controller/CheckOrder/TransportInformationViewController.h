@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) OrderTmsModel *tmsInformtions;
 
+@property (copy, nonatomic) NSString *IS_SAAS;
+
 @end

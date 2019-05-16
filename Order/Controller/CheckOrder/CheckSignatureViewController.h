@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSMutableArray *signatures;
 
+@property (copy, nonatomic) NSString *IS_SAAS;
+
 @end

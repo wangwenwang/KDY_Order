@@ -196,8 +196,6 @@
 		3056B5752008AAF300B4704A /* CheckStockDetailItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056B5742008AAF300B4704A /* CheckStockDetailItemModel.m */; };
 		30598E471F1CB363000530D6 /* UpdateAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = 30598E461F1CB363000530D6 /* UpdateAddressService.m */; };
 		3072AE891DA8948D00359147 /* OrderDetailService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3072AE881DA8948D00359147 /* OrderDetailService.m */; };
-		307988631F6B79A80063DE2A /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 307988601F6B79A80063DE2A /* ico_make.png */; };
-		307988641F6B79A80063DE2A /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 307988621F6B79A80063DE2A /* JSDropDownMenu.m */; };
 		308783861D98CD45002EED76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 308783851D98CD45002EED76 /* main.m */; };
 		308783891D98CD45002EED76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 308783881D98CD45002EED76 /* AppDelegate.m */; };
 		308783911D98CD45002EED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308783901D98CD45002EED76 /* Assets.xcassets */; };
@@ -853,9 +851,6 @@
 		30598E461F1CB363000530D6 /* UpdateAddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateAddressService.m; sourceTree = "<group>"; };
 		3072AE871DA8948D00359147 /* OrderDetailService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailService.h; sourceTree = "<group>"; };
 		3072AE881DA8948D00359147 /* OrderDetailService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailService.m; sourceTree = "<group>"; };
-		307988601F6B79A80063DE2A /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
-		307988611F6B79A80063DE2A /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
-		307988621F6B79A80063DE2A /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		308783811D98CD45002EED76 /* Order.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Order.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		308783851D98CD45002EED76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		308783871D98CD45002EED76 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1995,16 +1990,6 @@
 			path = "查看库存";
 			sourceTree = "<group>";
 		};
-		3079885F1F6B79A80063DE2A /* JSDropDownMenu */ = {
-			isa = PBXGroup;
-			children = (
-				307988601F6B79A80063DE2A /* ico_make.png */,
-				307988611F6B79A80063DE2A /* JSDropDownMenu.h */,
-				307988621F6B79A80063DE2A /* JSDropDownMenu.m */,
-			);
-			path = JSDropDownMenu;
-			sourceTree = "<group>";
-		};
 		308783781D98CD45002EED76 = {
 			isa = PBXGroup;
 			children = (
@@ -2645,7 +2630,6 @@
 				3B86F39321F717740048A9AF /* yh_navgation */,
 				30CDC6681D990B420035602F /* Tools */,
 				3B084FC821B074B5006ECBF1 /* ACMediaFrame */,
-				3079885F1F6B79A80063DE2A /* JSDropDownMenu */,
 				30C476251F4D2EFA00A5FB93 /* TPKeyboardAvoiding */,
 				3009143C1F41A8700022E150 /* BackButtonHandler */,
 				30F93E0C1F31B3FF001904F1 /* LMBlurredView */,
@@ -3447,6 +3431,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -3476,7 +3461,6 @@
 				3B6C3F7E21E7556E00C28334 /* VisitRoutePlanViewController.xib in Resources */,
 				30201F1C1F1083860055BA6A /* GetFeeListCollectionViewCell.xib in Resources */,
 				304A7AAF1DB5F72C0039B0B2 /* ProductTypeTableViewCell.xib in Resources */,
-				307988631F6B79A80063DE2A /* ico_make.png in Resources */,
 				30F235BD1FD7CC230056846C /* MonthlyPlanInfoViewController.xib in Resources */,
 				30CDC6441D9907CD0035602F /* PhotoBroswerVC.xib in Resources */,
 				30A3C3131D9A102800BBE0DA /* MineViewController.xib in Resources */,
@@ -3743,7 +3727,6 @@
 				301CFDD01FBAF9FF00C8CB39 /* StockNoWaterListModel.m in Sources */,
 				30CDC6591D9907CD0035602F /* UIImage+ReMake.m in Sources */,
 				30CDC63C1D9907CD0035602F /* PBBlurImageView.m in Sources */,
-				307988641F6B79A80063DE2A /* JSDropDownMenu.m in Sources */,
 				30240EC21FFE0C44007BC134 /* GetOrderTmsService.m in Sources */,
 				3B6C3F8121E7C15A00C28334 /* LatLng.m in Sources */,
 				3B0DD00021A399A400F8DE8F /* GetVisitEnterShopService.m in Sources */,

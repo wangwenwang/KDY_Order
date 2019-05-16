@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)getTransInformationData:(NSString *)orderId {
+- (void)getTransInformationData:(NSString *)orderId andURL:(NSString *)url {
     
     if([[orderId trim] isEqualToString:@""] || orderId == nil) {
         [self failureOfTransportInformation:@"获取订单物流信息失败！"];
@@ -41,7 +41,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GET_ORDER_TMSLIST parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"请求成功---%@", responseObject);

@@ -31,6 +31,6 @@
  * @return 发送请求是否成功
  * @param orderId 订单编号
  */
-- (void)getOrderTmsDetailsData:(NSString *)orderId;
+- (void)getOrderTmsDetailsData:(NSString *)orderId andURL:(NSString *)url;
 
 @end

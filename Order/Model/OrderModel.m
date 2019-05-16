@@ -57,6 +57,7 @@
         _ORD_REMARK_CONSIGNEE = @"";
         _MJ_REMARK = @"";
         _DRIVER_PAY = @"";
+        _IS_SAAS = @"";
         
         _OrderDetails = [[NSMutableArray alloc] init];
         _StateTacks = [[NSMutableArray alloc] init];
@@ -111,6 +112,7 @@
         _ORD_REMARK_CONSIGNEE = dict[@"ORD_REMARK_CONSIGNEE"] ? dict[@"ORD_REMARK_CONSIGNEE"] : @"";
         _MJ_REMARK = dict[@"MJ_REMARK"] ? dict[@"MJ_REMARK"] : @"";
         _DRIVER_PAY = dict[@"DRIVER_PAY"] ? dict[@"DRIVER_PAY"] : @"";
+        _IS_SAAS = dict[@"IS_SAAS"] ? dict[@"IS_SAAS"] : @"";
         
         NSArray *orderDetails = dict[@"OrderDetails"] ? dict[@"OrderDetails"] : [[NSArray alloc] init];
         [_OrderDetails removeAllObjects];

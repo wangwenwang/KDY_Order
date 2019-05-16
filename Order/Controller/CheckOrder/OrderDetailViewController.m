@@ -393,19 +393,27 @@
 
 - (IBAction)checkTransportinfoOnclick:(UIButton *)sender {
     
-//    if([_order.ORD_STATE isEqualToString:@"PENDING"] == YES) {
-//        
-//        [LM_alert showLMAlertViewWithTitle:@"" message:@"是否要取消此订单" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
-//            
-//            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//            [_service OrderCancel:_order.IDX andstrUserIdx:_app.user.IDX];
-//        } cancelClickHandle:nil];
-//        
-//    } else {
+    //    if([_order.ORD_STATE isEqualToString:@"PENDING"] == YES) {
+    //
+    //        [LM_alert showLMAlertViewWithTitle:@"" message:@"是否要取消此订单" cancleButtonTitle:@"否" okButtonTitle:@"是" okClickHandle:^{
+    //
+    //            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //            [_service OrderCancel:_order.IDX andstrUserIdx:_app.user.IDX];
+    //        } cancelClickHandle:nil];
+    //
+    //    } else {
     
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [_transortService getTransInformationData:_order.IDX];
-//    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if([_order.IS_SAAS isEqualToString:@"Y"]) {
+        
+        [_transortService getTransInformationData:_order.IDX andURL:API_GET_ORDER_TMSLIST_SAAS];
+    }else if([_order.IS_SAAS isEqualToString:@"N"]) {
+        
+        [_transortService getTransInformationData:_order.IDX andURL:API_GET_ORDER_TMSLIST];
+    }else {
+        [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+    }
+    //    }
 }
 
 
@@ -416,6 +424,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     TransportInformationViewController *vc = [[TransportInformationViewController alloc] init];
     vc.tmsInformtions = product;
+    vc.IS_SAAS = _order.IS_SAAS;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

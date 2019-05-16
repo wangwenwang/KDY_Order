@@ -76,6 +76,9 @@
 @property(copy, nonatomic)NSString *ORD_REMARK_CONSIGNEE;
 @property(copy, nonatomic)NSString *MJ_REMARK;
 @property(copy, nonatomic)NSString *DRIVER_PAY;
+// 是否取SAAS数据
+@property(copy, nonatomic)NSString *IS_SAAS;
+
 ///
 @property(strong, nonatomic)NSMutableArray *OrderDetails;
 ///

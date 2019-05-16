@@ -30,6 +30,6 @@
  * @param orderIdx 订单编号
  * @return 发送请求是否成功
  */
-- (void)getAutographAndPictureData:(NSString *)orderIdx;
+- (void)getAutographAndPictureData:(NSString *)orderIdx andURL:(NSString *)url;
 
 @end

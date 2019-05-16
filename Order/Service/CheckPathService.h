@@ -32,6 +32,6 @@
  *
  * httpresponseProtocol: 网络请求协议
  */
-- (void)getOrderLocaltions:(NSString *)idx;
+- (void)getOrderLocaltions:(NSString *)idx andURL:(NSString *)url;
 
 @end

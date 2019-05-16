@@ -29,6 +29,6 @@
  * @param orderId 订单编号
  * @return 发送请求是否成功
  */
-- (void)getTransInformationData:(NSString *)orderId;
+- (void)getTransInformationData:(NSString *)orderId andURL:(NSString *)url;
 
 @end

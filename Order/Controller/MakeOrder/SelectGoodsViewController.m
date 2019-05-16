@@ -860,8 +860,7 @@ typedef enum : NSInteger {
         // 填充基本数据
         [cell.productImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"ic_information_picture"] options:SDWebImageRefreshCached];
         cell.productNameLabel.text = [self getProductName:m.PRODUCT_NAME];
-//        cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
-        cell.productFormatLabel.text = m.PRODUCT_DESC;
+        cell.productFormatLabel.text = [self getProductFormat:m.PRODUCT_NAME];
         
         NSString *productText = @"";
         // 小单位（瓶），价格保留两位小数

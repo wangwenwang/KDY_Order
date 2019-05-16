@@ -13,4 +13,7 @@
 /// 用户的 idx
 @property (copy, nonatomic) NSString *orderIDX;
 
+/// 是否取SAAS数据
+@property (copy, nonatomic) NSString *IS_SAAS;
+
 @end

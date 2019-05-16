@@ -174,8 +174,14 @@
 /// 获取订单物流信息
 #define API_GET_ORDER_TMSLIST @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsList"
 
+/// 获取订单物流信息，取SAAS数据
+#define API_GET_ORDER_TMSLIST_SAAS @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsListSaaS"
+
 /// 获取物流信息详情  GetOrderTmsOrderNoInfo   GetOrderTmsInfo
 #define API_GET_ORDER_TMS_INFORMATION @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsOrderNoInfo"
+
+/// 获取物流信息详情  GetOrderTmsOrderNoInfo   GetOrderTmsInfo，取SAAS数据
+#define API_GET_ORDER_TMS_INFORMATION_SAAS @"http://oms.kaidongyuan.com:8088/api/GetOrderTmsOrderNoInfoSaaS"
 
 /// 获取客户列表
 #define API_GET_PARTY_LIST @"http://oms.kaidongyuan.com:8088/api/GetPartyList"
@@ -195,11 +201,17 @@
 /// 获取电子签名和交货现场图片
 #define API_GETAUTOGRAPH @"http://oms.kaidongyuan.com:8088/api/GetAutograph"
 
+/// 获取电子签名和交货现场图片，取SAAS数据
+#define API_GETAUTOGRAPH_SAAS @"http://oms.kaidongyuan.com:8088/api/GetAutographSaaS"
+
 /// 服务端存放电子签名的图片文件夹
 #define API_SERVER_AUTOGRAPH_AND_PICTURE_FILE @"http://oms.kaidongyuan.com:8088/Uploadfile"
 
 /// 获取订单位置信息
 #define API_GET_LOCATION @"http://oms.kaidongyuan.com:8088/api/GetLocaltion"
+
+/// 获取订单位置信息，取SAAS数据
+#define API_GET_LOCATION_SAAS @"http://oms.kaidongyuan.com:8088/api/GetLocaltionSAAS"
 
 /// 获取客户报表
 #define API_GET_CUSTOMER_CHART_DATA @"http://oms.kaidongyuan.com:8088/api/CustomerCount"

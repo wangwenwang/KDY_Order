@@ -12,15 +12,17 @@
 
 @implementation CheckSignatureService
 
-- (void)getAutographAndPictureData:(NSString *)orderIdx {
+- (void)getAutographAndPictureData:(NSString *)orderIdx andURL:(NSString *)url {
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 orderIdx, @"strOrderIdx",
                                 @"", @"strLicense",
                                 nil];
     
+    NSLog(@"获取电子签名和交货现场图片参数：%@", parameters);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:API_GETAUTOGRAPH parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"请求产品类型成功---%@", responseObject);

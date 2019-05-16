@@ -33,7 +33,7 @@
  *
  * httpresponseProtocol: 网络请求协议
  */
-- (void)getOrderLocaltions:(NSString *)idx {
+- (void)getOrderLocaltions:(NSString *)idx andURL:(NSString *)url {
     NSDictionary *parameters = nil;
         parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                       idx, @"strOrderId",
@@ -41,13 +41,15 @@
                       @"ios", @"UUID",
                       nil];
     
+    NSLog(@"获取轨迹接口:%@", url);
+    NSLog(@"参数:%@", parameters);
     
     __weak typeof(self)wkSelf = self;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    [manager POST:API_GET_LOCATION parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"请求成功---%@", responseObject);

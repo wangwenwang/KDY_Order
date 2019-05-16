@@ -210,7 +210,16 @@
     
     OrderModel *m = _tmsInformtions.TmsList[indexRow];
     _service.pushDirection = vc;
-    [_service getOrderTmsDetailsData:m.ORD_IDX];
+    
+    if([_IS_SAAS isEqualToString:@"Y"]) {
+        
+        [_service getOrderTmsDetailsData:m.ORD_IDX andURL:API_GET_ORDER_TMS_INFORMATION_SAAS];
+    }else if([_IS_SAAS isEqualToString:@"N"]) {
+        
+        [_service getOrderTmsDetailsData:m.ORD_IDX andURL:API_GET_ORDER_TMS_INFORMATION];
+    }else {
+        [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+    }
 }
 
 
@@ -235,6 +244,7 @@
         CheckOrderPathViewController *vc = [[CheckOrderPathViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         vc.orderIDX = m.ORD_IDX;
+        vc.IS_SAAS = _IS_SAAS;
     }
 }
 
@@ -244,7 +254,16 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     OrderModel *m = _tmsInformtions.TmsList[indexRow];
-    [_checkSignatureService getAutographAndPictureData:m.ORD_IDX];
+    
+    if([_IS_SAAS isEqualToString:@"Y"]) {
+        
+        [_checkSignatureService getAutographAndPictureData:m.ORD_IDX andURL:API_GETAUTOGRAPH_SAAS];
+    }else if([_IS_SAAS isEqualToString:@"N"]) {
+        
+        [_checkSignatureService getAutographAndPictureData:m.ORD_IDX andURL:API_GETAUTOGRAPH];
+    }else {
+        [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+    }
 }
 
 
@@ -280,6 +299,7 @@
     
     CheckSignatureViewController *vc = [[CheckSignatureViewController alloc] init];
     vc.signatures = signatures;
+    vc.IS_SAAS = _IS_SAAS;
     
     [self.navigationController pushViewController:vc animated:YES];
 

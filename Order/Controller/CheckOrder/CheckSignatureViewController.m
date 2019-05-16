@@ -10,6 +10,7 @@
 #import "SignatureAndPictureModel.h"
 #import <MBProgressHUD.h>
 #import "PhotoBroswerVC.h"
+#import "Tools.h"
 
 @interface CheckSignatureViewController ()
 - (IBAction)buttonOnclick:(UIButton *)sender;
@@ -117,7 +118,18 @@
 - (void)addImage {
     /// 客户签名
     if(_customerSignatureM) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _customerSignatureM.PRODUCT_URL];
+        
+        NSString *url = @"";
+        if([_IS_SAAS isEqualToString:@"Y"]) {
+            
+            url = [NSString stringWithFormat:@"http://k56.kaidongyuan.com/%@", _customerSignatureM.PRODUCT_URL];
+        }else if([_IS_SAAS isEqualToString:@"N"]) {
+        
+            url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _customerSignatureM.PRODUCT_URL];
+        }else {
+            [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+        }
+        NSLog(@"%@", url);
         if(url) {
             [MBProgressHUD showHUDAddedTo:_button1 animated:YES];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -139,7 +151,17 @@
     
     /// 现场图片1
     if(_pictureM1) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _pictureM1.PRODUCT_URL];
+        NSString *url = @"";
+        if([_IS_SAAS isEqualToString:@"Y"]) {
+            
+            url = [NSString stringWithFormat:@"http://k56.kaidongyuan.com/%@", _pictureM1.PRODUCT_URL];
+        }else if([_IS_SAAS isEqualToString:@"N"]) {
+            
+            url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _pictureM1.PRODUCT_URL];
+        }else {
+            [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+        }
+        NSLog(@"%@", url);
         if(url) {
             [MBProgressHUD showHUDAddedTo:_button2 animated:YES];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -158,7 +180,17 @@
     
     /// 现场图片2
     if(_pictureM2) {
-        NSString *url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _pictureM2.PRODUCT_URL];
+        NSString *url = @"";
+        if([_IS_SAAS isEqualToString:@"Y"]) {
+            
+            url = [NSString stringWithFormat:@"http://k56.kaidongyuan.com/%@", _pictureM2.PRODUCT_URL];
+        }else if([_IS_SAAS isEqualToString:@"N"]) {
+            
+            url = [NSString stringWithFormat:@"%@/%@", API_SERVER_AUTOGRAPH_AND_PICTURE_FILE, _pictureM2.PRODUCT_URL];
+        }else {
+            [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+        }
+        NSLog(@"%@", url);
         if(url) {
             [MBProgressHUD showHUDAddedTo:_button3 animated:YES];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{

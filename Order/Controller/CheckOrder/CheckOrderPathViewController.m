@@ -109,7 +109,16 @@
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
     //判断连接状态
     if([Tools isConnectionAvailable]) {
-        [_service getOrderLocaltions:_orderIDX];
+        
+        if([_IS_SAAS isEqualToString:@"Y"]) {
+            
+            [_service getOrderLocaltions:_orderIDX andURL:API_GET_LOCATION_SAAS];
+        }else if([_IS_SAAS isEqualToString:@"N"]) {
+            
+            [_service getOrderLocaltions:_orderIDX andURL:API_GET_LOCATION];
+        }else {
+            [Tools showAlert:self.view andTitle:@"IS_SAAS值不合法"];
+        }
     }else {
         [Tools showAlert:self.view andTitle:@"网络连接不可用!"];
     }
