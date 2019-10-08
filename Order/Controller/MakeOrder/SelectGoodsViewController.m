@@ -612,14 +612,42 @@ typedef enum : NSInteger {
 
 
 // 获取产品规格，传入参数：ProductModel模型，PRODUCT_NAME变量
+// 支持中英文的逗号，取第一个逗号后的文字作为产品名称
 - (NSString *)getProductFormat:(NSString *)str {
-    NSArray *array = [str componentsSeparatedByString:@","];
     
-    if(array.count > 1) {
+    NSArray *arrayEnglish = [str componentsSeparatedByString:@","];
+    NSArray *arrayChina = [str componentsSeparatedByString:@"，"];
+    
+    NSString *nameEnglish = @"";
+    NSString *nameChina = @"";
+    
+    if(arrayEnglish.count > 1) {
+        nameEnglish = [arrayEnglish firstObject];
+    }
+    if(arrayChina.count > 1) {
+        nameChina = [arrayChina firstObject];
+    }
+    
+    if(arrayEnglish.count > 1 && arrayChina.count > 1) {
         
-        return array[1];
-    } else {
+        if(nameEnglish.length <= nameChina.length) {
+            
+            NSString *replaceText = [NSString stringWithFormat:@"%@,", nameEnglish];
+            return [str stringByReplacingOccurrencesOfString:replaceText withString:@""];
+        }else {
+            
+            NSString *replaceText = [NSString stringWithFormat:@"%@，", nameChina];
+            return [str stringByReplacingOccurrencesOfString:replaceText withString:@""];
+        }
+    } else if(arrayEnglish.count > 1) {
         
+        NSString *replaceText = [NSString stringWithFormat:@"%@,", nameEnglish];
+        return [str stringByReplacingOccurrencesOfString:replaceText withString:@""];
+    } else if(arrayChina.count > 1) {
+        
+        NSString *replaceText = [NSString stringWithFormat:@"%@，", nameChina];
+        return [str stringByReplacingOccurrencesOfString:replaceText withString:@""];
+    }else {
         return @"";
     }
 }
